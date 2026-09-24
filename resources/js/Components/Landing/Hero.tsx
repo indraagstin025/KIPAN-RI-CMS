@@ -46,7 +46,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: 0.1 }}
-                        className="text-3xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-[1.15] tracking-tight"
+                        className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.18] tracking-tight"
                     >
                         {HERO.headlinePrefix}{' '}
                         <span className="bg-gradient-to-r from-sky-300 to-cyan-400 bg-clip-text text-transparent">
