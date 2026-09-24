@@ -1,10 +1,16 @@
-import { Landmark, Map, Building2, ChevronDown, Network } from 'lucide-react';
+import {
+    LayersIcon,
+    GlobeIcon,
+    Component1Icon,
+    ChevronDownIcon,
+    MixIcon,
+} from '@radix-ui/react-icons';
 import { STRUKTUR_LEVELS } from '@/data/kipan-data';
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
-    Landmark,
-    Map,
-    Building2,
+    Landmark: LayersIcon,
+    Map: GlobeIcon,
+    Building2: Component1Icon,
 };
 
 export default function StrukturOrganisasi() {
@@ -17,7 +23,7 @@ export default function StrukturOrganisasi() {
                 {/* Header */}
                 <div className="max-w-3xl mx-auto text-center mb-14 lg:mb-18">
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-800 text-xs font-semibold tracking-wider uppercase rounded-md mb-4 border border-slate-200">
-                        <Network className="w-3.5 h-3.5 text-blue-700" />
+                        <MixIcon className="w-3.5 h-3.5 text-blue-700" />
                         <span>Tata Kelola Lembaga</span>
                     </div>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight">
@@ -31,7 +37,7 @@ export default function StrukturOrganisasi() {
                 {/* Hierarchy Diagram */}
                 <div className="max-w-3xl mx-auto">
                     {STRUKTUR_LEVELS.map((level, idx) => {
-                        const Icon = ICON_MAP[level.icon] || Landmark;
+                        const Icon = ICON_MAP[level.icon] || LayersIcon;
                         const isLast = idx === STRUKTUR_LEVELS.length - 1;
                         return (
                             <div key={level.level} className="relative">
@@ -88,7 +94,7 @@ export default function StrukturOrganisasi() {
                                     <div className="flex justify-center py-2" aria-hidden="true">
                                         <div className="flex flex-col items-center">
                                             <div className="w-0.5 h-6 bg-slate-300" />
-                                            <ChevronDown className="w-4 h-4 text-slate-400 -mt-1" />
+                                            <ChevronDownIcon className="w-4 h-4 text-slate-400 -mt-1" />
                                         </div>
                                     </div>
                                 )}

@@ -6,24 +6,22 @@ import PageHeader from '@/Components/Landing/PageHeader';
 import { PROGRAMS } from '@/data/kipan-data';
 import SafeImage from '@/Components/ui/safe-image';
 import {
-    Megaphone,
-    Presentation,
-    GraduationCap,
-    School,
-    Radio,
-    Users,
-    Check,
-    type LucideIcon,
-    ArrowRight,
-} from 'lucide-react';
+    CheckIcon,
+    BookmarkFilledIcon,
+    LayersIcon,
+    SpeakerLoudIcon,
+    PersonIcon,
+    StarFilledIcon,
+    RocketIcon,
+} from '@radix-ui/react-icons';
 
-const ICON_MAP: Record<string, LucideIcon> = {
-    Megaphone,
-    Presentation,
-    GraduationCap,
-    School,
-    Radio,
-    Users,
+const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+    Megaphone: SpeakerLoudIcon,
+    Presentation: LayersIcon,
+    GraduationCap: BookmarkFilledIcon,
+    School: StarFilledIcon,
+    Radio: RocketIcon,
+    Users: PersonIcon,
 };
 
 export default function Program() {
@@ -42,7 +40,7 @@ export default function Program() {
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {PROGRAMS.map((program) => {
-                                const Icon = ICON_MAP[program.icon] || Megaphone;
+                                const Icon = ICON_MAP[program.icon] || SpeakerLoudIcon;
                                 return (
                                     <div
                                         key={program.id}
@@ -84,7 +82,7 @@ export default function Program() {
                                                 {program.features.map((feat, i) => (
                                                     <li key={i} className="flex items-start gap-2 text-xs text-slate-700 leading-snug">
                                                         <div className="w-4 h-4 rounded bg-blue-50 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
-                                                            <Check className="w-3 h-3" />
+                                                            <CheckIcon className="w-3 h-3" />
                                                         </div>
                                                         <span>{feat}</span>
                                                     </li>

@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { ChevronRight, Home } from 'lucide-react';
+import { ChevronRightIcon, HomeIcon } from '@radix-ui/react-icons';
 
 interface PageHeaderProps {
     title: string;
@@ -18,7 +18,6 @@ export default function PageHeader({
         <div className="relative bg-slate-950 pt-28 sm:pt-36 pb-16 sm:pb-20 overflow-hidden border-b border-slate-800">
             {/* Subtle background glow */}
             <div className="absolute inset-0 bg-gradient-to-r from-blue-950/80 via-slate-950 to-blue-950/60" />
-            <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Breadcrumbs */}
@@ -27,10 +26,10 @@ export default function PageHeader({
                         href="/"
                         className="hover:text-white flex items-center gap-1 transition-colors"
                     >
-                        <Home className="w-3.5 h-3.5" />
+                        <HomeIcon className="w-3.5 h-3.5" />
                         <span>Beranda</span>
                     </Link>
-                    <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
+                    <ChevronRightIcon className="w-3.5 h-3.5 text-slate-600" />
                     {breadcrumbs ? (
                         breadcrumbs.map((b, i) => (
                             <span key={i} className="flex items-center gap-2">
@@ -42,7 +41,7 @@ export default function PageHeader({
                                     <span className="text-sky-300 font-medium">{b.label}</span>
                                 )}
                                 {i < breadcrumbs.length - 1 && (
-                                    <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
+                                    <ChevronRightIcon className="w-3.5 h-3.5 text-slate-600" />
                                 )}
                             </span>
                         ))

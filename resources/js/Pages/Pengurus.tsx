@@ -6,7 +6,12 @@ import FloatingWhatsApp from '@/Components/Landing/FloatingWhatsApp';
 import PageHeader from '@/Components/Landing/PageHeader';
 import { PENGURUS, TESTIMONIAL_STATS, type Pengurus as PengurusType } from '@/data/kipan-data';
 import SafeImage from '@/Components/ui/safe-image';
-import { Users, Mail, MapPin, Search } from 'lucide-react';
+import {
+    PersonIcon,
+    EnvelopeClosedIcon,
+    SewingPinIcon,
+    MagnifyingGlassIcon,
+} from '@radix-ui/react-icons';
 
 const FILTERS = ['Semua', 'Nasional', 'Provinsi', 'Kabupaten'] as const;
 
@@ -57,7 +62,7 @@ export default function Pengurus() {
 
                             {/* Search Box */}
                             <div className="relative w-full sm:w-72">
-                                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                                <MagnifyingGlassIcon className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                                 <input
                                     type="text"
                                     value={search}
@@ -95,7 +100,7 @@ export default function Pengurus() {
                                                 {item.role}
                                             </div>
                                             <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-2">
-                                                <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                                                <SewingPinIcon className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                                                 <span>{item.wilayah}</span>
                                             </div>
                                         </div>
@@ -106,7 +111,7 @@ export default function Pengurus() {
                                             href={`mailto:${item.kontak}`}
                                             className="inline-flex items-center gap-2 text-xs text-slate-500 hover:text-blue-700 transition-colors"
                                         >
-                                            <Mail className="w-3.5 h-3.5 text-blue-600" />
+                                            <EnvelopeClosedIcon className="w-3.5 h-3.5 text-blue-600" />
                                             <span>{item.kontak}</span>
                                         </a>
                                     </div>

@@ -1,21 +1,20 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-    Users,
-    Award,
-    Building2,
-    MapPin,
-    Mail,
-    type LucideIcon,
-} from 'lucide-react';
+    PersonIcon,
+    StarFilledIcon,
+    Component1Icon,
+    SewingPinIcon,
+    EnvelopeClosedIcon,
+} from '@radix-ui/react-icons';
 import { PENGURUS, TESTIMONIAL_STATS } from '@/data/kipan-data';
 import SafeImage from '@/Components/ui/safe-image';
 
-const STATS_ICON_MAP: Record<string, LucideIcon> = {
-    Users,
-    Star: Building2,
-    Award,
-    MapPin,
+const STATS_ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+    Users: PersonIcon,
+    Star: Component1Icon,
+    Award: StarFilledIcon,
+    MapPin: SewingPinIcon,
 };
 
 const FILTERS = ['Semua', 'Nasional', 'Provinsi', 'Kabupaten'] as const;
@@ -56,7 +55,7 @@ export default function Testimonials() {
                     className="max-w-3xl mx-auto text-center mb-12"
                 >
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white text-slate-700 text-xs font-semibold tracking-wider uppercase rounded-md border border-slate-200 shadow-xs mb-3">
-                        <Users className="w-3.5 h-3.5 text-blue-700" />
+                        <PersonIcon className="w-3.5 h-3.5 text-blue-700" />
                         Direktori Kepengurusan
                     </span>
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
@@ -77,7 +76,7 @@ export default function Testimonials() {
                     className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10 max-w-4xl mx-auto"
                 >
                     {TESTIMONIAL_STATS.map((stat, idx) => {
-                        const Icon = STATS_ICON_MAP[stat.icon] || Building2;
+                        const Icon = STATS_ICON_MAP[stat.icon] || Component1Icon;
                         return (
                             <div
                                 key={idx}
@@ -172,11 +171,11 @@ export default function Testimonials() {
                                 {/* Meta details */}
                                 <div className="mt-4 pt-3 border-t border-slate-100 flex flex-col gap-1.5 text-xs text-slate-600">
                                     <div className="flex items-center gap-1.5">
-                                        <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                                        <SewingPinIcon className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                                         <span className="truncate">{p.wilayah}</span>
                                     </div>
                                     <div className="flex items-center gap-1.5 truncate">
-                                        <Mail className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                                        <EnvelopeClosedIcon className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                                         <span className="truncate">{p.kontak}</span>
                                     </div>
                                 </div>
@@ -189,7 +188,7 @@ export default function Testimonials() {
                 {filtered.length === 0 && (
                     <div className="text-center py-12 px-6 bg-white rounded-xl border border-slate-200 max-w-md mx-auto shadow-xs my-4">
                         <div className="w-12 h-12 mx-auto rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center mb-3 text-slate-600">
-                            <Users className="w-6 h-6" />
+                            <PersonIcon className="w-6 h-6" />
                         </div>
                         <h3 className="text-base font-bold text-slate-900 mb-1">
                             Belum Ada Data Pengurus

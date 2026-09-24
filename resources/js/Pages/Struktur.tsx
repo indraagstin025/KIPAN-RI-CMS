@@ -4,12 +4,18 @@ import Footer from '@/Components/Landing/Footer';
 import FloatingWhatsApp from '@/Components/Landing/FloatingWhatsApp';
 import PageHeader from '@/Components/Landing/PageHeader';
 import { STRUKTUR_LEVELS } from '@/data/kipan-data';
-import { Landmark, Map, Building2, ChevronDown, Network, Shield, Award } from 'lucide-react';
+import {
+    StarFilledIcon,
+    ChevronDownIcon,
+    LayersIcon,
+    GlobeIcon,
+    Component1Icon,
+} from '@radix-ui/react-icons';
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
-    Landmark,
-    Map,
-    Building2,
+    Landmark: LayersIcon,
+    Map: GlobeIcon,
+    Building2: Component1Icon,
 };
 
 export default function Struktur() {
@@ -29,7 +35,7 @@ export default function Struktur() {
                         {/* Dewan Pembina / Penasihat */}
                         <div className="max-w-4xl mx-auto mb-16 bg-blue-50/70 border border-blue-200/80 rounded-3xl p-6 sm:p-8">
                             <div className="flex items-center gap-2.5 font-bold text-blue-900 mb-4">
-                                <Award className="w-5 h-5 text-blue-700 shrink-0" />
+                                <StarFilledIcon className="w-5 h-5 text-amber-500 shrink-0" />
                                 <h2 className="text-lg sm:text-xl font-bold text-slate-900">
                                     Dewan Pembina Nasional KIPAN RI
                                 </h2>
@@ -63,7 +69,7 @@ export default function Struktur() {
                         {/* Hierarki Tingkatan */}
                         <div className="max-w-3xl mx-auto space-y-6">
                             {STRUKTUR_LEVELS.map((level, idx) => {
-                                const Icon = ICON_MAP[level.icon] || Landmark;
+                                const Icon = ICON_MAP[level.icon] || LayersIcon;
                                 const isLast = idx === STRUKTUR_LEVELS.length - 1;
                                 return (
                                     <div key={level.level} className="relative">
@@ -99,7 +105,7 @@ export default function Struktur() {
 
                                         {!isLast && (
                                             <div className="flex justify-center my-2 text-slate-300">
-                                                <ChevronDown className="w-5 h-5 animate-bounce" />
+                                                <ChevronDownIcon className="w-5 h-5 animate-bounce" />
                                             </div>
                                         )}
                                     </div>

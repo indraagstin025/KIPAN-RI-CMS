@@ -6,15 +6,12 @@ import FloatingWhatsApp from '@/Components/Landing/FloatingWhatsApp';
 import PageHeader from '@/Components/Landing/PageHeader';
 import { AGENDA_KEGIATAN, type AgendaItem } from '@/data/kipan-data';
 import {
-    Calendar as CalendarIcon,
-    Clock,
-    MapPin,
-    Building2,
-    Search,
-    ChevronLeft,
-    ChevronRight,
-    Tag,
-} from 'lucide-react';
+    CalendarIcon,
+    ClockIcon,
+    SewingPinIcon,
+    Component1Icon,
+    MagnifyingGlassIcon,
+} from '@radix-ui/react-icons';
 
 const CATEGORIES = ['Semua', 'Nasional', 'Kaderisasi', 'Edukasi', 'Aksi Lapangan', 'Kesehatan'] as const;
 
@@ -65,7 +62,7 @@ export default function Agenda() {
 
                             {/* Search */}
                             <div className="relative w-full sm:w-72">
-                                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                                <MagnifyingGlassIcon className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                                 <input
                                     type="text"
                                     value={search}
@@ -118,11 +115,11 @@ export default function Agenda() {
                                                     <span>{item.displayDate}</span>
                                                 </div>
                                                 <div className="flex items-center gap-1.5">
-                                                    <Clock className="w-4 h-4 text-blue-600" />
+                                                    <ClockIcon className="w-4 h-4 text-blue-600" />
                                                     <span>{item.time}</span>
                                                 </div>
                                                 <div className="flex items-center gap-1.5">
-                                                    <Building2 className="w-4 h-4 text-blue-600" />
+                                                    <Component1Icon className="w-4 h-4 text-blue-600" />
                                                     <span>{item.organizer}</span>
                                                 </div>
                                             </div>
@@ -130,7 +127,7 @@ export default function Agenda() {
 
                                         <div className="md:w-56 shrink-0 bg-slate-50 rounded-2xl p-4 border border-slate-100 flex flex-col justify-between">
                                             <div className="flex items-start gap-2 text-xs text-slate-600 mb-3">
-                                                <MapPin className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                                                <SewingPinIcon className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                                                 <span className="line-clamp-2">{item.location}</span>
                                             </div>
                                             <a

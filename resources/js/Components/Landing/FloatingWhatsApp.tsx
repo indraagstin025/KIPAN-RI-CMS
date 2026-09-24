@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X } from 'lucide-react';
+import { ChatBubbleIcon, Cross2Icon } from '@radix-ui/react-icons';
 import { COMPANY } from '@/data/kipan-data';
 
 export default function FloatingWhatsApp() {
@@ -41,7 +41,7 @@ export default function FloatingWhatsApp() {
                                 <div className="flex items-start justify-between mb-2">
                                     <div className="flex items-center gap-2.5">
                                         <div className="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white shrink-0">
-                                            <MessageCircle className="w-4 h-4" />
+                                            <ChatBubbleIcon className="w-4 h-4" />
                                         </div>
                                         <div>
                                             <div className="text-xs font-bold text-slate-900 leading-tight">
@@ -58,7 +58,7 @@ export default function FloatingWhatsApp() {
                                         className="text-slate-400 hover:text-slate-700 p-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                                         aria-label="Tutup jendela chat"
                                     >
-                                        <X className="w-4 h-4" />
+                                        <Cross2Icon className="w-4 h-4" />
                                     </button>
                                 </div>
                                 <p className="text-xs text-slate-600 mb-3 leading-relaxed">
@@ -84,9 +84,9 @@ export default function FloatingWhatsApp() {
                         aria-label="Buka obrolan WhatsApp Sekretariat KIPAN"
                     >
                         {open ? (
-                            <X className="w-5 h-5" />
+                            <Cross2Icon className="w-5 h-5" />
                         ) : (
-                            <MessageCircle className="w-5 h-5" />
+                            <ChatBubbleIcon className="w-5 h-5" />
                         )}
                     </button>
                 </motion.div>

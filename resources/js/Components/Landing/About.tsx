@@ -1,29 +1,24 @@
 import { motion } from 'framer-motion';
 import {
-    Target,
-    Compass,
-    Users,
-    CheckCircle2,
-    ShieldCheck,
-    Award,
-    HeartHandshake,
-    BookOpen,
-    Scale,
-    FileText,
-    Activity,
-    School,
-    GraduationCap,
-    HeartPulse,
-    Sparkles,
-} from 'lucide-react';
+    Crosshair1Icon,
+    PersonIcon,
+    CheckCircledIcon,
+    StarFilledIcon,
+    HeartIcon,
+    ReaderIcon,
+    FileTextIcon,
+    ActivityLogIcon,
+    BookmarkIcon,
+    Component1Icon,
+} from '@radix-ui/react-icons';
 import { ABOUT, COMPANY } from '@/data/kipan-data';
 import SafeImage from '@/Components/ui/safe-image';
 
 const NILAI_ICONS = [
-    ShieldCheck, // Bersih
-    HeartHandshake, // Peduli
-    Award, // Berkarakter
-    Users, // Bersatu
+    StarFilledIcon, // Bersih
+    HeartIcon, // Peduli
+    BookmarkIcon, // Berkarakter
+    PersonIcon, // Bersatu
 ];
 
 const PILAR_AKSI = [
@@ -31,28 +26,28 @@ const PILAR_AKSI = [
         title: 'Komunikasi, Informasi & Edukasi (KIE)',
         tag: 'Pilar 1',
         desc: 'Gerakan sosialisasi intensif ke sekolah (Goes to School), kampus, dan komunitas pemuda dengan materi edukasi bahaya narkoba terkini.',
-        icon: School,
+        icon: Component1Icon,
         color: 'text-blue-600 bg-blue-50 border-blue-200',
     },
     {
         title: 'Kaderisasi & Pelatihan Inti',
         tag: 'Pilar 2',
         desc: 'Pembekalan kepemimpinan, wawasan kebangsaan, dan kapasitas deteksi dini bagi pemuda terpilih untuk menjadi garda tanggap di wilayahnya.',
-        icon: GraduationCap,
+        icon: BookmarkIcon,
         color: 'text-blue-700 bg-sky-50 border-sky-200',
     },
     {
         title: 'Pendampingan Sebaya (Peer Support)',
         tag: 'Pilar 3',
         desc: 'Layanan konseling sesama pemuda yang inklusif dan humanis, serta menjadi jembatan rujukan rehabilitasi sukarela ke BNN.',
-        icon: HeartPulse,
+        icon: HeartIcon,
         color: 'text-emerald-700 bg-emerald-50 border-emerald-200',
     },
     {
         title: 'Kreativitas & Minat Bakat Positif',
         tag: 'Pilar 4',
         desc: 'Mengalihkan energi pemuda ke kegiatan positif melalui olahraga, seni budaya, digital kreasi, dan wirausaha muda anti narkoba.',
-        icon: Sparkles,
+        icon: StarFilledIcon,
         color: 'text-amber-600 bg-amber-50 border-amber-200',
     },
 ];
@@ -68,7 +63,7 @@ export default function About() {
                 <div className="mb-16 lg:mb-24">
                     <div className="max-w-3xl mb-8">
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-800 text-xs font-semibold tracking-wider uppercase rounded-md border border-blue-200/80 mb-2">
-                            <Activity className="w-3.5 h-3.5 text-blue-600" />
+                            <ActivityLogIcon className="w-3.5 h-3.5 text-blue-600" />
                             Pilar Gerakan Pemuda
                         </span>
                         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
@@ -121,7 +116,7 @@ export default function About() {
                 {/* Section Header: Profil & Legalitas */}
                 <div className="max-w-3xl mb-12 lg:mb-16">
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-800 text-xs font-semibold tracking-wider uppercase rounded-md mb-4 border border-blue-200/80">
-                        <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
+                        <StarFilledIcon className="w-3.5 h-3.5 text-blue-600" />
                         <span>Profil &amp; Landasan Hukum</span>
                     </div>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight">
@@ -178,20 +173,20 @@ export default function About() {
                         {/* Landasan Hukum Card (Authentic Legal Basis) */}
                         <div className="bg-slate-50 rounded-xl p-5 border border-slate-200 text-slate-700 text-sm leading-relaxed shadow-xs">
                             <div className="flex items-center gap-2.5 font-bold text-slate-900 mb-2.5">
-                                <Scale className="w-5 h-5 text-blue-700 shrink-0" />
+                                <BookmarkIcon className="w-5 h-5 text-blue-700 shrink-0" />
                                 <span>Payung Regulasi &amp; Dasar Hukum Resmi</span>
                             </div>
                             <ul className="space-y-2 text-xs text-slate-600">
                                 <li className="flex items-start gap-2">
-                                    <FileText className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                                    <FileTextIcon className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                                     <span><strong>UU No. 40 Tahun 2009</strong> tentang Kepemudaan (Peran aktif pemuda sebagai agen perubahan).</span>
                                 </li>
                                 <li className="flex items-start gap-2">
-                                    <FileText className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                                    <FileTextIcon className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                                     <span><strong>Inpres No. 2 Tahun 2020</strong> tentang Rencana Aksi Nasional P4GN (Pencegahan &amp; Pemberantasan Narkoba).</span>
                                 </li>
                                 <li className="flex items-start gap-2">
-                                    <FileText className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                                    <FileTextIcon className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                                     <span><strong>Pedoman Dasar KIPAN Kemenpora RI</strong> tentang Pembentukan &amp; Tata Kelola Kader Anti Narkoba.</span>
                                 </li>
                             </ul>
@@ -224,7 +219,7 @@ export default function About() {
                         <div className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-sm">
                             <div className="flex items-center gap-2.5 mb-2.5">
                                 <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center font-bold">
-                                    <Compass className="w-4 h-4" />
+                                    <Crosshair1Icon className="w-4 h-4" />
                                 </div>
                                 <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
                                     Visi KIPAN
@@ -239,7 +234,7 @@ export default function About() {
                         <div className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-sm">
                             <div className="flex items-center gap-2.5 mb-4">
                                 <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center font-bold">
-                                    <Target className="w-4 h-4" />
+                                    <Crosshair1Icon className="w-4 h-4" />
                                 </div>
                                 <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
                                     Misi Strategis
@@ -251,7 +246,7 @@ export default function About() {
                                         key={idx}
                                         className="flex items-start gap-3 text-slate-700 text-sm leading-relaxed"
                                     >
-                                        <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                                        <CheckCircledIcon className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                                         <span>{m}</span>
                                     </li>
                                 ))}
@@ -273,7 +268,7 @@ export default function About() {
 
                     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
                         {ABOUT.nilai.map((n, idx) => {
-                            const Icon = NILAI_ICONS[idx] || ShieldCheck;
+                            const Icon = NILAI_ICONS[idx] || StarFilledIcon;
                             return (
                                 <div
                                     key={idx}

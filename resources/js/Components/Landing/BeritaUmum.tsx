@@ -1,17 +1,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-    X,
-    Newspaper,
-    Calendar,
-    ArrowUpRight,
-    MapPin,
-    Clock,
-    Flame,
-    Sparkles,
-    ChevronRight,
-    Tag,
-} from 'lucide-react';
+    Cross2Icon,
+    ReaderIcon,
+    CalendarIcon,
+    ArrowTopRightIcon,
+    SewingPinIcon,
+    ClockIcon,
+    StarFilledIcon,
+    ChevronRightIcon,
+} from '@radix-ui/react-icons';
 import { BERITA, type Berita } from '@/data/kipan-data';
 import SafeImage from '@/Components/ui/safe-image';
 
@@ -55,7 +53,7 @@ export default function BeritaUmum() {
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 lg:mb-12">
                     <div>
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white text-blue-800 text-xs font-semibold tracking-wider uppercase rounded-md border border-slate-200 shadow-xs mb-3">
-                            <Newspaper className="w-3.5 h-3.5 text-blue-600" />
+                            <ReaderIcon className="w-3.5 h-3.5 text-blue-600" />
                             Publikasi &amp; Informasi
                         </span>
                         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
@@ -71,7 +69,7 @@ export default function BeritaUmum() {
                         className="inline-flex items-center gap-1.5 px-4 py-2 bg-white hover:bg-blue-50 text-blue-700 hover:text-blue-800 text-xs sm:text-sm font-semibold rounded-lg border border-slate-200 hover:border-blue-300 transition-colors shadow-xs shrink-0 self-start md:self-end"
                     >
                         <span>Lihat Semua Berita</span>
-                        <ArrowUpRight className="w-4 h-4" />
+                        <ArrowTopRightIcon className="w-4 h-4" />
                     </a>
                 </div>
 
@@ -81,7 +79,7 @@ export default function BeritaUmum() {
                     <div className="lg:col-span-3 flex flex-col bg-white rounded-2xl border border-slate-200 shadow-xs p-5 justify-between">
                         <div>
                             <div className="flex items-center gap-2 font-bold text-slate-900 text-sm pb-3 border-b border-slate-100 mb-4">
-                                <Clock className="w-4 h-4 text-blue-600" />
+                                <ClockIcon className="w-4 h-4 text-blue-600" />
                                 <span>Agenda &amp; Rilis Kilat</span>
                             </div>
                             <div className="space-y-4">
@@ -111,7 +109,7 @@ export default function BeritaUmum() {
 
                         <div className="mt-4 pt-3 border-t border-slate-100 bg-blue-50/60 rounded-xl p-3 border border-blue-100">
                             <div className="flex items-center gap-2 text-xs font-bold text-blue-900 mb-0.5">
-                                <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                                <StarFilledIcon className="w-3.5 h-3.5 text-blue-600" />
                                 <span>Pusat Siaran Pers</span>
                             </div>
                             <p className="text-[11px] text-slate-600 leading-relaxed">
@@ -134,10 +132,10 @@ export default function BeritaUmum() {
                             </div>
                             <div className="absolute bottom-4 left-4 right-4 text-white">
                                 <div className="flex items-center gap-2 text-xs text-sky-200 mb-1.5">
-                                    <Calendar className="w-3.5 h-3.5" />
+                                    <CalendarIcon className="w-3.5 h-3.5" />
                                     <span>{featuredStory.date}</span>
                                     <span>•</span>
-                                    <MapPin className="w-3.5 h-3.5" />
+                                    <SewingPinIcon className="w-3.5 h-3.5" />
                                     <span>{featuredStory.location}</span>
                                 </div>
                             </div>
@@ -165,7 +163,7 @@ export default function BeritaUmum() {
                                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-700 hover:text-blue-800 transition-colors cursor-pointer"
                                 >
                                     <span>Baca Liputan</span>
-                                    <ChevronRight className="w-4 h-4" />
+                                    <ChevronRightIcon className="w-4 h-4" />
                                 </button>
                             </div>
                         </div>
@@ -261,19 +259,19 @@ export default function BeritaUmum() {
                                     aria-label="Tutup Detail Berita"
                                     className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-900/80 hover:bg-slate-900 text-white flex items-center justify-center transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 >
-                                    <X className="w-5 h-5" />
+                                    <Cross2Icon className="w-5 h-5" />
                                 </button>
                             </div>
 
                             <div className="p-6 sm:p-8">
                                 <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 mb-3">
                                     <div className="flex items-center gap-1.5">
-                                        <Calendar className="w-4 h-4 text-blue-600" />
+                                        <CalendarIcon className="w-4 h-4 text-blue-600" />
                                         <span>{selected.date}</span>
                                     </div>
                                     <span>•</span>
                                     <div className="flex items-center gap-1.5">
-                                        <MapPin className="w-4 h-4 text-blue-600" />
+                                        <SewingPinIcon className="w-4 h-4 text-blue-600" />
                                         <span>{selected.location}</span>
                                     </div>
                                 </div>

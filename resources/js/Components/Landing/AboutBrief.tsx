@@ -1,15 +1,12 @@
 import { motion } from 'framer-motion';
 import {
-    ShieldCheck,
-    ArrowRight,
-    School,
-    GraduationCap,
-    HeartPulse,
-    Sparkles,
-    Scale,
-    Compass,
-    Award,
-} from 'lucide-react';
+    ArrowRightIcon,
+    LayersIcon,
+    BookmarkFilledIcon,
+    HeartFilledIcon,
+    StarFilledIcon,
+    CheckCircledIcon,
+} from '@radix-ui/react-icons';
 import { Link } from '@inertiajs/react';
 import { ABOUT, COMPANY } from '@/data/kipan-data';
 import SafeImage from '@/Components/ui/safe-image';
@@ -18,25 +15,25 @@ const PILAR_BRIEF = [
     {
         title: 'Edukasi & Sosialisasi Pelajar',
         desc: 'Pencegahan dini melalui program Goes to School & Goes to Campus di seluruh Indonesia.',
-        icon: School,
+        icon: BookmarkFilledIcon,
         color: 'text-blue-600 bg-blue-50 border-blue-200',
     },
     {
         title: 'Pelatihan & Kaderisasi Inti',
         desc: 'Pembekalan wawasan kebangsaan, karakter kepemimpinan, dan deteksi dini narkotika.',
-        icon: GraduationCap,
+        icon: LayersIcon,
         color: 'text-sky-600 bg-sky-50 border-sky-200',
     },
     {
         title: 'Konseling Sebaya (Peer Support)',
         desc: 'Pendampingan humanis sesama pemuda dan jembatan rujukan rehabilitasi sukarela BNN.',
-        icon: HeartPulse,
+        icon: HeartFilledIcon,
         color: 'text-emerald-600 bg-emerald-50 border-emerald-200',
     },
     {
         title: 'Pemberdayaan Minat & Kreativitas',
         desc: 'Menyalurkan energi pemuda ke olahraga, seni budaya, digitalisasi, dan wirausaha kreatif.',
-        icon: Sparkles,
+        icon: StarFilledIcon,
         color: 'text-amber-600 bg-amber-50 border-amber-200',
     },
 ];
@@ -52,8 +49,8 @@ export default function AboutBrief() {
                 <div className="mb-14 lg:mb-18">
                     <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
                         <div>
-                            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-800 text-xs font-semibold tracking-wider uppercase rounded-md border border-blue-200 shadow-xs mb-2">
-                                <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
+                            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-800 text-xs font-semibold tracking-wider uppercase rounded-md border border-blue-200 mb-2">
+                                <CheckCircledIcon className="w-3.5 h-3.5 text-blue-600" />
                                 4 Pilar Gerakan P4GN
                             </span>
                             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
@@ -65,7 +62,7 @@ export default function AboutBrief() {
                             className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-blue-700 hover:text-blue-800 transition-colors shrink-0"
                         >
                             <span>Detail Program Kerja</span>
-                            <ArrowRight className="w-4 h-4" />
+                            <ArrowRightIcon className="w-4 h-4" />
                         </Link>
                     </div>
 
@@ -99,7 +96,7 @@ export default function AboutBrief() {
                     <div className="grid lg:grid-cols-12 gap-8 items-center">
                         <div className="lg:col-span-7">
                             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white text-blue-800 text-xs font-semibold tracking-wider uppercase rounded-md border border-slate-200 mb-3 shadow-xs">
-                                <Compass className="w-3.5 h-3.5 text-blue-600" />
+                                <BookmarkFilledIcon className="w-3.5 h-3.5 text-blue-600" />
                                 <span>Sekilas KIPAN Indonesia</span>
                             </div>
                             <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
@@ -118,7 +115,7 @@ export default function AboutBrief() {
                                     className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-xl shadow-xs transition-colors"
                                 >
                                     <span>Pelajari Profil &amp; Legalitas Lengkap</span>
-                                    <ArrowRight className="w-4 h-4" />
+                                    <ArrowRightIcon className="w-4 h-4" />
                                 </Link>
                                 <Link
                                     href="/struktur"

@@ -6,24 +6,20 @@ import PageHeader from '@/Components/Landing/PageHeader';
 import { ABOUT, COMPANY, STATS } from '@/data/kipan-data';
 import SafeImage from '@/Components/ui/safe-image';
 import {
-    ShieldCheck,
-    Scale,
-    FileText,
-    Target,
-    Compass,
-    CheckCircle2,
-    Users,
-    HeartHandshake,
-    Award,
-    Building2,
-    MapPin,
-} from 'lucide-react';
+    CheckCircledIcon,
+    FileTextIcon,
+    StarFilledIcon,
+    PersonIcon,
+    HeartFilledIcon,
+    BookmarkFilledIcon,
+    LayersIcon,
+} from '@radix-ui/react-icons';
 
 const NILAI_ICONS = [
-    ShieldCheck, // Bersih
-    HeartHandshake, // Peduli
-    Award, // Berkarakter
-    Users, // Bersatu
+    BookmarkFilledIcon, // Bersih
+    HeartFilledIcon, // Peduli
+    StarFilledIcon, // Berkarakter
+    PersonIcon, // Bersatu
 ];
 
 export default function Tentang() {
@@ -45,7 +41,7 @@ export default function Tentang() {
                         <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start mb-16 lg:mb-24">
                             <div className="lg:col-span-6 flex flex-col gap-6">
                                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-800 text-xs font-semibold tracking-wider uppercase rounded-md border border-blue-200">
-                                    <Compass className="w-3.5 h-3.5 text-blue-600" />
+                                    <BookmarkFilledIcon className="w-3.5 h-3.5 text-blue-600" />
                                     <span>Sejarah &amp; Latar Belakang</span>
                                 </div>
                                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
@@ -60,20 +56,20 @@ export default function Tentang() {
                                 {/* Payung Hukum Resmi */}
                                 <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 mt-2">
                                     <div className="flex items-center gap-2.5 font-bold text-slate-900 mb-3">
-                                        <Scale className="w-5 h-5 text-blue-700 shrink-0" />
+                                        <FileTextIcon className="w-5 h-5 text-blue-700 shrink-0" />
                                         <span>Landasan Yuridis &amp; Payung Regulasi</span>
                                     </div>
                                     <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600">
                                         <li className="flex items-start gap-2.5">
-                                            <FileText className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                                            <FileTextIcon className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                                             <span><strong>Undang-Undang No. 40 Tahun 2009</strong> tentang Kepemudaan (Amanat peran aktif dan kepemimpinan pemuda).</span>
                                         </li>
                                         <li className="flex items-start gap-2.5">
-                                            <FileText className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                                            <FileTextIcon className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                                             <span><strong>Instruksi Presiden No. 2 Tahun 2020</strong> tentang Rencana Aksi Nasional Pencegahan dan Pemberantasan Penyalahgunaan dan Peredaran Gelap Narkotika (RAN P4GN).</span>
                                         </li>
                                         <li className="flex items-start gap-2.5">
-                                            <FileText className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                                            <FileTextIcon className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                                             <span><strong>Pedoman Teknis Pembinaan Kader Anti Narkoba Kemenpora RI</strong> tentang pembentukan jejaring kepemudaan nasional hingga daerah.</span>
                                         </li>
                                     </ul>
@@ -119,7 +115,7 @@ export default function Tentang() {
                             <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs flex flex-col justify-between">
                                 <div>
                                     <div className="flex items-center gap-2 text-blue-700 font-bold mb-3 uppercase tracking-wider text-xs">
-                                        <Compass className="w-4 h-4" />
+                                        <LayersIcon className="w-4 h-4" />
                                         <span>Visi Organisasi</span>
                                     </div>
                                     <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 mb-3">
@@ -134,7 +130,7 @@ export default function Tentang() {
                             {/* Misi */}
                             <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs">
                                 <div className="flex items-center gap-2 text-blue-700 font-bold mb-3 uppercase tracking-wider text-xs">
-                                    <Target className="w-4 h-4" />
+                                    <BookmarkFilledIcon className="w-4 h-4" />
                                     <span>Misi Strategis</span>
                                 </div>
                                 <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 mb-4">
@@ -143,7 +139,7 @@ export default function Tentang() {
                                 <ul className="space-y-3">
                                     {ABOUT.misi.map((m, idx) => (
                                         <li key={idx} className="flex items-start gap-3 text-slate-700 text-xs sm:text-sm leading-relaxed">
-                                            <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                                            <CheckCircledIcon className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                                             <span>{m}</span>
                                         </li>
                                     ))}
@@ -164,7 +160,7 @@ export default function Tentang() {
 
                             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                                 {ABOUT.nilai.map((n, idx) => {
-                                    const Icon = NILAI_ICONS[idx] || ShieldCheck;
+                                    const Icon = NILAI_ICONS[idx] || BookmarkFilledIcon;
                                     return (
                                         <div
                                             key={idx}

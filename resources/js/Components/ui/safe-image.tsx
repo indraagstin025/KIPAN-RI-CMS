@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ImageOff } from 'lucide-react';
+import { ImageIcon } from '@radix-ui/react-icons';
 
 interface SafeImageProps {
     src: string | undefined | null;
@@ -31,7 +31,7 @@ export default function SafeImage({
                 role="img"
                 aria-label={alt || 'No image'}
             >
-                <ImageOff className={iconClassName} />
+                <ImageIcon className={iconClassName} />
             </div>
         );
     }

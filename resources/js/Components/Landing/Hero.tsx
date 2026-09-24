@@ -1,18 +1,15 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-    Search,
-    ArrowUpRight,
-    Phone,
-    ArrowRight,
-    ShieldCheck,
-    MessageCircle,
-    Bell,
-    Calendar,
-    Users,
-    AlertCircle,
-} from 'lucide-react';
-import { HERO, COMPANY, STATS } from '@/data/kipan-data';
+    MagnifyingGlassIcon,
+    ArrowRightIcon,
+    ChatBubbleIcon,
+    CalendarIcon,
+    PersonIcon,
+    ExclamationTriangleIcon,
+    GlobeIcon,
+} from '@radix-ui/react-icons';
+import { HERO, COMPANY } from '@/data/kipan-data';
 import SafeImage from '@/Components/ui/safe-image';
 
 function InstagramIcon({ className = 'w-4 h-4' }: { className?: string }) {
@@ -34,32 +31,13 @@ function InstagramIcon({ className = 'w-4 h-4' }: { className?: string }) {
     );
 }
 
-function GlobeIcon({ className = 'w-4 h-4' }: { className?: string }) {
-    return (
-        <svg
-            className={className}
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-        >
-            <circle cx="12" cy="12" r="10" />
-            <line x1="2" y1="12" x2="22" y2="12" />
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-        </svg>
-    );
-}
-
 export default function Hero() {
     const [searchQuery, setSearchQuery] = useState('');
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
         if (!searchQuery.trim()) return;
-        const target = document.getElementById('berita-terkini') || document.getElementById('informasi');
+        const target = document.getElementById('berita-terkini') || document.getElementById('agenda');
         target?.scrollIntoView({ behavior: 'smooth' });
     };
 
@@ -85,7 +63,7 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50" />
             </div>
 
-            {/* Left Vertical Social Bar (Concealed inside Hero, ample spacing so it never overlaps text) */}
+            {/* Left Vertical Social Bar (Radix UI icons & absolute inside Hero) */}
             <div className="hidden md:flex absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-20 flex-col gap-2.5">
                 <a
                     href={COMPANY.instagramUrl}
@@ -105,7 +83,7 @@ export default function Hero() {
                     title="Konsultasi WhatsApp"
                     aria-label="WhatsApp KIPAN"
                 >
-                    <MessageCircle className="w-4 h-4" />
+                    <ChatBubbleIcon className="w-4 h-4" />
                 </a>
                 <a
                     href={COMPANY.websiteUrl}
@@ -119,15 +97,15 @@ export default function Hero() {
                 </a>
             </div>
 
-            {/* Right Vertical Quick Dock (Uniform Jabarprov style - Royal Blue action dock) */}
+            {/* Right Vertical Quick Dock (Uniform Jabarprov style with Radix UI icons) */}
             <div className="hidden md:flex absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-20 flex-col gap-2.5">
                 <a
-                    href="#kontak"
+                    href="/kontak"
                     className="w-11 h-11 rounded-xl bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center shadow-lg transition-all hover:scale-105 group relative border border-blue-400/20"
                     title="Konsultasi & Kontak"
                     aria-label="Konsultasi & Kontak"
                 >
-                    <MessageCircle className="w-5 h-5" />
+                    <ChatBubbleIcon className="w-5 h-5" />
                     <span className="absolute right-14 bg-slate-900 text-white text-xs px-2.5 py-1 rounded shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-slate-700">
                         Kontak &amp; Konsultasi
                     </span>
@@ -138,57 +116,44 @@ export default function Hero() {
                     title="Call Center BNN 184 (Bebas Pulsa)"
                     aria-label="Call Center BNN 184"
                 >
-                    <AlertCircle className="w-5 h-5 text-amber-300" />
+                    <ExclamationTriangleIcon className="w-5 h-5 text-amber-300" />
                     <span className="absolute right-14 bg-slate-900 text-white text-xs px-2.5 py-1 rounded shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-slate-700">
                         Hotline BNN 184
                     </span>
                 </a>
                 <a
-                    href="#informasi"
+                    href="/agenda"
                     className="w-11 h-11 rounded-xl bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center shadow-lg transition-all hover:scale-105 group relative border border-blue-400/20"
                     title="Program Kerja &amp; Aksi P4GN"
                     aria-label="Program Kerja &amp; Aksi P4GN"
                 >
-                    <Calendar className="w-5 h-5" />
+                    <CalendarIcon className="w-5 h-5" />
                     <span className="absolute right-14 bg-slate-900 text-white text-xs px-2.5 py-1 rounded shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-slate-700">
-                        Program Kerja
+                        Kalender Agenda
                     </span>
                 </a>
                 <a
-                    href="#pengurus"
+                    href="/pengurus"
                     className="w-11 h-11 rounded-xl bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center shadow-lg transition-all hover:scale-105 group relative border border-blue-400/20"
                     title="Direktori Pengurus"
                     aria-label="Direktori Pengurus"
                 >
-                    <Users className="w-5 h-5" />
+                    <PersonIcon className="w-5 h-5" />
                     <span className="absolute right-14 bg-slate-900 text-white text-xs px-2.5 py-1 rounded shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-slate-700">
                         Direktori Pengurus
                     </span>
                 </a>
             </div>
 
-            {/* Main Content Area: Spacious left/right padding to guarantee ZERO overlap with side icons */}
+            {/* Main Content Area: Zero overlap, no transparent badges */}
             <div className="relative z-10 w-full container mx-auto px-6 sm:px-12 md:pl-28 md:pr-24 lg:pl-32 lg:pr-28 pt-28 sm:pt-36 pb-24 lg:pb-36">
                 <div className="max-w-3xl">
-                    {/* Badge with Warm Gold Accent from Logo (10% accent) */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4 }}
-                        className="inline-flex items-center gap-2 bg-blue-950/80 border border-blue-500/40 rounded-full px-4 py-1.5 mb-5 shadow-xs"
-                    >
-                        <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
-                        <span className="text-blue-100 text-xs sm:text-sm font-medium">
-                            {HERO.badge}
-                        </span>
-                    </motion.div>
-
-                    {/* Headline (Authoritative civic statement like Jabarprov) */}
+                    {/* Headline (Clear and authoritative without transparent badges) */}
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
-                        className="text-2xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-[1.2] tracking-tight"
+                        transition={{ duration: 0.5 }}
+                        className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-[1.2] tracking-tight"
                     >
                         Kader Inti Pemuda Anti Narkoba:{' '}
                         <span className="text-sky-400">
@@ -200,23 +165,23 @@ export default function Hero() {
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
+                        transition={{ duration: 0.5, delay: 0.15 }}
                         className="mt-4 sm:mt-5 text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl"
                     >
                         Portal resmi koordinasi, edukasi P4GN, dan aksi nyata pemuda binaan Kemenpora RI
                         bersama BNN RI di 38 provinsi dan 514 kabupaten/kota seluruh Indonesia.
                     </motion.p>
 
-                    {/* Interactive Portal Search Bar (Exact Jabarprov layout & proportions) */}
+                    {/* Interactive Portal Search Bar (Radix UI MagnifyingGlassIcon) */}
                     <motion.form
                         onSubmit={handleSearch}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.25 }}
-                        className="mt-6 sm:mt-7 max-w-xl"
+                        className="mt-6 sm:mt-8 max-w-xl"
                     >
                         <div className="flex items-center bg-black/40 backdrop-blur-md border border-white/20 rounded-2xl p-1.5 focus-within:border-blue-400 focus-within:ring-2 focus-within:ring-blue-500/30 transition-all shadow-xl">
-                            <Search className="w-5 h-5 text-slate-300 ml-3.5 shrink-0" />
+                            <MagnifyingGlassIcon className="w-5 h-5 text-slate-300 ml-3.5 shrink-0" />
                             <input
                                 type="text"
                                 value={searchQuery}
@@ -233,74 +198,34 @@ export default function Hero() {
                         </div>
                     </motion.form>
 
-                    {/* Popular search pills (Jabarprov signature feature) */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        className="mt-4 flex flex-wrap items-center gap-2"
-                    >
-                        <span className="text-xs text-slate-300 font-medium mr-1">
-                            Pencarian populer:
-                        </span>
-                        <a
-                            href="#informasi"
-                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/15 rounded-xl text-xs text-slate-100 hover:text-white transition-all shadow-xs"
-                        >
-                            <span>Program Aksi P4GN</span>
-                            <ArrowUpRight className="w-3.5 h-3.5 text-slate-300" />
-                        </a>
-                        <a
-                            href="#tentang"
-                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/15 rounded-xl text-xs text-slate-100 hover:text-white transition-all shadow-xs"
-                        >
-                            <span>Dasar Hukum Inpres</span>
-                            <ArrowUpRight className="w-3.5 h-3.5 text-slate-300" />
-                        </a>
-                        <a
-                            href="#struktur"
-                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/15 rounded-xl text-xs text-slate-100 hover:text-white transition-all shadow-xs"
-                        >
-                            <span>Hierarki Nasional</span>
-                            <ArrowUpRight className="w-3.5 h-3.5 text-slate-300" />
-                        </a>
-                        <a
-                            href="#berita-terkini"
-                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/15 rounded-xl text-xs text-slate-100 hover:text-white transition-all shadow-xs"
-                        >
-                            <span>Warta Terkini</span>
-                            <ArrowUpRight className="w-3.5 h-3.5 text-slate-300" />
-                        </a>
-                    </motion.div>
-
                     {/* Redesigned CTAs */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.35 }}
-                        className="mt-7 flex flex-col sm:flex-row gap-3 w-full sm:w-auto"
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                        className="mt-8 flex flex-col sm:flex-row gap-3 w-full sm:w-auto"
                     >
                         <a
-                            href="#kontak"
+                            href="/kontak"
                             className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold px-5 py-2.5 sm:py-3 rounded-xl shadow-md hover:shadow-lg transition-all focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none"
                         >
-                            <Phone className="w-4 h-4" />
+                            <ChatBubbleIcon className="w-4 h-4" />
                             <span>Hubungi Sekretariat</span>
                         </a>
                         <a
-                            href="#tentang"
+                            href="/tentang"
                             className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 text-xs sm:text-sm font-medium px-5 py-2.5 sm:py-3 rounded-xl transition-all focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none"
                         >
                             <span>Profil Organisasi</span>
-                            <ArrowRight className="w-4 h-4" />
+                            <ArrowRightIcon className="w-4 h-4" />
                         </a>
                     </motion.div>
 
-                    {/* Clean Horizontal Reach Indicators (Organized, no visual clutter) */}
+                    {/* Clean Horizontal Reach Indicators */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
+                        transition={{ duration: 0.5, delay: 0.35 }}
                         className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center gap-6 sm:gap-10"
                     >
                         <div>

@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-    Calendar as CalendarIcon,
-    Clock,
-    MapPin,
-    ArrowUpRight,
-    ChevronLeft,
-    ChevronRight,
-    Tag,
-    Building2,
-    CheckCircle,
-} from 'lucide-react';
+    CalendarIcon,
+    ClockIcon,
+    SewingPinIcon,
+    ArrowTopRightIcon,
+    ChevronLeftIcon,
+    ChevronRightIcon,
+} from '@radix-ui/react-icons';
 import { Link } from '@inertiajs/react';
 import { AGENDA_KEGIATAN, type AgendaItem } from '@/data/kipan-data';
 
@@ -96,7 +93,7 @@ export default function AgendaKalender() {
                         className="inline-flex items-center gap-1.5 px-4 py-2 bg-white hover:bg-blue-50 text-blue-700 hover:text-blue-800 text-xs sm:text-sm font-semibold rounded-xl border border-slate-200 hover:border-blue-300 transition-colors shadow-xs shrink-0 self-start sm:self-end"
                     >
                         <span>Direktori Agenda Lengkap</span>
-                        <ArrowUpRight className="w-4 h-4" />
+                        <ArrowTopRightIcon className="w-4 h-4" />
                     </Link>
                 </div>
 
@@ -119,14 +116,14 @@ export default function AgendaKalender() {
                                     aria-label="Bulan sebelumnya"
                                     className="w-8 h-8 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 flex items-center justify-center text-slate-700 transition-colors"
                                 >
-                                    <ChevronLeft className="w-4 h-4" />
+                                    <ChevronLeftIcon className="w-4 h-4" />
                                 </button>
                                 <button
                                     onClick={handleNextMonth}
                                     aria-label="Bulan berikutnya"
                                     className="w-8 h-8 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 flex items-center justify-center text-slate-700 transition-colors"
                                 >
-                                    <ChevronRight className="w-4 h-4" />
+                                    <ChevronRightIcon className="w-4 h-4" />
                                 </button>
                             </div>
                         </div>
@@ -263,11 +260,11 @@ export default function AgendaKalender() {
                                             <span>{agenda.displayDate}</span>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <Clock className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                                            <ClockIcon className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                                             <span>{agenda.time}</span>
                                         </div>
                                         <div className="flex items-center gap-2 sm:col-span-2">
-                                            <MapPin className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                                            <SewingPinIcon className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                                             <span className="truncate">{agenda.location}</span>
                                         </div>
                                     </div>

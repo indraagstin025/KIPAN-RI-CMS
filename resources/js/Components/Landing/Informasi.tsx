@@ -1,25 +1,24 @@
 import { motion } from 'framer-motion';
 import {
-    Megaphone,
-    Presentation,
-    GraduationCap,
-    School,
-    Radio,
-    Users,
-    Check,
-    Info,
-    type LucideIcon,
-} from 'lucide-react';
+    SpeakerLoudIcon,
+    ReaderIcon,
+    BookmarkIcon,
+    RadiobuttonIcon,
+    PersonIcon,
+    CheckIcon,
+    InfoCircledIcon,
+    Component1Icon,
+} from '@radix-ui/react-icons';
 import { PROGRAMS } from '@/data/kipan-data';
 import SafeImage from '@/Components/ui/safe-image';
 
-const ICON_MAP: Record<string, LucideIcon> = {
-    Megaphone,
-    Presentation,
-    GraduationCap,
-    School,
-    Radio,
-    Users,
+const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+    Megaphone: SpeakerLoudIcon,
+    Presentation: ReaderIcon,
+    GraduationCap: BookmarkIcon,
+    School: Component1Icon,
+    Radio: RadiobuttonIcon,
+    Users: PersonIcon,
 };
 
 export default function Informasi() {
@@ -38,7 +37,7 @@ export default function Informasi() {
                     className="max-w-3xl mx-auto text-center mb-14"
                 >
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white text-slate-700 text-xs font-semibold tracking-wider uppercase rounded-md border border-slate-200 shadow-xs mb-3">
-                        <Info className="w-3.5 h-3.5 text-blue-700" />
+                        <InfoCircledIcon className="w-3.5 h-3.5 text-blue-700" />
                         Pusat Informasi &amp; Program
                     </span>
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
@@ -53,7 +52,7 @@ export default function Informasi() {
                 {/* Programs & Information Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                     {PROGRAMS.map((program, idx) => {
-                        const Icon = ICON_MAP[program.icon] || Megaphone;
+                        const Icon = ICON_MAP[program.icon] || SpeakerLoudIcon;
                         return (
                             <motion.div
                                 key={program.id}
@@ -106,7 +105,7 @@ export default function Informasi() {
                                                 className="flex items-start gap-2 text-xs text-slate-700 leading-snug"
                                             >
                                                 <div className="w-4 h-4 rounded bg-blue-50 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
-                                                    <Check className="w-3 h-3" />
+                                                    <CheckIcon className="w-3 h-3" />
                                                 </div>
                                                 <span>{feat}</span>
                                             </li>

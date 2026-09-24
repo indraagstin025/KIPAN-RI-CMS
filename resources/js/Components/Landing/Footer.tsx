@@ -1,5 +1,13 @@
-import { Award, MapPin, Phone, Mail, Globe, ShieldCheck, AlertCircle, FileText } from 'lucide-react';
-import { COMPANY, NAV_LINKS } from '@/data/kipan-data';
+import {
+    SewingPinIcon,
+    EnvelopeClosedIcon,
+    GlobeIcon,
+    ExclamationTriangleIcon,
+    StarFilledIcon,
+    ChatBubbleIcon,
+} from '@radix-ui/react-icons';
+import { Link } from '@inertiajs/react';
+import { COMPANY } from '@/data/kipan-data';
 
 function InstagramIcon({ className = 'w-4 h-4' }: { className?: string }) {
     return (
@@ -26,13 +34,14 @@ export default function Footer() {
     )}`;
 
     const portalLinks = [
-        { label: 'Beranda Utama', href: '#beranda' },
-        { label: 'Profil & Dasar Hukum', href: '#tentang' },
-        { label: 'Struktur Organisasi', href: '#struktur' },
-        { label: 'Program & Informasi', href: '#informasi' },
-        { label: 'Warta Terkini', href: '#berita-terkini' },
-        { label: 'Direktori Pengurus', href: '#pengurus' },
-        { label: 'Kontak & Sekretariat', href: '#kontak' },
+        { label: 'Beranda Utama', href: '/' },
+        { label: 'Profil & Dasar Hukum', href: '/tentang' },
+        { label: 'Struktur Organisasi', href: '/struktur' },
+        { label: 'Program & Aksi P4GN', href: '/program' },
+        { label: 'Kalender & Agenda', href: '/agenda' },
+        { label: 'Warta Terkini', href: '/berita' },
+        { label: 'Direktori Pengurus', href: '/pengurus' },
+        { label: 'Kontak & Sekretariat', href: '/kontak' },
     ];
 
     const regulasiLinks = [
@@ -91,7 +100,7 @@ export default function Footer() {
 
                         <div className="flex flex-col gap-2.5">
                             <div className="inline-flex items-center gap-2.5 bg-slate-900 border border-slate-800 rounded-lg px-3.5 py-2.5">
-                                <Award className="w-5 h-5 text-amber-400 shrink-0" />
+                                <StarFilledIcon className="w-5 h-5 text-amber-400 shrink-0" />
                                 <div>
                                     <div className="text-[11px] text-slate-400">Pembina &amp; Mitra Strategis</div>
                                     <div className="text-xs font-semibold text-white">
@@ -100,7 +109,7 @@ export default function Footer() {
                                 </div>
                             </div>
                             <div className="inline-flex items-center gap-2.5 bg-red-950/40 border border-red-900/60 rounded-lg px-3.5 py-2">
-                                <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+                                <ExclamationTriangleIcon className="w-4 h-4 text-red-400 shrink-0" />
                                 <div>
                                     <div className="text-[11px] text-red-300">Layanan Darurat Narkoba BNN</div>
                                     <div className="text-xs font-bold text-red-100">
@@ -119,12 +128,12 @@ export default function Footer() {
                         <ul className="space-y-2">
                             {portalLinks.map((link) => (
                                 <li key={link.label}>
-                                    <a
+                                    <Link
                                         href={link.href}
                                         className="text-xs sm:text-sm text-slate-400 hover:text-blue-400 transition-colors focus-visible:outline-none focus-visible:underline"
                                     >
                                         {link.label}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -156,7 +165,7 @@ export default function Footer() {
                         </h4>
                         <ul className="space-y-3 text-xs sm:text-sm">
                             <li className="flex items-start gap-2.5">
-                                <MapPin className="w-4 h-4 text-blue-400 mt-0.5 shrink-0" />
+                                <SewingPinIcon className="w-4 h-4 text-blue-400 mt-0.5 shrink-0" />
                                 <span className="text-slate-400 leading-relaxed">
                                     {COMPANY.currentAddress}
                                 </span>
@@ -168,7 +177,7 @@ export default function Footer() {
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors"
                                 >
-                                    <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
+                                    <ChatBubbleIcon className="w-4 h-4 text-emerald-400 shrink-0" />
                                     <span>Konsultasi WhatsApp</span>
                                 </a>
                             </li>
@@ -177,7 +186,7 @@ export default function Footer() {
                                     href={`mailto:${COMPANY.email}`}
                                     className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors"
                                 >
-                                    <Mail className="w-4 h-4 text-blue-400 shrink-0" />
+                                    <EnvelopeClosedIcon className="w-4 h-4 text-blue-400 shrink-0" />
                                     <span>{COMPANY.email}</span>
                                 </a>
                             </li>
@@ -199,7 +208,7 @@ export default function Footer() {
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors"
                                 >
-                                    <Globe className="w-4 h-4 text-sky-400 shrink-0" />
+                                    <GlobeIcon className="w-4 h-4 text-sky-400 shrink-0" />
                                     <span>{COMPANY.website}</span>
                                 </a>
                             </li>
