@@ -8,7 +8,8 @@ const NAV_ITEMS = [
     { label: 'Tentang', href: '#tentang' },
     { label: 'Struktur', href: '#struktur' },
     { label: 'Pengurus', href: '#pengurus' },
-    { label: 'Berita & Edukasi', href: '#berita-terkini' },
+    { label: 'Informasi', href: '#informasi' },
+    { label: 'Berita', href: '#berita-terkini' },
     { label: 'Kontak', href: '#kontak' },
 ];
 

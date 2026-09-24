@@ -4,6 +4,7 @@ import Hero from '@/Components/Landing/Hero';
 import About from '@/Components/Landing/About';
 import StrukturOrganisasi from '@/Components/Landing/StrukturOrganisasi';
 import Testimonials from '@/Components/Landing/Testimonials';
+import Informasi from '@/Components/Landing/Informasi';
 import BeritaUmum from '@/Components/Landing/BeritaUmum';
 import Footer from '@/Components/Landing/Footer';
 import FloatingWhatsApp from '@/Components/Landing/FloatingWhatsApp';
@@ -19,6 +20,7 @@ export default function Welcome() {
                     <About />
                     <StrukturOrganisasi />
                     <Testimonials />
+                    <Informasi />
                     <BeritaUmum />
                 </main>
                 <Footer />
