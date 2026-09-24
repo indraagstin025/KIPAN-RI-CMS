@@ -93,7 +93,7 @@ export default function Navbar() {
                                     isLightMode ? 'text-slate-500' : 'text-slate-300'
                                 }`}
                             >
-                                Mitra Binaan BNN RI
+                                Binaan Kemenpora &amp; BNN RI
                             </div>
                         </div>
                     </a>

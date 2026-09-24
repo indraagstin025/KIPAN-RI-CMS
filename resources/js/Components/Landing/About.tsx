@@ -1,5 +1,21 @@
 import { motion } from 'framer-motion';
-import { Target, Compass, Users, CheckCircle2, ShieldCheck, Award, HeartHandshake } from 'lucide-react';
+import {
+    Target,
+    Compass,
+    Users,
+    CheckCircle2,
+    ShieldCheck,
+    Award,
+    HeartHandshake,
+    BookOpen,
+    Scale,
+    FileText,
+    Activity,
+    School,
+    GraduationCap,
+    HeartPulse,
+    Sparkles,
+} from 'lucide-react';
 import { ABOUT, COMPANY } from '@/data/kipan-data';
 import SafeImage from '@/Components/ui/safe-image';
 
@@ -10,27 +26,112 @@ const NILAI_ICONS = [
     Users, // Bersatu
 ];
 
+const PILAR_AKSI = [
+    {
+        title: 'Komunikasi, Informasi & Edukasi (KIE)',
+        tag: 'Pilar 1',
+        desc: 'Gerakan sosialisasi intensif ke sekolah (Goes to School), kampus, dan komunitas pemuda dengan materi edukasi bahaya narkoba terkini.',
+        icon: School,
+        color: 'text-blue-600 bg-blue-50 border-blue-200',
+    },
+    {
+        title: 'Kaderisasi & Pelatihan Inti',
+        tag: 'Pilar 2',
+        desc: 'Pembekalan kepemimpinan, wawasan kebangsaan, dan kapasitas deteksi dini bagi pemuda terpilih untuk menjadi garda tanggap di wilayahnya.',
+        icon: GraduationCap,
+        color: 'text-blue-700 bg-sky-50 border-sky-200',
+    },
+    {
+        title: 'Pendampingan Sebaya (Peer Support)',
+        tag: 'Pilar 3',
+        desc: 'Layanan konseling sesama pemuda yang inklusif dan humanis, serta menjadi jembatan rujukan rehabilitasi sukarela ke BNN.',
+        icon: HeartPulse,
+        color: 'text-emerald-700 bg-emerald-50 border-emerald-200',
+    },
+    {
+        title: 'Kreativitas & Minat Bakat Positif',
+        tag: 'Pilar 4',
+        desc: 'Mengalihkan energi pemuda ke kegiatan positif melalui olahraga, seni budaya, digital kreasi, dan wirausaha muda anti narkoba.',
+        icon: Sparkles,
+        color: 'text-amber-600 bg-amber-50 border-amber-200',
+    },
+];
+
 export default function About() {
     return (
         <section
             id="tentang"
-            className="py-20 lg:py-28 bg-slate-50 border-y border-slate-200"
+            className="-mt-10 sm:-mt-14 rounded-t-3xl sm:rounded-t-[2.5rem] bg-white relative z-20 shadow-xl border-t border-slate-200/80 pt-14 sm:pt-20 pb-20 lg:pb-28"
         >
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Section Header */}
+                {/* 4 Pilar Aksi Strategis KIPAN (Inspired by Jabarprov Bento Quick Services) */}
+                <div className="mb-16 lg:mb-24">
+                    <div className="max-w-3xl mb-8">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-800 text-xs font-semibold tracking-wider uppercase rounded-md border border-blue-200/80 mb-2">
+                            <Activity className="w-3.5 h-3.5 text-blue-600" />
+                            Pilar Gerakan Pemuda
+                        </span>
+                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
+                            4 Pilar Aksi Nyata{' '}
+                            <span className="text-blue-700">P4GN KIPAN Indonesia</span>
+                        </h2>
+                        <p className="mt-2 text-slate-600 text-sm sm:text-base leading-relaxed">
+                            Pedoman pelaksanaan tugas pokok kader inti pemuda dalam mewujudkan lingkungan bersih narkoba di seluruh Indonesia.
+                        </p>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                        {PILAR_AKSI.map((pilar, idx) => {
+                            const Icon = pilar.icon;
+                            return (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, y: 15 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                                    className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 shadow-xs hover:shadow-md hover:border-blue-400 transition-all flex flex-col justify-between group"
+                                >
+                                    <div>
+                                        <div className="flex items-center justify-between mb-4">
+                                            <div className={`w-11 h-11 rounded-xl flex items-center justify-center border ${pilar.color} shadow-xs`}>
+                                                <Icon className="w-5 h-5" />
+                                            </div>
+                                            <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                                                {pilar.tag}
+                                            </span>
+                                        </div>
+                                        <h3 className="font-bold text-base text-slate-900 group-hover:text-blue-700 transition-colors leading-snug mb-2">
+                                            {pilar.title}
+                                        </h3>
+                                        <p className="text-xs text-slate-600 leading-relaxed">
+                                            {pilar.desc}
+                                        </p>
+                                    </div>
+                                    <div className="mt-5 pt-3 border-t border-slate-100 flex items-center text-xs font-semibold text-blue-700">
+                                        <span>Pelajari Aksi</span>
+                                        <span className="ml-1 text-slate-400 group-hover:translate-x-1 transition-transform">→</span>
+                                    </div>
+                                </motion.div>
+                            );
+                        })}
+                    </div>
+                </div>
+
+                {/* Section Header: Profil & Legalitas */}
                 <div className="max-w-3xl mb-12 lg:mb-16">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold tracking-wider uppercase rounded-md mb-4">
-                        <ShieldCheck className="w-3.5 h-3.5" />
-                        <span>Profil Lembaga</span>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-800 text-xs font-semibold tracking-wider uppercase rounded-md mb-4 border border-blue-200/80">
+                        <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
+                        <span>Profil &amp; Landasan Hukum</span>
                     </div>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight">
-                        Membangun Generasi Muda Indonesia yang{' '}
-                        <span className="text-blue-700">Bersih dari Narkoba</span>
+                        Komitmen Gerakan Pemuda{' '}
+                        <span className="text-blue-700">Bebas Narkoba</span> Menuju Indonesia Emas
                     </h2>
                 </div>
 
                 <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-                    {/* Media Column (Editorial Photo Grid) */}
+                    {/* Media Column (Editorial Photo Grid & Legal Card) */}
                     <div className="lg:col-span-6 flex flex-col gap-5">
                         {/* Main Photography */}
                         <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-slate-900 shadow-sm aspect-[4/3]">
@@ -40,9 +141,9 @@ export default function About() {
                                 className="w-full h-full object-cover"
                                 loading="eager"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-                            <div className="absolute top-4 left-4 bg-slate-900/90 text-white text-xs font-medium px-3 py-1.5 rounded-md border border-slate-700/80">
-                                Mitra Resmi BNN RI
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
+                            <div className="absolute top-4 left-4 bg-blue-900/90 text-white text-xs font-medium px-3 py-1.5 rounded-lg border border-blue-700/80 backdrop-blur-sm">
+                                Binaan Kemenpora RI &amp; BNN RI
                             </div>
                             <div className="absolute bottom-5 left-5 right-5 text-white">
                                 <p className="font-bold text-lg leading-snug">KIPAN Indonesia</p>
@@ -74,15 +175,26 @@ export default function About() {
                             </div>
                         </div>
 
-                        {/* Institutional Credibility Note */}
-                        <div className="bg-white rounded-xl p-5 border border-slate-200 text-slate-700 text-sm leading-relaxed shadow-sm">
-                            <div className="flex items-center gap-2.5 font-bold text-slate-900 mb-2">
-                                <Award className="w-5 h-5 text-blue-700 shrink-0" />
-                                <span>Komitmen Gerakan Nasional</span>
+                        {/* Landasan Hukum Card (Authentic Legal Basis) */}
+                        <div className="bg-slate-50 rounded-xl p-5 border border-slate-200 text-slate-700 text-sm leading-relaxed shadow-xs">
+                            <div className="flex items-center gap-2.5 font-bold text-slate-900 mb-2.5">
+                                <Scale className="w-5 h-5 text-blue-700 shrink-0" />
+                                <span>Payung Regulasi &amp; Dasar Hukum Resmi</span>
                             </div>
-                            <p className="text-slate-600">
-                                KIPAN bergerak sebagai garda terdepan di lingkungan masyarakat untuk mewujudkan pemuda Indonesia yang tangguh, mandiri, dan bebas dari ancaman narkotika melalui sinergi berkelanjutan bersama BNN RI.
-                            </p>
+                            <ul className="space-y-2 text-xs text-slate-600">
+                                <li className="flex items-start gap-2">
+                                    <FileText className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                                    <span><strong>UU No. 40 Tahun 2009</strong> tentang Kepemudaan (Peran aktif pemuda sebagai agen perubahan).</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <FileText className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                                    <span><strong>Inpres No. 2 Tahun 2020</strong> tentang Rencana Aksi Nasional P4GN (Pencegahan &amp; Pemberantasan Narkoba).</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <FileText className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                                    <span><strong>Pedoman Dasar KIPAN Kemenpora RI</strong> tentang Pembentukan &amp; Tata Kelola Kader Anti Narkoba.</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
@@ -90,9 +202,14 @@ export default function About() {
                     <div className="lg:col-span-6 flex flex-col gap-6">
                         {/* Narrative Paragraphs */}
                         <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
-                            <h3 className="text-xl font-bold text-slate-900">
-                                Sekilas Tentang Organisasi
-                            </h3>
+                            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                                <h3 className="text-xl font-bold text-slate-900">
+                                    Sekilas Tentang KIPAN RI
+                                </h3>
+                                <span className="text-xs font-semibold px-2.5 py-1 bg-amber-50 text-amber-800 border border-amber-200 rounded-md">
+                                    Generasi Bersinar
+                                </span>
+                            </div>
                             {ABOUT.paragraphs.map((p, i) => (
                                 <p
                                     key={i}
@@ -103,7 +220,7 @@ export default function About() {
                             ))}
                         </div>
 
-                        {/* Visi Card */}
+                        {/* Visi Card with 30% Blue accent */}
                         <div className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-sm">
                             <div className="flex items-center gap-2.5 mb-2.5">
                                 <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center font-bold">
@@ -113,7 +230,7 @@ export default function About() {
                                     Visi KIPAN
                                 </h3>
                             </div>
-                            <p className="text-slate-700 font-medium text-base sm:text-lg leading-relaxed pl-1">
+                            <p className="text-slate-800 font-semibold text-base sm:text-lg leading-relaxed pl-1 border-l-2 border-blue-600 ml-1">
                                 &ldquo;{ABOUT.visi}&rdquo;
                             </p>
                         </div>
@@ -125,7 +242,7 @@ export default function About() {
                                     <Target className="w-4 h-4" />
                                 </div>
                                 <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
-                                    Misi Utama
+                                    Misi Strategis
                                 </h3>
                             </div>
                             <ul className="space-y-3">
@@ -143,14 +260,14 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* Nilai Organisasi */}
+                {/* Nilai Dasar Organisasi (60-30-10 palette with gold/blue touch) */}
                 <div className="mt-16 lg:mt-20 pt-12 border-t border-slate-200">
                     <div className="max-w-2xl mx-auto text-center mb-10">
                         <h3 className="text-2xl font-bold text-slate-900">
-                            Nilai-Nilai Dasar Organisasi
+                            Nilai-Nilai Dasar Kader KIPAN
                         </h3>
                         <p className="text-slate-600 text-sm mt-1.5">
-                            Prinsip moral dan etika yang menjadi pedoman seluruh kader KIPAN Indonesia.
+                            Prinsip integritas dan pedoman moral seluruh kader inti pemuda di seluruh Indonesia.
                         </p>
                     </div>
 
@@ -160,7 +277,7 @@ export default function About() {
                             return (
                                 <div
                                     key={idx}
-                                    className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-blue-300 transition-colors"
+                                    className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs hover:border-blue-400 hover:shadow-sm transition-all"
                                 >
                                     <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center mb-3">
                                         <Icon className="w-5 h-5" />
@@ -180,4 +297,3 @@ export default function About() {
         </section>
     );
 }
-
