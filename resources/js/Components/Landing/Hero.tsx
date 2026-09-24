@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { UserPlus, ChevronDown, MapPin, ShieldCheck } from 'lucide-react';
+import { Phone, ChevronDown, MapPin, ShieldCheck } from 'lucide-react';
 import { HERO, STATS } from '@/data/kipan-data';
 import SafeImage from '@/Components/ui/safe-image';
 
@@ -72,11 +72,11 @@ export default function Hero() {
                         className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto"
                     >
                         <a
-                            href="#alur-pendaftaran"
+                            href="#kontak"
                             className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-semibold px-6 sm:px-8 py-3.5 sm:py-4 rounded-full shadow-lg shadow-sky-500/30 hover:shadow-xl hover:shadow-sky-500/40 hover:-translate-y-1 transition-all group"
                         >
-                            <UserPlus className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform" />
-                            Daftar Menjadi Pengurus
+                            <Phone className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform" />
+                            Hubungi Kami
                         </a>
                         <a
                             href="#tentang"

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, MessageCircle, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { COMPANY } from '@/data/kipan-data';
 
 const NAV_GROUPS = [
@@ -13,13 +13,7 @@ const NAV_GROUPS = [
             { label: 'Pengurus', href: '#pengurus' },
         ],
     },
-    {
-        label: 'Informasi',
-        items: [
-            { label: 'Alur Pendaftaran', href: '#alur-pendaftaran' },
-            { label: 'Berita & Edukasi', href: '#berita-terkini' },
-        ],
-    },
+    { label: 'Berita', href: '#berita-terkini' },
     { label: 'Kontak', href: '#kontak' },
 ];
 
@@ -75,7 +69,7 @@ export default function Navbar() {
                     </a>
 
                     {/* Desktop Nav */}
-                    <ul className="hidden xl:flex items-center justify-center gap-0.5 2xl:gap-1.5 flex-1 mx-4">
+                    <ul className="hidden xl:flex items-center justify-end gap-1 2xl:gap-2 flex-1 mx-4">
                         {NAV_GROUPS.map((group) => (
                             <li key={group.label} className="relative group/nav">
                                 {group.items ? (
@@ -120,17 +114,6 @@ export default function Navbar() {
                         ))}
                     </ul>
 
-                    {/* Desktop CTA */}
-                    <div className="hidden xl:flex items-center shrink-0">
-                        <a
-                            href="#alur-pendaftaran"
-                            className="inline-flex items-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white text-sm xl:text-base font-semibold px-6 py-2.5 rounded-full shadow-lg shadow-sky-500/30 hover:shadow-xl hover:shadow-sky-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all whitespace-nowrap"
-                        >
-                            <MessageCircle className="w-4 h-4 shrink-0" />
-                            <span>Daftar Anggota</span>
-                        </a>
-                    </div>
-
                     {/* Mobile toggle */}
                     <button
                         onClick={() => setMobileOpen(!mobileOpen)}
@@ -166,7 +149,7 @@ export default function Navbar() {
                                                     </div>
                                                     <div className="pl-2 space-y-1">
                                                         {group.items.map((sub) => (
-                                                            <a
+                                                             <a
                                                                 key={sub.href}
                                                                 href={sub.href}
                                                                 onClick={() => setMobileOpen(false)}
@@ -189,14 +172,6 @@ export default function Navbar() {
                                         </li>
                                     ))}
                                 </ul>
-                                <a
-                                    href="#alur-pendaftaran"
-                                    onClick={() => setMobileOpen(false)}
-                                    className="mt-3 flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white text-sm font-semibold px-5 py-3 rounded-xl shadow-lg shadow-sky-500/25 active:scale-[0.98] transition-transform"
-                                >
-                                    <MessageCircle className="w-4 h-4" />
-                                    Daftar Anggota
-                                </a>
                             </div>
                         </motion.div>
                     )}
@@ -205,3 +180,4 @@ export default function Navbar() {
         </header>
     );
 }
+
