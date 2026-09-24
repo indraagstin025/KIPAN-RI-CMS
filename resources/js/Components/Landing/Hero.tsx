@@ -86,8 +86,8 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50" />
             </div>
 
-            {/* Left Vertical Social Bar (Jabarprov style) */}
-            <div className="hidden lg:flex fixed left-5 top-1/2 -translate-y-1/2 z-30 flex-col gap-2.5">
+            {/* Left Vertical Social Bar (confined to Hero only) */}
+            <div className="hidden lg:flex absolute left-4 sm:left-6 xl:left-8 top-1/2 -translate-y-1/2 z-20 flex-col gap-2.5">
                 <a
                     href={COMPANY.instagramUrl}
                     target="_blank"
@@ -117,8 +117,8 @@ export default function Hero() {
                 </a>
             </div>
 
-            {/* Right Vertical Quick Dock (Jabarprov style - 30% Blue with 10% Accents) */}
-            <div className="hidden lg:flex fixed right-5 top-1/2 -translate-y-1/2 z-30 flex-col gap-2.5">
+            {/* Right Vertical Quick Dock (confined to Hero only - 30% Blue with 10% Accents) */}
+            <div className="hidden lg:flex absolute right-4 sm:right-6 xl:right-8 top-1/2 -translate-y-1/2 z-20 flex-col gap-2.5">
                 <a
                     href="#kontak"
                     className="w-11 h-11 rounded-xl bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center shadow-lg transition-all hover:scale-105 group relative"
