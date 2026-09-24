@@ -1,215 +1,183 @@
 import { motion } from 'framer-motion';
-import { Target, Eye, Heart, CheckCircle2, Sparkles, ShieldCheck } from 'lucide-react';
+import { Target, Compass, Users, CheckCircle2, ShieldCheck, Award, HeartHandshake } from 'lucide-react';
 import { ABOUT, COMPANY } from '@/data/kipan-data';
 import SafeImage from '@/Components/ui/safe-image';
+
+const NILAI_ICONS = [
+    ShieldCheck, // Bersih
+    HeartHandshake, // Peduli
+    Award, // Berkarakter
+    Users, // Bersatu
+];
 
 export default function About() {
     return (
         <section
             id="tentang"
-            className="relative py-20 lg:py-28 overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-blue-900"
+            className="py-20 lg:py-28 bg-slate-50 border-y border-slate-200"
         >
-            {/* Decorative shapes */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-sky-500/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-500/15 rounded-full blur-3xl" />
-            <div className="absolute top-1/3 left-1/4 w-72 h-72 bg-sky-400/10 rounded-full blur-3xl animate-wave" />
-
-            <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Section header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-100px' }}
-                    transition={{ duration: 0.6 }}
-                    className="max-w-3xl"
-                >
-                    <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-sky-500/20 backdrop-blur-sm border border-sky-400/30 text-sky-300 text-xs font-semibold tracking-wider uppercase rounded-full mb-4">
-                        <Sparkles className="w-3.5 h-3.5" />
-                        Tentang KIPAN
-                    </span>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
-                        Gerakan Pemuda{' '}
-                        <span className="bg-gradient-to-r from-sky-300 via-cyan-400 to-sky-400 bg-clip-text text-transparent">
-                            Anti Narkoba
-                        </span>
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Section Header */}
+                <div className="max-w-3xl mb-12 lg:mb-16">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold tracking-wider uppercase rounded-md mb-4">
+                        <ShieldCheck className="w-3.5 h-3.5" />
+                        <span>Profil Lembaga</span>
+                    </div>
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight">
+                        Membangun Generasi Muda Indonesia yang{' '}
+                        <span className="text-blue-700">Bersih dari Narkoba</span>
                     </h2>
-                </motion.div>
+                </div>
 
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start mt-8">
-                    {/* Image side */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, margin: '-100px' }}
-                        transition={{ duration: 0.7 }}
-                        className="relative order-2 lg:order-1"
-                    >
-                        <div className="flex flex-col gap-4 sm:gap-6">
-                            {/* Main Image */}
-                            <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-sky-500/20 aspect-[4/3] sm:aspect-[5/4] border-4 border-white/10">
-                                <SafeImage
-                                    src={ABOUT.image}
-                                    alt="Kegiatan KIPAN Indonesia"
-                                    className="w-full h-full object-cover"
-                                    loading="eager"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-blue-950/20 to-transparent" />
-
-                                <div className="absolute top-4 left-4 bg-sky-500/90 backdrop-blur-md text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5">
-                                    <Sparkles className="w-3 h-3" />
-                                    Bersama BNN RI
-                                </div>
-
-                                <div className="absolute bottom-6 left-6 right-6 text-white">
-                                    <p className="text-lg font-bold">KIPAN Indonesia</p>
-                                    <p className="text-sm text-sky-200">{COMPANY.tagline}</p>
-                                </div>
+                <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+                    {/* Media Column (Editorial Photo Grid) */}
+                    <div className="lg:col-span-6 flex flex-col gap-5">
+                        {/* Main Photography */}
+                        <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-slate-900 shadow-sm aspect-[4/3]">
+                            <SafeImage
+                                src={ABOUT.image}
+                                alt="Kegiatan Pelatihan KIPAN Indonesia"
+                                className="w-full h-full object-cover"
+                                loading="eager"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                            <div className="absolute top-4 left-4 bg-slate-900/90 text-white text-xs font-medium px-3 py-1.5 rounded-md border border-slate-700/80">
+                                Mitra Resmi BNN RI
                             </div>
-
-                            {/* Smaller Images Row */}
-                            <div className="grid grid-cols-2 gap-4 sm:gap-6">
-                                <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-square sm:aspect-[4/3] border-4 border-white/10">
-                                    <SafeImage
-                                        src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80"
-                                        alt="Pelatihan KIPAN"
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-blue-950/20" />
-                                </div>
-
-                                <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-square sm:aspect-[4/3] border-4 border-white/10">
-                                    <SafeImage
-                                        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
-                                        alt="Komunitas KIPAN"
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-blue-950/20" />
-                                </div>
+                            <div className="absolute bottom-5 left-5 right-5 text-white">
+                                <p className="font-bold text-lg leading-snug">KIPAN Indonesia</p>
+                                <p className="text-xs text-slate-300 mt-0.5">{COMPANY.tagline}</p>
                             </div>
-
-                            {/* Highlight Card */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: 0.6 }}
-                                className="bg-white/5 backdrop-blur-md border border-sky-400/30 rounded-3xl p-6 sm:p-8 mt-2 shadow-2xl shadow-sky-500/10"
-                            >
-                                <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-full bg-sky-500/20 border border-sky-400/40 flex items-center justify-center shrink-0">
-                                        <ShieldCheck className="w-6 h-6 text-sky-400" />
-                                    </div>
-                                    <div>
-                                        <h4 className="text-white font-bold text-lg mb-1.5">
-                                            Komitmen Kami
-                                        </h4>
-                                        <p className="text-sky-100/80 text-sm leading-relaxed">
-                                            KIPAN hadir sebagai garda terdepan dalam mewujudkan
-                                            generasi muda Indonesia yang tangguh, produktif, dan
-                                            bersih dari bahaya narkoba melalui aksi nyata dan
-                                            pemberdayaan berkelanjutan.
-                                        </p>
-                                    </div>
-                                </div>
-                            </motion.div>
                         </div>
-                    </motion.div>
 
-                    {/* Text side */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, margin: '-100px' }}
-                        transition={{ duration: 0.7 }}
-                        className="order-1 lg:order-2"
-                    >
-                        {ABOUT.paragraphs.map((p, i) => (
-                            <p
-                                key={i}
-                                className="text-sky-100/90 text-base lg:text-lg leading-relaxed mt-4 first:mt-0"
-                            >
-                                {p}
+                        {/* Secondary Photos */}
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="relative rounded-xl overflow-hidden border border-slate-200 bg-slate-100 aspect-[4/3]">
+                                <SafeImage
+                                    src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80"
+                                    alt="Pelatihan Kader Anti Narkoba"
+                                    className="w-full h-full object-cover"
+                                />
+                                <div className="absolute bottom-2 left-2 right-2 bg-slate-900/80 text-white text-[11px] font-medium px-2 py-1 rounded">
+                                    Pelatihan Kader Inti
+                                </div>
+                            </div>
+                            <div className="relative rounded-xl overflow-hidden border border-slate-200 bg-slate-100 aspect-[4/3]">
+                                <SafeImage
+                                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+                                    alt="Komunitas Relawan Pemuda"
+                                    className="w-full h-full object-cover"
+                                />
+                                <div className="absolute bottom-2 left-2 right-2 bg-slate-900/80 text-white text-[11px] font-medium px-2 py-1 rounded">
+                                    Konsolidasi Wilayah
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Institutional Credibility Note */}
+                        <div className="bg-white rounded-xl p-5 border border-slate-200 text-slate-700 text-sm leading-relaxed shadow-sm">
+                            <div className="flex items-center gap-2.5 font-bold text-slate-900 mb-2">
+                                <Award className="w-5 h-5 text-blue-700 shrink-0" />
+                                <span>Komitmen Gerakan Nasional</span>
+                            </div>
+                            <p className="text-slate-600">
+                                KIPAN bergerak sebagai garda terdepan di lingkungan masyarakat untuk mewujudkan pemuda Indonesia yang tangguh, mandiri, dan bebas dari ancaman narkotika melalui sinergi berkelanjutan bersama BNN RI.
                             </p>
-                        ))}
+                        </div>
+                    </div>
 
-                        {/* Visi */}
-                        <div className="mt-8 bg-white/5 backdrop-blur-sm border border-sky-400/30 rounded-2xl p-5">
-                            <div className="flex items-center gap-2 mb-2">
-                                <Eye className="w-5 h-5 text-sky-400" />
-                                <h3 className="text-sm font-bold text-white uppercase tracking-wider">
-                                    Visi
+                    {/* Content Column (Latar Belakang, Visi & Misi) */}
+                    <div className="lg:col-span-6 flex flex-col gap-6">
+                        {/* Narrative Paragraphs */}
+                        <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+                            <h3 className="text-xl font-bold text-slate-900">
+                                Sekilas Tentang Organisasi
+                            </h3>
+                            {ABOUT.paragraphs.map((p, i) => (
+                                <p
+                                    key={i}
+                                    className="text-slate-700 text-sm sm:text-base leading-relaxed"
+                                >
+                                    {p}
+                                </p>
+                            ))}
+                        </div>
+
+                        {/* Visi Card */}
+                        <div className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-sm">
+                            <div className="flex items-center gap-2.5 mb-2.5">
+                                <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center font-bold">
+                                    <Compass className="w-4 h-4" />
+                                </div>
+                                <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
+                                    Visi KIPAN
                                 </h3>
                             </div>
-                            <p className="text-sky-50 text-sm lg:text-base italic leading-relaxed">
+                            <p className="text-slate-700 font-medium text-base sm:text-lg leading-relaxed pl-1">
                                 &ldquo;{ABOUT.visi}&rdquo;
                             </p>
                         </div>
 
-                        {/* Misi */}
-                        <div className="mt-4 bg-white/5 backdrop-blur-sm border border-sky-400/30 rounded-2xl p-5">
-                            <div className="flex items-center gap-2 mb-3">
-                                <Target className="w-5 h-5 text-sky-400" />
-                                <h3 className="text-sm font-bold text-white uppercase tracking-wider">
-                                    Misi
+                        {/* Misi Card */}
+                        <div className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-sm">
+                            <div className="flex items-center gap-2.5 mb-4">
+                                <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center font-bold">
+                                    <Target className="w-4 h-4" />
+                                </div>
+                                <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
+                                    Misi Utama
                                 </h3>
                             </div>
-                            <ul className="space-y-2">
+                            <ul className="space-y-3">
                                 {ABOUT.misi.map((m, idx) => (
-                                    <motion.li
+                                    <li
                                         key={idx}
-                                        initial={{ opacity: 0, x: 20 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.4, delay: idx * 0.1 }}
-                                        className="flex items-start gap-2 text-sky-100 text-sm"
+                                        className="flex items-start gap-3 text-slate-700 text-sm leading-relaxed"
                                     >
-                                        <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
+                                        <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                                         <span>{m}</span>
-                                    </motion.li>
+                                    </li>
                                 ))}
                             </ul>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
 
                 {/* Nilai Organisasi */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-50px' }}
-                    transition={{ duration: 0.6 }}
-                    className="mt-20"
-                >
-                    <div className="text-center mb-12">
-                        <h3 className="text-2xl lg:text-3xl font-bold text-white">
-                            Nilai <span className="text-sky-300">Organisasi</span>
+                <div className="mt-16 lg:mt-20 pt-12 border-t border-slate-200">
+                    <div className="max-w-2xl mx-auto text-center mb-10">
+                        <h3 className="text-2xl font-bold text-slate-900">
+                            Nilai-Nilai Dasar Organisasi
                         </h3>
-                        <p className="text-sky-200/70 text-sm mt-2">
-                            Prinsip yang menjadi pegangan setiap kader KIPAN
+                        <p className="text-slate-600 text-sm mt-1.5">
+                            Prinsip moral dan etika yang menjadi pedoman seluruh kader KIPAN Indonesia.
                         </p>
                     </div>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        {ABOUT.nilai.map((n, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.4, delay: idx * 0.1 }}
-                                whileHover={{ y: -5 }}
-                                className="bg-white/5 backdrop-blur-sm border border-sky-400/20 rounded-2xl p-5 hover:bg-white/10 transition-all"
-                            >
-                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center mb-3 shadow-lg">
-                                    <Heart className="w-6 h-6 text-white" />
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                        {ABOUT.nilai.map((n, idx) => {
+                            const Icon = NILAI_ICONS[idx] || ShieldCheck;
+                            return (
+                                <div
+                                    key={idx}
+                                    className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-blue-300 transition-colors"
+                                >
+                                    <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center mb-3">
+                                        <Icon className="w-5 h-5" />
+                                    </div>
+                                    <h4 className="text-base font-bold text-slate-900 mb-1">
+                                        {n.title}
+                                    </h4>
+                                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                        {n.desc}
+                                    </p>
                                 </div>
-                                <h4 className="text-lg font-bold text-white mb-1">{n.title}</h4>
-                                <p className="text-sm text-sky-100/70 leading-relaxed">{n.desc}</p>
-                            </motion.div>
-                        ))}
+                            );
+                        })}
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );
 }
+

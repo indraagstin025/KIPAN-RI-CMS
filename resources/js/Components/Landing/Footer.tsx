@@ -11,6 +11,7 @@ function InstagramIcon({ className = 'w-4 h-4' }: { className?: string }) {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
+            aria-hidden="true"
         >
             <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
@@ -21,87 +22,87 @@ function InstagramIcon({ className = 'w-4 h-4' }: { className?: string }) {
 
 export default function Footer() {
     const waLink = `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(
-        'Halo ' + COMPANY.name + ', saya ingin berkonsultasi.'
+        'Halo ' + COMPANY.name + ', saya ingin berkonsultasi seputar KIPAN.',
     )}`;
 
     const targetUnits = [
-        'Nasional',
-        'Provinsi',
-        'Kabupaten/Kota',
-        'Kecamatan',
+        'Tingkat Nasional',
+        'Tingkat Provinsi',
+        'Tingkat Kabupaten/Kota',
+        'Tingkat Kecamatan',
         'Pengurus Harian',
-        'Anggota Divisi',
+        'Kader Divisi',
     ];
 
     return (
-        <footer id="kontak" className="relative bg-blue-950 text-slate-300 overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sky-400 via-cyan-500 to-sky-400" />
-            <div className="absolute -top-20 -right-20 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-
-            <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16 pb-[calc(3.5rem+env(safe-area-inset-bottom,0px))]">
+        <footer
+            id="kontak"
+            className="bg-slate-950 text-slate-300 border-t border-slate-800"
+        >
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 pb-[calc(3rem+env(safe-area-inset-bottom,0px))]">
                 <div className="grid lg:grid-cols-12 gap-10">
-                    {/* Brand */}
+                    {/* Brand & Accreditation */}
                     <div className="lg:col-span-4">
                         <div className="flex items-center gap-3 mb-5">
-                            <div className="flex items-center gap-2.5 shrink-0">
-                                <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-lg overflow-hidden">
+                            <div className="flex items-center gap-2 shrink-0">
+                                <div className="w-14 h-14 rounded-lg bg-white flex items-center justify-center border border-slate-700 overflow-hidden p-1 shadow-xs">
                                     <img
                                         src="/logo-bnn.jpg"
-                                        alt="Logo BNN"
-                                        title="Mitra Binaan BNN"
-                                        className="w-full h-full object-cover scale-[1.03]"
+                                        alt="Logo BNN RI"
+                                        title="Mitra Binaan BNN RI"
+                                        className="w-full h-full object-contain"
                                     />
                                 </div>
-                                <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-lg overflow-hidden p-0.5">
+                                <div className="w-14 h-14 rounded-lg bg-white flex items-center justify-center border border-slate-700 overflow-hidden p-1 shadow-xs">
                                     <img
                                         src="/logo-kipan.jpg"
                                         alt="Logo KIPAN"
+                                        title="Kader Inti Pemuda Anti Narkoba"
                                         className="w-full h-full object-contain"
                                     />
                                 </div>
                             </div>
                             <div className="flex flex-col">
-                                <div className="font-bold text-lg text-white leading-tight">
-                                    {COMPANY.name} <span className="text-sky-400">Indonesia</span>
+                                <div className="font-bold text-base sm:text-lg text-white leading-tight">
+                                    {COMPANY.name} Indonesia
                                 </div>
-                                <div className="text-xs text-slate-400">Mitra Binaan BNN RI</div>
-                                <div className="text-[10px] text-sky-300 mt-0.5 leading-tight">
+                                <div className="text-xs text-slate-400 font-medium">
+                                    Mitra Binaan BNN RI
+                                </div>
+                                <div className="text-[11px] text-slate-500 mt-0.5 leading-tight">
                                     {COMPANY.fullName}
                                 </div>
                             </div>
                         </div>
 
-                        <p className="text-sm text-slate-400 leading-relaxed">
-                            {COMPANY.tagline}. Komunitas pemuda Indonesia yang berkomitmen
-                            mencegah penyalahgunaan narkoba di seluruh provinsi dan kabupaten/kota.
+                        <p className="text-xs sm:text-sm text-slate-400 leading-relaxed mb-6">
+                            {COMPANY.tagline}. Wadah kepemudaan nasional yang
+                            berkomitmen membentengi generasi muda dari ancaman bahaya
+                            penyalahgunaan narkoba di seluruh Indonesia.
                         </p>
 
-                        <div className="mt-6 inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-4 py-3">
+                        <div className="inline-flex items-center gap-2.5 bg-slate-900 border border-slate-800 rounded-lg px-3.5 py-2.5">
                             <Award className="w-5 h-5 text-amber-400 shrink-0" />
                             <div>
-                                <div className="text-xs text-slate-400">Mitra Resmi</div>
-                                <div className="text-sm font-semibold text-white">
-                                    {COMPANY.partner}
-                                </div>
-                                <div className="text-[10px] text-sky-300">
-                                    {COMPANY.partnerOrigin}
+                                <div className="text-[11px] text-slate-400">Status Kemitraan</div>
+                                <div className="text-xs font-semibold text-white">
+                                    {COMPANY.partner} : {COMPANY.partnerOrigin}
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Quick links */}
+                    {/* Quick Navigation Links */}
                     <div className="lg:col-span-2">
-                        <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
-                            Navigasi
+                        <h4 className="text-white font-bold mb-4 text-xs uppercase tracking-wider">
+                            Navigasi Portal
                         </h4>
                         <ul className="space-y-2">
                             {NAV_LINKS.map((link) => (
                                 <li key={link.label}>
                                     <a
                                         href={link.href}
-                                        className="text-sm text-slate-400 hover:text-sky-300 transition-colors"
+                                        className="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:underline"
                                     >
                                         {link.label}
                                     </a>
@@ -110,48 +111,53 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Target units */}
+                    {/* Target Units */}
                     <div className="lg:col-span-2">
-                        <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
-                            Tingkatan
+                        <h4 className="text-white font-bold mb-4 text-xs uppercase tracking-wider">
+                            Tingkatan Kerja
                         </h4>
                         <ul className="space-y-2">
                             {targetUnits.map((u) => (
-                                <li key={u} className="text-sm text-slate-400 flex items-center gap-2">
-                                    <span className="w-1 h-1 bg-sky-400 rounded-full" />
+                                <li
+                                    key={u}
+                                    className="text-xs sm:text-sm text-slate-400 flex items-center gap-2"
+                                >
+                                    <span className="w-1.5 h-1.5 bg-blue-500 rounded-full shrink-0" />
                                     {u}
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    {/* Contact */}
+                    {/* Contact Info */}
                     <div className="lg:col-span-4">
-                        <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
-                            Hubungi Kami
+                        <h4 className="text-white font-bold mb-4 text-xs uppercase tracking-wider">
+                            Sekretariat &amp; Kontak
                         </h4>
                         <ul className="space-y-3">
-                            <li className="flex items-start gap-3">
-                                <MapPin className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
-                                <span className="text-sm text-slate-400">{COMPANY.currentAddress}</span>
+                            <li className="flex items-start gap-2.5">
+                                <MapPin className="w-4 h-4 text-slate-400 mt-0.5 shrink-0" />
+                                <span className="text-xs sm:text-sm text-slate-400">
+                                    {COMPANY.currentAddress}
+                                </span>
                             </li>
                             <li>
                                 <a
                                     href={waLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-3 text-sm text-slate-400 hover:text-sky-300 transition-colors"
+                                    className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:underline"
                                 >
-                                    <Phone className="w-4 h-4 text-sky-400 shrink-0" />
+                                    <Phone className="w-4 h-4 text-slate-400 shrink-0" />
                                     {COMPANY.phone}
                                 </a>
                             </li>
                             <li>
                                 <a
                                     href={`mailto:${COMPANY.email}`}
-                                    className="flex items-center gap-3 text-sm text-slate-400 hover:text-sky-300 transition-colors"
+                                    className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:underline"
                                 >
-                                    <Mail className="w-4 h-4 text-sky-400 shrink-0" />
+                                    <Mail className="w-4 h-4 text-slate-400 shrink-0" />
                                     {COMPANY.email}
                                 </a>
                             </li>
@@ -160,9 +166,9 @@ export default function Footer() {
                                     href={COMPANY.instagramUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-3 text-sm text-slate-400 hover:text-sky-300 transition-colors"
+                                    className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:underline"
                                 >
-                                    <InstagramIcon className="w-4 h-4 text-sky-400 shrink-0" />
+                                    <InstagramIcon className="w-4 h-4 text-slate-400 shrink-0" />
                                     {COMPANY.instagram}
                                 </a>
                             </li>
@@ -171,9 +177,9 @@ export default function Footer() {
                                     href={COMPANY.websiteUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-3 text-sm text-slate-400 hover:text-sky-300 transition-colors"
+                                    className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:underline"
                                 >
-                                    <Globe className="w-4 h-4 text-sky-400 shrink-0" />
+                                    <Globe className="w-4 h-4 text-slate-400 shrink-0" />
                                     {COMPANY.website}
                                 </a>
                             </li>
@@ -181,19 +187,17 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-                    <p>© {new Date().getFullYear()} {COMPANY.name} Indonesia. All Rights Reserved.</p>
-                    <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
-                        <span className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-sky-400 rounded-full animate-pulse" />
-                            Melayani 38 provinsi &amp; 514 kabupaten/kota
-                        </span>
+                {/* Bottom Bar */}
+                <div className="mt-12 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
+                    <p>© {new Date().getFullYear()} {COMPANY.name} Indonesia. Seluruh hak cipta dilindungi undang-undang.</p>
+                    <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-slate-500">
+                        <span>Melayani 38 provinsi dan 514 kabupaten/kota</span>
                         <span className="text-slate-700 hidden sm:inline">•</span>
                         <a
                             href="#admin"
-                            className="text-slate-500 hover:text-sky-400 transition-colors py-1 px-2 rounded"
+                            className="text-slate-400 hover:text-white transition-colors"
                         >
-                            Akses Admin
+                            Akses Administrasi
                         </a>
                     </div>
                 </div>

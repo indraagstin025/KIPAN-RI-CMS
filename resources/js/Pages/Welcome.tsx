@@ -11,7 +11,7 @@ import FloatingWhatsApp from '@/Components/Landing/FloatingWhatsApp';
 export default function Welcome() {
     return (
         <>
-            <Head title="KIPAN Indonesia — Kader Inti Pemuda Anti Narkoba" />
+            <Head title="KIPAN Indonesia : Kader Inti Pemuda Anti Narkoba" />
             <div className="min-h-screen flex flex-col bg-white font-sans antialiased text-slate-800">
                 <Navbar />
                 <main className="flex-1">
