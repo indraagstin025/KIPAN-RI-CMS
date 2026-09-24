@@ -1,27 +1,23 @@
 import { Head } from '@inertiajs/react';
 import Navbar from '@/Components/Landing/Navbar';
 import Hero from '@/Components/Landing/Hero';
-import About from '@/Components/Landing/About';
-import StrukturOrganisasi from '@/Components/Landing/StrukturOrganisasi';
-import Testimonials from '@/Components/Landing/Testimonials';
-import Informasi from '@/Components/Landing/Informasi';
-import BeritaUmum from '@/Components/Landing/BeritaUmum';
+import AboutBrief from '@/Components/Landing/AboutBrief';
+import BeritaSlider from '@/Components/Landing/BeritaSlider';
+import AgendaKalender from '@/Components/Landing/AgendaKalender';
 import Footer from '@/Components/Landing/Footer';
 import FloatingWhatsApp from '@/Components/Landing/FloatingWhatsApp';
 
 export default function Welcome() {
     return (
         <>
-            <Head title="KIPAN Indonesia : Kader Inti Pemuda Anti Narkoba" />
+            <Head title="KIPAN Indonesia : Kader Inti Pemuda Anti Narkoba Republik Indonesia" />
             <div className="min-h-screen flex flex-col bg-white font-sans antialiased text-slate-800">
                 <Navbar />
                 <main className="flex-1">
                     <Hero />
-                    <About />
-                    <StrukturOrganisasi />
-                    <Testimonials />
-                    <Informasi />
-                    <BeritaUmum />
+                    <AboutBrief />
+                    <BeritaSlider />
+                    <AgendaKalender />
                 </main>
                 <Footer />
                 <FloatingWhatsApp />

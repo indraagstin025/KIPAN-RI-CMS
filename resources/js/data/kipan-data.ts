@@ -722,3 +722,88 @@ export const TESTIMONIAL_STATS = [
   { value: "1.000+", label: "Pengurus Nasional", icon: "Award" },
   { value: "38", label: "Provinsi Tersebar", icon: "MapPin" },
 ];
+
+// ============================================================
+// AGENDA KEGIATAN NASIONAL & DAERAH
+// ============================================================
+export interface AgendaItem {
+  id: number;
+  title: string;
+  category: "Nasional" | "Kaderisasi" | "Edukasi" | "Aksi Lapangan" | "Kesehatan";
+  date: string; // YYYY-MM-DD
+  displayDate: string;
+  time: string;
+  location: string;
+  organizer: string;
+  description: string;
+  status: "Mendatang" | "Sedang Berlangsung" | "Selesai";
+}
+
+export const AGENDA_KEGIATAN: AgendaItem[] = [
+  {
+    id: 1,
+    title: "Rapat Koordinasi Nasional (Rakornas) KIPAN 2026",
+    category: "Nasional",
+    date: "2026-10-15",
+    displayDate: "15 Oktober 2026",
+    time: "08.30 - 16.00 WIB",
+    location: "Gedung Kemenpora RI, Senayan, Jakarta",
+    organizer: "Pengurus Pusat KIPAN & Kemenpora RI",
+    description:
+      "Konsolidasi pimpinan KIPAN di 38 provinsi bersama Menpora RI dan Kepala BNN RI membahas evaluasi dan akselerasi Rencana Aksi Nasional P4GN.",
+    status: "Mendatang",
+  },
+  {
+    id: 2,
+    title: "Pelatihan Kader Inti Pemuda Anti Narkoba Angkatan XIII",
+    category: "Kaderisasi",
+    date: "2026-10-22",
+    displayDate: "22 - 24 Oktober 2026",
+    time: "08.00 - 17.00 WIB",
+    location: "Balai Pelatihan Pemuda, Bandung, Jawa Barat",
+    organizer: "KIPAN Wilayah Jawa Barat",
+    description:
+      "Pendidikan dan pembekalan wawasan kebangsaan, kepemimpinan karakter, dan metodologi deteksi dini bahaya narkotika bagi 250 kader baru.",
+    status: "Mendatang",
+  },
+  {
+    id: 3,
+    title: "KIPAN Goes to Campus: Edukasi Bahaya Narkoba Sintetis",
+    category: "Edukasi",
+    date: "2026-10-28",
+    displayDate: "28 Oktober 2026",
+    time: "09.00 - 12.30 WIB",
+    location: "Auditorium Kampus UI & Daring Zoom Nasional",
+    organizer: "Divisi Edukasi KIPAN Pusat",
+    description:
+      "Peringatan Hari Sumpah Pemuda melalui talkshow interaktif, bedah ancaman narkotika jenis baru, dan peluncuran modul edukasi digital pemuda.",
+    status: "Mendatang",
+  },
+  {
+    id: 4,
+    title: "Deklarasi Pemuda Kawasan Desa Bersinar (Bersih Narkoba)",
+    category: "Aksi Lapangan",
+    date: "2026-11-05",
+    displayDate: "05 November 2026",
+    time: "08.00 - 13.00 WIB",
+    location: "Kawasan Desa Percontohan, Sleman, D.I. Yogyakarta",
+    organizer: "KIPAN DIY & BNNP D.I. Yogyakarta",
+    description:
+      "Aksi kolaboratif relawan pemuda bersama aparat desa dalam membangun posko deteksi dini dan pendampingan warga bersih narkotika.",
+    status: "Mendatang",
+  },
+  {
+    id: 5,
+    title: "Workshop Konseling Sebaya & Rujukan Rehabilitasi BNN",
+    category: "Kesehatan",
+    date: "2026-11-12",
+    displayDate: "12 November 2026",
+    time: "09.00 - 15.30 WIB",
+    location: "Balai Besar Rehabilitasi BNN Lido, Bogor",
+    organizer: "Divisi Advokasi KIPAN & Deputi Rehabilitasi BNN",
+    description:
+      "Pelatihan teknik komunikasi empatik dan konseling ramah anak muda untuk mempermudah akses rujukan rehabilitasi medis dan sosial sukarela.",
+    status: "Mendatang",
+  },
+];
+
