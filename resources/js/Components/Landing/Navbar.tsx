@@ -1,18 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { COMPANY } from '@/data/kipan-data';
 
-const NAV_GROUPS = [
+const NAV_ITEMS = [
     { label: 'Beranda', href: '#beranda' },
-    {
-        label: 'Profil',
-        items: [
-            { label: 'Tentang KIPAN', href: '#tentang' },
-            { label: 'Struktur Organisasi', href: '#struktur' },
-            { label: 'Jajaran Pengurus', href: '#pengurus' },
-        ],
-    },
+    { label: 'Tentang', href: '#tentang' },
+    { label: 'Struktur', href: '#struktur' },
+    { label: 'Pengurus', href: '#pengurus' },
     { label: 'Berita & Edukasi', href: '#berita-terkini' },
     { label: 'Kontak', href: '#kontak' },
 ];
@@ -102,48 +97,20 @@ export default function Navbar() {
                         </div>
                     </a>
 
-                    {/* Desktop Navigation */}
+                    {/* Desktop Navigation (Direct Links, No Dropdown) */}
                     <ul className="hidden xl:flex items-center justify-end gap-1 flex-1 mx-4">
-                        {NAV_GROUPS.map((group) => (
-                            <li key={group.label} className="relative group/nav">
-                                {group.items ? (
-                                    <>
-                                        <button
-                                            className={`flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium rounded-lg transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none ${
-                                                isLightMode
-                                                    ? 'text-slate-700 hover:text-blue-700 hover:bg-slate-100'
-                                                    : 'text-slate-200 hover:text-white hover:bg-white/10'
-                                            }`}
-                                            aria-expanded="false"
-                                            aria-haspopup="true"
-                                        >
-                                            {group.label}
-                                            <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-150 group-hover/nav:rotate-180 group-focus-within/nav:rotate-180" />
-                                        </button>
-                                        <div className="absolute top-full left-0 mt-1 w-52 bg-white rounded-xl shadow-lg border border-slate-200 p-1.5 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible group-focus-within/nav:opacity-100 group-focus-within/nav:visible transition-all duration-150 transform origin-top-left scale-95 group-hover/nav:scale-100 group-focus-within/nav:scale-100">
-                                            {group.items.map((subItem) => (
-                                                <a
-                                                    key={subItem.href}
-                                                    href={subItem.href}
-                                                    className="block px-3 py-2 text-sm font-medium text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none"
-                                                >
-                                                    {subItem.label}
-                                                </a>
-                                            ))}
-                                        </div>
-                                    </>
-                                ) : (
-                                    <a
-                                        href={group.href}
-                                        className={`px-3.5 py-2 text-sm font-medium rounded-lg transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none ${
-                                            isLightMode
-                                                ? 'text-slate-700 hover:text-blue-700 hover:bg-slate-100'
-                                                : 'text-slate-200 hover:text-white hover:bg-white/10'
-                                        }`}
-                                    >
-                                        {group.label}
-                                    </a>
-                                )}
+                        {NAV_ITEMS.map((item) => (
+                            <li key={item.label}>
+                                <a
+                                    href={item.href}
+                                    className={`px-3.5 py-2 text-sm font-medium rounded-lg transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none ${
+                                        isLightMode
+                                            ? 'text-slate-700 hover:text-blue-700 hover:bg-slate-100'
+                                            : 'text-slate-200 hover:text-white hover:bg-white/10'
+                                    }`}
+                                >
+                                    {item.label}
+                                </a>
                             </li>
                         ))}
                     </ul>
@@ -175,35 +142,15 @@ export default function Navbar() {
                         >
                             <div className="bg-white rounded-xl shadow-xl p-4 my-2 border border-slate-200 max-h-[calc(100dvh-5.5rem)] overflow-y-auto">
                                 <ul className="space-y-1">
-                                    {NAV_GROUPS.map((group) => (
-                                        <li key={group.label}>
-                                            {group.items ? (
-                                                <div className="space-y-1">
-                                                    <div className="px-3 py-1.5 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                                                        {group.label}
-                                                    </div>
-                                                    <div className="pl-2 space-y-1">
-                                                        {group.items.map((sub) => (
-                                                            <a
-                                                                key={sub.href}
-                                                                href={sub.href}
-                                                                onClick={() => setMobileOpen(false)}
-                                                                className="block px-3 py-2.5 text-sm font-medium text-slate-800 rounded-lg hover:bg-blue-50 hover:text-blue-700 transition-colors"
-                                                            >
-                                                                {sub.label}
-                                                            </a>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            ) : (
-                                                <a
-                                                    href={group.href}
-                                                    onClick={() => setMobileOpen(false)}
-                                                    className="block px-3 py-2.5 text-sm font-medium text-slate-800 rounded-lg hover:bg-blue-50 hover:text-blue-700 transition-colors"
-                                                >
-                                                    {group.label}
-                                                </a>
-                                            )}
+                                    {NAV_ITEMS.map((item) => (
+                                        <li key={item.label}>
+                                            <a
+                                                href={item.href}
+                                                onClick={() => setMobileOpen(false)}
+                                                className="block px-3 py-2.5 text-sm font-medium text-slate-800 rounded-lg hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                                            >
+                                                {item.label}
+                                            </a>
                                         </li>
                                     ))}
                                 </ul>
@@ -215,5 +162,3 @@ export default function Navbar() {
         </header>
     );
 }
-
-

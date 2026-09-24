@@ -60,26 +60,26 @@ export default function Hero() {
                         {HERO.subheadline}
                     </motion.p>
 
-                    {/* CTAs with clear hierarchy */}
+                    {/* CTAs with compact, well-proportioned size */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.3 }}
-                        className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto"
+                        className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 w-full sm:w-auto"
                     >
                         <a
                             href="#kontak"
-                            className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 sm:px-8 py-3.5 rounded-lg shadow-sm hover:shadow transition-colors focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none"
+                            className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold px-4.5 sm:px-5 py-2.5 rounded-lg shadow-sm hover:shadow transition-colors focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none"
                         >
-                            <Phone className="w-4 h-4" />
+                            <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                             <span>Hubungi Sekretariat</span>
                         </a>
                         <a
                             href="#tentang"
-                            className="inline-flex items-center justify-center gap-2 bg-slate-900/80 hover:bg-slate-800 text-slate-200 hover:text-white border border-slate-700/80 font-medium px-6 sm:px-7 py-3.5 rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none"
+                            className="inline-flex items-center justify-center gap-2 bg-slate-900/80 hover:bg-slate-800 text-slate-200 hover:text-white border border-slate-700/80 text-xs sm:text-sm font-medium px-4.5 sm:px-5 py-2.5 rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none"
                         >
                             <span>Profil Organisasi</span>
-                            <ArrowRight className="w-4 h-4" />
+                            <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         </a>
                     </motion.div>
 
