@@ -22,10 +22,24 @@ export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
 
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 20);
-        onScroll();
-        window.addEventListener('scroll', onScroll);
-        return () => window.removeEventListener('scroll', onScroll);
+        const handleScroll = () => {
+            const hero = document.getElementById('beranda');
+            if (hero) {
+                const rect = hero.getBoundingClientRect();
+                // Stay in dark mode while still within the hero area
+                setScrolled(rect.bottom <= 80);
+            } else {
+                setScrolled(window.scrollY > 400);
+            }
+        };
+
+        handleScroll();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleScroll);
+        };
     }, []);
 
     // Handle Escape key to close mobile menu (R-32 accessibility)
@@ -43,10 +57,10 @@ export default function Navbar() {
 
     return (
         <header
-            className={`fixed top-0 inset-x-0 z-50 transition-colors duration-200 pt-[env(safe-area-inset-top,0px)] ${
+            className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 pt-[env(safe-area-inset-top,0px)] ${
                 isLightMode
-                    ? 'bg-white border-b border-slate-200/80 shadow-sm'
-                    : 'bg-slate-950/80 backdrop-blur-sm border-b border-white/10'
+                    ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm'
+                    : 'bg-gradient-to-b from-blue-950/90 via-blue-950/40 to-transparent'
             }`}
         >
             <nav className="w-full px-4 sm:px-6 lg:px-8 2xl:px-12" aria-label="Navigasi Utama">
@@ -54,13 +68,13 @@ export default function Navbar() {
                     {/* Logo & Identity */}
                     <a
                         href="#beranda"
-                        className="flex items-center gap-3 group shrink-0 rounded-lg focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none"
+                        className="flex items-center gap-3 group shrink-0 rounded-full focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none"
                     >
-                        <div className="w-10 h-10 lg:w-11 lg:h-11 rounded-lg overflow-hidden border border-slate-200 bg-white p-0.5 shrink-0">
+                        <div className="w-10 h-10 lg:w-11 lg:h-11 rounded-full overflow-hidden border border-white/20 bg-white p-0.5 shrink-0 shadow-md">
                             <img
                                 src="/logo-kipan.jpg"
                                 alt="Logo KIPAN"
-                                className="w-full h-full object-contain"
+                                className="w-full h-full object-cover rounded-full"
                             />
                         </div>
                         <div className="flex flex-col leading-tight">

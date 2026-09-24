@@ -45,20 +45,20 @@ export default function Footer() {
                     <div className="lg:col-span-4">
                         <div className="flex items-center gap-3 mb-5">
                             <div className="flex items-center gap-2 shrink-0">
-                                <div className="w-14 h-14 rounded-lg bg-white flex items-center justify-center border border-slate-700 overflow-hidden p-1 shadow-xs">
+                                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center border border-slate-700 overflow-hidden p-1 shadow-sm">
                                     <img
                                         src="/logo-bnn.jpg"
                                         alt="Logo BNN RI"
                                         title="Mitra Binaan BNN RI"
-                                        className="w-full h-full object-contain"
+                                        className="w-full h-full object-cover scale-[1.03] rounded-full"
                                     />
                                 </div>
-                                <div className="w-14 h-14 rounded-lg bg-white flex items-center justify-center border border-slate-700 overflow-hidden p-1 shadow-xs">
+                                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center border border-slate-700 overflow-hidden p-0.5 shadow-sm">
                                     <img
                                         src="/logo-kipan.jpg"
                                         alt="Logo KIPAN"
                                         title="Kader Inti Pemuda Anti Narkoba"
-                                        className="w-full h-full object-contain"
+                                        className="w-full h-full object-contain rounded-full"
                                     />
                                 </div>
                             </div>

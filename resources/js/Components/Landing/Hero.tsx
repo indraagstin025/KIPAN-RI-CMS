@@ -9,7 +9,7 @@ export default function Hero() {
             id="beranda"
             className="relative min-h-[100dvh] flex items-center bg-slate-950 overflow-hidden"
         >
-            {/* Background image with authoritative institutional overlay */}
+            {/* Background image with original rich navy overlay */}
             <div className="absolute inset-0">
                 <SafeImage
                     src={HERO.backgroundImage}
@@ -17,35 +17,35 @@ export default function Hero() {
                     className="w-full h-full object-cover"
                     loading="eager"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/85 to-slate-900/60" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/40" />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-900/75 to-blue-900/40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-transparent to-blue-950/30" />
             </div>
 
             {/* Content Container */}
-            <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-16 lg:pb-24">
+            <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-14 sm:pb-16">
                 <div className="max-w-3xl">
                     {/* Official Partnership Badge */}
                     <motion.div
                         initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4 }}
-                        className="inline-flex items-center gap-2 bg-slate-900/90 border border-slate-700/80 rounded-lg px-3.5 py-1.5 mb-6"
+                        className="inline-flex items-center gap-2 bg-blue-950/80 border border-blue-800/60 rounded-lg px-3.5 py-1.5 mb-4 sm:mb-5 shadow-xs"
                     >
                         <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
-                        <span className="text-slate-200 text-xs sm:text-sm font-medium">
+                        <span className="text-slate-100 text-xs sm:text-sm font-medium">
                             {HERO.badge}
                         </span>
                     </motion.div>
 
-                    {/* Headline with high contrast */}
+                    {/* Headline with balanced, elegant size */}
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
-                        className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight"
+                        className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-white leading-[1.25] tracking-tight"
                     >
                         {HERO.headlinePrefix}{' '}
-                        <span className="text-blue-400">
+                        <span className="text-sky-400 font-bold">
                             {HERO.headlineHighlight}
                         </span>
                     </motion.h1>
@@ -55,7 +55,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="mt-5 text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed max-w-2xl"
+                        className="mt-4 sm:mt-5 text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl"
                     >
                         {HERO.subheadline}
                     </motion.p>
