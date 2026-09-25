@@ -108,11 +108,6 @@ export default function Hero() {
                         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
                         className="lg:col-span-7 flex flex-col items-start"
                     >
-                        {/* Eyebrow Pill */}
-                        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[11px] sm:text-xs font-bold text-blue-100 tracking-wider mb-5 backdrop-blur-xs">
-                            <span className="w-2 h-2 rounded-full bg-kipan-yellow animate-pulse" />
-                            <span>{HERO_CONTENT.eyebrow}</span>
-                        </div>
 
                         {/* Main Headline (Youth Innovation Scale) */}
                         <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tight mb-2">
