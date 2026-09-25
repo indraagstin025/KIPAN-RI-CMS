@@ -97,12 +97,17 @@ const NAV_GROUPS: NavGroup[] = [
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
+    const [scrollProgress, setScrollProgress] = useState(0);
     const [mobileOpen, setMobileOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 25);
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            if (totalHeight > 0) {
+                setScrollProgress(Math.min(100, Math.max(0, (window.scrollY / totalHeight) * 100)));
+            }
         };
         handleScroll();
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -133,6 +138,11 @@ export default function Navbar() {
                     : 'bg-transparent border-b border-white/10 py-4 lg:py-5'
             }`}
         >
+            {/* Scroll Reading Progress Bar Indicator */}
+            <div
+                className="h-[3px] bg-kipan-yellow transition-all duration-150 ease-out absolute top-0 left-0 z-50 shadow-xs"
+                style={{ width: `${scrollProgress}%` }}
+            />
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <nav className="flex items-center justify-between" aria-label="Navigasi Utama KIPAN RI">
                     {/* Brand / Logo (Left) */}

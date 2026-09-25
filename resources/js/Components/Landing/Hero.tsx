@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
     ArrowRightIcon,
     CalendarIcon,
@@ -101,8 +102,13 @@ export default function Hero() {
 
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-                    {/* Left Column: Typography, Value Proposition, Stats Card, CTAs */}
-                    <div className="lg:col-span-7 flex flex-col items-start">
+                    {/* Left Column: Typography, Value Proposition, Stats Card, CTAs (Animated Entrance) */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                        className="lg:col-span-7 flex flex-col items-start"
+                    >
                         {/* Eyebrow Pill */}
                         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[11px] sm:text-xs font-bold text-blue-100 tracking-wider mb-5 backdrop-blur-xs">
                             <span className="w-2 h-2 rounded-full bg-kipan-yellow animate-pulse" />
@@ -124,8 +130,8 @@ export default function Hero() {
                             </p>
                         </div>
 
-                        {/* Floating White Quick Stats Card (Signature Youth Innovation Element) */}
-                        <div className="w-full max-w-xl bg-white rounded-2xl p-5 sm:p-6 shadow-2xl border border-white/20 text-slate-800 mb-6">
+                        {/* Floating White Quick Stats Card (Signature Youth Innovation Element with Hover Elevation) */}
+                        <div className="w-full max-w-xl bg-white rounded-2xl p-5 sm:p-6 shadow-2xl border border-white/20 text-slate-800 mb-6 hover:-translate-y-1 hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)] transition-all duration-300">
                             <div className="grid grid-cols-2 gap-4 pb-4 border-b border-slate-100">
                                 <div>
                                     <div className="text-2xl sm:text-3xl font-extrabold text-kipan-navy tracking-tight">
@@ -157,7 +163,7 @@ export default function Hero() {
                                 className="pt-3 flex items-center justify-between text-xs font-bold text-kipan-blue hover:text-blue-800 group"
                             >
                                 <span>Jelajahi Profil Gerakan &amp; Legalitas KIPAN</span>
-                                <span className="inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                                <span className="inline-flex items-center gap-1 group-hover:translate-x-1.5 transition-transform duration-200">
                                     Pelajari Selengkapnya <ArrowRightIcon className="w-4 h-4" />
                                 </span>
                             </a>
@@ -167,29 +173,29 @@ export default function Hero() {
                         <div className="flex flex-wrap items-center gap-3">
                             <a
                                 href="/tentang"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/25 rounded-full backdrop-blur-xs transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/25 rounded-full backdrop-blur-xs transition-all hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
                             >
                                 <span>Tentang Organisasi</span>
                             </a>
 
                             <a
                                 href="/agenda"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/25 rounded-full backdrop-blur-xs transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/25 rounded-full backdrop-blur-xs transition-all hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
                             >
                                 <span>Jadwal Agenda</span>
                             </a>
 
                             <a
                                 href="/kontak"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold text-kipan-navy bg-kipan-yellow hover:bg-amber-400 rounded-full transition-all shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-yellow"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold text-kipan-navy bg-kipan-yellow hover:bg-amber-400 rounded-full transition-all hover:scale-105 active:scale-95 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-yellow"
                             >
                                 <span>Daftar Jadi Kader</span>
                                 <ArrowRightIcon className="w-3.5 h-3.5" />
                             </a>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    {/* Right Column: Featured Event & Agenda Card Slider (Exact Youth Innovation Structure) */}
+                    {/* Right Column: Featured Event & Agenda Card Slider (with Animated Slide Transitions) */}
                     <div className="lg:col-span-5 flex justify-center">
                         <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl border border-white/20 overflow-hidden text-slate-800">
                             {/* Card Visual Header with Badge */}
@@ -228,85 +234,100 @@ export default function Hero() {
                                 </div>
                             </div>
 
-                            {/* Card Body */}
-                            <div className="p-5 sm:p-6">
-                                {/* Title */}
-                                <h3 className="text-base sm:text-lg font-bold text-kipan-navy leading-snug mb-3 line-clamp-2">
-                                    {activeEvent.title}
-                                </h3>
+                            {/* Card Body with Smooth Animated Transition */}
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={activeEvent.id}
+                                    initial={{ opacity: 0, x: 12 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -12 }}
+                                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                                    className="p-5 sm:p-6"
+                                >
+                                    {/* Title */}
+                                    <h3 className="text-base sm:text-lg font-bold text-kipan-navy leading-snug mb-3 line-clamp-2">
+                                        {activeEvent.title}
+                                    </h3>
 
-                                {/* Chips: Date & Location/Target */}
-                                <div className="flex flex-wrap items-center gap-2 mb-4 text-xs">
-                                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-blue-50 border border-blue-100 rounded-md text-kipan-blue font-semibold">
-                                        <CalendarIcon className="w-3.5 h-3.5" />
-                                        <span>{activeEvent.date}</span>
-                                    </div>
-                                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md text-slate-700 font-medium">
-                                        <PersonIcon className="w-3.5 h-3.5" />
-                                        <span>{activeEvent.participants}</span>
-                                    </div>
-                                </div>
-
-                                {/* Snippet */}
-                                <p className="text-xs text-slate-600 leading-relaxed mb-6 line-clamp-3">
-                                    {activeEvent.snippet}
-                                </p>
-
-                                {/* Footer Controls: Arrows, Dots, and CTA */}
-                                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                                    {/* Slider Arrow Controls */}
-                                    <div className="flex items-center gap-1.5">
-                                        <button
-                                            type="button"
-                                            onClick={prevSlide}
-                                            aria-label="Agenda sebelumnya"
-                                            className="w-8 h-8 rounded-full border border-slate-200 hover:border-kipan-blue hover:text-kipan-blue flex items-center justify-center text-slate-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-blue"
-                                        >
-                                            <ChevronLeftIcon className="w-4 h-4" />
-                                        </button>
-                                        <button
-                                            type="button"
-                                            onClick={nextSlide}
-                                            aria-label="Agenda berikutnya"
-                                            className="w-8 h-8 rounded-full border border-slate-200 hover:border-kipan-blue hover:text-kipan-blue flex items-center justify-center text-slate-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-blue"
-                                        >
-                                            <ChevronRightIcon className="w-4 h-4" />
-                                        </button>
+                                    {/* Chips: Date & Location/Target */}
+                                    <div className="flex flex-wrap items-center gap-2 mb-4 text-xs">
+                                        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-blue-50 border border-blue-100 rounded-md text-kipan-blue font-semibold">
+                                            <CalendarIcon className="w-3.5 h-3.5" />
+                                            <span>{activeEvent.date}</span>
+                                        </div>
+                                        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md text-slate-700 font-medium">
+                                            <PersonIcon className="w-3.5 h-3.5" />
+                                            <span>{activeEvent.participants}</span>
+                                        </div>
                                     </div>
 
-                                    {/* Pagination Dots */}
-                                    <div className="flex items-center gap-1.5">
-                                        {FEATURED_EVENTS.map((event, idx) => (
+                                    {/* Snippet */}
+                                    <p className="text-xs text-slate-600 leading-relaxed mb-6 line-clamp-3">
+                                        {activeEvent.snippet}
+                                    </p>
+
+                                    {/* Footer Controls: Arrows, Dots, and CTA */}
+                                    <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                                        {/* Slider Arrow Controls */}
+                                        <div className="flex items-center gap-1.5">
                                             <button
-                                                key={event.id}
                                                 type="button"
-                                                onClick={() => setCurrentSlide(idx)}
-                                                aria-label={`Slide ${idx + 1}`}
-                                                className={`h-2 rounded-full transition-all ${
-                                                    currentSlide === idx
-                                                        ? 'w-6 bg-kipan-blue'
-                                                        : 'w-2 bg-slate-300 hover:bg-slate-400'
-                                                }`}
-                                            />
-                                        ))}
-                                    </div>
+                                                onClick={prevSlide}
+                                                aria-label="Agenda sebelumnya"
+                                                className="w-8 h-8 rounded-full border border-slate-200 hover:border-kipan-blue hover:text-kipan-blue hover:scale-105 active:scale-95 flex items-center justify-center text-slate-600 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-blue"
+                                            >
+                                                <ChevronLeftIcon className="w-4 h-4" />
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={nextSlide}
+                                                aria-label="Agenda berikutnya"
+                                                className="w-8 h-8 rounded-full border border-slate-200 hover:border-kipan-blue hover:text-kipan-blue hover:scale-105 active:scale-95 flex items-center justify-center text-slate-600 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-blue"
+                                            >
+                                                <ChevronRightIcon className="w-4 h-4" />
+                                            </button>
+                                        </div>
 
-                                    {/* Card CTA Button */}
-                                    <a
-                                        href={activeEvent.href}
-                                        className="inline-flex items-center gap-1 text-xs font-bold text-kipan-navy hover:text-kipan-blue transition-colors"
-                                    >
-                                        <span>Detail</span>
-                                        <ArrowRightIcon className="w-3.5 h-3.5" />
-                                    </a>
-                                </div>
-                            </div>
+                                        {/* Pagination Dots */}
+                                        <div className="flex items-center gap-1.5">
+                                            {FEATURED_EVENTS.map((event, idx) => (
+                                                <button
+                                                    key={event.id}
+                                                    type="button"
+                                                    onClick={() => setCurrentSlide(idx)}
+                                                    aria-label={`Slide ${idx + 1}`}
+                                                    className={`h-2 rounded-full transition-all duration-300 ${
+                                                        currentSlide === idx
+                                                            ? 'w-6 bg-kipan-blue'
+                                                            : 'w-2 bg-slate-300 hover:bg-slate-400'
+                                                    }`}
+                                                />
+                                            ))}
+                                        </div>
+
+                                        {/* Card CTA Button */}
+                                        <a
+                                            href={activeEvent.href}
+                                            className="inline-flex items-center gap-1 text-xs font-bold text-kipan-navy hover:text-kipan-blue group transition-colors"
+                                        >
+                                            <span>Detail</span>
+                                            <ArrowRightIcon className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                                        </a>
+                                    </div>
+                                </motion.div>
+                            </AnimatePresence>
                         </div>
                     </div>
                 </div>
 
-                {/* Bottom Institutional Partner Ticker (Signature Youth Innovation Pill Container) */}
-                <div className="mt-12 sm:mt-16 bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-center justify-between gap-4 text-white text-xs">
+                {/* Bottom Institutional Partner Ticker (Animated on Viewport Entrance) */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-30px' }}
+                    transition={{ duration: 0.55, delay: 0.15 }}
+                    className="mt-12 sm:mt-16 bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-center justify-between gap-4 text-white text-xs"
+                >
                     <div className="flex flex-wrap items-center gap-3 sm:gap-6">
                         <div className="flex items-center gap-2">
                             <div className="w-7 h-7 rounded-full bg-white p-0.5 shrink-0 shadow-xs">
@@ -337,7 +358,7 @@ export default function Hero() {
                     <div className="text-[11px] font-medium text-blue-200/80">
                         Dasar Regulasi: <strong className="text-white">Inpres No. 2/2020 (P4GN)</strong>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );
