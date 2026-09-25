@@ -87,7 +87,7 @@ const FEATURED_EVENTS: FeaturedEvent[] = [
         snippet:
             'Pembekalan terpadu wawasan bahaya narkotika, advokasi regulasi P4GN, dan strategi aksi pencegahan terpadu di lingkungan sekolah dan kampus.',
         image: '/logo-kipan.jpg',
-        href: '/agenda',
+        href: '/program',
     },
     {
         id: 'event-2',
@@ -101,7 +101,7 @@ const FEATURED_EVENTS: FeaturedEvent[] = [
         snippet:
             'Konsolidasi akbar kader pelopor P4GN, festival inovasi karya kreatif anak muda, olahraga sehat, dan deklarasi pemuda bersih narkoba.',
         image: '/logo-kipan.jpg',
-        href: '/agenda',
+        href: '/program',
     },
     {
         id: 'event-3',
@@ -115,7 +115,7 @@ const FEATURED_EVENTS: FeaturedEvent[] = [
         snippet:
             'Aksi sosialisasi tatap muka peer-to-peer dan pembentukan gugus tugas relawan anti narkoba di lingkungan SMA/SMK dan perguruan tinggi.',
         image: '/logo-kipan.jpg',
-        href: '/agenda',
+        href: '/program',
     },
 ];
 
@@ -341,11 +341,10 @@ export default function Hero() {
                                                     type="button"
                                                     onClick={() => setCurrentSlide(idx)}
                                                     aria-label={`Slide ${idx + 1}`}
-                                                    className={`h-2 rounded-full transition-all duration-300 ${
-                                                        currentSlide === idx
+                                                    className={`h-2 rounded-full transition-all duration-300 ${currentSlide === idx
                                                             ? 'w-6 bg-kipan-blue'
                                                             : 'w-2 bg-slate-300 hover:bg-slate-400'
-                                                    }`}
+                                                        }`}
                                                 />
                                             ))}
                                         </div>
