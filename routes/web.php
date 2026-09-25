@@ -9,11 +9,7 @@ Route::get('/', function () {
 
 // Rute Halaman Publik Utama (6 Halaman Terpadu)
 Route::get('/tentang', function () {
-    return Inertia::render('PlaceholderPage', [
-        'title' => 'Tentang KIPAN RI',
-        'subtitle' => 'Profil organisasi, landasan hukum UU No. 40/2009 & Inpres No. 2/2020, visi misi, tokoh pimpinan, serta jejaring pengurus 38 provinsi.',
-        'category' => 'Tentang Kami',
-    ]);
+    return Inertia::render('About');
 })->name('about');
 
 Route::get('/program', function () {
