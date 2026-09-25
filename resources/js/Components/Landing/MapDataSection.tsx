@@ -4,7 +4,6 @@ import {
     ReloadIcon,
     ArrowRightIcon,
     GlobeIcon,
-    CheckCircledIcon,
 } from '@radix-ui/react-icons';
 import ScrollReveal from './ScrollReveal';
 
@@ -90,14 +89,16 @@ export default function MapDataSection() {
                     zoomControl: false,
                 });
 
+                // Zoom control top-left
                 window.L.control.zoom({ position: 'topleft' }).addTo(map);
 
+                // OpenStreetMap Tile Layer
                 window.L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     maxZoom: 18,
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
                 }).addTo(map);
 
-                // Add interactive pins
+                // Add interactive pins across Indonesia
                 REGION_POINTS.forEach((pt) => {
                     const icon = window.L.divIcon({
                         className: 'custom-kipan-marker',
@@ -123,7 +124,7 @@ export default function MapDataSection() {
                 mapInstanceRef.current = map;
                 setIsMapLoaded(true);
 
-                // Ensure proper sizing after render
+                // Invalidate size to ensure clean rendering
                 setTimeout(() => {
                     map.invalidateSize();
                 }, 300);
@@ -161,11 +162,11 @@ export default function MapDataSection() {
     };
 
     return (
-        <section id="sebaran-kipan" className="py-14 lg:py-20 bg-slate-50/80 border-b border-kipan-border overflow-hidden">
+        <section id="sebaran-kipan" className="py-12 lg:py-16 bg-slate-50 border-b border-kipan-border overflow-hidden">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <ScrollReveal direction="up" delay={0.05}>
-                    <div className="text-center max-w-3xl mx-auto mb-10">
+                    <div className="text-center max-w-3xl mx-auto mb-8">
                         <div className="flex items-center justify-center gap-3 mb-2">
                             <span className="h-0.5 w-8 bg-kipan-blue rounded-full"></span>
                             <span className="text-xs font-bold text-kipan-blue uppercase tracking-widest">
@@ -177,146 +178,131 @@ export default function MapDataSection() {
                             Peta Sebaran Kader KIPAN RI
                         </h2>
                         <p className="text-xs sm:text-sm text-slate-600 mt-2 max-w-xl mx-auto leading-relaxed">
-                            Data terintegrasi kader inti dan koordinasi satgas P4GN di 38 provinsi dari Sabang sampai Merauke.
+                            Integrasi data capaian kaderisasi dan jaringan koordinasi gerakan pemuda anti narkoba di 38 provinsi dari Sabang sampai Merauke.
                         </p>
+
+                        {/* Interactive Island Tabs */}
+                        <div className="flex flex-wrap items-center justify-center gap-1.5 mt-5">
+                            {ISLAND_GROUPS.map((isl) => (
+                                <button
+                                    key={isl.label}
+                                    onClick={() => handleSelectIsland(isl)}
+                                    className={`px-3 py-1 rounded-full text-[11px] font-bold transition-all duration-150 cursor-pointer ${
+                                        selectedIsland === isl.label
+                                            ? 'bg-kipan-navy text-white shadow-sm scale-102'
+                                            : 'bg-white text-slate-600 border border-slate-200 hover:border-kipan-blue hover:text-kipan-blue'
+                                    }`}
+                                >
+                                    {isl.label}
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </ScrollReveal>
 
-                {/* 2-Column Balanced Grid Layout */}
+                {/* Compact Map Canvas with Floating Card (Proportionately Sized) */}
                 <ScrollReveal direction="up" delay={0.12}>
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch max-w-6xl mx-auto">
-                        {/* Left Column: Compact OpenStreetMap Canvas (7 Columns) */}
-                        <div className="lg:col-span-7 flex flex-col">
-                            {/* Region Filter Bar on Top of Map */}
-                            <div className="flex items-center justify-between gap-2 mb-3">
-                                <span className="text-xs font-bold text-slate-600 flex items-center gap-1.5">
-                                    <GlobeIcon className="w-3.5 h-3.5 text-kipan-blue" />
-                                    <span>Pilih Wilayah:</span>
-                                </span>
-                                <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5">
-                                    {ISLAND_GROUPS.map((isl) => (
-                                        <button
-                                            key={isl.label}
-                                            onClick={() => handleSelectIsland(isl)}
-                                            className={`px-2.5 py-1 rounded-full text-[11px] font-bold transition-all duration-150 shrink-0 cursor-pointer ${
-                                                selectedIsland === isl.label
-                                                    ? 'bg-kipan-navy text-white shadow-xs'
-                                                    : 'bg-white text-slate-600 border border-slate-200 hover:border-kipan-blue hover:text-kipan-blue'
-                                            }`}
-                                        >
-                                            {isl.label}
-                                        </button>
-                                    ))}
-                                </div>
+                    <div className="relative w-full max-w-6xl mx-auto rounded-3xl overflow-hidden border border-slate-200/90 shadow-lg bg-slate-100 h-[440px] sm:h-[480px] lg:h-[500px]">
+                        {/* Leaflet OpenStreetMap Container */}
+                        <div
+                            ref={mapContainerRef}
+                            className="absolute inset-0 w-full h-full z-0"
+                        />
+
+                        {/* Loading placeholder if tiles loading */}
+                        {!isMapLoaded && (
+                            <div className="absolute inset-0 bg-slate-100 flex flex-col items-center justify-center z-10 text-slate-400">
+                                <ReloadIcon className="w-6 h-6 animate-spin text-kipan-blue mb-2" />
+                                <span className="text-xs font-semibold">Memuat OpenStreetMap...</span>
                             </div>
+                        )}
 
-                            {/* Map Container - Compact Height */}
-                            <div className="relative w-full h-[320px] sm:h-[380px] lg:h-[420px] rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 flex-1">
-                                <div
-                                    ref={mapContainerRef}
-                                    className="absolute inset-0 w-full h-full z-0"
-                                />
-
-                                {!isMapLoaded && (
-                                    <div className="absolute inset-0 bg-slate-100 flex flex-col items-center justify-center z-10 text-slate-400">
-                                        <ReloadIcon className="w-6 h-6 animate-spin text-kipan-blue mb-2" />
-                                        <span className="text-xs font-semibold">Memuat OpenStreetMap...</span>
+                        {/* Floating Data & Stat Card (Top Right / Compact Proportion) */}
+                        <div className="relative lg:absolute lg:top-5 lg:right-5 z-10 m-3 sm:m-4 lg:m-0 max-w-full lg:max-w-sm w-full">
+                            <div className="bg-gradient-to-br from-[#0D3F70]/95 via-[#0D3F70]/95 to-[#092B4F]/95 backdrop-blur-md border border-white/20 rounded-2xl p-4 sm:p-5 text-white shadow-xl">
+                                {/* Top Tag & Reset */}
+                                <div className="flex items-center justify-between gap-2 mb-2.5">
+                                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 border border-white/15 text-[10px] font-bold text-kipan-yellow uppercase tracking-wider">
+                                        <GlobeIcon className="w-3 h-3" />
+                                        <span>Data Nasional Terpadu</span>
                                     </div>
-                                )}
+                                    <button
+                                        onClick={() => handleSelectIsland(ISLAND_GROUPS[0])}
+                                        title="Reset Tampilan Peta"
+                                        className="text-white/70 hover:text-white p-1 hover:bg-white/10 rounded-md transition-colors"
+                                    >
+                                        <ReloadIcon className="w-3.5 h-3.5" />
+                                    </button>
+                                </div>
 
-                                {/* Bottom Info Badge */}
-                                <div className="absolute bottom-2.5 left-2.5 z-10 bg-white/90 backdrop-blur-xs px-2.5 py-0.5 rounded-md text-[10px] text-slate-500 shadow-2xs border border-slate-200 flex items-center gap-1">
-                                    <span>OpenStreetMap</span>
-                                    <span>•</span>
-                                    <span>Klik pin untuk info daerah</span>
+                                <h3 className="text-base sm:text-lg font-black text-white tracking-tight mb-0.5">
+                                    {selectedPoint ? selectedPoint.name : 'KIPAN Dalam Angka'}
+                                </h3>
+                                <p className="text-[11px] text-blue-100/80 mb-3.5 leading-relaxed line-clamp-2">
+                                    {selectedPoint
+                                        ? `Koordinator Wilayah ${selectedPoint.island} • Status: ${selectedPoint.status}`
+                                        : 'Rekapitulasi resmi capaian pembinaan kader dan satgas daerah di seluruh Indonesia.'}
+                                </p>
+
+                                {/* 4 Stat Panels (Compact 2x2 Grid) */}
+                                <div className="grid grid-cols-2 gap-2 mb-3.5">
+                                    <div className="bg-white/10 border border-white/15 rounded-xl p-2.5 hover:bg-white/15 transition-colors">
+                                        <div className="text-lg sm:text-xl font-black text-white font-mono leading-none">
+                                            {selectedPoint ? selectedPoint.cadres : '50.000+'}
+                                        </div>
+                                        <div className="text-[10px] font-bold text-kipan-yellow uppercase tracking-wider mt-1">
+                                            Kader Terlatih
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-white/10 border border-white/15 rounded-xl p-2.5 hover:bg-white/15 transition-colors">
+                                        <div className="text-lg sm:text-xl font-black text-white font-mono leading-none">
+                                            {selectedPoint ? selectedPoint.satgas : '38'}
+                                        </div>
+                                        <div className="text-[10px] font-bold text-kipan-yellow uppercase tracking-wider mt-1">
+                                            {selectedPoint ? 'Cakupan' : 'Provinsi'}
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-white/10 border border-white/15 rounded-xl p-2.5 hover:bg-white/15 transition-colors">
+                                        <div className="text-lg sm:text-xl font-black text-white font-mono leading-none">
+                                            514
+                                        </div>
+                                        <div className="text-[10px] font-bold text-amber-400 uppercase tracking-wider mt-1">
+                                            Kab. &amp; Kota
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-white/10 border border-white/15 rounded-xl p-2.5 hover:bg-white/15 transition-colors">
+                                        <div className="text-lg sm:text-xl font-black text-white font-mono leading-none">
+                                            100+
+                                        </div>
+                                        <div className="text-[10px] font-bold text-amber-400 uppercase tracking-wider mt-1">
+                                            Aksi Program
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Active point note or hint */}
+                                <div className="pt-2.5 border-t border-white/15 flex items-center justify-between text-xs">
+                                    <div className="flex items-center gap-1.5 text-blue-100/80 text-[10px]">
+                                        <SewingPinIcon className="w-3 h-3 text-kipan-yellow" />
+                                        <span>Klik pin untuk fokus daerah</span>
+                                    </div>
+                                    <a
+                                        href="/tentang/jejaring"
+                                        className="text-[11px] font-bold text-kipan-yellow hover:text-white transition-colors flex items-center gap-1"
+                                    >
+                                        <span>Direktori</span>
+                                        <ArrowRightIcon className="w-3 h-3" />
+                                    </a>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Right Column: Unified Data & Stats Panel (5 Columns) */}
-                        <div className="lg:col-span-5 flex flex-col justify-between">
-                            <div className="bg-gradient-to-br from-[#0D3F70] via-[#0D3F70] to-[#0A2E52] text-white rounded-2xl p-6 sm:p-7 shadow-lg border border-blue-900 flex flex-col justify-between h-full">
-                                <div>
-                                    {/* Header & Reset */}
-                                    <div className="flex items-center justify-between mb-4">
-                                        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold text-amber-400 border border-white/10 uppercase tracking-wider">
-                                            <CheckCircledIcon className="w-3 h-3" />
-                                            <span>Data Resmi Terverifikasi</span>
-                                        </div>
-                                        <button
-                                            onClick={() => handleSelectIsland(ISLAND_GROUPS[0])}
-                                            title="Reset Tampilan"
-                                            className="text-blue-200 hover:text-white p-1 hover:bg-white/10 rounded-md transition-colors"
-                                        >
-                                            <ReloadIcon className="w-3.5 h-3.5" />
-                                        </button>
-                                    </div>
-
-                                    {/* Title / Dynamic Selection Info */}
-                                    <h3 className="text-lg sm:text-xl font-black text-white tracking-tight mb-1">
-                                        {selectedPoint ? selectedPoint.name : 'KIPAN RI Dalam Angka'}
-                                    </h3>
-                                    <p className="text-xs text-blue-100/80 mb-5 leading-relaxed">
-                                        {selectedPoint
-                                            ? `Jejaring wilayah ${selectedPoint.island} • Status: ${selectedPoint.status}`
-                                            : 'Rekapitulasi nasional kaderisasi dan jangkauan gerakan P4GN bersama Kemenpora RI & BNN RI.'}
-                                    </p>
-
-                                    {/* 4 Compact Stat Panels (2x2 Grid) */}
-                                    <div className="grid grid-cols-2 gap-2.5 mb-5">
-                                        <div className="bg-white/10 border border-white/15 rounded-xl p-3">
-                                            <div className="text-xl sm:text-2xl font-black text-white font-mono">
-                                                {selectedPoint ? selectedPoint.cadres : '50.000+'}
-                                            </div>
-                                            <div className="text-[10px] font-bold text-amber-400 uppercase tracking-wider mt-0.5">
-                                                Kader Terlatih
-                                            </div>
-                                        </div>
-
-                                        <div className="bg-white/10 border border-white/15 rounded-xl p-3">
-                                            <div className="text-xl sm:text-2xl font-black text-white font-mono">
-                                                {selectedPoint ? selectedPoint.satgas : '38'}
-                                            </div>
-                                            <div className="text-[10px] font-bold text-amber-400 uppercase tracking-wider mt-0.5">
-                                                {selectedPoint ? 'Cakupan' : 'Provinsi'}
-                                            </div>
-                                        </div>
-
-                                        <div className="bg-white/10 border border-white/15 rounded-xl p-3">
-                                            <div className="text-xl sm:text-2xl font-black text-white font-mono">
-                                                514
-                                            </div>
-                                            <div className="text-[10px] font-bold text-amber-400 uppercase tracking-wider mt-0.5">
-                                                Kab. &amp; Kota Satgas
-                                            </div>
-                                        </div>
-
-                                        <div className="bg-white/10 border border-white/15 rounded-xl p-3">
-                                            <div className="text-xl sm:text-2xl font-black text-white font-mono">
-                                                100+
-                                            </div>
-                                            <div className="text-[10px] font-bold text-amber-400 uppercase tracking-wider mt-0.5">
-                                                Program Tahunan
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Footer of Panel */}
-                                <div className="pt-3 border-t border-white/15 flex items-center justify-between text-xs">
-                                    <div className="flex items-center gap-1.5 text-blue-200/90 text-[11px]">
-                                        <SewingPinIcon className="w-3.5 h-3.5 text-amber-400" />
-                                        <span>38 Provinsi Terkoordinasi</span>
-                                    </div>
-                                    <a
-                                        href="/tentang/jejaring"
-                                        className="text-xs font-bold text-amber-400 hover:text-white transition-colors flex items-center gap-1"
-                                    >
-                                        <span>Direktori</span>
-                                        <ArrowRightIcon className="w-3.5 h-3.5" />
-                                    </a>
-                                </div>
-                            </div>
+                        {/* Attribution badge bottom-left */}
+                        <div className="absolute bottom-2.5 left-2.5 z-10 bg-white/90 backdrop-blur-xs px-2.5 py-0.5 rounded-md text-[10px] text-slate-500 shadow-2xs border border-slate-200">
+                            Peta: <strong>OpenStreetMap</strong>
                         </div>
                     </div>
                 </ScrollReveal>
