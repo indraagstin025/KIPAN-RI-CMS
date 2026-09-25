@@ -441,7 +441,7 @@ export default function About() {
                 {/* ========================================================= */}
                 {/* BAGIAN 1: STRUKTUR ORGANISASI (PRIORITAS NOMOR 1 & WAJIB)  */}
                 {/* ========================================================= */}
-                <main className="flex-1 pb-24">
+                <main className="flex-1">
                     <section id="struktur" className="py-16 sm:py-20 scroll-mt-20">
                         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="max-w-3xl mb-12">
@@ -1031,31 +1031,65 @@ export default function About() {
                         </div>
                     </section>
 
-                    {/* BAGIAN 6: CALL TO ACTION (CTA) */}
-                    <section className="container mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="bg-gradient-to-r from-[#061C33] via-[#0D3F70] to-[#0A3055] rounded-3xl p-8 sm:p-12 text-white text-center relative overflow-hidden border border-blue-900/60 shadow-xl">
-                            <div className="max-w-2xl mx-auto relative z-10">
-                                <h3 className="text-2xl sm:text-3xl font-black mb-3 text-white">
-                                    Siap Mengambil Peran Bersama KIPAN RI?
-                                </h3>
-                                <p className="text-xs sm:text-sm text-blue-100/90 leading-relaxed mb-8">
-                                    Bergabunglah bersama lebih dari 50.000 kader inti pemuda di seluruh Indonesia. Lindungi sahabat sebaya, wujudkan lingkungan sehat dan bersinar.
-                                </p>
-                                <div className="flex flex-wrap items-center justify-center gap-4">
-                                    <a
-                                        href="/kontak"
-                                        className="px-6 py-3 rounded-full bg-amber-400 hover:bg-amber-300 text-[#0D3F70] text-xs font-black uppercase tracking-wider transition-all shadow-md hover:scale-105"
-                                    >
-                                        Daftar Jadi Kader Inti
-                                    </a>
-                                    <a
-                                        href="/kontak"
-                                        className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all border border-white/20 flex items-center gap-2"
-                                    >
-                                        <DownloadIcon className="w-4 h-4" />
-                                        <span>Unduh Berkas Profil Organisasi</span>
-                                    </a>
-                                </div>
+                    {/* BAGIAN 6: CALL TO ACTION (CTA) TERPADU */}
+                    <section className="bg-gradient-to-b from-[#092B4D] via-[#061C33] to-[#041324] text-white py-20 lg:py-24 border-t border-blue-900/60 relative overflow-hidden">
+                        {/* Background accents */}
+                        <div
+                            className="absolute inset-0 opacity-15 pointer-events-none"
+                            style={{
+                                backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.4) 1px, transparent 0)`,
+                                backgroundSize: '32px 32px',
+                            }}
+                        />
+                        <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+                        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+
+                        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl relative z-10">
+                            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold text-amber-300 tracking-wider uppercase mb-5 shadow-sm">
+                                <BadgeIcon className="w-3.5 h-3.5 text-amber-400" />
+                                <span>Aksi Nyata Pemuda Bersinar</span>
+                            </div>
+
+                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-4">
+                                Siap Mengambil Peran Bersama KIPAN RI?
+                            </h2>
+
+                            <p className="text-sm sm:text-base text-blue-100/90 leading-relaxed max-w-2xl mx-auto mb-9">
+                                Bergabunglah bersama lebih dari 50.000 kader inti pemuda di 38 provinsi seluruh Indonesia. Lindungi sahabat sebaya, wujudkan lingkungan sehat, kreatif, dan bersih dari narkotika.
+                            </p>
+
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                <a
+                                    href="/kontak"
+                                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-amber-400 hover:bg-amber-300 text-[#0D3F70] text-sm font-bold uppercase tracking-wider transition-all shadow-md hover:scale-105 active:scale-95"
+                                >
+                                    <PersonIcon className="w-4 h-4" />
+                                    <span>Daftar Jadi Kader Inti</span>
+                                </a>
+
+                                <a
+                                    href="/kontak"
+                                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition-all border border-white/20 hover:border-white/40"
+                                >
+                                    <DownloadIcon className="w-4 h-4" />
+                                    <span>Unduh Berkas Profil Organisasi</span>
+                                </a>
+                            </div>
+
+                            {/* Trust badges row */}
+                            <div className="mt-12 pt-8 border-t border-white/10 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs text-blue-200/80">
+                                <span className="flex items-center gap-2">
+                                    <CheckCircledIcon className="w-4 h-4 text-emerald-400" />
+                                    Sertifikasi Kader Resmi Kemenpora
+                                </span>
+                                <span className="flex items-center gap-2">
+                                    <CheckCircledIcon className="w-4 h-4 text-emerald-400" />
+                                    Kurikulum P4GN Terpadu BNN RI
+                                </span>
+                                <span className="flex items-center gap-2">
+                                    <CheckCircledIcon className="w-4 h-4 text-emerald-400" />
+                                    Jejaring 38 Provinsi &amp; 514 Daerah
+                                </span>
                             </div>
                         </div>
                     </section>
