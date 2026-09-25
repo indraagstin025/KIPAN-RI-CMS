@@ -248,195 +248,103 @@ export default function About() {
                 <Navbar />
 
                 {/* ========================================================= */}
-                {/* HERO SECTION TENTANG KAMI (HERO RESMI DENGAN LATAR NAVY)   */}
+                {/* HERO SECTION TENTANG KAMI (HERO SIMPLE & ELEGAN)          */}
                 {/* ========================================================= */}
                 <section
-                    className="relative pt-36 sm:pt-40 lg:pt-44 pb-16 lg:pb-20 text-white overflow-hidden border-b border-blue-900/60"
+                    className="relative pt-36 sm:pt-40 pb-14 sm:pb-16 text-white overflow-hidden border-b border-blue-900/60"
                     style={{
                         backgroundColor: '#0D3F70',
-                        backgroundImage: 'linear-gradient(180deg, #061C33 0%, #0D3F70 50%, #0A3055 100%)',
+                        backgroundImage: 'linear-gradient(180deg, #061C33 0%, #0D3F70 60%, #0A3055 100%)',
                         color: '#ffffff',
                     }}
                 >
                     {/* Subtle Grid Texture */}
                     <div
-                        className="absolute inset-0 opacity-15 pointer-events-none"
+                        className="absolute inset-0 opacity-10 pointer-events-none"
                         style={{
                             backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.4) 1px, transparent 0)`,
                             backgroundSize: '32px 32px',
                         }}
                     />
 
-                    {/* Ambient Glows */}
-                    <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl pointer-events-none" />
-                    <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+                    {/* Ambient Glow */}
+                    <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+                    <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
-                    <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center relative z-10">
                         {/* Breadcrumbs */}
-                        <div className="flex items-center gap-2 text-xs font-semibold text-blue-200/90 mb-4">
+                        <div className="inline-flex items-center gap-2 text-xs font-semibold text-blue-200/80 mb-4">
                             <a href="/" className="hover:text-amber-300 transition-colors">Beranda</a>
-                            <span className="text-blue-300/60">/</span>
+                            <span className="text-blue-300/40">/</span>
                             <span className="text-amber-400 font-bold">Tentang Kami</span>
                         </div>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-                            {/* Left Column: Hero Text & Actions */}
-                            <div className="lg:col-span-7">
-                                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold text-amber-300 tracking-wider uppercase mb-4 shadow-sm">
-                                    <BadgeIcon className="w-3.5 h-3.5 text-amber-400" />
-                                    <span>Gerakan Pemuda Binaan Kemenpora &amp; BNN RI</span>
-                                </div>
+                        {/* Title */}
+                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-4">
+                            Tentang KIPAN Republik Indonesia
+                        </h1>
 
-                                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-4">
-                                    Membangun Generasi Tangguh, Bebas Narkoba Menuju Indonesia Emas
-                                </h1>
+                        {/* Subtitle */}
+                        <p
+                            className="text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-8"
+                            style={{ color: 'rgba(219, 234, 254, 0.9)' }}
+                        >
+                            Gerakan kepemudaan strategis binaan resmi Kementerian Pemuda dan Olahraga (Kemenpora RI) bersama Badan Narkotika Nasional (BNN RI) untuk menggerakkan pemuda sebagai garda terdepan pencegahan narkotika di 38 provinsi.
+                        </p>
 
-                                <p className="text-sm sm:text-base text-blue-100/90 leading-relaxed mb-8 max-w-2xl">
-                                    Kader Inti Pemuda Anti Narkoba (KIPAN) Republik Indonesia adalah wadah strategis kepemudaan 
-                                    resmi yang mengintegrasikan arahan pemerintah pusat dengan kepeloporan kader muda di 38 provinsi 
-                                    sebagai benteng moral bangsa.
-                                </p>
-
-                                {/* Hero CTAs */}
-                                <div className="flex flex-wrap items-center gap-3.5 mb-8">
-                                    <button
-                                        onClick={() => scrollToSection('struktur')}
-                                        className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-amber-400 hover:bg-amber-300 text-[#0D3F70] text-xs font-black uppercase tracking-wider transition-all shadow-md hover:scale-105"
-                                    >
-                                        <PersonIcon className="w-4 h-4" />
-                                        <span>Lihat Struktur Organisasi</span>
-                                        <ArrowDownIcon className="w-4 h-4" />
-                                    </button>
-
-                                    <button
-                                        onClick={() => scrollToSection('legalitas')}
-                                        className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all border border-white/20"
-                                    >
-                                        <FileTextIcon className="w-4 h-4" />
-                                        <span>Landasan Hukum &amp; Legalitas</span>
-                                    </button>
-                                </div>
-
-                                {/* Hero Badges Info Bar */}
-                                <div className="pt-6 border-t border-white/15 flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-blue-200/90">
-                                    <div className="flex items-center gap-2 font-medium">
-                                        <CheckCircledIcon className="w-4 h-4 text-emerald-400" />
-                                        <span>Dasar Hukum UU No. 40/2009</span>
-                                    </div>
-                                    <div className="flex items-center gap-2 font-medium">
-                                        <CheckCircledIcon className="w-4 h-4 text-emerald-400" />
-                                        <span>Inpres No. 2/2020 (P4GN)</span>
-                                    </div>
-                                    <div className="flex items-center gap-2 font-medium">
-                                        <CheckCircledIcon className="w-4 h-4 text-emerald-400" />
-                                        <span>38 Provinsi &amp; 514 Kab/Kota</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Right Column: Institutional Identity Card */}
-                            <div className="lg:col-span-5">
-                                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 sm:p-7 shadow-2xl relative">
-                                    <div className="flex items-center justify-between pb-4 border-b border-white/15 mb-5">
-                                        <div className="flex items-center gap-2 text-xs font-bold text-amber-300 uppercase tracking-wider">
-                                            <LayersIcon className="w-4 h-4" />
-                                            <span>Sekretariat Nasional</span>
-                                        </div>
-                                        <span className="text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 px-2 py-0.5 rounded-full">
-                                            Status Resmi Aktif
-                                        </span>
-                                    </div>
-
-                                    {/* Logos Collaboration Showcase */}
-                                    <div className="flex items-center justify-center gap-4 py-4 mb-5 bg-white/5 rounded-2xl border border-white/10">
-                                        <div className="w-16 h-16 rounded-xl bg-white p-1.5 shadow-sm flex items-center justify-center">
-                                            <img
-                                                src="/logo-kipan.jpg"
-                                                alt="Logo KIPAN RI"
-                                                className="w-full h-full object-contain"
-                                            />
-                                        </div>
-                                        <div className="text-xl font-bold text-white/50">+</div>
-                                        <div className="w-16 h-16 rounded-xl bg-white p-1.5 shadow-sm flex items-center justify-center">
-                                            <img
-                                                src="/logo-bnn.jpg"
-                                                alt="Logo BNN RI"
-                                                className="w-full h-full object-contain"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="space-y-3 text-xs">
-                                        <div className="p-3 bg-white/10 rounded-xl border border-white/10 flex items-start gap-3">
-                                            <span className="w-6 h-6 rounded-full bg-amber-400 text-[#0D3F70] flex items-center justify-center font-bold text-[11px] shrink-0">
-                                                1
-                                            </span>
-                                            <div>
-                                                <div className="font-bold text-white">Pembina Utama Negara</div>
-                                                <div className="text-blue-200/80 text-[11px]">Kementerian Pemuda dan Olahraga RI</div>
-                                            </div>
-                                        </div>
-
-                                        <div className="p-3 bg-white/10 rounded-xl border border-white/10 flex items-start gap-3">
-                                            <span className="w-6 h-6 rounded-full bg-amber-400 text-[#0D3F70] flex items-center justify-center font-bold text-[11px] shrink-0">
-                                                2
-                                            </span>
-                                            <div>
-                                                <div className="font-bold text-white">Pembina Teknis P4GN</div>
-                                                <div className="text-blue-200/80 text-[11px]">Badan Narkotika Nasional Republik Indonesia</div>
-                                            </div>
-                                        </div>
-
-                                        <div className="p-3 bg-white/10 rounded-xl border border-white/10 flex items-start gap-3">
-                                            <span className="w-6 h-6 rounded-full bg-amber-400 text-[#0D3F70] flex items-center justify-center font-bold text-[11px] shrink-0">
-                                                3
-                                            </span>
-                                            <div>
-                                                <div className="font-bold text-white">Pelaksana Aksi Daerah</div>
-                                                <div className="text-blue-200/80 text-[11px]">Koordinator Wilayah di 38 Provinsi Nusantara</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Quick Jump Subnav Bar */}
-                        <div className="mt-12 pt-6 border-t border-white/15 flex flex-wrap items-center gap-2 sm:gap-3">
-                            <span className="text-xs font-bold text-blue-200/80 mr-2 uppercase tracking-wider">
-                                Menu Halaman:
-                            </span>
+                        {/* Simple Navigation Pills */}
+                        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 pt-2">
                             <button
                                 onClick={() => scrollToSection('struktur')}
-                                className="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-amber-400 text-[#0D3F70] hover:bg-amber-300 transition-colors flex items-center gap-1.5 shadow-xs"
+                                className="px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm hover:scale-105 active:scale-95"
+                                style={{
+                                    backgroundColor: '#FACB04',
+                                    color: '#0D3F70',
+                                }}
                             >
                                 <PersonIcon className="w-3.5 h-3.5" />
                                 <span>1. Struktur Organisasi (Utama)</span>
                             </button>
                             <button
                                 onClick={() => scrollToSection('legalitas')}
-                                className="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white/10 text-white hover:bg-white/20 transition-colors flex items-center gap-1.5"
+                                className="px-4 py-2 rounded-full text-xs font-medium text-white transition-all hover:bg-white/20 hover:scale-105 active:scale-95"
+                                style={{
+                                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                                }}
                             >
                                 <FileTextIcon className="w-3.5 h-3.5" />
                                 <span>2. Landasan Hukum</span>
                             </button>
                             <button
                                 onClick={() => scrollToSection('visi-misi')}
-                                className="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white/10 text-white hover:bg-white/20 transition-colors flex items-center gap-1.5"
+                                className="px-4 py-2 rounded-full text-xs font-medium text-white transition-all hover:bg-white/20 hover:scale-105 active:scale-95"
+                                style={{
+                                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                                }}
                             >
                                 <TargetIcon className="w-3.5 h-3.5" />
                                 <span>3. Visi &amp; Misi</span>
                             </button>
                             <button
                                 onClick={() => scrollToSection('filosofi')}
-                                className="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white/10 text-white hover:bg-white/20 transition-colors flex items-center gap-1.5"
+                                className="px-4 py-2 rounded-full text-xs font-medium text-white transition-all hover:bg-white/20 hover:scale-105 active:scale-95"
+                                style={{
+                                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                                }}
                             >
                                 <BookmarkFilledIcon className="w-3.5 h-3.5" />
                                 <span>4. Filosofi Lambang</span>
                             </button>
                             <button
                                 onClick={() => scrollToSection('jejaring')}
-                                className="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white/10 text-white hover:bg-white/20 transition-colors flex items-center gap-1.5"
+                                className="px-4 py-2 rounded-full text-xs font-medium text-white transition-all hover:bg-white/20 hover:scale-105 active:scale-95"
+                                style={{
+                                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                                }}
                             >
                                 <GlobeIcon className="w-3.5 h-3.5" />
                                 <span>5. Jejaring 38 Provinsi</span>
