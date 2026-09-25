@@ -250,7 +250,14 @@ export default function About() {
                 {/* ========================================================= */}
                 {/* HERO SECTION TENTANG KAMI (HERO RESMI DENGAN LATAR NAVY)   */}
                 {/* ========================================================= */}
-                <section className="relative pt-36 sm:pt-40 lg:pt-44 pb-16 lg:pb-20 bg-gradient-to-b from-[#061C33] via-[#0D3F70] to-[#0A3055] text-white overflow-hidden border-b border-blue-900/60">
+                <section
+                    className="relative pt-36 sm:pt-40 lg:pt-44 pb-16 lg:pb-20 text-white overflow-hidden border-b border-blue-900/60"
+                    style={{
+                        backgroundColor: '#0D3F70',
+                        backgroundImage: 'linear-gradient(180deg, #061C33 0%, #0D3F70 50%, #0A3055 100%)',
+                        color: '#ffffff',
+                    }}
+                >
                     {/* Subtle Grid Texture */}
                     <div
                         className="absolute inset-0 opacity-15 pointer-events-none"
@@ -1032,7 +1039,14 @@ export default function About() {
                     </section>
 
                     {/* BAGIAN 6: CALL TO ACTION (CTA) TERPADU */}
-                    <section className="bg-gradient-to-b from-[#092B4D] via-[#061C33] to-[#041324] text-white py-20 lg:py-24 border-t border-blue-900/60 relative overflow-hidden">
+                    <section
+                        className="py-20 lg:py-24 border-t border-blue-900/60 relative overflow-hidden"
+                        style={{
+                            backgroundColor: '#0D3F70',
+                            backgroundImage: 'linear-gradient(180deg, #092B4D 0%, #061C33 50%, #041324 100%)',
+                            color: '#ffffff',
+                        }}
+                    >
                         {/* Background accents */}
                         <div
                             className="absolute inset-0 opacity-15 pointer-events-none"
@@ -1045,23 +1059,40 @@ export default function About() {
                         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
                         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl relative z-10">
-                            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold text-amber-300 tracking-wider uppercase mb-5 shadow-sm">
+                            <div
+                                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase mb-5 shadow-sm"
+                                style={{
+                                    backgroundColor: 'rgba(255, 255, 255, 0.12)',
+                                    color: '#FACB04',
+                                    border: '1px solid rgba(255, 255, 255, 0.25)',
+                                }}
+                            >
                                 <BadgeIcon className="w-3.5 h-3.5 text-amber-400" />
                                 <span>Aksi Nyata Pemuda Bersinar</span>
                             </div>
 
-                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-4">
+                            <h2
+                                className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight mb-4"
+                                style={{ color: '#ffffff' }}
+                            >
                                 Siap Mengambil Peran Bersama KIPAN RI?
                             </h2>
 
-                            <p className="text-sm sm:text-base text-blue-100/90 leading-relaxed max-w-2xl mx-auto mb-9">
+                            <p
+                                className="text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-9"
+                                style={{ color: 'rgba(219, 234, 254, 0.95)' }}
+                            >
                                 Bergabunglah bersama lebih dari 50.000 kader inti pemuda di 38 provinsi seluruh Indonesia. Lindungi sahabat sebaya, wujudkan lingkungan sehat, kreatif, dan bersih dari narkotika.
                             </p>
 
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                                 <a
                                     href="/kontak"
-                                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-amber-400 hover:bg-amber-300 text-[#0D3F70] text-sm font-bold uppercase tracking-wider transition-all shadow-md hover:scale-105 active:scale-95"
+                                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-sm font-bold uppercase tracking-wider transition-all shadow-md hover:scale-105 active:scale-95"
+                                    style={{
+                                        backgroundColor: '#FACB04',
+                                        color: '#0D3F70',
+                                    }}
                                 >
                                     <PersonIcon className="w-4 h-4" />
                                     <span>Daftar Jadi Kader Inti</span>
@@ -1069,7 +1100,12 @@ export default function About() {
 
                                 <a
                                     href="/kontak"
-                                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition-all border border-white/20 hover:border-white/40"
+                                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold transition-all hover:scale-105 active:scale-95"
+                                    style={{
+                                        backgroundColor: 'rgba(255, 255, 255, 0.12)',
+                                        color: '#ffffff',
+                                        border: '1px solid rgba(255, 255, 255, 0.25)',
+                                    }}
                                 >
                                     <DownloadIcon className="w-4 h-4" />
                                     <span>Unduh Berkas Profil Organisasi</span>
@@ -1077,7 +1113,13 @@ export default function About() {
                             </div>
 
                             {/* Trust badges row */}
-                            <div className="mt-12 pt-8 border-t border-white/10 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs text-blue-200/80">
+                            <div
+                                className="mt-12 pt-8 border-t flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs"
+                                style={{
+                                    borderColor: 'rgba(255, 255, 255, 0.15)',
+                                    color: 'rgba(191, 219, 254, 0.85)',
+                                }}
+                            >
                                 <span className="flex items-center gap-2">
                                     <CheckCircledIcon className="w-4 h-4 text-emerald-400" />
                                     Sertifikasi Kader Resmi Kemenpora
@@ -1093,6 +1135,7 @@ export default function About() {
                             </div>
                         </div>
                     </section>
+
                 </main>
 
                 <Footer />
