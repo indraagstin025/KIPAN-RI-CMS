@@ -126,5 +126,10 @@ html, body {
   animation-play-state: paused;
 }
 
+/* Hide Leaflet default attribution badge/watermark */
+.leaflet-control-attribution {
+  display: none !important;
+}
+
 
 

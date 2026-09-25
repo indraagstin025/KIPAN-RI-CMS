@@ -87,6 +87,7 @@ export default function MapDataSection() {
                     maxZoom: 12,
                     scrollWheelZoom: false,
                     zoomControl: false,
+                    attributionControl: false,
                 });
 
                 // Zoom control top-left
@@ -95,7 +96,7 @@ export default function MapDataSection() {
                 // OpenStreetMap Tile Layer
                 window.L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     maxZoom: 18,
-                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                    attribution: '',
                 }).addTo(map);
 
                 // Add interactive pins across Indonesia
@@ -300,10 +301,6 @@ export default function MapDataSection() {
                             </div>
                         </div>
 
-                        {/* Attribution badge bottom-left */}
-                        <div className="absolute bottom-2.5 left-2.5 z-10 bg-white/90 backdrop-blur-xs px-2.5 py-0.5 rounded-md text-[10px] text-slate-500 shadow-2xs border border-slate-200">
-                            Peta: <strong>OpenStreetMap</strong>
-                        </div>
                     </div>
                 </ScrollReveal>
             </div>
