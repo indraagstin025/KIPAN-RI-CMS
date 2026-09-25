@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     ArrowRightIcon,
@@ -8,6 +8,57 @@ import {
     ChevronRightIcon,
 } from '@radix-ui/react-icons';
 import { HERO_CONTENT } from '@/data/landing-content';
+
+function AnimatedCounter({
+    target,
+    duration = 2000,
+    suffix = '',
+}: {
+    target: number;
+    duration?: number;
+    suffix?: string;
+}) {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        let startTime: number | null = null;
+        let animationFrameId: number;
+
+        // Smooth cubic ease-out deceleration curve
+        const easeOutExpo = (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
+
+        const step = (timestamp: number) => {
+            if (!startTime) startTime = timestamp;
+            const elapsed = timestamp - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = easeOutExpo(progress);
+
+            setCount(Math.round(eased * target));
+
+            if (progress < 1) {
+                animationFrameId = requestAnimationFrame(step);
+            } else {
+                setCount(target);
+            }
+        };
+
+        const timer = setTimeout(() => {
+            animationFrameId = requestAnimationFrame(step);
+        }, 180);
+
+        return () => {
+            clearTimeout(timer);
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+        };
+    }, [target, duration]);
+
+    return (
+        <span>
+            {count.toLocaleString('id-ID')}
+            {suffix}
+        </span>
+    );
+}
 
 interface FeaturedEvent {
     id: string;
@@ -84,7 +135,7 @@ export default function Hero() {
     return (
         <section
             id="beranda"
-            className="relative pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 bg-gradient-to-b from-[#061C33] via-[#0D3F70] to-[#0A3055] text-white overflow-hidden border-b border-blue-900/50"
+            className="relative min-h-screen flex flex-col justify-center pt-20 sm:pt-24 lg:pt-28 pb-10 sm:pb-14 bg-gradient-to-b from-[#061C33] via-[#0D3F70] to-[#0A3055] text-white overflow-hidden"
         >
             {/* Subtle Youth Network Graphic Grid Background */}
             <div
@@ -128,8 +179,8 @@ export default function Hero() {
                         <div className="w-full max-w-xl bg-white rounded-2xl p-5 sm:p-6 shadow-2xl border border-white/20 text-slate-800 mb-6 hover:-translate-y-1 hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)] transition-all duration-300">
                             <div className="grid grid-cols-2 gap-4 pb-4 border-b border-slate-100">
                                 <div>
-                                    <div className="text-2xl sm:text-3xl font-extrabold text-kipan-navy tracking-tight">
-                                        50.000+
+                                    <div className="text-2xl sm:text-3xl font-extrabold text-kipan-navy tracking-tight font-mono">
+                                        <AnimatedCounter target={50000} duration={2200} suffix="+" />
                                     </div>
                                     <div className="text-xs font-bold text-slate-800 uppercase tracking-wider mt-0.5">
                                         Kader Inti Terlatih
@@ -139,14 +190,14 @@ export default function Hero() {
                                     </div>
                                 </div>
                                 <div className="border-l border-slate-200/80 pl-4">
-                                    <div className="text-2xl sm:text-3xl font-extrabold text-kipan-blue tracking-tight">
-                                        38 Provinsi
+                                    <div className="text-2xl sm:text-3xl font-extrabold text-kipan-blue tracking-tight font-mono">
+                                        <AnimatedCounter target={38} duration={1600} /> Provinsi
                                     </div>
                                     <div className="text-xs font-bold text-slate-800 uppercase tracking-wider mt-0.5">
                                         Jejaring Nasional
                                     </div>
                                     <div className="text-[11px] text-slate-500 mt-0.5">
-                                        514 Pengurus Kab. &amp; Kota
+                                        <AnimatedCounter target={514} duration={2000} /> Pengurus Kab. &amp; Kota
                                     </div>
                                 </div>
                             </div>
