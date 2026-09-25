@@ -85,7 +85,7 @@ export default function Hero() {
     return (
         <section
             id="beranda"
-            className="relative pt-32 sm:pt-36 lg:pt-40 pb-16 sm:pb-20 lg:pb-24 bg-gradient-to-b from-[#061C33] via-[#0D3F70] to-[#0A3055] text-white overflow-hidden border-b border-blue-900/50"
+            className="relative pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 bg-gradient-to-b from-[#061C33] via-[#0D3F70] to-[#0A3055] text-white overflow-hidden border-b border-blue-900/50"
         >
             {/* Subtle Youth Network Graphic Grid Background */}
             <div
@@ -124,70 +124,31 @@ export default function Hero() {
                         </h2>
 
                         {/* Subheadline with Vertical Gold Accent Bar */}
-                        <div className="border-l-4 border-kipan-yellow pl-4 mb-6">
+                        <div className="border-l-4 border-kipan-yellow pl-4 mb-8">
                             <p className="text-base sm:text-lg text-blue-100/90 leading-relaxed font-normal max-w-xl">
                                 {HERO_CONTENT.subheadline}
                             </p>
                         </div>
 
-                        {/* Floating White Quick Stats Card (Signature Youth Innovation Element with Hover Elevation) */}
-                        <div className="w-full max-w-xl bg-white rounded-2xl p-5 sm:p-6 shadow-2xl border border-white/20 text-slate-800 mb-6 hover:-translate-y-1 hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)] transition-all duration-300">
-                            <div className="grid grid-cols-2 gap-4 pb-4 border-b border-slate-100">
-                                <div>
-                                    <div className="text-2xl sm:text-3xl font-extrabold text-kipan-navy tracking-tight">
-                                        50.000+
-                                    </div>
-                                    <div className="text-xs font-bold text-slate-800 uppercase tracking-wider mt-0.5">
-                                        Kader Inti Terlatih
-                                    </div>
-                                    <div className="text-[11px] text-slate-500 mt-0.5">
-                                        Pelopor P4GN di Lingkungan Pemuda
-                                    </div>
-                                </div>
-                                <div className="border-l border-slate-200/80 pl-4">
-                                    <div className="text-2xl sm:text-3xl font-extrabold text-kipan-blue tracking-tight">
-                                        38 Provinsi
-                                    </div>
-                                    <div className="text-xs font-bold text-slate-800 uppercase tracking-wider mt-0.5">
-                                        Jejaring Nasional
-                                    </div>
-                                    <div className="text-[11px] text-slate-500 mt-0.5">
-                                        514 Pengurus Kab. &amp; Kota
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Card Action Link */}
-                            <a
-                                href="/tentang"
-                                className="pt-3 flex items-center justify-between text-xs font-bold text-kipan-blue hover:text-blue-800 group"
-                            >
-                                <span>Jelajahi Profil Gerakan &amp; Legalitas KIPAN</span>
-                                <span className="inline-flex items-center gap-1 group-hover:translate-x-1.5 transition-transform duration-200">
-                                    Pelajari Selengkapnya <ArrowRightIcon className="w-4 h-4" />
-                                </span>
-                            </a>
-                        </div>
-
-                        {/* Action Buttons Under Card (Youth Innovation Outlined Pills) */}
+                        {/* Action Buttons Directly Under Description */}
                         <div className="flex flex-wrap items-center gap-3">
                             <a
                                 href="/tentang"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/25 rounded-full backdrop-blur-xs transition-all hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/25 rounded-full backdrop-blur-xs transition-all hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-xs"
                             >
                                 <span>Tentang Organisasi</span>
                             </a>
 
                             <a
-                                href="/agenda"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/25 rounded-full backdrop-blur-xs transition-all hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                                href="/program"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/25 rounded-full backdrop-blur-xs transition-all hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-xs"
                             >
-                                <span>Jadwal Agenda</span>
+                                <span>Program &amp; Aksi</span>
                             </a>
 
                             <a
                                 href="/kontak"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold text-kipan-navy bg-kipan-yellow hover:bg-amber-400 rounded-full transition-all hover:scale-105 active:scale-95 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-yellow"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-bold text-kipan-navy bg-kipan-yellow hover:bg-amber-400 rounded-full transition-all hover:scale-105 active:scale-95 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-yellow"
                             >
                                 <span>Daftar Jadi Kader</span>
                                 <ArrowRightIcon className="w-3.5 h-3.5" />
