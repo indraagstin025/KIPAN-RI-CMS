@@ -22,6 +22,7 @@ export default function Welcome() {
                 <main className="flex-1">
                     <Hero />
                     <CampaignSlogan />
+                    <PartnersSection />
                     <AboutSection />
                     <ProgramSection />
                     <NewsSection />
@@ -29,7 +30,6 @@ export default function Welcome() {
                     <PeopleSection />
                     <MapDataSection />
                     <GallerySection />
-                    <PartnersSection />
                     <CtaSection />
                 </main>
                 <Footer />
