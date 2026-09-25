@@ -4,7 +4,6 @@ import Hero from '@/Components/Landing/Hero';
 import CampaignSlogan from '@/Components/Landing/CampaignSlogan';
 import AboutSection from '@/Components/Landing/AboutSection';
 import StatsSection from '@/Components/Landing/StatsSection';
-import FocusSection from '@/Components/Landing/FocusSection';
 import ProgramSection from '@/Components/Landing/ProgramSection';
 import NetworkSection from '@/Components/Landing/NetworkSection';
 import NewsSection from '@/Components/Landing/NewsSection';
@@ -26,7 +25,6 @@ export default function Welcome() {
                     <CampaignSlogan />
                     <AboutSection />
                     <StatsSection />
-                    <FocusSection />
                     <ProgramSection />
                     <NetworkSection />
                     <NewsSection />
