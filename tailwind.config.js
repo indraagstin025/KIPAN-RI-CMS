@@ -21,6 +21,18 @@ export default {
                 playfair: ['Playfair Display', 'serif'],
             },
             colors: {
+                kipan: {
+                    navy: '#0D3F70',
+                    blue: '#0E6CAC',
+                    yellow: '#FACB04',
+                    red: '#A51314',
+                    green: '#3A7662',
+                    'soft-blue': '#F2F7FB',
+                    'soft-gray': '#F5F6F8',
+                    'text-dark': '#172033',
+                    'text-muted': '#667085',
+                    border: '#E5E7EB',
+                },
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',
                 card: {
