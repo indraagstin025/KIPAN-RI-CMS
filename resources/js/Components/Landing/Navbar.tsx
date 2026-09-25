@@ -22,29 +22,29 @@ interface NavGroup {
 const NAV_GROUPS: NavGroup[] = [
     {
         label: 'Beranda',
-        href: '#beranda',
+        href: '/',
     },
     {
         label: 'Tentang Kami',
         items: [
             {
                 label: 'Profil KIPAN',
-                href: '#tentang',
+                href: '/tentang',
                 description: 'Latar belakang, visi, misi, dan dasar hukum organisasi',
             },
             {
                 label: 'Fokus Strategis',
-                href: '#fokus',
+                href: '/tentang/fokus',
                 description: '4 pilar pencegahan, kaderisasi, dan aksi positif pemuda',
             },
             {
                 label: 'Tokoh & Penggerak',
-                href: '#tokoh',
+                href: '/tentang/tokoh',
                 description: 'Pimpinan pusat, dewan pembina, dan koordinator wilayah',
             },
             {
                 label: 'Jejaring 38 Provinsi',
-                href: '#jejaring',
+                href: '/tentang/jejaring',
                 description: 'Sebaran kader dan pengurus daerah di seluruh Indonesia',
             },
         ],
@@ -54,17 +54,17 @@ const NAV_GROUPS: NavGroup[] = [
         items: [
             {
                 label: 'Program Unggulan',
-                href: '#program',
+                href: '/program',
                 description: 'Kaderisasi inti, advokasi sebaya, dan wirausaha pemuda',
             },
             {
                 label: 'Agenda Kegiatan',
-                href: '#agenda',
+                href: '/agenda',
                 description: 'Jadwal pelatihan nasional, jambore, dan sosialisasi',
             },
             {
                 label: 'Kampanye Nasional P4GN',
-                href: '#kampanye',
+                href: '/kampanye',
                 description: 'Gerakan Pemuda Bergerak Indonesia Bersinar',
             },
         ],
@@ -74,24 +74,24 @@ const NAV_GROUPS: NavGroup[] = [
         items: [
             {
                 label: 'Berita & Kabar Aksi',
-                href: '#berita',
+                href: '/berita',
                 description: 'Informasi terkini kegiatan kader di berbagai daerah',
             },
             {
                 label: 'Galeri Dokumentasi',
-                href: '#galeri',
+                href: '/galeri',
                 description: 'Dokumentasi foto aksi lapangan pemuda anti narkoba',
             },
             {
                 label: 'Mitra & Kolaborasi',
-                href: '#mitra',
+                href: '/mitra',
                 description: 'Kemenpora RI, BNN RI, dan pemangku kepentingan',
             },
         ],
     },
     {
         label: 'Kontak',
-        href: '#kontak',
+        href: '/kontak',
     },
 ];
 
@@ -137,7 +137,7 @@ export default function Navbar() {
                 <nav className="flex items-center justify-between" aria-label="Navigasi Utama KIPAN RI">
                     {/* Brand / Logo (Left) */}
                     <a
-                        href="#beranda"
+                        href="/"
                         className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-yellow rounded-lg"
                     >
                         <div className="w-10 h-10 lg:w-11 lg:h-11 rounded-full overflow-hidden bg-white p-0.5 border border-white/30 shrink-0 shadow-sm transition-transform group-hover:scale-105">
@@ -242,7 +242,7 @@ export default function Navbar() {
 
                         {/* Gold Pill CTA */}
                         <a
-                            href="#kontak"
+                            href="/kontak"
                             className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-kipan-navy bg-kipan-yellow hover:bg-amber-400 rounded-full transition-colors shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-yellow"
                         >
                             <span>Daftar Kader</span>
@@ -316,7 +316,7 @@ export default function Navbar() {
                             Masuk Portal KIPAN
                         </a>
                         <a
-                            href="#kontak"
+                            href="/kontak"
                             onClick={() => setMobileOpen(false)}
                             className="block w-full py-2.5 text-center text-xs font-bold text-kipan-navy bg-kipan-yellow hover:bg-amber-400 rounded-full shadow-xs transition-colors"
                         >
