@@ -97,3 +97,13 @@ html, body {
   padding-right: env(safe-area-inset-right, 0px);
 }
 
+/* Hide scrollbar for clean carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
