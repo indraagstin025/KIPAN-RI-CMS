@@ -143,7 +143,7 @@ export default function AgendaSection() {
                                                 Terbuka untuk Kader &amp; Umum
                                             </span>
                                             <a
-                                                href="/program"
+                                                href="/agenda"
                                                 className="inline-flex items-center gap-1 text-xs font-bold text-kipan-blue hover:text-kipan-navy transition-colors group-hover:underline"
                                             >
                                                 <span>Detail</span>
@@ -191,7 +191,7 @@ export default function AgendaSection() {
 
                         <div className="flex items-center gap-3 shrink-0 w-full sm:w-auto justify-center">
                             <a
-                                href="/program"
+                                href="/agenda"
                                 className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 hover:text-kipan-blue hover:border-kipan-blue bg-white shadow-2xs transition-all"
                             >
                                 Kalender 2026

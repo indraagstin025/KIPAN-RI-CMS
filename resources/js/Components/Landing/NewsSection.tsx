@@ -52,7 +52,7 @@ const NEWS_EVENT_ITEMS: NewsEventCard[] = [
         category: 'Pertukaran Pemuda',
         title: 'SELEKSI CALON PESERTA PERTUKARAN PEMUDA BERSINAR TINGKAT NASIONAL 2026',
         date: '26 September 2026',
-        href: '/program',
+        href: '/agenda',
         posterTheme: 'from-blue-950 via-slate-900 to-[#0D3F70]',
         posterHighlight: 'PERTUKARAN PEMUDA',
         posterSubtitle: 'Pendaftaran Delegasi 38 Provinsi',
@@ -76,7 +76,7 @@ const NEWS_EVENT_ITEMS: NewsEventCard[] = [
         category: 'Deklarasi Akbar',
         title: 'APEL HARI SUMPAH PEMUDA & DEKLARASI PEMUDA BERSINAR SE-INDONESIA 2026',
         date: '28 Oktober 2026',
-        href: '/program',
+        href: '/agenda',
         posterTheme: 'from-[#0A335C] via-blue-900 to-indigo-950',
         posterHighlight: 'HARI SUMPAH PEMUDA',
         posterSubtitle: 'Deklarasi Pemuda Bersih Narkoba',
@@ -100,7 +100,7 @@ const NEWS_EVENT_ITEMS: NewsEventCard[] = [
         category: 'Jambore Relawan',
         title: 'JAMBORE RELAWAN PEMUDA BERSINAR SE-INDONESIA 2026 DI BANDUNG JAWA BARAT',
         date: '10 - 12 November 2026',
-        href: '/program',
+        href: '/agenda',
         posterTheme: 'from-[#0D3F70] via-blue-950 to-slate-900',
         posterHighlight: 'JAMBORE RELAWAN',
         posterSubtitle: 'Konsolidasi 1.500 Kader Pemuda',
@@ -327,7 +327,7 @@ export default function NewsSection() {
                         </a>
 
                         <a
-                            href="/program"
+                            href="/agenda"
                             className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-blue-50 hover:bg-kipan-blue hover:text-white text-xs font-bold text-kipan-blue transition-colors shadow-2xs"
                         >
                             <span>Semua Acara</span>

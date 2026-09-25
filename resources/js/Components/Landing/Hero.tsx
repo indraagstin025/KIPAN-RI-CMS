@@ -87,7 +87,7 @@ const FEATURED_EVENTS: FeaturedEvent[] = [
         snippet:
             'Pembekalan terpadu wawasan bahaya narkotika, advokasi regulasi P4GN, dan strategi aksi pencegahan terpadu di lingkungan sekolah dan kampus.',
         image: '/logo-kipan.jpg',
-        href: '/program',
+        href: '/agenda',
     },
     {
         id: 'event-2',
@@ -101,7 +101,7 @@ const FEATURED_EVENTS: FeaturedEvent[] = [
         snippet:
             'Konsolidasi akbar kader pelopor P4GN, festival inovasi karya kreatif anak muda, olahraga sehat, dan deklarasi pemuda bersih narkoba.',
         image: '/logo-kipan.jpg',
-        href: '/program',
+        href: '/agenda',
     },
     {
         id: 'event-3',
@@ -115,7 +115,7 @@ const FEATURED_EVENTS: FeaturedEvent[] = [
         snippet:
             'Aksi sosialisasi tatap muka peer-to-peer dan pembentukan gugus tugas relawan anti narkoba di lingkungan SMA/SMK dan perguruan tinggi.',
         image: '/logo-kipan.jpg',
-        href: '/program',
+        href: '/agenda',
     },
 ];
 

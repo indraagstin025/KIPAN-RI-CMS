@@ -24,6 +24,14 @@ Route::get('/program', function () {
     ]);
 })->name('programs');
 
+Route::get('/agenda', function () {
+    return Inertia::render('PlaceholderPage', [
+        'title' => 'Agenda & Kalender Kegiatan Nasional',
+        'subtitle' => 'Jadwal pelatihan nasional, jambore pemuda bersinar, sosialisasi sekolah/kampus, dan kalender aksi P4GN di 38 provinsi.',
+        'category' => 'Agenda',
+    ]);
+})->name('agenda');
+
 Route::get('/berita', function () {
     return Inertia::render('PlaceholderPage', [
         'title' => 'Berita & Kabar Aksi Daerah',
@@ -52,7 +60,6 @@ Route::get('/kontak', function () {
 Route::redirect('/tentang/fokus', '/tentang');
 Route::redirect('/tentang/tokoh', '/tentang#tokoh');
 Route::redirect('/tentang/jejaring', '/tentang#jejaring');
-Route::redirect('/agenda', '/program#agenda');
-Route::redirect('/kampanye', '/program#kampanye');
+Route::redirect('/kampanye', '/program');
 Route::redirect('/mitra', '/#mitra');
 
