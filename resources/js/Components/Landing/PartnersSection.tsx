@@ -212,11 +212,6 @@ export default function PartnersSection() {
                         </div>
                     </div>
                 </ScrollReveal>
-
-                {/* Subtle interaction tip */}
-                <div className="text-center mt-4 text-[11px] text-slate-400 font-medium">
-                    <span>Arahkan kursor atau sentuh kartu untuk menjeda pergeseran otomatis</span>
-                </div>
             </div>
         </section>
     );
