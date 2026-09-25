@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import {
     HamburgerMenuIcon,
     Cross2Icon,
-    EnterIcon,
     PersonIcon,
 } from '@radix-ui/react-icons';
 
@@ -93,15 +92,6 @@ export default function Navbar() {
 
                     {/* Right CTA Actions */}
                     <div className="hidden lg:flex items-center gap-3">
-                        {/* Outlined Pill Button */}
-                        <a
-                            href="/login"
-                            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white border border-white/80 rounded-full hover:bg-white hover:text-kipan-navy transition-all duration-200 shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                        >
-                            <EnterIcon className="w-3.5 h-3.5" />
-                            <span>Masuk Portal</span>
-                        </a>
-
                         {/* Gold Pill CTA */}
                         <a
                             href="/kontak"
@@ -146,15 +136,7 @@ export default function Navbar() {
                     </div>
 
                     {/* Mobile Action Buttons */}
-                    <div className="pt-4 border-t border-white/15 space-y-2">
-                        <a
-                            href="/login"
-                            onClick={() => setMobileOpen(false)}
-                            className="flex items-center justify-center gap-2 w-full py-2.5 text-center text-xs font-semibold text-white border border-white/70 rounded-full hover:bg-white hover:text-kipan-navy transition-colors"
-                        >
-                            <EnterIcon className="w-3.5 h-3.5" />
-                            <span>Masuk Portal KIPAN</span>
-                        </a>
+                    <div className="pt-4 border-t border-white/15">
                         <a
                             href="/kontak"
                             onClick={() => setMobileOpen(false)}
