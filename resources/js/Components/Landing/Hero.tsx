@@ -6,7 +6,6 @@ import {
     PersonIcon,
     ChevronLeftIcon,
     ChevronRightIcon,
-    CheckCircledIcon,
 } from '@radix-ui/react-icons';
 import { HERO_CONTENT } from '@/data/landing-content';
 
@@ -124,31 +123,70 @@ export default function Hero() {
                         </h2>
 
                         {/* Subheadline with Vertical Gold Accent Bar */}
-                        <div className="border-l-4 border-kipan-yellow pl-4 mb-8">
+                        <div className="border-l-4 border-kipan-yellow pl-4 mb-6">
                             <p className="text-base sm:text-lg text-blue-100/90 leading-relaxed font-normal max-w-xl">
                                 {HERO_CONTENT.subheadline}
                             </p>
                         </div>
 
-                        {/* Action Buttons Directly Under Description */}
+                        {/* Floating White Quick Stats Card */}
+                        <div className="w-full max-w-xl bg-white rounded-2xl p-5 sm:p-6 shadow-2xl border border-white/20 text-slate-800 mb-6 hover:-translate-y-1 hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)] transition-all duration-300">
+                            <div className="grid grid-cols-2 gap-4 pb-4 border-b border-slate-100">
+                                <div>
+                                    <div className="text-2xl sm:text-3xl font-extrabold text-kipan-navy tracking-tight">
+                                        50.000+
+                                    </div>
+                                    <div className="text-xs font-bold text-slate-800 uppercase tracking-wider mt-0.5">
+                                        Kader Inti Terlatih
+                                    </div>
+                                    <div className="text-[11px] text-slate-500 mt-0.5">
+                                        Pelopor P4GN di Lingkungan Pemuda
+                                    </div>
+                                </div>
+                                <div className="border-l border-slate-200/80 pl-4">
+                                    <div className="text-2xl sm:text-3xl font-extrabold text-kipan-blue tracking-tight">
+                                        38 Provinsi
+                                    </div>
+                                    <div className="text-xs font-bold text-slate-800 uppercase tracking-wider mt-0.5">
+                                        Jejaring Nasional
+                                    </div>
+                                    <div className="text-[11px] text-slate-500 mt-0.5">
+                                        514 Pengurus Kab. &amp; Kota
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Card Action Link */}
+                            <a
+                                href="/tentang"
+                                className="pt-3 flex items-center justify-between text-xs font-bold text-kipan-blue hover:text-blue-800 group"
+                            >
+                                <span>Jelajahi Profil Gerakan &amp; Legalitas KIPAN</span>
+                                <span className="inline-flex items-center gap-1 group-hover:translate-x-1.5 transition-transform duration-200">
+                                    Pelajari Selengkapnya <ArrowRightIcon className="w-4 h-4" />
+                                </span>
+                            </a>
+                        </div>
+
+                        {/* Action Buttons Under Card */}
                         <div className="flex flex-wrap items-center gap-3">
                             <a
                                 href="/tentang"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/25 rounded-full backdrop-blur-xs transition-all hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-xs"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/25 rounded-full backdrop-blur-xs transition-all hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-xs"
                             >
                                 <span>Tentang Organisasi</span>
                             </a>
 
                             <a
                                 href="/program"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/25 rounded-full backdrop-blur-xs transition-all hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-xs"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/25 rounded-full backdrop-blur-xs transition-all hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-xs"
                             >
                                 <span>Program &amp; Aksi</span>
                             </a>
 
                             <a
                                 href="/kontak"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-bold text-kipan-navy bg-kipan-yellow hover:bg-amber-400 rounded-full transition-all hover:scale-105 active:scale-95 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-yellow"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold text-kipan-navy bg-kipan-yellow hover:bg-amber-400 rounded-full transition-all hover:scale-105 active:scale-95 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-yellow"
                             >
                                 <span>Daftar Jadi Kader</span>
                                 <ArrowRightIcon className="w-3.5 h-3.5" />
@@ -280,46 +318,6 @@ export default function Hero() {
                         </div>
                     </div>
                 </div>
-
-                {/* Bottom Institutional Partner Ticker (Animated on Viewport Entrance) */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-30px' }}
-                    transition={{ duration: 0.55, delay: 0.15 }}
-                    className="mt-12 sm:mt-16 bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-center justify-between gap-4 text-white text-xs"
-                >
-                    <div className="flex flex-wrap items-center gap-3 sm:gap-6">
-                        <div className="flex items-center gap-2">
-                            <div className="w-7 h-7 rounded-full bg-white p-0.5 shrink-0 shadow-xs">
-                                <img
-                                    src="/logo-kipan.jpg"
-                                    alt="KIPAN"
-                                    className="w-full h-full object-cover rounded-full"
-                                />
-                            </div>
-                            <span className="font-bold text-white tracking-wide">KIPAN RI</span>
-                        </div>
-
-                        <div className="hidden sm:block w-px h-5 bg-white/20" />
-
-                        <div className="flex items-center gap-2 text-blue-100">
-                            <CheckCircledIcon className="w-4 h-4 text-kipan-yellow shrink-0" />
-                            <span>Binaan Resmi Kementerian Pemuda &amp; Olahraga RI (Kemenpora)</span>
-                        </div>
-
-                        <div className="hidden sm:block w-px h-5 bg-white/20" />
-
-                        <div className="flex items-center gap-2 text-blue-100">
-                            <CheckCircledIcon className="w-4 h-4 text-kipan-yellow shrink-0" />
-                            <span>Mitra Pencegahan Badan Narkotika Nasional RI (BNN)</span>
-                        </div>
-                    </div>
-
-                    <div className="text-[11px] font-medium text-blue-200/80">
-                        Dasar Regulasi: <strong className="text-white">Inpres No. 2/2020 (P4GN)</strong>
-                    </div>
-                </motion.div>
             </div>
         </section>
     );
