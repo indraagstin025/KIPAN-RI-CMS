@@ -3,12 +3,11 @@ import Navbar from '@/Components/Landing/Navbar';
 import Hero from '@/Components/Landing/Hero';
 import CampaignSlogan from '@/Components/Landing/CampaignSlogan';
 import AboutSection from '@/Components/Landing/AboutSection';
-import StatsSection from '@/Components/Landing/StatsSection';
 import ProgramSection from '@/Components/Landing/ProgramSection';
-import NetworkSection from '@/Components/Landing/NetworkSection';
 import NewsSection from '@/Components/Landing/NewsSection';
 import AgendaSection from '@/Components/Landing/AgendaSection';
 import PeopleSection from '@/Components/Landing/PeopleSection';
+import MapDataSection from '@/Components/Landing/MapDataSection';
 import GallerySection from '@/Components/Landing/GallerySection';
 import PartnersSection from '@/Components/Landing/PartnersSection';
 import CtaSection from '@/Components/Landing/CtaSection';
@@ -24,12 +23,11 @@ export default function Welcome() {
                     <Hero />
                     <CampaignSlogan />
                     <AboutSection />
-                    <StatsSection />
                     <ProgramSection />
-                    <NetworkSection />
                     <NewsSection />
                     <AgendaSection />
                     <PeopleSection />
+                    <MapDataSection />
                     <GallerySection />
                     <PartnersSection />
                     <CtaSection />
