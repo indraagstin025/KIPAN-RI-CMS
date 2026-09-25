@@ -250,7 +250,7 @@ export default function About() {
                 {/* ========================================================= */}
                 {/* HERO SECTION TENTANG KAMI (HERO RESMI DENGAN LATAR NAVY)   */}
                 {/* ========================================================= */}
-                <section className="relative min-h-[580px] lg:min-h-[640px] flex flex-col justify-center pt-28 sm:pt-32 pb-16 lg:pb-20 bg-gradient-to-b from-[#061C33] via-[#0D3F70] to-[#0A3055] text-white overflow-hidden border-b border-blue-900/60">
+                <section className="relative pt-36 sm:pt-40 lg:pt-44 pb-16 lg:pb-20 bg-gradient-to-b from-[#061C33] via-[#0D3F70] to-[#0A3055] text-white overflow-hidden border-b border-blue-900/60">
                     {/* Subtle Grid Texture */}
                     <div
                         className="absolute inset-0 opacity-15 pointer-events-none"
