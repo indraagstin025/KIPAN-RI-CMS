@@ -291,7 +291,7 @@ export default function MapDataSection() {
                                         <span>Klik pin untuk fokus daerah</span>
                                     </div>
                                     <a
-                                        href="/tentang/jejaring"
+                                        href="/tentang#jejaring"
                                         className="text-[11px] font-bold text-kipan-yellow hover:text-white transition-colors flex items-center gap-1"
                                     >
                                         <span>Direktori</span>

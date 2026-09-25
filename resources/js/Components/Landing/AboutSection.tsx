@@ -69,7 +69,7 @@ const PILLARS: AccessPillar[] = [
         subtitle:
             'Jalin komunikasi, kolaborasi lintas wilayah, dan sinergi aksi nyata bersama dewan pengurus serta koordinator wilayah KIPAN yang tersebar aktif di 38 provinsi dan 514 kabupaten/kota se-Indonesia.',
         actionLabel: 'Lihat Direktori Koordinator Daerah',
-        actionHref: '/tentang/jejaring',
+        actionHref: '/tentang#jejaring',
         posterTag: 'JARINGAN NUSANTARA',
         posterTitleLine1: '38 PROVINSI',
         posterTitleLine2: 'SATU GERAKAN',

@@ -79,15 +79,12 @@ export interface PartnerItem {
 }
 
 export const NAV_LINKS: NavLink[] = [
-    { label: 'Beranda', href: '#beranda' },
-    { label: 'Tentang', href: '#tentang' },
-    { label: 'Fokus', href: '#fokus' },
-    { label: 'Program', href: '#program' },
-    { label: 'Jejaring', href: '#jejaring' },
-    { label: 'Berita', href: '#berita' },
-    { label: 'Agenda', href: '#agenda' },
-    { label: 'Galeri', href: '#galeri' },
-    { label: 'Kontak', href: '#kontak' },
+    { label: 'Beranda', href: '/' },
+    { label: 'Tentang Kami', href: '/tentang' },
+    { label: 'Program & Aksi', href: '/program' },
+    { label: 'Berita', href: '/berita' },
+    { label: 'Galeri', href: '/galeri' },
+    { label: 'Kontak', href: '/kontak' },
 ];
 
 export const HERO_CONTENT = {
