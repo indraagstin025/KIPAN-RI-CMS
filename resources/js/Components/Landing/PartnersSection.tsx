@@ -141,6 +141,12 @@ function PartnerEmblem({ type }: { type: PartnerInstitution['emblemType'] }) {
     }
 }
 
+const MARQUEE_ITEMS = [
+    ...SUPPORTING_INSTITUTIONS,
+    ...SUPPORTING_INSTITUTIONS,
+    ...SUPPORTING_INSTITUTIONS,
+];
+
 export default function PartnersSection() {
     return (
         <section id="mitra-pemerintah" className="py-14 sm:py-18 bg-white border-b border-slate-200/90 overflow-hidden relative">
@@ -165,19 +171,19 @@ export default function PartnersSection() {
                     </div>
                 </ScrollReveal>
 
-                {/* Horizontal Scrolling Track of 7 Official Rounded Cards */}
+                {/* Infinite Auto-Scrolling Marquee Track of 7 Official Rounded Cards */}
                 <ScrollReveal direction="up" delay={0.12}>
-                    <div className="relative max-w-7xl mx-auto">
-                        {/* Left & Right Soft Fade Gradients (as seen on reference screenshot) */}
-                        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
-                        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
+                    <div className="relative w-full overflow-hidden py-2">
+                        {/* Left & Right Soft Fade Gradients */}
+                        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-r from-white via-white/90 to-transparent z-10" />
+                        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-l from-white via-white/90 to-transparent z-10" />
 
-                        {/* Cards Row Track */}
-                        <div className="flex items-center gap-4 overflow-x-auto no-scrollbar py-3 px-4 sm:px-8 snap-x snap-mandatory justify-start lg:justify-center">
-                            {SUPPORTING_INSTITUTIONS.map((inst) => (
+                        {/* Auto-scrolling Track */}
+                        <div className="animate-marquee gap-5 flex items-center py-2">
+                            {MARQUEE_ITEMS.map((inst, idx) => (
                                 <div
-                                    key={inst.id}
-                                    className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-xs hover:border-kipan-blue hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 w-[170px] sm:w-[190px] h-[160px] sm:h-[175px] shrink-0 flex flex-col items-center justify-between text-center group snap-start"
+                                    key={`${inst.id}-${idx}`}
+                                    className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-xs hover:border-kipan-blue hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 w-[175px] sm:w-[195px] h-[160px] sm:h-[175px] shrink-0 flex flex-col items-center justify-between text-center group cursor-default select-none"
                                 >
                                     {/* Level badge */}
                                     <div className="w-full flex justify-between items-center text-[10px] font-semibold text-slate-400">
@@ -206,6 +212,11 @@ export default function PartnersSection() {
                         </div>
                     </div>
                 </ScrollReveal>
+
+                {/* Subtle interaction tip */}
+                <div className="text-center mt-4 text-[11px] text-slate-400 font-medium">
+                    <span>Arahkan kursor atau sentuh kartu untuk menjeda pergeseran otomatis</span>
+                </div>
             </div>
         </section>
     );
