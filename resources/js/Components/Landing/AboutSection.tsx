@@ -1,95 +1,268 @@
-import { CheckCircledIcon, ArrowRightIcon } from '@radix-ui/react-icons';
-import { ABOUT_CONTENT } from '@/data/landing-content';
+import { useState } from 'react';
+import {
+    IdCardIcon,
+    FileTextIcon,
+    GlobeIcon,
+    HeartIcon,
+    RocketIcon,
+    ArrowRightIcon,
+    CheckCircledIcon,
+} from '@radix-ui/react-icons';
+
+interface AccessPillar {
+    id: string;
+    icon: typeof IdCardIcon;
+    accessTag: string;
+    cardTitle: string;
+    headline: string;
+    subtitle: string;
+    actionLabel: string;
+    actionHref: string;
+    posterTag: string;
+    posterTitleLine1: string;
+    posterTitleLine2: string;
+    posterSubtitle: string;
+    badgeText: string;
+}
+
+const PILLARS: AccessPillar[] = [
+    {
+        id: 'kaderisasi',
+        icon: IdCardIcon,
+        accessTag: 'AKSES',
+        cardTitle: 'Kaderisasi Inti',
+        headline: 'Berdampak Nyata Menjadi Kader Pelopor',
+        subtitle:
+            'Ikuti pendidikan dan pelatihan intensif Kader Inti Pemuda Anti Narkoba (KIPAN) binaan Kemenpora & BNN RI untuk mencetak agen perubahan berintegritas dan bersertifikat resmi di daerahmu.',
+        actionLabel: 'Daftar Pendidikan Kader',
+        actionHref: '/kontak',
+        posterTag: 'KADERISASI NASIONAL',
+        posterTitleLine1: 'BERDAMPAK DENGAN',
+        posterTitleLine2: 'BERKONTRIBUSI',
+        posterSubtitle: 'Ambil peran aktif dan berikan kontribusi nyata untuk menciptakan lingkungan bersih narkoba.',
+        badgeText: '50.000+ Kader Terlatih',
+    },
+    {
+        id: 'edukasi',
+        icon: FileTextIcon,
+        accessTag: 'AKSES',
+        cardTitle: 'Edukasi Sebaya',
+        headline: 'Lindungi Generasi Sebaya dari Narkoba',
+        subtitle:
+            'Akses modul materi penyuluhan interaktif, workshop deteksi dini bahaya narkotika, serta pendampingan pembentukan Satuan Tugas (Satgas) Relawan Pelajar Bersinar di lingkungan SMA/SMK dan perguruan tinggi.',
+        actionLabel: 'Pelajari Modul & Program Edukasi',
+        actionHref: '/program',
+        posterTag: 'EDUKASI & ADVOKASI',
+        posterTitleLine1: 'TEMAN SEBAYA',
+        posterTitleLine2: 'SALING MENJAGA',
+        posterSubtitle: 'Pencegahan berbasis komunitas sebaya (peer-to-peer) yang dekat, relevan, dan terpercaya.',
+        badgeText: 'Modul P4GN Resmi',
+    },
+    {
+        id: 'jejaring',
+        icon: GlobeIcon,
+        accessTag: 'AKSES',
+        cardTitle: 'Jejaring Daerah',
+        headline: 'Terhubung dengan Jejaring 38 Provinsi',
+        subtitle:
+            'Jalin komunikasi, kolaborasi lintas wilayah, dan sinergi aksi nyata bersama dewan pengurus serta koordinator wilayah KIPAN yang tersebar aktif di 38 provinsi dan 514 kabupaten/kota se-Indonesia.',
+        actionLabel: 'Lihat Direktori Koordinator Daerah',
+        actionHref: '/tentang/jejaring',
+        posterTag: 'JARINGAN NUSANTARA',
+        posterTitleLine1: '38 PROVINSI',
+        posterTitleLine2: 'SATU GERAKAN',
+        posterSubtitle: 'Sinergi pengurus daerah dari Sabang sampai Merauke dalam komitmen Indonesia Bersinar.',
+        badgeText: '514 Kab. & Kota',
+    },
+    {
+        id: 'konseling',
+        icon: HeartIcon,
+        accessTag: 'AKSES',
+        cardTitle: 'Konseling Sahabat',
+        headline: 'Ruang Aman Konsultasi & Pendampingan',
+        subtitle:
+            'Layanan pendampingan sebaya (peer-support) yang aman, rahasia, dan tanpa stigma, terhubung langsung ke balai rehabilitasi resmi BNN RI bagi rekan pemuda yang memerlukan bantuan pemulihan.',
+        actionLabel: 'Layanan Pendampingan Sahabat',
+        actionHref: '/kontak',
+        posterTag: 'RUANG AMAN RAHASIA',
+        posterTitleLine1: 'PEDULI SEBAYA',
+        posterTitleLine2: 'TANPA STIGMA',
+        posterSubtitle: 'Dukungan pemulihan dan advokasi rujukan medis profesional bekerja sama dengan BNN RI.',
+        badgeText: 'Layanan Rahasia',
+    },
+    {
+        id: 'karya',
+        icon: RocketIcon,
+        accessTag: 'AKSES',
+        cardTitle: 'Karya & Prestasi',
+        headline: 'Salurkan Energi ke Prestasi & Wirausaha',
+        subtitle:
+            'Wadahi potensi kreatif anak muda melalui kompetisi olahraga sehat, festival seni budaya, pelatihan kewirausahaan mandiri, dan berbagai inisiatif sosial positif pemuda bebas narkoba.',
+        actionLabel: 'Eksplorasi Program Karya Positif',
+        actionHref: '/program',
+        posterTag: 'POTENSI & PRESTASI',
+        posterTitleLine1: 'BERKARYA HEBAT',
+        posterTitleLine2: 'TANPA NARKOBA',
+        posterSubtitle: 'Menyalurkan daya cipta, minat olahraga, dan wirausaha pemuda menuju Indonesia Emas 2045.',
+        badgeText: 'Aksi Nyata Pemuda',
+    },
+];
 
 export default function AboutSection() {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const activePillar = PILLARS[activeIndex];
+
     return (
-        <section id="tentang" className="py-16 lg:py-24 bg-white border-b border-kipan-border">
+        <section id="mengenal-kipan" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-200">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-                    {/* Left Column: Visual & Badge Panel */}
-                    <div className="lg:col-span-5 flex flex-col gap-4">
-                        <div className="bg-kipan-soft-blue border border-blue-200/80 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xs">
-                            <div className="w-14 h-14 rounded-2xl bg-white border border-blue-200 p-2 shadow-xs mb-5">
-                                <img
-                                    src="/logo-kipan.jpg"
-                                    alt="Logo KIPAN RI"
-                                    className="w-full h-full object-cover rounded-xl"
-                                />
-                            </div>
-
-                            <h3 className="text-xl font-bold text-kipan-navy mb-2">
-                                Gerakan Pemuda Berkarakter
-                            </h3>
-                            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
-                                Memadukan wawasan kebangsaan, integritas kepemudaan, dan kesadaran bahaya narkoba
-                                demi menyelamatkan masa depan bangsa.
-                            </p>
-
-                            <div className="pt-4 border-t border-blue-200/80 space-y-2 text-xs text-slate-700">
-                                <div className="flex items-center justify-between">
-                                    <span className="text-slate-500">Kementerian Pembina</span>
-                                    <strong className="text-kipan-navy">Kemenpora RI</strong>
-                                </div>
-                                <div className="flex items-center justify-between">
-                                    <span className="text-slate-500">Mitra Teknis Pencegahan</span>
-                                    <strong className="text-kipan-navy">BNN RI</strong>
-                                </div>
-                                <div className="flex items-center justify-between">
-                                    <span className="text-slate-500">Landasan Hukum</span>
-                                    <strong className="text-kipan-navy">Inpres No. 2/2020</strong>
-                                </div>
-                            </div>
+                <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                    {/* Left Column: Category Badge, Dynamic Title, Description, Cards, and Action */}
+                    <div className="lg:col-span-7 flex flex-col items-start">
+                        {/* Eyebrow Badge (Signature Youth Innovation Style) */}
+                        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-xs font-bold text-kipan-navy uppercase tracking-wider mb-4">
+                            <span className="w-2 h-2 rounded-full bg-kipan-blue" />
+                            <span>Mengenal Lebih Dekat</span>
                         </div>
 
-                        {/* Visi Quote Card */}
-                        <div className="bg-white border-l-4 border-kipan-blue border-y border-r border-slate-200 rounded-xl p-5 shadow-xs">
-                            <div className="text-[11px] font-bold text-kipan-blue uppercase tracking-wider mb-1">
-                                Visi KIPAN RI
+                        {/* Dynamic Headline (Transitions based on selected card) */}
+                        <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-black text-kipan-navy leading-[1.15] tracking-tight mb-4 min-h-[50px] sm:min-h-[85px] flex items-center">
+                            {activePillar.headline}
+                        </h2>
+
+                        {/* Dynamic Subtitle */}
+                        <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mb-8 min-h-[60px] sm:min-h-[75px]">
+                            {activePillar.subtitle}
+                        </p>
+
+                        {/* Interactive Access Cards Grid */}
+                        <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5 mb-8">
+                            {PILLARS.map((pillar, idx) => {
+                                const IconComp = pillar.icon;
+                                const isActive = activeIndex === idx;
+
+                                return (
+                                    <button
+                                        key={pillar.id}
+                                        type="button"
+                                        onClick={() => setActiveIndex(idx)}
+                                        aria-pressed={isActive}
+                                        className={`p-3.5 sm:p-4 rounded-2xl flex items-center gap-3.5 text-left transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-blue ${
+                                            isActive
+                                                ? 'bg-kipan-navy text-white shadow-md border-2 border-kipan-blue scale-[1.02]'
+                                                : 'bg-white text-slate-800 border border-slate-200 hover:border-blue-300 hover:bg-slate-50/80 shadow-xs'
+                                        }`}
+                                    >
+                                        {/* Icon Container */}
+                                        <div
+                                            className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                                                isActive
+                                                    ? 'bg-white/15 text-kipan-yellow'
+                                                    : 'bg-blue-50 text-kipan-blue border border-blue-100'
+                                            }`}
+                                        >
+                                            <IconComp className="w-5 h-5" />
+                                        </div>
+
+                                        {/* Card Text */}
+                                        <div className="flex flex-col leading-tight">
+                                            <span
+                                                className={`text-[10px] font-bold uppercase tracking-wider mb-0.5 ${
+                                                    isActive ? 'text-blue-200' : 'text-slate-400'
+                                                }`}
+                                            >
+                                                {pillar.accessTag}
+                                            </span>
+                                            <span
+                                                className={`text-xs sm:text-sm font-bold truncate ${
+                                                    isActive ? 'text-white' : 'text-slate-800'
+                                                }`}
+                                            >
+                                                {pillar.cardTitle}
+                                            </span>
+                                        </div>
+                                    </button>
+                                );
+                            })}
+                        </div>
+
+                        {/* Bottom CTA for Active Pillar */}
+                        <div className="flex items-center gap-4">
+                            <a
+                                href={activePillar.actionHref}
+                                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-kipan-blue hover:bg-blue-700 text-white text-xs font-bold transition-all shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-blue"
+                            >
+                                <span>{activePillar.actionLabel}</span>
+                                <ArrowRightIcon className="w-4 h-4" />
+                            </a>
+
+                            <div className="hidden sm:flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+                                <CheckCircledIcon className="w-4 h-4 text-kipan-blue shrink-0" />
+                                <span>Binaan Kemenpora &amp; BNN RI</span>
                             </div>
-                            <blockquote className="text-xs sm:text-sm font-semibold text-kipan-navy italic leading-snug">
-                                &ldquo;{ABOUT_CONTENT.visi}&rdquo;
-                            </blockquote>
                         </div>
                     </div>
 
-                    {/* Right Column: Narrative & Mission */}
-                    <div className="lg:col-span-7">
-                        <div className="inline-block text-xs font-bold text-kipan-blue uppercase tracking-wider mb-2">
-                            {ABOUT_CONTENT.tag}
+                    {/* Right Column: Signature Asymmetrically Curved Visual Poster (Exact Youth Innovation Structure) */}
+                    <div className="lg:col-span-5 flex justify-center">
+                        <div className="relative w-full max-w-md aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-tl-[3.5rem] rounded-br-[3.5rem] rounded-tr-2xl rounded-bl-2xl bg-gradient-to-br from-[#0D3F70] via-[#0E5B99] to-[#0A335C] p-7 sm:p-9 text-white shadow-2xl overflow-hidden flex flex-col justify-between border-2 border-blue-400/20 transition-all duration-300">
+                            {/* Decorative Gold Swoop / Arch (Inspired by the yellow swoosh in the reference) */}
+                            <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-kipan-yellow/25 to-transparent rounded-bl-full pointer-events-none" />
+                            <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-blue-400/10 rounded-full blur-2xl pointer-events-none" />
+
+                            {/* Top Row: Category Tag & Badge */}
+                            <div className="relative z-10 flex items-center justify-between">
+                                <span className="inline-block text-[11px] font-bold text-kipan-yellow uppercase tracking-wider bg-black/25 backdrop-blur-xs px-3 py-1 rounded-full border border-kipan-yellow/30">
+                                    {activePillar.posterTag}
+                                </span>
+
+                                <span className="text-[11px] font-semibold text-blue-100 bg-white/10 px-2.5 py-1 rounded-full backdrop-blur-xs">
+                                    {activePillar.badgeText}
+                                </span>
+                            </div>
+
+                            {/* Middle Poster Typography (Echoing the huge all-caps text in reference) */}
+                            <div className="relative z-10 my-auto py-6">
+                                <div className="text-xl sm:text-2xl font-black text-kipan-yellow tracking-tight leading-none mb-1">
+                                    {activePillar.posterTitleLine1}
+                                </div>
+                                <div className="text-2xl sm:text-4xl lg:text-[40px] font-black text-white tracking-tight leading-none mb-4 uppercase drop-shadow-md">
+                                    {activePillar.posterTitleLine2}
+                                </div>
+                                <div className="border-l-2 border-kipan-yellow/80 pl-3">
+                                    <p className="text-xs sm:text-sm text-blue-50/90 leading-relaxed font-normal">
+                                        {activePillar.posterSubtitle}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Bottom Row: Official Badges & Action Chip */}
+                            <div className="relative z-10 pt-4 border-t border-white/15 flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-8 h-8 rounded-full bg-white p-0.5 shrink-0 shadow-md">
+                                        <img
+                                            src="/logo-kipan.jpg"
+                                            alt="KIPAN RI"
+                                            className="w-full h-full object-cover rounded-full"
+                                        />
+                                    </div>
+                                    <div className="flex flex-col leading-tight">
+                                        <span className="text-xs font-bold text-white tracking-wide">
+                                            KIPAN RI
+                                        </span>
+                                        <span className="text-[10px] text-blue-200">
+                                            Inpres No. 2/2020
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div className="text-right">
+                                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-kipan-yellow hover:text-white transition-colors">
+                                        <span>Pilar Aksi #{activeIndex + 1}</span>
+                                        <ArrowRightIcon className="w-3.5 h-3.5" />
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-
-                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-kipan-navy tracking-tight leading-tight mb-4">
-                            {ABOUT_CONTENT.title}
-                        </h2>
-
-                        <div className="space-y-3.5 text-sm sm:text-base text-slate-600 leading-relaxed mb-8">
-                            {ABOUT_CONTENT.paragraphs.map((p, idx) => (
-                                <p key={idx}>{p}</p>
-                            ))}
-                        </div>
-
-                        {/* Misi List */}
-                        <div className="mb-8">
-                            <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">
-                                Misi Strategis Gerakan:
-                            </h3>
-                            <ul className="space-y-2.5">
-                                {ABOUT_CONTENT.misi.map((m, idx) => (
-                                    <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
-                                        <CheckCircledIcon className="w-4 h-4 text-kipan-blue shrink-0 mt-0.5" />
-                                        <span>{m}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <a
-                            href={ABOUT_CONTENT.ctaHref}
-                            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-kipan-blue hover:text-blue-800 transition-colors"
-                        >
-                            <span>{ABOUT_CONTENT.ctaText}</span>
-                            <ArrowRightIcon className="w-4 h-4" />
-                        </a>
                     </div>
                 </div>
             </div>
