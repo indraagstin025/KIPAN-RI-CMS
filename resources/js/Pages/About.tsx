@@ -803,78 +803,172 @@ export default function About() {
                     </section>
 
                     {/* BAGIAN 4: FILOSOFI LAMBANG & IDENTITAS */}
-                    <section id="filosofi" className="py-16 bg-white border-y border-slate-200 scroll-mt-20">
+                    <section id="filosofi" className="py-16 sm:py-20 bg-slate-50/60 border-y border-slate-200 scroll-mt-20">
                         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="max-w-3xl mb-10">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 border border-amber-200 rounded-full text-xs font-bold text-amber-800 uppercase tracking-wider mb-2">
-                                    <BookmarkFilledIcon className="w-3.5 h-3.5" />
+                            <div className="max-w-3xl mb-12">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 border border-amber-200 rounded-full text-xs font-bold text-amber-800 uppercase tracking-wider mb-2.5">
+                                    <BookmarkFilledIcon className="w-3.5 h-3.5 text-amber-600" />
                                     <span>Identitas &amp; Filosofi Lambang</span>
                                 </div>
-                                <h2 className="text-2xl sm:text-3xl font-black text-[#0D3F70] tracking-tight">
-                                    Makna di Balik Lambang KIPAN
+                                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0D3F70] tracking-tight">
+                                    Makna di Balik Lambang KIPAN RI
                                 </h2>
-                                <p className="text-sm text-slate-600 mt-2 leading-relaxed">
-                                    Setiap elemen lambang dan warna resmi KIPAN RI memuat nilai perjuangan, persatuan, dan ketahanan generasi muda Indonesia.
+                                <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
+                                    Setiap elemen bentuk, warna, dan lambang resmi KIPAN RI memuat nilai perjuangan luhur, 
+                                    integritas, gotong royong, dan ketahanan moral generasi muda Indonesia.
                                 </p>
                             </div>
 
-                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                                <div className="lg:col-span-4 bg-slate-50 border border-slate-200 rounded-3xl p-8 flex flex-col items-center justify-center text-center">
-                                    <div className="w-48 h-48 rounded-2xl bg-white p-4 shadow-sm border border-slate-200 flex items-center justify-center mb-4">
-                                        <img
-                                            src="/logo-kipan.jpg"
-                                            alt="Logo Resmi KIPAN RI"
-                                            className="w-full h-full object-contain"
-                                        />
+                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                                {/* Left Column: Official Logo Showcase Card */}
+                                <div className="lg:col-span-5 bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 flex flex-col justify-between items-center text-center shadow-xs">
+                                    <div className="w-full">
+                                        <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
+                                            <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                                                Identitas Visual
+                                            </span>
+                                            <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                                                Binaan Resmi
+                                            </span>
+                                        </div>
+
+                                        {/* Logo Framed Container */}
+                                        <div className="w-48 h-48 sm:w-56 sm:h-56 mx-auto rounded-3xl bg-slate-50/70 p-6 border border-slate-200/80 shadow-inner flex items-center justify-center relative group hover:border-[#0E6CAC] transition-colors duration-300">
+                                            <img
+                                                src="/logo-kipan.jpg"
+                                                alt="Logo Resmi KIPAN Republik Indonesia"
+                                                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-sm"
+                                            />
+                                        </div>
+
+                                        <h3 className="text-lg font-bold text-[#0D3F70] mt-6 mb-1.5">
+                                            Logo Resmi KIPAN RI
+                                        </h3>
+                                        <p className="text-xs text-slate-500 font-medium">
+                                            Kader Inti Pemuda Anti Narkoba Republik Indonesia
+                                        </p>
+                                        <p className="text-xs text-slate-600 leading-relaxed mt-3 px-2">
+                                            Simbol kehormatan, integritas, dan benteng pertahanan moral pemuda Nusantara dalam mewujudkan generasi bersih narkoba menuju Indonesia Emas 2045.
+                                        </p>
                                     </div>
-                                    <h4 className="text-base font-bold text-[#0D3F70]">Logo Resmi KIPAN RI</h4>
-                                    <p className="text-xs text-slate-500 mt-1">Identitas Pemersatu Kader Pemuda se-Nusantara</p>
+
+                                    {/* Bottom Tag */}
+                                    <div className="w-full mt-6 pt-4 border-t border-slate-100 flex items-center justify-center gap-2 text-xs font-semibold text-slate-500">
+                                        <BadgeIcon className="w-4 h-4 text-[#0E6CAC]" />
+                                        <span>Binaan Kemenpora RI &amp; BNN RI</span>
+                                    </div>
                                 </div>
 
-                                <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-                                        <h5 className="text-xs font-bold text-[#0D3F70] uppercase tracking-wider mb-1 flex items-center gap-2">
-                                            <span className="w-2.5 h-2.5 rounded-full bg-[#0D3F70]" />
-                                            Biru Dongker / Navy
-                                        </h5>
-                                        <p className="text-xs text-slate-600 leading-relaxed">
-                                            Melambangkan kematangan berpikir, integritas moral pemuda, keteguhan hati, dan stabilitas organisasi yang kokoh.
-                                        </p>
+                                {/* Right Column: 4 Symmetrical & Distinct Meaning Cards */}
+                                <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    {/* Card 1: Biru Dongker */}
+                                    <div className="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-6 shadow-xs hover:border-[#0E6CAC] hover:shadow-md hover:-translate-y-1 transition-all flex flex-col justify-between">
+                                        <div>
+                                            <div className="flex items-center justify-between mb-4">
+                                                <div className="w-8 h-8 rounded-xl bg-[#0D3F70] shadow-2xs flex items-center justify-center text-white text-xs font-black">
+                                                    1
+                                                </div>
+                                                <span className="text-[10px] font-bold text-[#0D3F70] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100 uppercase tracking-wider">
+                                                    Warna Dasar
+                                                </span>
+                                            </div>
+
+                                            <h4 className="text-base font-bold text-[#0D3F70] mb-2">
+                                                Biru Dongker (Deep Navy)
+                                            </h4>
+                                            <p className="text-xs text-slate-600 leading-relaxed">
+                                                Melambangkan kematangan berpikir, integritas moral, keteguhan hati, dan stabilitas kelembagaan gerakan pemuda yang kokoh dan berwibawa di 38 provinsi.
+                                            </p>
+                                        </div>
+
+                                        <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                                            <span className="text-slate-400 font-medium">Nilai Karakter:</span>
+                                            <span className="font-bold text-[#0D3F70]">Integritas &amp; Keteguhan</span>
+                                        </div>
                                     </div>
 
-                                    <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-                                        <h5 className="text-xs font-bold text-[#0D3F70] uppercase tracking-wider mb-1 flex items-center gap-2">
-                                            <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
-                                            Kuning Emas
-                                        </h5>
-                                        <p className="text-xs text-slate-600 leading-relaxed">
-                                            Menggambarkan masa depan cerah, kejayaan, kemakmuran, dan tekad menyongsong generasi Indonesia Emas 2045.
-                                        </p>
+                                    {/* Card 2: Kuning Emas */}
+                                    <div className="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-6 shadow-xs hover:border-amber-400 hover:shadow-md hover:-translate-y-1 transition-all flex flex-col justify-between">
+                                        <div>
+                                            <div className="flex items-center justify-between mb-4">
+                                                <div className="w-8 h-8 rounded-xl bg-amber-400 shadow-2xs flex items-center justify-center text-[#0D3F70] text-xs font-black">
+                                                    2
+                                                </div>
+                                                <span className="text-[10px] font-bold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200 uppercase tracking-wider">
+                                                    Cahaya Masa Depan
+                                                </span>
+                                            </div>
+
+                                            <h4 className="text-base font-bold text-[#0D3F70] mb-2">
+                                                Kuning Emas (Gold)
+                                            </h4>
+                                            <p className="text-xs text-slate-600 leading-relaxed">
+                                                Menggambarkan energi optimisme generasi muda, daya cipta karya tanpa batas, kejayaan bangsa, dan tekad menyongsong era keemasan Indonesia 2045.
+                                            </p>
+                                        </div>
+
+                                        <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                                            <span className="text-slate-400 font-medium">Nilai Karakter:</span>
+                                            <span className="font-bold text-amber-600">Kejayaan &amp; Optimisme</span>
+                                        </div>
                                     </div>
 
-                                    <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-                                        <h5 className="text-xs font-bold text-[#0D3F70] uppercase tracking-wider mb-1 flex items-center gap-2">
-                                            <span className="w-2.5 h-2.5 rounded-full bg-red-600" />
-                                            Merah Putih
-                                        </h5>
-                                        <p className="text-xs text-slate-600 leading-relaxed">
-                                            Menegaskan kesetiaan tanpa syarat kepada Negara Kesatuan Republik Indonesia (NKRI), Pancasila, dan UUD 1945.
-                                        </p>
+                                    {/* Card 3: Merah Putih */}
+                                    <div className="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-6 shadow-xs hover:border-red-400 hover:shadow-md hover:-translate-y-1 transition-all flex flex-col justify-between">
+                                        <div>
+                                            <div className="flex items-center justify-between mb-4">
+                                                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-red-600 to-rose-700 shadow-2xs flex items-center justify-center text-white text-xs font-black">
+                                                    3
+                                                </div>
+                                                <span className="text-[10px] font-bold text-red-700 bg-red-50 px-2.5 py-1 rounded-md border border-red-100 uppercase tracking-wider">
+                                                    Jiwa Kebangsaan
+                                                </span>
+                                            </div>
+
+                                            <h4 className="text-base font-bold text-[#0D3F70] mb-2">
+                                                Pita Merah Putih
+                                            </h4>
+                                            <p className="text-xs text-slate-600 leading-relaxed">
+                                                Menegaskan kesetiaan tanpa syarat kepada Negara Kesatuan Republik Indonesia (NKRI), Pancasila, dan UUD 1945 dalam mengabdi bagi kemaslahatan masyarakat.
+                                            </p>
+                                        </div>
+
+                                        <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                                            <span className="text-slate-400 font-medium">Nilai Karakter:</span>
+                                            <span className="font-bold text-red-600">Nasionalisme &amp; Patriotisme</span>
+                                        </div>
                                     </div>
 
-                                    <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-                                        <h5 className="text-xs font-bold text-[#0D3F70] uppercase tracking-wider mb-1 flex items-center gap-2">
-                                            <span className="w-2.5 h-2.5 rounded-full bg-blue-500" />
-                                            Perisai Pelindung
-                                        </h5>
-                                        <p className="text-xs text-slate-600 leading-relaxed">
-                                            Fungsi pemuda sebagai garda pembenteng diri, keluarga, dan lingkungan sekitar dari ancaman zat adiktif perusak masa depan.
-                                        </p>
+                                    {/* Card 4: Perisai Pelindung */}
+                                    <div className="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-6 shadow-xs hover:border-[#0E6CAC] hover:shadow-md hover:-translate-y-1 transition-all flex flex-col justify-between">
+                                        <div>
+                                            <div className="flex items-center justify-between mb-4">
+                                                <div className="w-8 h-8 rounded-xl bg-[#0E6CAC] shadow-2xs flex items-center justify-center text-white text-xs font-black">
+                                                    4
+                                                </div>
+                                                <span className="text-[10px] font-bold text-[#0E6CAC] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100 uppercase tracking-wider">
+                                                    Fungsi Perlindungan
+                                                </span>
+                                            </div>
+
+                                            <h4 className="text-base font-bold text-[#0D3F70] mb-2">
+                                                Perisai / Tameng Pelindung
+                                            </h4>
+                                            <p className="text-xs text-slate-600 leading-relaxed">
+                                                Melambangkan fungsi utama setiap kader sebagai benteng pertahanan moral, deteksi dini, dan tameng pelindung bagi lingkungan sekitar dari zat perusak narkotika.
+                                            </p>
+                                        </div>
+
+                                        <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                                            <span className="text-slate-400 font-medium">Nilai Karakter:</span>
+                                            <span className="font-bold text-[#0E6CAC]">Proteksi &amp; Ketahanan</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
+
 
                     {/* BAGIAN 5: DIREKTORI JEJARING 38 PROVINSI */}
                     <section id="jejaring" className="py-16 sm:py-20 scroll-mt-20">
