@@ -8,15 +8,11 @@ import {
     GlobeIcon,
     TargetIcon,
     BookmarkFilledIcon,
-    ArrowDownIcon,
-    DownloadIcon,
     BadgeIcon,
-    ChevronRightIcon,
     CheckCircledIcon,
-    LayersIcon,
 } from '@radix-ui/react-icons';
 
-// Data Struktur Organisasi
+// Data Struktur Organisasi KIPAN RI
 interface LeaderPerson {
     name: string;
     title: string;
@@ -47,7 +43,7 @@ const DEWAN_PEMBINA: LeaderPerson[] = [
         level: 'pembina',
         badge: 'Instansi Teknis Pembina',
         photo: '/logo-bnn.jpg',
-        description: 'Pembina materi edukasi, standardisasi kurikulum pelatihan kader, modul deteksi dini narkoba, dan jaringan rehabilitasi.',
+        description: 'Pembina materi edukasi, standardisasi kurikulum pelatihan kader, modul deteksi dini narkoba, dan rujukan rehabilitasi.',
     },
     {
         name: 'Deputi Bidang Pemberdayaan Pemuda',
@@ -120,42 +116,42 @@ const BIDANG_KERJA = [
         no: '01',
         name: 'Bidang Kaderisasi & Pelatihan Pemuda',
         focus: 'Training of Trainers (ToT), standardisasi instruktur daerah, sertifikasi kader inti pemuda, dan modul kepemimpinan nasional.',
-        target: '50.000+ Kader Terlatih',
+        scope: 'Standardisasi Kaderisasi Nasional',
     },
     {
         id: 'edukasi',
         no: '02',
         name: 'Bidang Edukasi & Sosialisasi Sebaya',
-        focus: 'Program KIPAN Goes to School, Goes to Campus, workshop deteksi dini bahaya zat adiktif, dan edukasi komunitas anak muda.',
-        target: '1.200+ Sosialisasi / Tahun',
+        focus: 'Program KIPAN Goes to School, Goes to Campus, workshop deteksi dini zat adiktif, dan edukasi komunitas anak muda.',
+        scope: 'Edukasi Lingkungan Pendidikan',
     },
     {
         id: 'advokasi',
         no: '03',
         name: 'Bidang Advokasi & Perlindungan Pemuda',
         focus: 'Layanan pendampingan sebaya (peer counseling), fasilitasi rujukan rehabilitasi sukarela tanpa stigma bersama balai BNN RI.',
-        target: 'Layanan Pendampingan Sahabat',
+        scope: 'Pendampingan Konseling Sebaya',
     },
     {
         id: 'sinergi',
         no: '04',
         name: 'Bidang Hubungan Antar Lembaga & Kemitraan',
         focus: 'Membangun sinergi kolaboratif bersama Kemenpora, BNN, Dispora 38 Provinsi, POLRI, perguruan tinggi, dan organisasi pemuda.',
-        target: 'Kolaborasi 38 Provinsi',
+        scope: 'Sinergi Lintas Sektor & Pemda',
     },
     {
         id: 'media',
         no: '05',
         name: 'Bidang Media, Digital & Komunikasi Publik',
         focus: 'Pengelolaan portal resmi KIPAN RI, kampanye digital kreatif di media sosial, publikasi kabar aksi daerah, dan verifikasi data.',
-        target: 'Kampanye Positif Ramah Pemuda',
+        scope: 'Komunikasi Publik & Kampanye Sehat',
     },
     {
         id: 'pemberdayaan',
         no: '06',
         name: 'Bidang Minat, Bakat, Seni & Wirausaha Muda',
         focus: 'Penyaluran energi pemuda ke kegiatan positif alternatif: kompetisi olahraga sehat, festival karya kreatif, dan inkubasi usaha.',
-        target: 'Pemberdayaan Positif Solutif',
+        scope: 'Kanalisasi Bakat & Karya Nyata',
     },
 ];
 
@@ -169,64 +165,64 @@ const REGION_DIRECTORIES: RegionGroup[] = [
     {
         regionName: 'Sumatera (10 Provinsi)',
         provinces: [
-            { name: 'Aceh', capital: 'Banda Aceh', code: 'KIPAN-ACH', activeStatus: 'Aktif' },
-            { name: 'Sumatera Utara', capital: 'Medan', code: 'KIPAN-SUMUT', activeStatus: 'Aktif' },
-            { name: 'Sumatera Barat', capital: 'Padang', code: 'KIPAN-SUMBAR', activeStatus: 'Aktif' },
-            { name: 'Riau', capital: 'Pekanbaru', code: 'KIPAN-RIAU', activeStatus: 'Aktif' },
-            { name: 'Kepulauan Riau', capital: 'Tanjungpinang', code: 'KIPAN-KEPRI', activeStatus: 'Aktif' },
-            { name: 'Jambi', capital: 'Jambi', code: 'KIPAN-JMB', activeStatus: 'Aktif' },
-            { name: 'Sumatera Selatan', capital: 'Palembang', code: 'KIPAN-SUMSEL', activeStatus: 'Aktif' },
-            { name: 'Kepulauan Bangka Belitung', capital: 'Pangkalpinang', code: 'KIPAN-BABEL', activeStatus: 'Aktif' },
-            { name: 'Bengkulu', capital: 'Bengkulu', code: 'KIPAN-BKL', activeStatus: 'Aktif' },
-            { name: 'Lampung', capital: 'Bandar Lampung', code: 'KIPAN-LPG', activeStatus: 'Aktif' },
+            { name: 'Aceh', capital: 'Banda Aceh', code: 'KIPAN-ACH', activeStatus: 'Siaga Aktif' },
+            { name: 'Sumatera Utara', capital: 'Medan', code: 'KIPAN-SUMUT', activeStatus: 'Siaga Aktif' },
+            { name: 'Sumatera Barat', capital: 'Padang', code: 'KIPAN-SUMBAR', activeStatus: 'Siaga Aktif' },
+            { name: 'Riau', capital: 'Pekanbaru', code: 'KIPAN-RIAU', activeStatus: 'Siaga Aktif' },
+            { name: 'Kepulauan Riau', capital: 'Tanjungpinang', code: 'KIPAN-KEPRI', activeStatus: 'Siaga Aktif' },
+            { name: 'Jambi', capital: 'Jambi', code: 'KIPAN-JMB', activeStatus: 'Siaga Aktif' },
+            { name: 'Sumatera Selatan', capital: 'Palembang', code: 'KIPAN-SUMSEL', activeStatus: 'Siaga Aktif' },
+            { name: 'Kepulauan Bangka Belitung', capital: 'Pangkalpinang', code: 'KIPAN-BABEL', activeStatus: 'Siaga Aktif' },
+            { name: 'Bengkulu', capital: 'Bengkulu', code: 'KIPAN-BKL', activeStatus: 'Siaga Aktif' },
+            { name: 'Lampung', capital: 'Bandar Lampung', code: 'KIPAN-LPG', activeStatus: 'Siaga Aktif' },
         ],
     },
     {
-        regionName: 'Jawa, Bali & Nusa Tenggara (8 Provinsi)',
+        regionName: 'Jawa, Bali & Nusa Tenggara (9 Provinsi)',
         provinces: [
-            { name: 'DKI Jakarta', capital: 'Jakarta', code: 'KIPAN-DKI', activeStatus: 'Aktif' },
-            { name: 'Jawa Barat', capital: 'Bandung', code: 'KIPAN-JABAR', activeStatus: 'Aktif' },
-            { name: 'Jawa Tengah', capital: 'Semarang', code: 'KIPAN-JATENG', activeStatus: 'Aktif' },
-            { name: 'DI Yogyakarta', capital: 'Yogyakarta', code: 'KIPAN-DIY', activeStatus: 'Aktif' },
-            { name: 'Jawa Timur', capital: 'Surabaya', code: 'KIPAN-JATIM', activeStatus: 'Aktif' },
-            { name: 'Banten', capital: 'Serang', code: 'KIPAN-BTN', activeStatus: 'Aktif' },
-            { name: 'Bali', capital: 'Denpasar', code: 'KIPAN-BALI', activeStatus: 'Aktif' },
-            { name: 'Nusa Tenggara Barat', capital: 'Mataram', code: 'KIPAN-NTB', activeStatus: 'Aktif' },
-            { name: 'Nusa Tenggara Timur', capital: 'Kupang', code: 'KIPAN-NTT', activeStatus: 'Aktif' },
+            { name: 'DKI Jakarta', capital: 'Jakarta', code: 'KIPAN-DKI', activeStatus: 'Siaga Aktif' },
+            { name: 'Jawa Barat', capital: 'Bandung', code: 'KIPAN-JABAR', activeStatus: 'Siaga Aktif' },
+            { name: 'Jawa Tengah', capital: 'Semarang', code: 'KIPAN-JATENG', activeStatus: 'Siaga Aktif' },
+            { name: 'DI Yogyakarta', capital: 'Yogyakarta', code: 'KIPAN-DIY', activeStatus: 'Siaga Aktif' },
+            { name: 'Jawa Timur', capital: 'Surabaya', code: 'KIPAN-JATIM', activeStatus: 'Siaga Aktif' },
+            { name: 'Banten', capital: 'Serang', code: 'KIPAN-BTN', activeStatus: 'Siaga Aktif' },
+            { name: 'Bali', capital: 'Denpasar', code: 'KIPAN-BALI', activeStatus: 'Siaga Aktif' },
+            { name: 'Nusa Tenggara Barat', capital: 'Mataram', code: 'KIPAN-NTB', activeStatus: 'Siaga Aktif' },
+            { name: 'Nusa Tenggara Timur', capital: 'Kupang', code: 'KIPAN-NTT', activeStatus: 'Siaga Aktif' },
         ],
     },
     {
         regionName: 'Kalimantan (5 Provinsi)',
         provinces: [
-            { name: 'Kalimantan Barat', capital: 'Pontianak', code: 'KIPAN-KALBAR', activeStatus: 'Aktif' },
-            { name: 'Kalimantan Tengah', capital: 'Palangka Raya', code: 'KIPAN-KALTENG', activeStatus: 'Aktif' },
-            { name: 'Kalimantan Selatan', capital: 'Banjarmasin', code: 'KIPAN-KALSEL', activeStatus: 'Aktif' },
-            { name: 'Kalimantan Timur', capital: 'Samarinda', code: 'KIPAN-KALTIM', activeStatus: 'Aktif' },
-            { name: 'Kalimantan Utara', capital: 'Tanjung Selor', code: 'KIPAN-KALTARA', activeStatus: 'Aktif' },
+            { name: 'Kalimantan Barat', capital: 'Pontianak', code: 'KIPAN-KALBAR', activeStatus: 'Siaga Aktif' },
+            { name: 'Kalimantan Tengah', capital: 'Palangka Raya', code: 'KIPAN-KALTENG', activeStatus: 'Siaga Aktif' },
+            { name: 'Kalimantan Selatan', capital: 'Banjarmasin', code: 'KIPAN-KALSEL', activeStatus: 'Siaga Aktif' },
+            { name: 'Kalimantan Timur', capital: 'Samarinda', code: 'KIPAN-KALTIM', activeStatus: 'Siaga Aktif' },
+            { name: 'Kalimantan Utara', capital: 'Tanjung Selor', code: 'KIPAN-KALTARA', activeStatus: 'Siaga Aktif' },
         ],
     },
     {
         regionName: 'Sulawesi (6 Provinsi)',
         provinces: [
-            { name: 'Sulawesi Utara', capital: 'Manado', code: 'KIPAN-SULUT', activeStatus: 'Aktif' },
-            { name: 'Sulawesi Tengah', capital: 'Palu', code: 'KIPAN-SULTENG', activeStatus: 'Aktif' },
-            { name: 'Sulawesi Selatan', capital: 'Makassar', code: 'KIPAN-SULSEL', activeStatus: 'Aktif' },
-            { name: 'Sulawesi Tenggara', capital: 'Kendari', code: 'KIPAN-SULTRA', activeStatus: 'Aktif' },
-            { name: 'Gorontalo', capital: 'Gorontalo', code: 'KIPAN-GTO', activeStatus: 'Aktif' },
-            { name: 'Sulawesi Barat', capital: 'Mamuju', code: 'KIPAN-SULBAR', activeStatus: 'Aktif' },
+            { name: 'Sulawesi Utara', capital: 'Manado', code: 'KIPAN-SULUT', activeStatus: 'Siaga Aktif' },
+            { name: 'Sulawesi Tengah', capital: 'Palu', code: 'KIPAN-SULTENG', activeStatus: 'Siaga Aktif' },
+            { name: 'Sulawesi Selatan', capital: 'Makassar', code: 'KIPAN-SULSEL', activeStatus: 'Siaga Aktif' },
+            { name: 'Sulawesi Tenggara', capital: 'Kendari', code: 'KIPAN-SULTRA', activeStatus: 'Siaga Aktif' },
+            { name: 'Gorontalo', capital: 'Gorontalo', code: 'KIPAN-GTO', activeStatus: 'Siaga Aktif' },
+            { name: 'Sulawesi Barat', capital: 'Mamuju', code: 'KIPAN-SULBAR', activeStatus: 'Siaga Aktif' },
         ],
     },
     {
-        regionName: 'Maluku & Papua (9 Provinsi)',
+        regionName: 'Maluku & Papua (8 Provinsi)',
         provinces: [
-            { name: 'Maluku', capital: 'Ambon', code: 'KIPAN-MALUKU', activeStatus: 'Aktif' },
-            { name: 'Maluku Utara', capital: 'Sofifi', code: 'KIPAN-MALUT', activeStatus: 'Aktif' },
-            { name: 'Papua', capital: 'Jayapura', code: 'KIPAN-PAPUA', activeStatus: 'Aktif' },
-            { name: 'Papua Barat', capital: 'Manokwari', code: 'KIPAN-PB', activeStatus: 'Aktif' },
-            { name: 'Papua Selatan', capital: 'Merauke', code: 'KIPAN-PS', activeStatus: 'Aktif' },
-            { name: 'Papua Tengah', capital: 'Nabire', code: 'KIPAN-PT', activeStatus: 'Aktif' },
-            { name: 'Papua Pegunungan', capital: 'Jayawijaya', code: 'KIPAN-PP', activeStatus: 'Aktif' },
-            { name: 'Papua Barat Daya', capital: 'Sorong', code: 'KIPAN-PBD', activeStatus: 'Aktif' },
+            { name: 'Maluku', capital: 'Ambon', code: 'KIPAN-MALUKU', activeStatus: 'Siaga Aktif' },
+            { name: 'Maluku Utara', capital: 'Sofifi', code: 'KIPAN-MALUT', activeStatus: 'Siaga Aktif' },
+            { name: 'Papua', capital: 'Jayapura', code: 'KIPAN-PAPUA', activeStatus: 'Siaga Aktif' },
+            { name: 'Papua Barat', capital: 'Manokwari', code: 'KIPAN-PB', activeStatus: 'Siaga Aktif' },
+            { name: 'Papua Selatan', capital: 'Merauke', code: 'KIPAN-PS', activeStatus: 'Siaga Aktif' },
+            { name: 'Papua Tengah', capital: 'Nabire', code: 'KIPAN-PT', activeStatus: 'Siaga Aktif' },
+            { name: 'Papua Pegunungan', capital: 'Jayawijaya', code: 'KIPAN-PP', activeStatus: 'Siaga Aktif' },
+            { name: 'Papua Barat Daya', capital: 'Sorong', code: 'KIPAN-PBD', activeStatus: 'Siaga Aktif' },
         ],
     },
 ];
@@ -236,69 +232,57 @@ export default function About() {
 
     return (
         <>
-            <Head title="Tentang KIPAN RI — Struktur Organisasi, Visi Misi & Profil Lengkap" />
+            <Head title="Tentang KIPAN RI: Struktur Organisasi, Visi Misi & Profil Lengkap" />
             <div className="min-h-screen flex flex-col bg-slate-50 font-sans antialiased text-slate-800">
                 <Navbar />
 
                 {/* ========================================================= */}
-                {/* HERO SECTION TENTANG KAMI (HERO SIMPLE & ELEGAN)          */}
+                {/* HERO SECTION: FOKUS, TENANG, OTENTIK INSTITUSIONAL        */}
                 {/* ========================================================= */}
                 <section
-                    className="relative pt-36 sm:pt-40 pb-14 sm:pb-16 text-white overflow-hidden border-b border-blue-900/60"
+                    className="relative pt-36 sm:pt-40 pb-16 sm:pb-20 text-white border-b border-blue-950"
                     style={{
                         backgroundColor: '#0D3F70',
-                        backgroundImage: 'linear-gradient(180deg, #061C33 0%, #0D3F70 60%, #0A3055 100%)',
-                        color: '#ffffff',
+                        backgroundImage: 'linear-gradient(180deg, #07223D 0%, #0D3F70 100%)',
                     }}
                 >
-                    {/* Subtle Grid Texture */}
-                    <div
-                        className="absolute inset-0 opacity-10 pointer-events-none"
-                        style={{
-                            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.4) 1px, transparent 0)`,
-                            backgroundSize: '32px 32px',
-                        }}
-                    />
-
-                    {/* Ambient Glow */}
-                    <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-                    <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-
-                    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center relative z-10">
+                    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
                         {/* Breadcrumbs */}
-                        <div className="inline-flex items-center gap-2 text-xs font-semibold text-blue-200/80 mb-4">
-                            <a href="/" className="hover:text-amber-300 transition-colors">Beranda</a>
-                            <span className="text-blue-300/40">/</span>
-                            <span className="text-amber-400 font-bold">Tentang Kami</span>
-                        </div>
+                        <nav aria-label="Breadcrumb" className="inline-flex items-center gap-2 text-xs font-medium text-blue-100 mb-5">
+                            <a
+                                href="/"
+                                className="text-blue-100 hover:text-white underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-sm"
+                            >
+                                Beranda
+                            </a>
+                            <span className="text-blue-300/60" aria-hidden="true">/</span>
+                            <span className="text-amber-300 font-semibold" aria-current="page">Tentang Kami</span>
+                        </nav>
 
                         {/* Title */}
-                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-4">
+                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
                             Tentang KIPAN Republik Indonesia
                         </h1>
 
                         {/* Subtitle */}
-                        <p
-                            className="text-sm sm:text-base leading-relaxed max-w-2xl mx-auto"
-                            style={{ color: 'rgba(219, 234, 254, 0.9)' }}
-                        >
+                        <p className="text-sm sm:text-base leading-relaxed max-w-2xl mx-auto text-blue-100/90 font-normal">
                             Gerakan kepemudaan strategis binaan resmi Kementerian Pemuda dan Olahraga (Kemenpora RI) bersama Badan Narkotika Nasional (BNN RI) untuk menggerakkan pemuda sebagai garda terdepan pencegahan narkotika di 38 provinsi.
                         </p>
                     </div>
                 </section>
 
-                {/* ========================================================= */}
-                {/* BAGIAN 1: STRUKTUR ORGANISASI (PRIORITAS NOMOR 1 & WAJIB)  */}
-                {/* ========================================================= */}
                 <main className="flex-1">
+                    {/* ========================================================= */}
+                    {/* BAGIAN 1: STRUKTUR ORGANISASI (PRIORITAS NOMOR 1 & WAJIB)  */}
+                    {/* ========================================================= */}
                     <section id="struktur" className="py-16 sm:py-20 scroll-mt-20">
                         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="max-w-3xl mb-12">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 border border-blue-200 rounded-full text-xs font-bold text-[#0D3F70] uppercase tracking-wider mb-2.5">
-                                    <PersonIcon className="w-3.5 h-3.5 text-[#0E6CAC]" />
-                                    <span>Prioritas Utama #1</span>
+                                <div className="flex items-center gap-2 text-xs font-bold text-[#0D3F70] uppercase tracking-wider mb-2">
+                                    <span className="w-2 h-2 rounded-full bg-[#0E6CAC]" />
+                                    <span>Bagan Kepengurusan Nasional</span>
                                 </div>
-                                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0D3F70] tracking-tight">
+                                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0D3F70] tracking-tight">
                                     Struktur Organisasi &amp; Kepengurusan KIPAN RI
                                 </h2>
                                 <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
@@ -310,11 +294,13 @@ export default function About() {
                             {/* TINGKAT 1: DEWAN PEMBINA NEGARA */}
                             <div className="mb-14">
                                 <div className="flex items-center gap-3 mb-6 pb-3 border-b border-slate-200">
-                                    <span className="w-8 h-8 rounded-lg bg-[#0D3F70] text-white flex items-center justify-center font-bold text-xs">
+                                    <span className="w-7 h-7 rounded-md bg-[#0D3F70] text-white flex items-center justify-center font-bold text-xs">
                                         I
                                     </span>
                                     <div>
-                                        <h3 className="text-lg font-bold text-[#0D3F70]">Dewan Pembina &amp; Pengarah Nasional (Pemerintah RI)</h3>
+                                        <h3 className="text-base sm:text-lg font-bold text-[#0D3F70]">
+                                            Dewan Pembina &amp; Pengarah Nasional (Pemerintah RI)
+                                        </h3>
                                         <p className="text-xs text-slate-500">Payung pembina resmi dan pengarah kebijakan makro kepemudaan dan P4GN</p>
                                     </div>
                                 </div>
@@ -323,16 +309,16 @@ export default function About() {
                                     {DEWAN_PEMBINA.map((leader, idx) => (
                                         <div
                                             key={idx}
-                                            className="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs hover:border-[#0E6CAC] hover:shadow-md transition-all flex flex-col justify-between"
+                                            className="bg-white rounded-xl border border-slate-200 p-5 flex flex-col justify-between hover:border-slate-300 transition-colors"
                                         >
                                             <div>
-                                                <div className="w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-50 border border-slate-200 p-3 mb-4 flex items-center justify-center relative">
+                                                <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-slate-50 border border-slate-200 p-3 mb-4 flex items-center justify-center relative">
                                                     <img
                                                         src={leader.photo}
                                                         alt={leader.name}
                                                         className="w-full h-full object-contain"
                                                     />
-                                                    <span className="absolute top-2 left-2 bg-[#0D3F70] text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-xs">
+                                                    <span className="absolute top-2 left-2 bg-[#0D3F70] text-white text-[10px] font-semibold px-2 py-0.5 rounded">
                                                         {leader.badge}
                                                     </span>
                                                 </div>
@@ -340,7 +326,7 @@ export default function About() {
                                                 <h4 className="text-base font-bold text-[#0D3F70] leading-snug mb-1">
                                                     {leader.name}
                                                 </h4>
-                                                <div className="text-xs font-bold text-[#0E6CAC] uppercase tracking-wide mb-1.5">
+                                                <div className="text-xs font-semibold text-[#0E6CAC] uppercase tracking-wide mb-1.5">
                                                     {leader.role}
                                                 </div>
                                                 <p className="text-xs text-slate-500 font-medium mb-3">
@@ -358,11 +344,13 @@ export default function About() {
                             {/* TINGKAT 2: PENGURUS PUSAT (SEKRETARIAT NASIONAL) */}
                             <div className="mb-14">
                                 <div className="flex items-center gap-3 mb-6 pb-3 border-b border-slate-200">
-                                    <span className="w-8 h-8 rounded-lg bg-[#0E6CAC] text-white flex items-center justify-center font-bold text-xs">
+                                    <span className="w-7 h-7 rounded-md bg-[#0E6CAC] text-white flex items-center justify-center font-bold text-xs">
                                         II
                                     </span>
                                     <div>
-                                        <h3 className="text-lg font-bold text-[#0D3F70]">Pengurus Pusat (Sekretariat Nasional KIPAN RI)</h3>
+                                        <h3 className="text-base sm:text-lg font-bold text-[#0D3F70]">
+                                            Pengurus Pusat (Sekretariat Nasional KIPAN RI)
+                                        </h3>
                                         <p className="text-xs text-slate-500">Pimpinan eksekutif pemuda penggerak operasional gerakan nasional</p>
                                     </div>
                                 </div>
@@ -371,16 +359,16 @@ export default function About() {
                                     {PENGURUS_PUSAT.map((leader, idx) => (
                                         <div
                                             key={idx}
-                                            className="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs hover:border-[#0E6CAC] hover:shadow-md transition-all flex flex-col justify-between"
+                                            className="bg-white rounded-xl border border-slate-200 p-5 flex flex-col justify-between hover:border-slate-300 transition-colors"
                                         >
                                             <div>
-                                                <div className="w-full aspect-[4/3] rounded-xl overflow-hidden bg-blue-50/50 border border-slate-200 p-3 mb-4 flex items-center justify-center relative">
+                                                <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-slate-50 border border-slate-200 p-3 mb-4 flex items-center justify-center relative">
                                                     <img
                                                         src={leader.photo}
                                                         alt={leader.name}
                                                         className="w-full h-full object-contain"
                                                     />
-                                                    <span className="absolute top-2 left-2 bg-[#0E6CAC] text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-xs">
+                                                    <span className="absolute top-2 left-2 bg-[#0E6CAC] text-white text-[10px] font-semibold px-2 py-0.5 rounded">
                                                         {leader.badge}
                                                     </span>
                                                 </div>
@@ -388,7 +376,7 @@ export default function About() {
                                                 <h4 className="text-base font-bold text-[#0D3F70] leading-snug mb-1">
                                                     {leader.name}
                                                 </h4>
-                                                <div className="text-xs font-bold text-[#0E6CAC] uppercase tracking-wide mb-1.5">
+                                                <div className="text-xs font-semibold text-[#0E6CAC] uppercase tracking-wide mb-1.5">
                                                     {leader.role}
                                                 </div>
                                                 <p className="text-xs text-slate-500 font-medium mb-3">
@@ -406,12 +394,14 @@ export default function About() {
                             {/* TINGKAT 3: 6 BIDANG KERJA STRATEGIS */}
                             <div className="mb-14">
                                 <div className="flex items-center gap-3 mb-6 pb-3 border-b border-slate-200">
-                                    <span className="w-8 h-8 rounded-lg bg-amber-500 text-white flex items-center justify-center font-bold text-xs">
+                                    <span className="w-7 h-7 rounded-md bg-[#D97706] text-white flex items-center justify-center font-bold text-xs">
                                         III
                                     </span>
                                     <div>
-                                        <h3 className="text-lg font-bold text-[#0D3F70]">6 Bidang Kerja &amp; Divisi Teknis</h3>
-                                        <p className="text-xs text-slate-500">Fokus program aksi nyata dalam pencegahan, kaderisasi, advokasi, dan kemitraan</p>
+                                        <h3 className="text-base sm:text-lg font-bold text-[#0D3F70]">
+                                            6 Bidang Kerja Teknis
+                                        </h3>
+                                        <p className="text-xs text-slate-500">Divisi operasional program pencegahan, kaderisasi, advokasi, dan kemitraan</p>
                                     </div>
                                 </div>
 
@@ -419,14 +409,14 @@ export default function About() {
                                     {BIDANG_KERJA.map((bidang) => (
                                         <div
                                             key={bidang.id}
-                                            className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs hover:border-[#0E6CAC] hover:shadow-md transition-all flex flex-col justify-between"
+                                            className="bg-white rounded-xl border border-slate-200 p-6 flex flex-col justify-between hover:border-slate-300 transition-colors"
                                         >
                                             <div>
                                                 <div className="flex items-center justify-between mb-4">
-                                                    <span className="w-9 h-9 rounded-xl bg-blue-50 text-[#0E6CAC] font-black text-sm flex items-center justify-center border border-blue-100">
+                                                    <span className="w-8 h-8 rounded-lg bg-slate-100 text-[#0D3F70] font-bold text-xs flex items-center justify-center border border-slate-200">
                                                         {bidang.no}
                                                     </span>
-                                                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                                                    <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wider">
                                                         Divisi Teknis
                                                     </span>
                                                 </div>
@@ -438,8 +428,8 @@ export default function About() {
                                                 </p>
                                             </div>
                                             <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                                                <span className="text-slate-400 font-medium">Target Capaian:</span>
-                                                <span className="font-bold text-[#0E6CAC]">{bidang.target}</span>
+                                                <span className="text-slate-500 font-medium">Fokus Utama:</span>
+                                                <span className="font-semibold text-[#0E6CAC]">{bidang.scope}</span>
                                             </div>
                                         </div>
                                     ))}
@@ -447,23 +437,25 @@ export default function About() {
                             </div>
 
                             {/* TINGKAT 4: HIERARKI DAERAH HINGGA KAMPUS & SEKOLAH */}
-                            <div className="bg-gradient-to-br from-white to-blue-50/40 border border-slate-200 rounded-3xl p-6 sm:p-8">
-                                <div className="flex items-center gap-3 mb-6">
-                                    <span className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-xs">
+                            <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8">
+                                <div className="flex items-center gap-3 mb-6 pb-3 border-b border-slate-100">
+                                    <span className="w-7 h-7 rounded-md bg-[#059669] text-white flex items-center justify-center font-bold text-xs">
                                         IV
                                     </span>
                                     <div>
-                                        <h3 className="text-lg font-bold text-[#0D3F70]">Jejaring Daerah &amp; Satuan Tugas Lapangan</h3>
+                                        <h3 className="text-base sm:text-lg font-bold text-[#0D3F70]">
+                                            Jejaring Daerah &amp; Satuan Tugas Lapangan
+                                        </h3>
                                         <p className="text-xs text-slate-500">Struktur koordinasi di tingkat provinsi, kabupaten/kota, hingga basis komunitas</p>
                                     </div>
                                 </div>
 
                                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                                    <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-2xs">
-                                        <div className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md inline-block mb-2">
+                                    <div className="p-5 bg-slate-50/80 rounded-xl border border-slate-200">
+                                        <div className="text-xs font-semibold text-emerald-800 bg-emerald-100/70 px-2.5 py-1 rounded inline-block mb-2.5">
                                             Tingkat Provinsi (38 Provinsi)
                                         </div>
-                                        <h4 className="text-sm font-bold text-[#0D3F70] mb-1">
+                                        <h4 className="text-sm font-bold text-[#0D3F70] mb-1.5">
                                             Koordinator Wilayah (Korwil)
                                         </h4>
                                         <p className="text-xs text-slate-600 leading-relaxed">
@@ -471,11 +463,11 @@ export default function About() {
                                         </p>
                                     </div>
 
-                                    <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-2xs">
-                                        <div className="text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md inline-block mb-2">
+                                    <div className="p-5 bg-slate-50/80 rounded-xl border border-slate-200">
+                                        <div className="text-xs font-semibold text-blue-800 bg-blue-100/70 px-2.5 py-1 rounded inline-block mb-2.5">
                                             Tingkat Kab / Kota (514 Wilayah)
                                         </div>
-                                        <h4 className="text-sm font-bold text-[#0D3F70] mb-1">
+                                        <h4 className="text-sm font-bold text-[#0D3F70] mb-1.5">
                                             Koordinator Cabang (Korcab)
                                         </h4>
                                         <p className="text-xs text-slate-600 leading-relaxed">
@@ -483,15 +475,15 @@ export default function About() {
                                         </p>
                                     </div>
 
-                                    <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-2xs">
-                                        <div className="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md inline-block mb-2">
+                                    <div className="p-5 bg-slate-50/80 rounded-xl border border-slate-200">
+                                        <div className="text-xs font-semibold text-amber-800 bg-amber-100/70 px-2.5 py-1 rounded inline-block mb-2.5">
                                             Basis Sekolah &amp; Kampus
                                         </div>
-                                        <h4 className="text-sm font-bold text-[#0D3F70] mb-1">
+                                        <h4 className="text-sm font-bold text-[#0D3F70] mb-1.5">
                                             Satgas Relawan Pelajar Bersinar
                                         </h4>
                                         <p className="text-xs text-slate-600 leading-relaxed">
-                                            Duta sebaya yang aktif menjaga lingkungan sekolah dan perguruan tinggi dari penyusupan zat adiktif dan narkotika.
+                                            Duta sebaya yang aktif menjaga lingkungan sekolah dan perguruan tinggi dari peredaran zat adiktif dan narkotika.
                                         </p>
                                     </div>
                                 </div>
@@ -499,16 +491,18 @@ export default function About() {
                         </div>
                     </section>
 
-                    {/* BAGIAN 2: LANDASAN HUKUM & LEGALITAS NEGARA */}
-                    <section id="legalitas" className="py-16 bg-white border-y border-slate-200 scroll-mt-20">
+                    {/* ========================================================= */}
+                    {/* BAGIAN 2: LANDASAN HUKUM & LEGALITAS NEGARA               */}
+                    {/* ========================================================= */}
+                    <section id="legalitas" className="py-16 sm:py-20 bg-white border-y border-slate-200 scroll-mt-20">
                         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="max-w-3xl mb-10">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 border border-amber-200 rounded-full text-xs font-bold text-amber-800 uppercase tracking-wider mb-2">
-                                    <FileTextIcon className="w-3.5 h-3.5" />
-                                    <span>Legalitas &amp; Landasan Hukum</span>
+                                <div className="flex items-center gap-2 text-xs font-bold text-[#0D3F70] uppercase tracking-wider mb-2">
+                                    <FileTextIcon className="w-3.5 h-3.5 text-[#0E6CAC]" />
+                                    <span>Dasar Hukum &amp; Legalitas Resmi</span>
                                 </div>
-                                <h2 className="text-2xl sm:text-3xl font-black text-[#0D3F70] tracking-tight">
-                                    Payung Hukum Gerakan KIPAN RI
+                                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0D3F70] tracking-tight">
+                                    Payung Regulasi Gerakan KIPAN RI
                                 </h2>
                                 <p className="text-sm text-slate-600 mt-2 leading-relaxed">
                                     KIPAN bukan sekadar komunitas sukarela, melainkan gerakan resmi yang didasarkan pada regulasi negara dan mandat undang-undang republik.
@@ -516,53 +510,53 @@ export default function About() {
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                <div className="p-6 bg-slate-50 border border-slate-200 rounded-2xl hover:border-[#0E6CAC] transition-all flex flex-col justify-between">
+                                <div className="p-6 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-between hover:border-slate-300 transition-colors">
                                     <div>
-                                        <div className="w-10 h-10 rounded-xl bg-blue-100 text-[#0D3F70] flex items-center justify-center font-bold text-xs mb-4">
+                                        <div className="w-9 h-9 rounded-lg bg-blue-100 text-[#0D3F70] flex items-center justify-center font-bold text-xs mb-4">
                                             UU
                                         </div>
-                                        <h3 className="text-base font-bold text-[#0D3F70] mb-2">
+                                        <h3 className="text-base font-bold text-[#0D3F70] mb-2 leading-snug">
                                             UU No. 40 Tahun 2009 tentang Kepemudaan
                                         </h3>
                                         <p className="text-xs text-slate-600 leading-relaxed mb-4">
                                             Menegaskan peran strategis pemuda sebagai subjek pembangunan nasional dan agen moral dalam menjaga ketahanan bangsa dari bahaya destruktif peredaran gelap narkoba.
                                         </p>
                                     </div>
-                                    <span className="text-[11px] font-bold text-[#0E6CAC] uppercase tracking-wider">
+                                    <span className="text-[11px] font-semibold text-[#0E6CAC] uppercase tracking-wider pt-3 border-t border-slate-200/80">
                                         Mandat Undang-Undang RI
                                     </span>
                                 </div>
 
-                                <div className="p-6 bg-slate-50 border border-slate-200 rounded-2xl hover:border-[#0E6CAC] transition-all flex flex-col justify-between">
+                                <div className="p-6 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-between hover:border-slate-300 transition-colors">
                                     <div>
-                                        <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-xs mb-4">
+                                        <div className="w-9 h-9 rounded-lg bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-xs mb-4">
                                             INPRES
                                         </div>
-                                        <h3 className="text-base font-bold text-[#0D3F70] mb-2">
+                                        <h3 className="text-base font-bold text-[#0D3F70] mb-2 leading-snug">
                                             Inpres No. 2 Tahun 2020 tentang Rencana Aksi Nasional P4GN
                                         </h3>
                                         <p className="text-xs text-slate-600 leading-relaxed mb-4">
                                             Menginstruksikan seluruh kementerian, lembaga, dan pemerintah daerah untuk melaksanakan aksi pencegahan, deteksi dini, dan pemberantasan penyalahgunaan narkotika bersama masyarakat.
                                         </p>
                                     </div>
-                                    <span className="text-[11px] font-bold text-amber-700 uppercase tracking-wider">
+                                    <span className="text-[11px] font-semibold text-amber-800 uppercase tracking-wider pt-3 border-t border-slate-200/80">
                                         Instruksi Presiden Republik Indonesia
                                     </span>
                                 </div>
 
-                                <div className="p-6 bg-slate-50 border border-slate-200 rounded-2xl hover:border-[#0E6CAC] transition-all flex flex-col justify-between">
+                                <div className="p-6 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-between hover:border-slate-300 transition-colors">
                                     <div>
-                                        <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-xs mb-4">
+                                        <div className="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-xs mb-4">
                                             MOU
                                         </div>
-                                        <h3 className="text-base font-bold text-[#0D3F70] mb-2">
+                                        <h3 className="text-base font-bold text-[#0D3F70] mb-2 leading-snug">
                                             Perjanjian Kerja Sama Kemenpora RI &amp; BNN RI
                                         </h3>
                                         <p className="text-xs text-slate-600 leading-relaxed mb-4">
                                             Nota kesepahaman operasional antara Kementerian Pemuda &amp; Olahraga bersama Badan Narkotika Nasional mengenai fasilitasi pelatihan kader inti di 38 provinsi.
                                         </p>
                                     </div>
-                                    <span className="text-[11px] font-bold text-emerald-700 uppercase tracking-wider">
+                                    <span className="text-[11px] font-semibold text-emerald-800 uppercase tracking-wider pt-3 border-t border-slate-200/80">
                                         Kerja Sama Lintas Lembaga Negara
                                     </span>
                                 </div>
@@ -570,29 +564,37 @@ export default function About() {
                         </div>
                     </section>
 
-                    {/* BAGIAN 3: VISI & MISI */}
+                    {/* ========================================================= */}
+                    {/* BAGIAN 3: VISI & 4 PILAR MISI                             */}
+                    {/* ========================================================= */}
                     <section id="visi-misi" className="py-16 sm:py-20 scroll-mt-20">
                         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="max-w-3xl mb-10">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 border border-blue-200 rounded-full text-xs font-bold text-[#0D3F70] uppercase tracking-wider mb-2">
+                                <div className="flex items-center gap-2 text-xs font-bold text-[#0D3F70] uppercase tracking-wider mb-2">
                                     <TargetIcon className="w-3.5 h-3.5 text-[#0E6CAC]" />
-                                    <span>Visi &amp; Misi</span>
+                                    <span>Visi &amp; Misi Gerakan</span>
                                 </div>
-                                <h2 className="text-2xl sm:text-3xl font-black text-[#0D3F70] tracking-tight">
-                                    Arah &amp; Panduan Gerakan
+                                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0D3F70] tracking-tight">
+                                    Arah &amp; Panduan Gerakan Nasional
                                 </h2>
                             </div>
 
                             {/* Banner Visi */}
-                            <div className="bg-gradient-to-r from-[#0D3F70] to-[#0A3055] text-white rounded-3xl p-8 sm:p-10 mb-10 shadow-md relative overflow-hidden">
-                                <div className="max-w-3xl relative z-10">
+                            <div
+                                className="text-white rounded-2xl p-8 sm:p-10 mb-8 border border-blue-900"
+                                style={{
+                                    backgroundColor: '#0D3F70',
+                                    backgroundImage: 'linear-gradient(180deg, #092B4D 0%, #0D3F70 100%)',
+                                }}
+                            >
+                                <div className="max-w-3xl">
                                     <span className="text-xs font-bold text-amber-300 uppercase tracking-widest block mb-2">
-                                        Visi Besar KIPAN RI
+                                        Visi KIPAN RI
                                     </span>
-                                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-black leading-snug mb-4">
+                                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-snug mb-3">
                                         "Mewujudkan Generasi Pemuda Indonesia yang Tangguh, Berkarakter, Berdaya Saing, dan Bersih dari Narkoba Menuju Indonesia Emas 2045."
                                     </h3>
-                                    <p className="text-xs sm:text-sm text-blue-100/90 leading-relaxed">
+                                    <p className="text-xs sm:text-sm text-blue-100 leading-relaxed font-normal">
                                         Membangun benteng moral pemuda melalui kemandirian, kepeloporan, dan aksi nyata terorganisir dari perkotaan hingga pelosok desa.
                                     </p>
                                 </div>
@@ -600,8 +602,8 @@ export default function About() {
 
                             {/* 4 Pilar Misi */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                <div className="p-6 bg-white rounded-2xl border border-slate-200 shadow-xs flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0E6CAC] flex items-center justify-center font-bold text-base shrink-0 border border-blue-100">
+                                <div className="p-6 bg-white rounded-xl border border-slate-200 flex items-start gap-4">
+                                    <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#0D3F70] flex items-center justify-center font-bold text-sm shrink-0 border border-blue-100">
                                         1
                                     </div>
                                     <div>
@@ -612,20 +614,20 @@ export default function About() {
                                     </div>
                                 </div>
 
-                                <div className="p-6 bg-white rounded-2xl border border-slate-200 shadow-xs flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0E6CAC] flex items-center justify-center font-bold text-base shrink-0 border border-blue-100">
+                                <div className="p-6 bg-white rounded-xl border border-slate-200 flex items-start gap-4">
+                                    <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#0D3F70] flex items-center justify-center font-bold text-sm shrink-0 border border-blue-100">
                                         2
                                     </div>
                                     <div>
-                                        <h4 className="text-base font-bold text-[#0D3F70] mb-1.5">Kaderisasi Masif Berkelanjutan</h4>
+                                        <h4 className="text-base font-bold text-[#0D3F70] mb-1.5">Kaderisasi Terstruktur Berkelanjutan</h4>
                                         <p className="text-xs text-slate-600 leading-relaxed">
-                                            Mencetak lebih dari 50.000 kader inti pemuda yang memiliki sertifikasi wawasan kepemimpinan, hukum narkotika, dan keterampilan konseling sebaya.
+                                            Mempersiapkan kader pemuda bersertifikat yang memiliki wawasan kepemimpinan, regulasi narkotika, dan keterampilan konseling sebaya.
                                         </p>
                                     </div>
                                 </div>
 
-                                <div className="p-6 bg-white rounded-2xl border border-slate-200 shadow-xs flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0E6CAC] flex items-center justify-center font-bold text-base shrink-0 border border-blue-100">
+                                <div className="p-6 bg-white rounded-xl border border-slate-200 flex items-start gap-4">
+                                    <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#0D3F70] flex items-center justify-center font-bold text-sm shrink-0 border border-blue-100">
                                         3
                                     </div>
                                     <div>
@@ -636,8 +638,8 @@ export default function About() {
                                     </div>
                                 </div>
 
-                                <div className="p-6 bg-white rounded-2xl border border-slate-200 shadow-xs flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0E6CAC] flex items-center justify-center font-bold text-base shrink-0 border border-blue-100">
+                                <div className="p-6 bg-white rounded-xl border border-slate-200 flex items-start gap-4">
+                                    <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#0D3F70] flex items-center justify-center font-bold text-sm shrink-0 border border-blue-100">
                                         4
                                     </div>
                                     <div>
@@ -651,15 +653,17 @@ export default function About() {
                         </div>
                     </section>
 
-                    {/* BAGIAN 4: FILOSOFI LAMBANG & IDENTITAS */}
-                    <section id="filosofi" className="py-16 sm:py-20 bg-slate-50/60 border-y border-slate-200 scroll-mt-20">
+                    {/* ========================================================= */}
+                    {/* BAGIAN 4: MAKNA DI BALIK LAMBANG KIPAN RI                 */}
+                    {/* ========================================================= */}
+                    <section id="filosofi" className="py-16 sm:py-20 bg-slate-100/70 border-y border-slate-200 scroll-mt-20">
                         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="max-w-3xl mb-12">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 border border-amber-200 rounded-full text-xs font-bold text-amber-800 uppercase tracking-wider mb-2.5">
+                                <div className="flex items-center gap-2 text-xs font-bold text-[#0D3F70] uppercase tracking-wider mb-2">
                                     <BookmarkFilledIcon className="w-3.5 h-3.5 text-amber-600" />
                                     <span>Identitas &amp; Filosofi Lambang</span>
                                 </div>
-                                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0D3F70] tracking-tight">
+                                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0D3F70] tracking-tight">
                                     Makna di Balik Lambang KIPAN RI
                                 </h2>
                                 <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
@@ -670,27 +674,27 @@ export default function About() {
 
                             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                                 {/* Left Column: Official Logo Showcase Card */}
-                                <div className="lg:col-span-5 bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 flex flex-col justify-between items-center text-center shadow-xs">
+                                <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 flex flex-col justify-between items-center text-center">
                                     <div className="w-full">
                                         <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
-                                            <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                                            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
                                                 Identitas Visual
                                             </span>
-                                            <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                                            <span className="text-[11px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                                                 Binaan Resmi
                                             </span>
                                         </div>
 
-                                        {/* Logo Framed Container */}
-                                        <div className="w-48 h-48 sm:w-56 sm:h-56 mx-auto rounded-3xl bg-slate-50/70 p-6 border border-slate-200/80 shadow-inner flex items-center justify-center relative group hover:border-[#0E6CAC] transition-colors duration-300">
+                                        {/* Logo Container */}
+                                        <div className="w-48 h-48 sm:w-52 sm:h-52 mx-auto rounded-xl bg-slate-50 p-6 border border-slate-200 flex items-center justify-center">
                                             <img
                                                 src="/logo-kipan.jpg"
                                                 alt="Logo Resmi KIPAN Republik Indonesia"
-                                                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-sm"
+                                                className="w-full h-full object-contain"
                                             />
                                         </div>
 
-                                        <h3 className="text-lg font-bold text-[#0D3F70] mt-6 mb-1.5">
+                                        <h3 className="text-lg font-bold text-[#0D3F70] mt-6 mb-1">
                                             Logo Resmi KIPAN RI
                                         </h3>
                                         <p className="text-xs text-slate-500 font-medium">
@@ -702,22 +706,22 @@ export default function About() {
                                     </div>
 
                                     {/* Bottom Tag */}
-                                    <div className="w-full mt-6 pt-4 border-t border-slate-100 flex items-center justify-center gap-2 text-xs font-semibold text-slate-500">
+                                    <div className="w-full mt-6 pt-4 border-t border-slate-100 flex items-center justify-center gap-2 text-xs font-semibold text-slate-600">
                                         <BadgeIcon className="w-4 h-4 text-[#0E6CAC]" />
                                         <span>Binaan Kemenpora RI &amp; BNN RI</span>
                                     </div>
                                 </div>
 
-                                {/* Right Column: 4 Symmetrical & Distinct Meaning Cards */}
+                                {/* Right Column: 4 Symmetrical Meaning Cards */}
                                 <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
                                     {/* Card 1: Biru Dongker */}
-                                    <div className="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-6 shadow-xs hover:border-[#0E6CAC] hover:shadow-md hover:-translate-y-1 transition-all flex flex-col justify-between">
+                                    <div className="bg-white rounded-xl border border-slate-200 p-5 sm:p-6 flex flex-col justify-between hover:border-slate-300 transition-colors">
                                         <div>
                                             <div className="flex items-center justify-between mb-4">
-                                                <div className="w-8 h-8 rounded-xl bg-[#0D3F70] shadow-2xs flex items-center justify-center text-white text-xs font-black">
+                                                <div className="w-7 h-7 rounded-md bg-[#0D3F70] flex items-center justify-center text-white text-xs font-bold">
                                                     1
                                                 </div>
-                                                <span className="text-[10px] font-bold text-[#0D3F70] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100 uppercase tracking-wider">
+                                                <span className="text-[10px] font-semibold text-[#0D3F70] bg-blue-50 px-2 py-0.5 rounded border border-blue-100 uppercase tracking-wider">
                                                     Warna Dasar
                                                 </span>
                                             </div>
@@ -731,19 +735,19 @@ export default function About() {
                                         </div>
 
                                         <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                                            <span className="text-slate-400 font-medium">Nilai Karakter:</span>
+                                            <span className="text-slate-500 font-medium">Nilai Karakter:</span>
                                             <span className="font-bold text-[#0D3F70]">Integritas &amp; Keteguhan</span>
                                         </div>
                                     </div>
 
                                     {/* Card 2: Kuning Emas */}
-                                    <div className="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-6 shadow-xs hover:border-amber-400 hover:shadow-md hover:-translate-y-1 transition-all flex flex-col justify-between">
+                                    <div className="bg-white rounded-xl border border-slate-200 p-5 sm:p-6 flex flex-col justify-between hover:border-slate-300 transition-colors">
                                         <div>
                                             <div className="flex items-center justify-between mb-4">
-                                                <div className="w-8 h-8 rounded-xl bg-amber-400 shadow-2xs flex items-center justify-center text-[#0D3F70] text-xs font-black">
+                                                <div className="w-7 h-7 rounded-md bg-[#D97706] flex items-center justify-center text-white text-xs font-bold">
                                                     2
                                                 </div>
-                                                <span className="text-[10px] font-bold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200 uppercase tracking-wider">
+                                                <span className="text-[10px] font-semibold text-amber-900 bg-amber-50 px-2 py-0.5 rounded border border-amber-200 uppercase tracking-wider">
                                                     Cahaya Masa Depan
                                                 </span>
                                             </div>
@@ -757,19 +761,19 @@ export default function About() {
                                         </div>
 
                                         <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                                            <span className="text-slate-400 font-medium">Nilai Karakter:</span>
-                                            <span className="font-bold text-amber-600">Kejayaan &amp; Optimisme</span>
+                                            <span className="text-slate-500 font-medium">Nilai Karakter:</span>
+                                            <span className="font-bold text-amber-800">Kejayaan &amp; Optimisme</span>
                                         </div>
                                     </div>
 
                                     {/* Card 3: Merah Putih */}
-                                    <div className="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-6 shadow-xs hover:border-red-400 hover:shadow-md hover:-translate-y-1 transition-all flex flex-col justify-between">
+                                    <div className="bg-white rounded-xl border border-slate-200 p-5 sm:p-6 flex flex-col justify-between hover:border-slate-300 transition-colors">
                                         <div>
                                             <div className="flex items-center justify-between mb-4">
-                                                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-red-600 to-rose-700 shadow-2xs flex items-center justify-center text-white text-xs font-black">
+                                                <div className="w-7 h-7 rounded-md bg-red-700 flex items-center justify-center text-white text-xs font-bold">
                                                     3
                                                 </div>
-                                                <span className="text-[10px] font-bold text-red-700 bg-red-50 px-2.5 py-1 rounded-md border border-red-100 uppercase tracking-wider">
+                                                <span className="text-[10px] font-semibold text-red-800 bg-red-50 px-2 py-0.5 rounded border border-red-100 uppercase tracking-wider">
                                                     Jiwa Kebangsaan
                                                 </span>
                                             </div>
@@ -783,19 +787,19 @@ export default function About() {
                                         </div>
 
                                         <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                                            <span className="text-slate-400 font-medium">Nilai Karakter:</span>
-                                            <span className="font-bold text-red-600">Nasionalisme &amp; Patriotisme</span>
+                                            <span className="text-slate-500 font-medium">Nilai Karakter:</span>
+                                            <span className="font-bold text-red-700">Nasionalisme &amp; Patriotisme</span>
                                         </div>
                                     </div>
 
                                     {/* Card 4: Perisai Pelindung */}
-                                    <div className="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-6 shadow-xs hover:border-[#0E6CAC] hover:shadow-md hover:-translate-y-1 transition-all flex flex-col justify-between">
+                                    <div className="bg-white rounded-xl border border-slate-200 p-5 sm:p-6 flex flex-col justify-between hover:border-slate-300 transition-colors">
                                         <div>
                                             <div className="flex items-center justify-between mb-4">
-                                                <div className="w-8 h-8 rounded-xl bg-[#0E6CAC] shadow-2xs flex items-center justify-center text-white text-xs font-black">
+                                                <div className="w-7 h-7 rounded-md bg-[#0E6CAC] flex items-center justify-center text-white text-xs font-bold">
                                                     4
                                                 </div>
-                                                <span className="text-[10px] font-bold text-[#0E6CAC] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100 uppercase tracking-wider">
+                                                <span className="text-[10px] font-semibold text-[#0E6CAC] bg-blue-50 px-2 py-0.5 rounded border border-blue-100 uppercase tracking-wider">
                                                     Fungsi Perlindungan
                                                 </span>
                                             </div>
@@ -809,7 +813,7 @@ export default function About() {
                                         </div>
 
                                         <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                                            <span className="text-slate-400 font-medium">Nilai Karakter:</span>
+                                            <span className="text-slate-500 font-medium">Nilai Karakter:</span>
                                             <span className="font-bold text-[#0E6CAC]">Proteksi &amp; Ketahanan</span>
                                         </div>
                                     </div>
@@ -818,16 +822,17 @@ export default function About() {
                         </div>
                     </section>
 
-
-                    {/* BAGIAN 5: DIREKTORI JEJARING 38 PROVINSI */}
+                    {/* ========================================================= */}
+                    {/* BAGIAN 5: DIREKTORI JEJARING 38 PROVINSI                  */}
+                    {/* ========================================================= */}
                     <section id="jejaring" className="py-16 sm:py-20 scroll-mt-20">
                         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="max-w-3xl mb-10">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs font-bold text-emerald-800 uppercase tracking-wider mb-2">
-                                    <GlobeIcon className="w-3.5 h-3.5" />
-                                    <span>Jejaring 38 Provinsi</span>
+                                <div className="flex items-center gap-2 text-xs font-bold text-[#0D3F70] uppercase tracking-wider mb-2">
+                                    <GlobeIcon className="w-3.5 h-3.5 text-[#0E6CAC]" />
+                                    <span>Jejaring 38 Wilayah Provinsi</span>
                                 </div>
-                                <h2 className="text-2xl sm:text-3xl font-black text-[#0D3F70] tracking-tight">
+                                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0D3F70] tracking-tight">
                                     Direktori Wilayah &amp; Koordinator Daerah
                                 </h2>
                                 <p className="text-sm text-slate-600 mt-2 leading-relaxed">
@@ -836,15 +841,17 @@ export default function About() {
                             </div>
 
                             {/* Filter Wilayah Pulau */}
-                            <div className="flex flex-wrap gap-2 mb-8">
+                            <div className="flex flex-wrap gap-2 mb-8" role="tablist" aria-label="Filter Wilayah">
                                 {REGION_DIRECTORIES.map((reg, idx) => (
                                     <button
                                         key={idx}
+                                        role="tab"
+                                        aria-selected={selectedRegionIdx === idx}
                                         onClick={() => setSelectedRegionIdx(idx)}
-                                        className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                                        className={`px-4 py-2 rounded-lg text-xs font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D3F70] ${
                                             selectedRegionIdx === idx
                                                 ? 'bg-[#0D3F70] text-white shadow-xs'
-                                                : 'bg-white text-slate-600 border border-slate-200 hover:border-[#0E6CAC]'
+                                                : 'bg-white text-slate-700 border border-slate-200 hover:border-slate-300'
                                         }`}
                                     >
                                         {reg.regionName}
@@ -857,22 +864,25 @@ export default function About() {
                                 {REGION_DIRECTORIES[selectedRegionIdx].provinces.map((prov, pIdx) => (
                                     <div
                                         key={pIdx}
-                                        className="p-4 bg-white border border-slate-200 rounded-2xl shadow-xs hover:border-[#0E6CAC] hover:-translate-y-1 transition-all"
+                                        className="p-4 bg-white border border-slate-200 rounded-xl flex flex-col justify-between"
                                     >
-                                        <div className="flex items-center justify-between mb-2">
-                                            <span className="text-[10px] font-mono font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">
-                                                {prov.code}
-                                            </span>
-                                            <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                                                {prov.activeStatus}
-                                            </span>
+                                        <div>
+                                            <div className="flex items-center justify-between mb-2">
+                                                <span className="text-[10px] font-mono font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
+                                                    {prov.code}
+                                                </span>
+                                                <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/60">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" aria-hidden="true" />
+                                                    {prov.activeStatus}
+                                                </span>
+                                            </div>
+                                            <h4 className="text-sm font-bold text-[#0D3F70] mb-0.5">{prov.name}</h4>
+                                            <p className="text-xs text-slate-500 mb-3">Ibu Kota: {prov.capital}</p>
                                         </div>
-                                        <h4 className="text-sm font-bold text-[#0D3F70] mb-0.5">{prov.name}</h4>
-                                        <p className="text-xs text-slate-500 mb-3">Ibu Kota: {prov.capital}</p>
-                                        <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-[#0E6CAC] font-semibold">
-                                            <span>Sekretariat Korwil</span>
-                                            <ChevronRightIcon className="w-3.5 h-3.5" />
+
+                                        <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-medium">
+                                            <span>Koordinasi: Dispora &amp; BNNP</span>
+                                            <span className="font-semibold text-[#0D3F70]">Korwil Terdaftar</span>
                                         </div>
                                     </div>
                                 ))}
@@ -880,104 +890,68 @@ export default function About() {
                         </div>
                     </section>
 
-                    {/* BAGIAN 6: CALL TO ACTION (CTA) TERPADU */}
+                    {/* ========================================================= */}
+                    {/* BAGIAN 6: CALL TO ACTION (CTA) TERPADU                    */}
+                    {/* ========================================================= */}
                     <section
-                        className="py-20 lg:py-24 border-t border-blue-900/60 relative overflow-hidden"
+                        className="py-16 sm:py-20 border-t border-blue-950 text-white relative"
                         style={{
                             backgroundColor: '#0D3F70',
-                            backgroundImage: 'linear-gradient(180deg, #092B4D 0%, #061C33 50%, #041324 100%)',
-                            color: '#ffffff',
+                            backgroundImage: 'linear-gradient(180deg, #092B4D 0%, #061C33 100%)',
                         }}
                     >
-                        {/* Background accents */}
-                        <div
-                            className="absolute inset-0 opacity-15 pointer-events-none"
-                            style={{
-                                backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.4) 1px, transparent 0)`,
-                                backgroundSize: '32px 32px',
-                            }}
-                        />
-                        <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-                        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-
-                        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl relative z-10">
-                            <div
-                                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase mb-5 shadow-sm"
-                                style={{
-                                    backgroundColor: 'rgba(255, 255, 255, 0.12)',
-                                    color: '#FACB04',
-                                    border: '1px solid rgba(255, 255, 255, 0.25)',
-                                }}
-                            >
-                                <BadgeIcon className="w-3.5 h-3.5 text-amber-400" />
+                        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
+                            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-300 mb-3">
+                                <BadgeIcon className="w-3.5 h-3.5" />
                                 <span>Aksi Nyata Pemuda Bersinar</span>
                             </div>
 
-                            <h2
-                                className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight mb-4"
-                                style={{ color: '#ffffff' }}
-                            >
+                            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight mb-4 text-white">
                                 Siap Mengambil Peran Bersama KIPAN RI?
                             </h2>
 
-                            <p
-                                className="text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-9"
-                                style={{ color: 'rgba(219, 234, 254, 0.95)' }}
-                            >
-                                Bergabunglah bersama lebih dari 50.000 kader inti pemuda di 38 provinsi seluruh Indonesia. Lindungi sahabat sebaya, wujudkan lingkungan sehat, kreatif, dan bersih dari narkotika.
+                            <p className="text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-8 text-blue-100 font-normal">
+                                Bergabunglah dalam jejaring Kader Inti Pemuda Anti Narkoba di 38 provinsi seluruh Indonesia. Bersama Kemenpora RI dan BNN RI, mari lindungi sahabat sebaya dan wujudkan lingkungan pemuda yang sehat, berprestasi, dan bersih dari narkotika.
                             </p>
 
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">
                                 <a
                                     href="/kontak"
-                                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-sm font-bold uppercase tracking-wider transition-all shadow-md hover:scale-105 active:scale-95"
+                                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-lg text-xs sm:text-sm font-bold tracking-wide transition-colors shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
                                     style={{
                                         backgroundColor: '#FACB04',
                                         color: '#0D3F70',
                                     }}
                                 >
                                     <PersonIcon className="w-4 h-4" />
-                                    <span>Daftar Jadi Kader Inti</span>
+                                    <span>Pendaftaran &amp; Informasi Kader</span>
                                 </a>
 
                                 <a
-                                    href="/kontak"
-                                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold transition-all hover:scale-105 active:scale-95"
-                                    style={{
-                                        backgroundColor: 'rgba(255, 255, 255, 0.12)',
-                                        color: '#ffffff',
-                                        border: '1px solid rgba(255, 255, 255, 0.25)',
-                                    }}
+                                    href="/#kegiatan"
+                                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-lg text-xs sm:text-sm font-semibold text-white border border-white/30 hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                                 >
-                                    <DownloadIcon className="w-4 h-4" />
-                                    <span>Unduh Berkas Profil Organisasi</span>
+                                    <span>Lihat Agenda &amp; Berita Aksi</span>
                                 </a>
                             </div>
 
-                            {/* Trust badges row */}
-                            <div
-                                className="mt-12 pt-8 border-t flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs"
-                                style={{
-                                    borderColor: 'rgba(255, 255, 255, 0.15)',
-                                    color: 'rgba(191, 219, 254, 0.85)',
-                                }}
-                            >
+                            {/* Trust markers row */}
+                            <div className="mt-12 pt-8 border-t border-white/15 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs text-blue-100 font-medium">
                                 <span className="flex items-center gap-2">
-                                    <CheckCircledIcon className="w-4 h-4 text-emerald-400" />
-                                    Sertifikasi Kader Resmi Kemenpora
+                                    <CheckCircledIcon className="w-4 h-4 text-amber-300" />
+                                    Pembinaan Resmi Kemenpora RI
                                 </span>
                                 <span className="flex items-center gap-2">
-                                    <CheckCircledIcon className="w-4 h-4 text-emerald-400" />
-                                    Kurikulum P4GN Terpadu BNN RI
+                                    <CheckCircledIcon className="w-4 h-4 text-amber-300" />
+                                    Kurikulum Teknis P4GN BNN RI
                                 </span>
                                 <span className="flex items-center gap-2">
-                                    <CheckCircledIcon className="w-4 h-4 text-emerald-400" />
-                                    Jejaring 38 Provinsi &amp; 514 Daerah
+                                    <CheckCircledIcon className="w-4 h-4 text-amber-300" />
+                                    Jejaring 38 Provinsi Nusantara
                                 </span>
                             </div>
                         </div>
                     </section>
-
                 </main>
 
                 <Footer />
