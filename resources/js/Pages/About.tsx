@@ -8,7 +8,6 @@ import {
     GlobeIcon,
     TargetIcon,
     BookmarkFilledIcon,
-    BadgeIcon,
     CheckCircledIcon,
 } from '@radix-ui/react-icons';
 
@@ -294,7 +293,10 @@ export default function About() {
                             {/* TINGKAT 1: DEWAN PEMBINA NEGARA */}
                             <div className="mb-14">
                                 <div className="flex items-center gap-3 mb-6 pb-3 border-b border-slate-200">
-                                    <span className="w-7 h-7 rounded-md bg-[#0D3F70] text-white flex items-center justify-center font-bold text-xs">
+                                    <span
+                                        className="w-8 h-8 rounded-lg text-white flex items-center justify-center font-black text-xs shrink-0 shadow-2xs"
+                                        style={{ backgroundColor: '#0D3F70' }}
+                                    >
                                         I
                                     </span>
                                     <div>
@@ -309,18 +311,28 @@ export default function About() {
                                     {DEWAN_PEMBINA.map((leader, idx) => (
                                         <div
                                             key={idx}
-                                            className="bg-white rounded-xl border border-slate-200 p-5 flex flex-col justify-between hover:border-slate-300 transition-colors"
+                                            className="bg-white rounded-xl border border-slate-200 p-5 sm:p-6 flex flex-col justify-between hover:border-slate-300 hover:shadow-2xs transition-all"
                                         >
                                             <div>
-                                                <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-slate-50 border border-slate-200 p-3 mb-4 flex items-center justify-center relative">
-                                                    <img
-                                                        src={leader.photo}
-                                                        alt={leader.name}
-                                                        className="w-full h-full object-contain"
-                                                    />
-                                                    <span className="absolute top-2 left-2 bg-[#0D3F70] text-white text-[10px] font-semibold px-2 py-0.5 rounded">
+                                                {/* Header Bar: Badge & Circular Emblem */}
+                                                <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-100">
+                                                    <span
+                                                        className="text-[10px] font-bold px-2.5 py-1 rounded tracking-wide"
+                                                        style={{
+                                                            backgroundColor: '#EFF6FF',
+                                                            color: '#1E40AF',
+                                                            border: '1px solid #DBEAFE',
+                                                        }}
+                                                    >
                                                         {leader.badge}
                                                     </span>
+                                                    <div className="w-10 h-10 rounded-full bg-white border border-slate-200 p-1 flex items-center justify-center shrink-0 shadow-2xs overflow-hidden">
+                                                        <img
+                                                            src={leader.photo}
+                                                            alt={leader.institution}
+                                                            className="w-full h-full object-contain rounded-full"
+                                                        />
+                                                    </div>
                                                 </div>
 
                                                 <h4 className="text-base font-bold text-[#0D3F70] leading-snug mb-1">
@@ -344,7 +356,10 @@ export default function About() {
                             {/* TINGKAT 2: PENGURUS PUSAT (SEKRETARIAT NASIONAL) */}
                             <div className="mb-14">
                                 <div className="flex items-center gap-3 mb-6 pb-3 border-b border-slate-200">
-                                    <span className="w-7 h-7 rounded-md bg-[#0E6CAC] text-white flex items-center justify-center font-bold text-xs">
+                                    <span
+                                        className="w-8 h-8 rounded-lg text-white flex items-center justify-center font-black text-xs shrink-0 shadow-2xs"
+                                        style={{ backgroundColor: '#0E6CAC' }}
+                                    >
                                         II
                                     </span>
                                     <div>
@@ -359,18 +374,28 @@ export default function About() {
                                     {PENGURUS_PUSAT.map((leader, idx) => (
                                         <div
                                             key={idx}
-                                            className="bg-white rounded-xl border border-slate-200 p-5 flex flex-col justify-between hover:border-slate-300 transition-colors"
+                                            className="bg-white rounded-xl border border-slate-200 p-5 sm:p-6 flex flex-col justify-between hover:border-slate-300 hover:shadow-2xs transition-all"
                                         >
                                             <div>
-                                                <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-slate-50 border border-slate-200 p-3 mb-4 flex items-center justify-center relative">
-                                                    <img
-                                                        src={leader.photo}
-                                                        alt={leader.name}
-                                                        className="w-full h-full object-contain"
-                                                    />
-                                                    <span className="absolute top-2 left-2 bg-[#0E6CAC] text-white text-[10px] font-semibold px-2 py-0.5 rounded">
+                                                {/* Header Bar: Badge & Circular Emblem */}
+                                                <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-100">
+                                                    <span
+                                                        className="text-[10px] font-bold px-2.5 py-1 rounded tracking-wide"
+                                                        style={{
+                                                            backgroundColor: '#F0F9FF',
+                                                            color: '#0369A1',
+                                                            border: '1px solid #BAE6FD',
+                                                        }}
+                                                    >
                                                         {leader.badge}
                                                     </span>
+                                                    <div className="w-10 h-10 rounded-full bg-white border border-slate-200 p-1 flex items-center justify-center shrink-0 shadow-2xs overflow-hidden">
+                                                        <img
+                                                            src={leader.photo}
+                                                            alt={leader.institution}
+                                                            className="w-full h-full object-contain rounded-full"
+                                                        />
+                                                    </div>
                                                 </div>
 
                                                 <h4 className="text-base font-bold text-[#0D3F70] leading-snug mb-1">
@@ -394,7 +419,10 @@ export default function About() {
                             {/* TINGKAT 3: 6 BIDANG KERJA STRATEGIS */}
                             <div className="mb-14">
                                 <div className="flex items-center gap-3 mb-6 pb-3 border-b border-slate-200">
-                                    <span className="w-7 h-7 rounded-md bg-[#D97706] text-white flex items-center justify-center font-bold text-xs">
+                                    <span
+                                        className="w-8 h-8 rounded-lg text-white flex items-center justify-center font-black text-xs shrink-0 shadow-2xs"
+                                        style={{ backgroundColor: '#D97706' }}
+                                    >
                                         III
                                     </span>
                                     <div>
@@ -413,7 +441,14 @@ export default function About() {
                                         >
                                             <div>
                                                 <div className="flex items-center justify-between mb-4">
-                                                    <span className="w-8 h-8 rounded-lg bg-slate-100 text-[#0D3F70] font-bold text-xs flex items-center justify-center border border-slate-200">
+                                                    <span
+                                                        className="w-8 h-8 rounded-lg font-bold text-xs flex items-center justify-center border"
+                                                        style={{
+                                                            backgroundColor: '#F0F9FF',
+                                                            color: '#0D3F70',
+                                                            borderColor: '#BAE6FD',
+                                                        }}
+                                                    >
                                                         {bidang.no}
                                                     </span>
                                                     <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wider">
@@ -439,7 +474,10 @@ export default function About() {
                             {/* TINGKAT 4: HIERARKI DAERAH HINGGA KAMPUS & SEKOLAH */}
                             <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8">
                                 <div className="flex items-center gap-3 mb-6 pb-3 border-b border-slate-100">
-                                    <span className="w-7 h-7 rounded-md bg-[#059669] text-white flex items-center justify-center font-bold text-xs">
+                                    <span
+                                        className="w-8 h-8 rounded-lg text-white flex items-center justify-center font-black text-xs shrink-0 shadow-2xs"
+                                        style={{ backgroundColor: '#059669' }}
+                                    >
                                         IV
                                     </span>
                                     <div>
@@ -452,7 +490,14 @@ export default function About() {
 
                                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                                     <div className="p-5 bg-slate-50/80 rounded-xl border border-slate-200">
-                                        <div className="text-xs font-semibold text-emerald-800 bg-emerald-100/70 px-2.5 py-1 rounded inline-block mb-2.5">
+                                        <div
+                                            className="text-xs font-semibold px-2.5 py-1 rounded inline-block mb-2.5"
+                                            style={{
+                                                backgroundColor: '#ECFDF5',
+                                                color: '#065F46',
+                                                border: '1px solid #A7F3D0',
+                                            }}
+                                        >
                                             Tingkat Provinsi (38 Provinsi)
                                         </div>
                                         <h4 className="text-sm font-bold text-[#0D3F70] mb-1.5">
@@ -464,7 +509,14 @@ export default function About() {
                                     </div>
 
                                     <div className="p-5 bg-slate-50/80 rounded-xl border border-slate-200">
-                                        <div className="text-xs font-semibold text-blue-800 bg-blue-100/70 px-2.5 py-1 rounded inline-block mb-2.5">
+                                        <div
+                                            className="text-xs font-semibold px-2.5 py-1 rounded inline-block mb-2.5"
+                                            style={{
+                                                backgroundColor: '#EFF6FF',
+                                                color: '#1E40AF',
+                                                border: '1px solid #BFDBFE',
+                                            }}
+                                        >
                                             Tingkat Kab / Kota (514 Wilayah)
                                         </div>
                                         <h4 className="text-sm font-bold text-[#0D3F70] mb-1.5">
@@ -476,7 +528,14 @@ export default function About() {
                                     </div>
 
                                     <div className="p-5 bg-slate-50/80 rounded-xl border border-slate-200">
-                                        <div className="text-xs font-semibold text-amber-800 bg-amber-100/70 px-2.5 py-1 rounded inline-block mb-2.5">
+                                        <div
+                                            className="text-xs font-semibold px-2.5 py-1 rounded inline-block mb-2.5"
+                                            style={{
+                                                backgroundColor: '#FFFBEB',
+                                                color: '#92400E',
+                                                border: '1px solid #FDE68A',
+                                            }}
+                                        >
                                             Basis Sekolah &amp; Kampus
                                         </div>
                                         <h4 className="text-sm font-bold text-[#0D3F70] mb-1.5">
@@ -707,8 +766,8 @@ export default function About() {
 
                                     {/* Bottom Tag */}
                                     <div className="w-full mt-6 pt-4 border-t border-slate-100 flex items-center justify-center gap-2 text-xs font-semibold text-slate-600">
-                                        <BadgeIcon className="w-4 h-4 text-[#0E6CAC]" />
-                                        <span>Binaan Kemenpora RI &amp; BNN RI</span>
+                                        <CheckCircledIcon className="w-4 h-4 text-[#0E6CAC]" />
+                                        <span>Binaan Resmi Kemenpora RI &amp; BNN RI</span>
                                     </div>
                                 </div>
 
@@ -902,7 +961,7 @@ export default function About() {
                     >
                         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
                             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-300 mb-3">
-                                <BadgeIcon className="w-3.5 h-3.5" />
+                                <CheckCircledIcon className="w-4 h-4 text-amber-300 shrink-0" />
                                 <span>Aksi Nyata Pemuda Bersinar</span>
                             </div>
 
