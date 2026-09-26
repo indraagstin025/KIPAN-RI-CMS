@@ -234,13 +234,6 @@ const REGION_DIRECTORIES: RegionGroup[] = [
 export default function About() {
     const [selectedRegionIdx, setSelectedRegionIdx] = useState<number>(0);
 
-    const scrollToSection = (id: string) => {
-        const el = document.getElementById(id);
-        if (el) {
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    };
-
     return (
         <>
             <Head title="Tentang KIPAN RI — Struktur Organisasi, Visi Misi & Profil Lengkap" />
@@ -286,70 +279,11 @@ export default function About() {
 
                         {/* Subtitle */}
                         <p
-                            className="text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-8"
+                            className="text-sm sm:text-base leading-relaxed max-w-2xl mx-auto"
                             style={{ color: 'rgba(219, 234, 254, 0.9)' }}
                         >
                             Gerakan kepemudaan strategis binaan resmi Kementerian Pemuda dan Olahraga (Kemenpora RI) bersama Badan Narkotika Nasional (BNN RI) untuk menggerakkan pemuda sebagai garda terdepan pencegahan narkotika di 38 provinsi.
                         </p>
-
-                        {/* Simple Navigation Pills */}
-                        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 pt-2">
-                            <button
-                                onClick={() => scrollToSection('struktur')}
-                                className="px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm hover:scale-105 active:scale-95"
-                                style={{
-                                    backgroundColor: '#FACB04',
-                                    color: '#0D3F70',
-                                }}
-                            >
-                                <PersonIcon className="w-3.5 h-3.5" />
-                                <span>1. Struktur Organisasi (Utama)</span>
-                            </button>
-                            <button
-                                onClick={() => scrollToSection('legalitas')}
-                                className="px-4 py-2 rounded-full text-xs font-medium text-white transition-all hover:bg-white/20 hover:scale-105 active:scale-95"
-                                style={{
-                                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                                }}
-                            >
-                                <FileTextIcon className="w-3.5 h-3.5" />
-                                <span>2. Landasan Hukum</span>
-                            </button>
-                            <button
-                                onClick={() => scrollToSection('visi-misi')}
-                                className="px-4 py-2 rounded-full text-xs font-medium text-white transition-all hover:bg-white/20 hover:scale-105 active:scale-95"
-                                style={{
-                                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                                }}
-                            >
-                                <TargetIcon className="w-3.5 h-3.5" />
-                                <span>3. Visi &amp; Misi</span>
-                            </button>
-                            <button
-                                onClick={() => scrollToSection('filosofi')}
-                                className="px-4 py-2 rounded-full text-xs font-medium text-white transition-all hover:bg-white/20 hover:scale-105 active:scale-95"
-                                style={{
-                                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                                }}
-                            >
-                                <BookmarkFilledIcon className="w-3.5 h-3.5" />
-                                <span>4. Filosofi Lambang</span>
-                            </button>
-                            <button
-                                onClick={() => scrollToSection('jejaring')}
-                                className="px-4 py-2 rounded-full text-xs font-medium text-white transition-all hover:bg-white/20 hover:scale-105 active:scale-95"
-                                style={{
-                                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                                }}
-                            >
-                                <GlobeIcon className="w-3.5 h-3.5" />
-                                <span>5. Jejaring 38 Provinsi</span>
-                            </button>
-                        </div>
                     </div>
                 </section>
 
