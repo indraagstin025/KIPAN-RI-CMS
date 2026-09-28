@@ -174,69 +174,73 @@ export default function Galeri({ title, subtitle, category }: GaleriPageProps) {
                     <section className="py-16 lg:py-20 bg-white border-y border-kipan-border">
                         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                             <ScrollReveal>
-                                <div className="relative overflow-hidden rounded-3xl bg-kipan-navy px-6 py-10 sm:p-12">
-                                    <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-kipan-blue/30 blur-3xl" />
-                                    <div className="absolute -bottom-24 -left-16 w-72 h-72 rounded-full bg-kipan-yellow/15 blur-3xl" />
+                                <p className="text-xs font-bold uppercase tracking-widest text-kipan-blue mb-2">
+                                    Media Sosial
+                                </p>
+                                <h2 className="text-2xl sm:text-3xl font-black text-kipan-navy tracking-tight mb-8">
+                                    Ikuti Kami di Instagram
+                                </h2>
+                            </ScrollReveal>
 
-                                    <div className="relative grid lg:grid-cols-2 gap-10 items-center">
-                                        <div>
-                                            <p className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-kipan-yellow mb-4">
-                                                <InstagramIcon className="w-4 h-4" />
-                                                Instagram Resmi
-                                            </p>
-                                            <div className="flex items-center gap-4 mb-4">
+                            <ScrollReveal delay={0.08}>
+                                <div className="rounded-3xl border border-slate-200 bg-slate-50/70 p-6 sm:p-8 shadow-sm">
+                                    {/* Header profil ala Instagram */}
+                                    <div className="flex flex-col sm:flex-row sm:items-center gap-5 mb-6">
+                                        <div className="flex items-center gap-4">
+                                            <span className="block w-20 h-20 shrink-0 rounded-full bg-white border-2 border-kipan-yellow shadow-md p-2.5 overflow-hidden">
                                                 <img
                                                     src="/logo-kipan.jpg"
                                                     alt="Logo KIPAN"
-                                                    className="w-16 h-16 rounded-full object-cover border-2 border-kipan-yellow shadow-lg"
+                                                    className="w-full h-full object-contain"
                                                 />
-                                                <div>
-                                                    <p className="text-xl font-black text-white">
-                                                        {INSTAGRAM_HANDLE}
-                                                    </p>
-                                                    <p className="text-sm text-blue-200/80">
-                                                        KIPAN Jawa Barat
-                                                    </p>
-                                                </div>
+                                            </span>
+                                            <div>
+                                                <p className="text-xl font-black text-kipan-navy">
+                                                    {INSTAGRAM_HANDLE}
+                                                </p>
+                                                <p className="text-sm text-slate-500">
+                                                    KIPAN Jawa Barat
+                                                </p>
                                             </div>
-                                            <p className="text-sm text-blue-100/85 leading-relaxed mb-6 max-w-md">
-                                                Ikuti keseharian aksi kader, keseruan jambore, dan
-                                                kampanye kreatif anti narkoba langsung dari
-                                                lapangan.
-                                            </p>
+                                        </div>
+                                        <a
+                                            href={INSTAGRAM_URL}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="sm:ml-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-kipan-navy hover:bg-kipan-blue text-white text-xs font-bold transition-colors shadow-sm"
+                                        >
+                                            <InstagramIcon className="w-4 h-4" />
+                                            Ikuti di Instagram
+                                        </a>
+                                    </div>
+
+                                    <p className="text-sm text-slate-600 leading-relaxed max-w-2xl mb-8">
+                                        Ikuti keseharian aksi kader, keseruan jambore, dan kampanye
+                                        kreatif anti narkoba langsung dari lapangan.
+                                    </p>
+
+                                    {/* Grid foto ala feed Instagram */}
+                                    <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                                        {igThumbs.map((item) => (
                                             <a
+                                                key={item.id}
                                                 href={INSTAGRAM_URL}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-kipan-yellow hover:bg-amber-400 text-kipan-navy text-xs font-black transition-all hover:scale-105 active:scale-95 shadow-md"
+                                                className="group relative block aspect-square rounded-xl overflow-hidden bg-slate-200"
+                                                aria-label={`Lihat di Instagram: ${item.title}`}
                                             >
-                                                <InstagramIcon className="w-4 h-4" />
-                                                Ikuti di Instagram
+                                                <img
+                                                    src={item.image}
+                                                    alt={item.title}
+                                                    loading="lazy"
+                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                                />
+                                                <span className="absolute inset-0 bg-kipan-navy/0 group-hover:bg-kipan-navy/40 transition-colors flex items-center justify-center">
+                                                    <InstagramIcon className="w-7 h-7 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                </span>
                                             </a>
-                                        </div>
-
-                                        <div className="grid grid-cols-3 gap-3">
-                                            {igThumbs.map((item) => (
-                                                <a
-                                                    key={item.id}
-                                                    href={INSTAGRAM_URL}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="group relative rounded-xl overflow-hidden aspect-square"
-                                                    aria-label={`Lihat di Instagram: ${item.title}`}
-                                                >
-                                                    <img
-                                                        src={item.image}
-                                                        alt={item.title}
-                                                        loading="lazy"
-                                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                                    />
-                                                    <span className="absolute inset-0 bg-kipan-navy/0 group-hover:bg-kipan-navy/45 transition-colors flex items-center justify-center">
-                                                        <InstagramIcon className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
-                                                    </span>
-                                                </a>
-                                            ))}
-                                        </div>
+                                        ))}
                                     </div>
                                 </div>
                             </ScrollReveal>
