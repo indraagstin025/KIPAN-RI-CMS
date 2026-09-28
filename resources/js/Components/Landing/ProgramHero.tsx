@@ -1,11 +1,5 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import {
-    ArrowRightIcon,
-    CheckCircledIcon,
-    ChevronLeftIcon,
-    ChevronRightIcon,
-} from '@radix-ui/react-icons';
+import { motion } from 'framer-motion';
+import { ArrowRightIcon, CheckCircledIcon } from '@radix-ui/react-icons';
 import { PROGRAMS } from '@/data/kipan-data';
 
 interface ProgramHeroProps {
@@ -14,21 +8,31 @@ interface ProgramHeroProps {
     subtitle: string;
 }
 
+// Tiga foto program untuk kolase
+const COLLAGE = [
+    {
+        src: PROGRAMS[0]?.image,
+        alt: PROGRAMS[0]?.title ?? 'Program KIPAN',
+        className:
+            'absolute top-0 left-0 sm:left-4 w-52 sm:w-64 -rotate-6 rounded-2xl border-4 border-white/15 shadow-2xl z-10',
+    },
+    {
+        src: PROGRAMS[2]?.image,
+        alt: PROGRAMS[2]?.title ?? 'Program KIPAN',
+        className:
+            'absolute top-28 sm:top-32 right-0 sm:right-2 w-60 sm:w-72 rotate-3 rounded-2xl ring-4 ring-kipan-yellow/90 shadow-2xl z-20',
+    },
+    {
+        src: PROGRAMS[4]?.image,
+        alt: PROGRAMS[4]?.title ?? 'Program KIPAN',
+        className:
+            'absolute bottom-0 left-10 sm:left-20 w-48 sm:w-60 -rotate-3 rounded-2xl border-4 border-white/15 shadow-2xl z-10',
+    },
+];
+
 export default function ProgramHero({ category, title, subtitle }: ProgramHeroProps) {
-    const [currentSlide, setCurrentSlide] = useState(0);
-
-    const prevSlide = () => {
-        setCurrentSlide((prev) => (prev === 0 ? PROGRAMS.length - 1 : prev - 1));
-    };
-
-    const nextSlide = () => {
-        setCurrentSlide((prev) => (prev === PROGRAMS.length - 1 ? 0 : prev + 1));
-    };
-
-    const activeProgram = PROGRAMS[currentSlide];
-
     return (
-        <section className="relative flex flex-col justify-center pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 bg-gradient-to-b from-[#061C33] via-[#0D3F70] to-[#0A3055] text-white overflow-hidden">
+        <section className="relative flex flex-col justify-center pt-24 sm:pt-28 lg:pt-32 pb-14 sm:pb-20 bg-gradient-to-b from-[#061C33] via-[#0D3F70] to-[#0A3055] text-white overflow-hidden">
             {/* Subtle Youth Network Graphic Grid Background */}
             <div
                 className="absolute inset-0 opacity-15 pointer-events-none"
@@ -40,81 +44,59 @@ export default function ProgramHero({ category, title, subtitle }: ProgramHeroPr
 
             {/* Subtle Diagonal Glow */}
             <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-kipan-yellow/10 rounded-full blur-3xl pointer-events-none" />
 
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-                    {/* Left Column: Typography, Value Proposition, Stats Card, CTAs */}
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                    {/* Left Column: Title & Copy */}
                     <motion.div
                         initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                        className="lg:col-span-7 flex flex-col items-start"
+                        className="flex flex-col items-start"
                     >
-                        {/* Category Badge */}
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-[11px] font-bold uppercase tracking-wider text-blue-100 mb-6">
                             <span className="w-2 h-2 rounded-full bg-kipan-yellow" />
                             {category}
                         </div>
 
-                        {/* Main Headline */}
-                        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tight mb-6">
+                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-[1.15] tracking-tight">
                             {title}
                         </h1>
+                        {/* Yellow underline accent */}
+                        <div className="h-1.5 w-24 bg-kipan-yellow rounded-full mt-4 mb-6" />
 
-                        {/* Subheadline with Vertical Gold Accent Bar */}
-                        <div className="border-l-4 border-kipan-yellow pl-4 mb-6">
+                        <div className="border-l-4 border-kipan-yellow pl-4 mb-8">
                             <p className="text-base sm:text-lg text-blue-100/90 leading-relaxed font-normal max-w-xl">
                                 {subtitle}
                             </p>
                         </div>
 
-                        {/* Floating White Quick Stats Card */}
-                        <div className="w-full max-w-xl bg-white rounded-2xl p-5 sm:p-6 shadow-2xl border border-white/20 text-slate-800 mb-6 hover:-translate-y-1 hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)] transition-all duration-300">
-                            <div className="grid grid-cols-2 gap-4 pb-4 border-b border-slate-100">
-                                <div>
-                                    <div className="text-2xl sm:text-3xl font-extrabold text-kipan-navy tracking-tight font-mono">
-                                        {String(PROGRAMS.length).padStart(2, '0')}
-                                    </div>
-                                    <div className="text-xs font-bold text-slate-800 uppercase tracking-wider mt-0.5">
-                                        Program Unggulan
-                                    </div>
-                                    <div className="text-[11px] text-slate-500 mt-0.5">
-                                        Aksi nyata di lapangan
-                                    </div>
-                                </div>
-                                <div className="border-l border-slate-200/80 pl-4">
-                                    <div className="text-2xl sm:text-3xl font-extrabold text-kipan-blue tracking-tight font-mono">
-                                        38
-                                    </div>
-                                    <div className="text-xs font-bold text-slate-800 uppercase tracking-wider mt-0.5">
-                                        Provinsi
-                                    </div>
-                                    <div className="text-[11px] text-slate-500 mt-0.5">
-                                        Jangkauan program nasional
-                                    </div>
-                                </div>
-                            </div>
-
-{/* Card Action Link */}
-                            <a
-                                href="#program-list"
-                                className="pt-3 flex items-center justify-between text-xs font-bold text-kipan-blue hover:text-blue-800 group"
-                            >
-                                <span>Jelajahi Detail Setiap Program</span>
-                                <span className="inline-flex items-center gap-1 group-hover:translate-x-1.5 transition-transform duration-200">
-                                    Lihat Program <ArrowRightIcon className="w-4 h-4" />
+                        {/* Inline stats (tanpa kartu putih) */}
+                        <div className="flex items-center gap-6 mb-8 text-sm">
+                            <div>
+                                <span className="text-2xl font-black text-kipan-yellow font-mono">
+                                    {String(PROGRAMS.length).padStart(2, '0')}
                                 </span>
-                            </a>
+                                <span className="block text-[11px] font-semibold uppercase tracking-wider text-blue-200/80 mt-1">
+                                    Program Unggulan
+                                </span>
+                            </div>
+                            <div className="w-px h-10 bg-white/20" />
+                            <div>
+                                <span className="text-2xl font-black text-white font-mono">38</span>
+                                <span className="block text-[11px] font-semibold uppercase tracking-wider text-blue-200/80 mt-1">
+                                    Provinsi Jangkauan
+                                </span>
+                            </div>
                         </div>
 
-                        {/* Action Buttons Under Card */}
                         <div className="flex flex-wrap items-center gap-3">
                             <a
-                                href="/tentang"
+                                href="#program-list"
                                 className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/25 rounded-full backdrop-blur-xs transition-all hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-xs"
                             >
-                                <span>Tentang Organisasi</span>
+                                <span>Jelajahi Program</span>
                             </a>
 
                             <a
@@ -127,114 +109,53 @@ export default function ProgramHero({ category, title, subtitle }: ProgramHeroPr
                         </div>
                     </motion.div>
 
-                    {/* Right Column: Featured Program Card Slider */}
-                    <div className="lg:col-span-5 flex justify-center">
-                        <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl border border-white/20 overflow-hidden text-slate-800">
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={activeProgram.id}
-                                    initial={{ opacity: 0, x: 12 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: -12 }}
-                                    transition={{ duration: 0.3, ease: 'easeOut' }}
-                                >
-                                    {/* Card Visual Header */}
-                                    <div className="relative h-44 overflow-hidden">
-                                        <img
-                                            src={activeProgram.image}
-                                            alt={activeProgram.title}
-                                            className="w-full h-full object-cover"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-kipan-navy/70 via-transparent to-transparent" />
-                                        <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-                                            <span className="px-3 py-1 rounded-full bg-kipan-yellow text-kipan-navy text-[11px] font-black">
-                                                Program {activeProgram.number}
-                                            </span>
-                                            <span className="text-[11px] font-bold text-blue-200 uppercase tracking-wider">
-                                                Unggulan
-                                            </span>
-                                        </div>
-                                        <div className="absolute bottom-4 left-5 right-5">
-                                            <div className="text-xs font-bold text-kipan-yellow">
-                                                KIPAN Republik Indonesia
-                                            </div>
-                                        </div>
-                                    </div>
+                    {/* Right Column: Photo Collage */}
+                    <div className="relative h-[380px] sm:h-[440px] lg:h-[480px]">
+                        {/* Yellow blob behind collage */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-96 sm:h-96 bg-kipan-yellow/15 rounded-full blur-3xl pointer-events-none" />
 
-                                    {/* Card Body */}
-                                    <div className="p-5 sm:p-6">
-                                        <h3 className="text-base sm:text-lg font-bold text-kipan-navy leading-snug mb-1 line-clamp-2">
-                                            {activeProgram.title}
-                                        </h3>
-                                        <p className="text-xs font-semibold text-slate-500 mb-3">
-                                            {activeProgram.subtitle}
-                                        </p>
-                                        <p className="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-3">
-                                            {activeProgram.description}
-                                        </p>
+                        {COLLAGE.map((photo, idx) => (
+                            <motion.img
+                                key={photo.alt}
+                                src={photo.src}
+                                alt={photo.alt}
+                                loading="lazy"
+                                initial={{ opacity: 0, y: 32, rotate: 0 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{
+                                    duration: 0.7,
+                                    delay: 0.15 + idx * 0.15,
+                                    ease: [0.22, 1, 0.36, 1],
+                                }}
+                                className={`${photo.className} aspect-[4/3] object-cover`}
+                            />
+                        ))}
 
-                                        {/* Feature Chips */}
-                                        <div className="flex flex-wrap gap-1.5 mb-6">
-                                            {activeProgram.features.slice(0, 3).map((feature) => (
-                                                <span
-                                                    key={feature}
-                                                    className="inline-flex items-center gap-1 px-2.5 py-1 bg-blue-50 border border-blue-100 rounded-md text-kipan-blue text-[11px] font-semibold"
-                                                >
-                                                    <CheckCircledIcon className="w-3 h-3" />
-                                                    <span className="line-clamp-1">{feature}</span>
-                                                </span>
-                                            ))}
-                                        </div>
-
-                                        {/* Footer Controls */}
-                                        <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                                            <div className="flex items-center gap-1.5">
-                                                <button
-                                                    type="button"
-                                                    onClick={prevSlide}
-                                                    aria-label="Program sebelumnya"
-                                                    className="w-8 h-8 rounded-full border border-slate-200 hover:border-kipan-blue hover:text-kipan-blue hover:scale-105 active:scale-95 flex items-center justify-center text-slate-600 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-blue"
-                                                >
-                                                    <ChevronLeftIcon className="w-4 h-4" />
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    onClick={nextSlide}
-                                                    aria-label="Program berikutnya"
-                                                    className="w-8 h-8 rounded-full border border-slate-200 hover:border-kipan-blue hover:text-kipan-blue hover:scale-105 active:scale-95 flex items-center justify-center text-slate-600 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-blue"
-                                                >
-                                                    <ChevronRightIcon className="w-4 h-4" />
-                                                </button>
-                                            </div>
-
-                                            <div className="flex items-center gap-1.5">
-                                                {PROGRAMS.map((program, idx) => (
-                                                    <button
-                                                        key={program.id}
-                                                        type="button"
-                                                        onClick={() => setCurrentSlide(idx)}
-                                                        aria-label={`Slide ${idx + 1}`}
-                                                        className={`h-2 rounded-full transition-all duration-300 ${
-                                                            currentSlide === idx
-                                                                ? 'w-6 bg-kipan-blue'
-                                                                : 'w-2 bg-slate-300 hover:bg-slate-400'
-                                                        }`}
-                                                    />
-                                                ))}
-                                            </div>
-
-                                            <a
-                                                href="#program-list"
-                                                className="inline-flex items-center gap-1 text-xs font-bold text-kipan-navy hover:text-kipan-blue group transition-colors"
-                                            >
-                                                <span>Detail</span>
-                                                <ArrowRightIcon className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            </AnimatePresence>
-                        </div>
+                        {/* Floating badge */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.85 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                            className="absolute bottom-6 right-2 sm:right-6 z-30"
+                        >
+                            <motion.div
+                                animate={{ y: [0, -8, 0] }}
+                                transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
+                                className="flex items-center gap-3 bg-white rounded-2xl pl-3 pr-5 py-3 shadow-2xl"
+                            >
+                                <span className="w-10 h-10 rounded-xl bg-kipan-navy text-white flex items-center justify-center shrink-0">
+                                    <CheckCircledIcon className="w-5 h-5" />
+                                </span>
+                                <span>
+                                    <span className="block text-lg font-black text-kipan-navy leading-none font-mono">
+                                        {String(PROGRAMS.length).padStart(2, '0')}
+                                    </span>
+                                    <span className="block text-[11px] font-bold text-slate-500 mt-0.5">
+                                        Program Unggulan
+                                    </span>
+                                </span>
+                            </motion.div>
+                        </motion.div>
                     </div>
                 </div>
             </div>
