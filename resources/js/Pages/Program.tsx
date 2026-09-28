@@ -1,10 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import {
-    ArrowRightIcon,
-    CalendarIcon,
-    CheckCircledIcon,
-    SewingPinFilledIcon,
-} from '@radix-ui/react-icons';
+import { ArrowRightIcon, CheckCircledIcon } from '@radix-ui/react-icons';
 import {
     Award,
     BadgeCheck,
@@ -32,7 +27,7 @@ import Footer from '@/Components/Landing/Footer';
 import Navbar from '@/Components/Landing/Navbar';
 import ProgramHero from '@/Components/Landing/ProgramHero';
 import ScrollReveal from '@/Components/Landing/ScrollReveal';
-import { AGENDA_KEGIATAN, PROGRAMS } from '@/data/kipan-data';
+import { PROGRAMS } from '@/data/kipan-data';
 
 interface ProgramPageProps {
     title: string;
@@ -68,8 +63,6 @@ function ProgramIcon({ name, className }: { name: string; className?: string }) 
 }
 
 export default function Program({ title, subtitle, category }: ProgramPageProps) {
-    const upcomingAgenda = AGENDA_KEGIATAN.filter((a) => a.status !== 'Selesai').slice(0, 6);
-
     return (
         <>
             <Head title={`${title} — KIPAN Republik Indonesia`} />
@@ -140,59 +133,6 @@ export default function Program({ title, subtitle, category }: ProgramPageProps)
                                                         </li>
                                                     ))}
                                                 </ul>
-                                            </div>
-                                        </article>
-                                    </ScrollReveal>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* ===== Agenda ===== */}
-                    <section id="agenda" className="py-16 lg:py-20 bg-white border-y border-kipan-border">
-                        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-                            <ScrollReveal>
-                                <p className="text-xs font-bold uppercase tracking-widest text-kipan-blue mb-2">
-                                    Kalender Kegiatan
-                                </p>
-                                <h2 className="text-2xl sm:text-3xl font-black text-kipan-navy tracking-tight mb-3">
-                                    Agenda Mendatang
-                                </h2>
-                                <p className="text-slate-600 max-w-2xl mb-10">
-                                    Catat tanggalnya dan ikut berpartisipasi dalam gerakan nasional.
-                                </p>
-                            </ScrollReveal>
-
-                            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-                                {upcomingAgenda.map((agenda, idx) => (
-                                    <ScrollReveal key={agenda.id} delay={0.06 * (idx % 3)}>
-                                        <article className="h-full bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-kipan-blue/40 hover:shadow-md transition-all flex flex-col">
-                                            <div className="flex items-center gap-2 flex-wrap mb-3">
-                                                <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-blue-100/70 border border-blue-200 text-kipan-navy text-[11px] font-bold">
-                                                    {agenda.category}
-                                                </span>
-                                                <span
-                                                    className={`inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-bold ${
-                                                        agenda.status === 'Sedang Berlangsung'
-                                                            ? 'bg-emerald-100 text-emerald-800 border border-emerald-200'
-                                                            : 'bg-white text-slate-600 border border-slate-200'
-                                                    }`}
-                                                >
-                                                    {agenda.status}
-                                                </span>
-                                            </div>
-                                            <h3 className="font-bold text-kipan-navy leading-snug mb-3 flex-1">
-                                                {agenda.title}
-                                            </h3>
-                                            <div className="space-y-1.5 text-xs text-slate-500">
-                                                <p className="flex items-center gap-1.5">
-                                                    <CalendarIcon className="w-3.5 h-3.5 shrink-0 text-kipan-blue" />
-                                                    {agenda.displayDate} • {agenda.time}
-                                                </p>
-                                                <p className="flex items-start gap-1.5">
-                                                    <SewingPinFilledIcon className="w-3.5 h-3.5 mt-0.5 shrink-0 text-kipan-blue" />
-                                                    {agenda.location}
-                                                </p>
                                             </div>
                                         </article>
                                     </ScrollReveal>
