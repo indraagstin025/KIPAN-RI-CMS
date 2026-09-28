@@ -1,4 +1,8 @@
-import { Head, Link } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
+import type { ReactNode } from 'react';
+import Footer from '../Components/Footer';
+import HeroSection from '../Components/HeroSection';
+import Navbar from '../Components/Navbar';
 
 interface ProgramPageProps {
     title: string;
@@ -10,7 +14,7 @@ interface Program {
     name: string;
     description: string;
     tags: string[];
-    icon: JSX.Element;
+    icon: ReactNode;
 }
 
 interface Agenda {
@@ -89,29 +93,8 @@ export default function Program({ title, subtitle, category }: ProgramPageProps)
         <>
             <Head title={title} />
             <div className="min-h-screen bg-gray-50 text-gray-800">
-                {/* Top bar */}
-                <header className="bg-white border-b border-gray-100">
-                    <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-                        <Link href="/" className="text-lg font-bold tracking-tight">
-                            KIPAN <span className="text-emerald-600">CMS</span>
-                        </Link>
-                        <nav className="flex items-center gap-6 text-sm text-gray-500">
-                            <Link href="/" className="hover:text-gray-800 transition">
-                                Beranda
-                            </Link>
-                            <span className="text-gray-800 font-medium">Program</span>
-                        </nav>
-                    </div>
-                </header>
-
-                {/* Hero */}
-                <section className="max-w-6xl mx-auto px-6 pt-14 pb-10">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 mb-5">
-                        {category}
-                    </span>
-                    <h1 className="text-4xl font-bold tracking-tight mb-4 max-w-2xl">{title}</h1>
-                    <p className="text-gray-500 max-w-2xl leading-relaxed">{subtitle}</p>
-                </section>
+                <Navbar />
+                <HeroSection badge={category} title={title} subtitle={subtitle} />
 
                 {/* Program cards */}
                 <section className="max-w-6xl mx-auto px-6 pb-14">
@@ -185,10 +168,7 @@ export default function Program({ title, subtitle, category }: ProgramPageProps)
                     </div>
                 </section>
 
-                {/* Footer */}
-                <footer className="max-w-6xl mx-auto px-6 py-10 text-center text-xs text-gray-400">
-                    KIPAN CMS — Gerakan pemuda Indonesia bersinar tanpa narkoba.
-                </footer>
+                <Footer />
             </div>
         </>
     );
