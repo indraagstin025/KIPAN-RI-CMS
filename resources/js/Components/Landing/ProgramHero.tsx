@@ -97,13 +97,13 @@ export default function ProgramHero({ category, title, subtitle }: ProgramHeroPr
                                 </div>
                                 <div className="border-l border-slate-200/80 pl-4">
                                     <div className="text-2xl sm:text-3xl font-extrabold text-kipan-navy tracking-tight font-mono">
-                                        50.000+
+                                        24+
                                     </div>
                                     <div className="text-xs font-bold text-slate-800 uppercase tracking-wider mt-0.5">
-                                        Kader Terlatih
+                                        Kegiatan &amp; Aksi
                                     </div>
                                     <div className="text-[11px] text-slate-500 mt-0.5">
-                                        Pelopor P4GN nasional
+                                        Di seluruh program unggulan
                                     </div>
                                 </div>
                             </div>
