@@ -37,7 +37,7 @@ Route::get('/berita', function () {
 })->name('news');
 
 Route::get('/galeri', function () {
-    return Inertia::render('PlaceholderPage', [
+    return Inertia::render('Galeri', [
         'title' => 'Galeri Dokumentasi Pemuda',
         'subtitle' => 'Dokumentasi foto dan video kegiatan kaderisasi, aksi lapangan, jambore pemuda, dan kolaborasi positif pemuda anti narkoba.',
         'category' => 'Galeri',
