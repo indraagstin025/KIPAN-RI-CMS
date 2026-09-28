@@ -220,7 +220,7 @@ export default function Galeri({ title, subtitle, category }: GaleriPageProps) {
                                     </p>
 
                                     {/* Grid foto ala feed Instagram */}
-                                    <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                                    <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-3">
                                         {igThumbs.map((item) => (
                                             <a
                                                 key={item.id}
