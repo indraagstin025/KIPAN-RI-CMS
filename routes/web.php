@@ -29,7 +29,7 @@ Route::get('/agenda', function () {
 })->name('agenda');
 
 Route::get('/berita', function () {
-    return Inertia::render('PlaceholderPage', [
+    return Inertia::render('Berita', [
         'title' => 'Berita & Kabar Aksi Daerah',
         'subtitle' => 'Publikasi, siaran pers, dan liputan aksi nyata kader KIPAN di berbagai provinsi dan kabupaten/kota seluruh Indonesia.',
         'category' => 'Berita',
