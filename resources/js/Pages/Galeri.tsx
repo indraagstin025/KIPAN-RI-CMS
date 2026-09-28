@@ -183,7 +183,7 @@ export default function Galeri({ title, subtitle, category }: GaleriPageProps) {
                             </ScrollReveal>
 
                             <ScrollReveal delay={0.08}>
-                                <div className="rounded-3xl border border-slate-200 bg-slate-50/70 p-6 sm:p-8 shadow-sm">
+                                <div className="rounded-3xl border border-slate-200 bg-slate-50/70 p-6 sm:p-8 shadow-sm max-w-4xl">
                                     {/* Header profil ala Instagram */}
                                     <div className="flex flex-col sm:flex-row sm:items-center gap-5 mb-6">
                                         <div className="flex items-center gap-4">
