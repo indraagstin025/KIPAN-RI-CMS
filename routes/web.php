@@ -21,7 +21,7 @@ Route::get('/program', function () {
 })->name('programs');
 
 Route::get('/agenda', function () {
-    return Inertia::render('PlaceholderPage', [
+    return Inertia::render('Agenda', [
         'title' => 'Agenda & Kalender Kegiatan Nasional',
         'subtitle' => 'Jadwal pelatihan nasional, jambore pemuda bersinar, sosialisasi sekolah/kampus, dan kalender aksi P4GN di 38 provinsi.',
         'category' => 'Agenda',
