@@ -6,7 +6,7 @@ import {
     ChevronLeftIcon,
     ChevronRightIcon,
 } from '@radix-ui/react-icons';
-import { AGENDA_KEGIATAN, PROGRAMS } from '@/data/kipan-data';
+import { PROGRAMS } from '@/data/kipan-data';
 
 interface ProgramHeroProps {
     category: string;
@@ -26,7 +26,6 @@ export default function ProgramHero({ category, title, subtitle }: ProgramHeroPr
     };
 
     const activeProgram = PROGRAMS[currentSlide];
-    const upcomingCount = AGENDA_KEGIATAN.filter((a) => a.status !== 'Selesai').length;
 
     return (
         <section className="relative flex flex-col justify-center pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 bg-gradient-to-b from-[#061C33] via-[#0D3F70] to-[#0A3055] text-white overflow-hidden">
@@ -72,7 +71,7 @@ export default function ProgramHero({ category, title, subtitle }: ProgramHeroPr
 
                         {/* Floating White Quick Stats Card */}
                         <div className="w-full max-w-xl bg-white rounded-2xl p-5 sm:p-6 shadow-2xl border border-white/20 text-slate-800 mb-6 hover:-translate-y-1 hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)] transition-all duration-300">
-                            <div className="grid grid-cols-3 gap-4 pb-4 border-b border-slate-100">
+                            <div className="grid grid-cols-2 gap-4 pb-4 border-b border-slate-100">
                                 <div>
                                     <div className="text-2xl sm:text-3xl font-extrabold text-kipan-navy tracking-tight font-mono">
                                         {String(PROGRAMS.length).padStart(2, '0')}
@@ -86,29 +85,18 @@ export default function ProgramHero({ category, title, subtitle }: ProgramHeroPr
                                 </div>
                                 <div className="border-l border-slate-200/80 pl-4">
                                     <div className="text-2xl sm:text-3xl font-extrabold text-kipan-blue tracking-tight font-mono">
-                                        {upcomingCount}
+                                        38
                                     </div>
                                     <div className="text-xs font-bold text-slate-800 uppercase tracking-wider mt-0.5">
-                                        Agenda Mendatang
+                                        Provinsi
                                     </div>
                                     <div className="text-[11px] text-slate-500 mt-0.5">
-                                        Siap diikuti kader
-                                    </div>
-                                </div>
-                                <div className="border-l border-slate-200/80 pl-4">
-                                    <div className="text-2xl sm:text-3xl font-extrabold text-kipan-navy tracking-tight font-mono">
-                                        24+
-                                    </div>
-                                    <div className="text-xs font-bold text-slate-800 uppercase tracking-wider mt-0.5">
-                                        Kegiatan &amp; Aksi
-                                    </div>
-                                    <div className="text-[11px] text-slate-500 mt-0.5">
-                                        Di seluruh program unggulan
+                                        Jangkauan program nasional
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Card Action Link */}
+{/* Card Action Link */}
                             <a
                                 href="#program-list"
                                 className="pt-3 flex items-center justify-between text-xs font-bold text-kipan-blue hover:text-blue-800 group"
@@ -122,13 +110,6 @@ export default function ProgramHero({ category, title, subtitle }: ProgramHeroPr
 
                         {/* Action Buttons Under Card */}
                         <div className="flex flex-wrap items-center gap-3">
-                            <a
-                                href="#agenda"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/25 rounded-full backdrop-blur-xs transition-all hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-xs"
-                            >
-                                <span>Lihat Agenda</span>
-                            </a>
-
                             <a
                                 href="/tentang"
                                 className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/25 rounded-full backdrop-blur-xs transition-all hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-xs"
