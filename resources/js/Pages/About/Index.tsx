@@ -134,51 +134,51 @@ const BIDANG_KERJA: Array<{
     photo?: string;
     coordinator?: string;
 }> = [
-    {
-        id: 'kaderisasi',
-        no: '01',
-        name: 'Bidang Kaderisasi & Pelatihan Pemuda',
-        focus: 'Training of Trainers (ToT), standardisasi instruktur daerah, sertifikasi kader inti pemuda, dan modul kepemimpinan nasional.',
-        scope: 'Standardisasi Kaderisasi Nasional',
-        photo: '/kipan_organisasi.png',
-        coordinator: 'Koordinator Kaderisasi & Pelatihan',
-    },
-    {
-        id: 'edukasi',
-        no: '02',
-        name: 'Bidang Edukasi & Sosialisasi Sebaya',
-        focus: 'Program KIPAN Goes to School, Goes to Campus, workshop deteksi dini zat adiktif, dan edukasi komunitas anak muda.',
-        scope: 'Edukasi Lingkungan Pendidikan',
-    },
-    {
-        id: 'advokasi',
-        no: '03',
-        name: 'Bidang Advokasi & Perlindungan Pemuda',
-        focus: 'Layanan pendampingan sebaya (peer counseling), fasilitasi rujukan rehabilitasi sukarela tanpa stigma bersama balai BNN RI.',
-        scope: 'Pendampingan Konseling Sebaya',
-    },
-    {
-        id: 'sinergi',
-        no: '04',
-        name: 'Bidang Hubungan Antar Lembaga & Kemitraan',
-        focus: 'Membangun sinergi kolaboratif bersama Kemenpora, BNN, Dispora 38 Provinsi, POLRI, perguruan tinggi, dan organisasi pemuda.',
-        scope: 'Sinergi Lintas Sektor & Pemda',
-    },
-    {
-        id: 'media',
-        no: '05',
-        name: 'Bidang Media, Digital & Komunikasi Publik',
-        focus: 'Pengelolaan portal resmi KIPAN RI, kampanye digital kreatif di media sosial, publikasi kabar aksi daerah, dan verifikasi data.',
-        scope: 'Komunikasi Publik & Kampanye Sehat',
-    },
-    {
-        id: 'pemberdayaan',
-        no: '06',
-        name: 'Bidang Minat, Bakat, Seni & Wirausaha Muda',
-        focus: 'Penyaluran energi pemuda ke kegiatan positif alternatif: kompetisi olahraga sehat, festival karya kreatif, dan inkubasi usaha.',
-        scope: 'Kanalisasi Bakat & Karya Nyata',
-    },
-];
+        {
+            id: 'kaderisasi',
+            no: '01',
+            name: 'Bidang Kaderisasi & Pelatihan Pemuda',
+            focus: 'Training of Trainers (ToT), standardisasi instruktur daerah, sertifikasi kader inti pemuda, dan modul kepemimpinan nasional.',
+            scope: 'Standardisasi Kaderisasi Nasional',
+            photo: '/kipan_organisasi.png',
+            coordinator: 'Koordinator Kaderisasi & Pelatihan',
+        },
+        {
+            id: 'edukasi',
+            no: '02',
+            name: 'Bidang Edukasi & Sosialisasi Sebaya',
+            focus: 'Program KIPAN Goes to School, Goes to Campus, workshop deteksi dini zat adiktif, dan edukasi komunitas anak muda.',
+            scope: 'Edukasi Lingkungan Pendidikan',
+        },
+        {
+            id: 'advokasi',
+            no: '03',
+            name: 'Bidang Advokasi & Perlindungan Pemuda',
+            focus: 'Layanan pendampingan sebaya (peer counseling), fasilitasi rujukan rehabilitasi sukarela tanpa stigma bersama balai BNN RI.',
+            scope: 'Pendampingan Konseling Sebaya',
+        },
+        {
+            id: 'sinergi',
+            no: '04',
+            name: 'Bidang Hubungan Antar Lembaga & Kemitraan',
+            focus: 'Membangun sinergi kolaboratif bersama Kemenpora, BNN, Dispora 38 Provinsi, POLRI, perguruan tinggi, dan organisasi pemuda.',
+            scope: 'Sinergi Lintas Sektor & Pemda',
+        },
+        {
+            id: 'media',
+            no: '05',
+            name: 'Bidang Media, Digital & Komunikasi Publik',
+            focus: 'Pengelolaan portal resmi KIPAN RI, kampanye digital kreatif di media sosial, publikasi kabar aksi daerah, dan verifikasi data.',
+            scope: 'Komunikasi Publik & Kampanye Sehat',
+        },
+        {
+            id: 'pemberdayaan',
+            no: '06',
+            name: 'Bidang Minat, Bakat, Seni & Wirausaha Muda',
+            focus: 'Penyaluran energi pemuda ke kegiatan positif alternatif: kompetisi olahraga sehat, festival karya kreatif, dan inkubasi usaha.',
+            scope: 'Kanalisasi Bakat & Karya Nyata',
+        },
+    ];
 
 // Data Duta KIPAN Republik Indonesia
 interface DutaPillar {
@@ -397,19 +397,19 @@ export default function About() {
                                         onMouseLeave={() => setHoveredPembinaId(null)}
                                         onClick={() => setHoveredPembinaId(isExpanded ? null : idx)}
                                         className={cn(
-                                            "group relative h-[490px] cursor-pointer overflow-hidden rounded-[30px] border snap-center transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0",
+                                            "group relative h-[490px] cursor-pointer overflow-hidden rounded-[30px] border snap-center transition-[width,transform,opacity,box-shadow] duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu will-change-[width,transform] shrink-0",
                                             isExpanded
-                                                ? "w-[440px] scale-[1.05] z-30 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.18)] bg-white border-[#0E6CAC]/40 grayscale-0 contrast-100"
+                                                ? "w-[440px] scale-[1.02] z-30 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.18)] bg-white border-[#0E6CAC]/40 grayscale-0"
                                                 : isContracted
-                                                  ? "w-[210px] scale-[0.98] z-10 opacity-70 grayscale contrast-[1.05] bg-slate-100 border-slate-200/90"
-                                                  : "w-[270px] scale-100 z-10 grayscale contrast-[1.05] bg-[#EEF2F6] border-slate-200/90 shadow-xs hover:border-[#0E6CAC]/30"
+                                                    ? "w-[210px] scale-[0.98] z-10 opacity-70 grayscale bg-slate-100 border-slate-200/90"
+                                                    : "w-[270px] scale-100 z-10 grayscale bg-[#EEF2F6] border-slate-200/90 shadow-xs hover:border-[#0E6CAC]/30"
                                         )}
                                     >
                                         {/* Background Watermark Curve */}
                                         <svg
                                             className={cn(
-                                                "pointer-events-none absolute -right-10 -top-10 h-64 w-64 text-slate-300/40 transition-all duration-700 ease-out",
-                                                isExpanded ? "scale-120 text-blue-200/60 rotate-12" : "scale-100"
+                                                "pointer-events-none absolute -right-10 -top-10 h-64 w-64 text-slate-300/40 transition-transform duration-400 ease-out",
+                                                isExpanded ? "scale-115 text-blue-200/60 rotate-12" : "scale-100"
                                             )}
                                             viewBox="0 0 200 200"
                                             fill="none"
@@ -423,8 +423,8 @@ export default function About() {
                                         <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center overflow-hidden">
                                             <div
                                                 className={cn(
-                                                    "relative z-10 flex flex-col items-center transition-all duration-700 ease-out",
-                                                    isExpanded ? "scale-120 -translate-x-16" : "scale-100 translate-x-0"
+                                                    "relative z-10 flex flex-col items-center transition-transform duration-400 ease-out",
+                                                    isExpanded ? "scale-115 -translate-x-16" : "scale-100 translate-x-0"
                                                 )}
                                             >
                                                 <div className="mb-4 flex h-28 w-28 items-center justify-center rounded-3xl border border-blue-200/80 bg-white/95 text-[#0E6CAC] shadow-md transition-all duration-500">
@@ -548,19 +548,19 @@ export default function About() {
                                         onMouseLeave={() => setHoveredPengarahId(null)}
                                         onClick={() => setHoveredPengarahId(isExpanded ? null : idx)}
                                         className={cn(
-                                            "group relative h-[490px] cursor-pointer overflow-hidden rounded-[30px] border snap-center transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0",
+                                            "group relative h-[490px] cursor-pointer overflow-hidden rounded-[30px] border snap-center transition-[width,transform,opacity,box-shadow] duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu will-change-[width,transform] shrink-0",
                                             isExpanded
-                                                ? "w-[440px] scale-[1.05] z-30 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.18)] bg-white border-[#0E6CAC]/40 grayscale-0 contrast-100"
+                                                ? "w-[440px] scale-[1.02] z-30 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.18)] bg-white border-[#0E6CAC]/40 grayscale-0"
                                                 : isContracted
-                                                  ? "w-[210px] scale-[0.98] z-10 opacity-70 grayscale contrast-[1.05] bg-slate-100 border-slate-200/90"
-                                                  : "w-[270px] scale-100 z-10 grayscale contrast-[1.05] bg-[#EEF2F6] border-slate-200/90 shadow-xs hover:border-[#0E6CAC]/30"
+                                                    ? "w-[210px] scale-[0.98] z-10 opacity-70 grayscale bg-slate-100 border-slate-200/90"
+                                                    : "w-[270px] scale-100 z-10 grayscale bg-[#EEF2F6] border-slate-200/90 shadow-xs hover:border-[#0E6CAC]/30"
                                         )}
                                     >
                                         {/* Background Watermark Curve */}
                                         <svg
                                             className={cn(
-                                                "pointer-events-none absolute -right-10 -top-10 h-64 w-64 text-slate-300/40 transition-all duration-700 ease-out",
-                                                isExpanded ? "scale-120 text-blue-200/60 rotate-12" : "scale-100"
+                                                "pointer-events-none absolute -right-10 -top-10 h-64 w-64 text-slate-300/40 transition-transform duration-400 ease-out",
+                                                isExpanded ? "scale-115 text-blue-200/60 rotate-12" : "scale-100"
                                             )}
                                             viewBox="0 0 200 200"
                                             fill="none"
@@ -574,8 +574,8 @@ export default function About() {
                                         <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center overflow-hidden">
                                             <div
                                                 className={cn(
-                                                    "relative z-10 flex flex-col items-center transition-all duration-700 ease-out",
-                                                    isExpanded ? "scale-120 -translate-x-16" : "scale-100 translate-x-0"
+                                                    "relative z-10 flex flex-col items-center transition-transform duration-400 ease-out",
+                                                    isExpanded ? "scale-115 -translate-x-16" : "scale-100 translate-x-0"
                                                 )}
                                             >
                                                 <div className="mb-4 flex h-28 w-28 items-center justify-center rounded-3xl border border-blue-200/80 bg-white/95 text-[#0E6CAC] shadow-md transition-all duration-500">
@@ -699,19 +699,19 @@ export default function About() {
                                         onMouseLeave={() => setHoveredPusatId(null)}
                                         onClick={() => setHoveredPusatId(isExpanded ? null : idx)}
                                         className={cn(
-                                            "group relative h-[500px] cursor-pointer overflow-hidden rounded-[30px] border snap-center transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0",
+                                            "group relative h-[500px] cursor-pointer overflow-hidden rounded-[30px] border snap-center transition-[width,transform,opacity,box-shadow] duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu will-change-[width,transform] shrink-0",
                                             isExpanded
-                                                ? "w-[360px] scale-[1.06] z-30 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.18)] bg-white border-[#0E6CAC]/40 grayscale-0 contrast-100"
+                                                ? "w-[360px] scale-[1.03] z-30 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.18)] bg-white border-[#0E6CAC]/40 grayscale-0"
                                                 : isContracted
-                                                  ? "w-[185px] scale-[0.98] z-10 opacity-70 grayscale contrast-[1.05] bg-slate-100 border-slate-200/90"
-                                                  : "w-[215px] scale-100 z-10 grayscale contrast-[1.05] bg-[#EEF2F6] border-slate-200/90 shadow-xs hover:border-[#0E6CAC]/30"
+                                                    ? "w-[185px] scale-[0.98] z-10 opacity-70 grayscale bg-slate-100 border-slate-200/90"
+                                                    : "w-[215px] scale-100 z-10 grayscale bg-[#EEF2F6] border-slate-200/90 shadow-xs hover:border-[#0E6CAC]/30"
                                         )}
                                     >
                                         {/* Background Watermark Curve */}
                                         <svg
                                             className={cn(
-                                                "pointer-events-none absolute -right-10 -top-10 h-64 w-64 text-slate-300/40 transition-all duration-700 ease-out",
-                                                isExpanded ? "scale-120 text-blue-200/60 rotate-12" : "scale-100"
+                                                "pointer-events-none absolute -right-10 -top-10 h-64 w-64 text-slate-300/40 transition-transform duration-400 ease-out",
+                                                isExpanded ? "scale-115 text-blue-200/60 rotate-12" : "scale-100"
                                             )}
                                             viewBox="0 0 200 200"
                                             fill="none"
@@ -725,8 +725,8 @@ export default function About() {
                                         <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center overflow-hidden">
                                             <div
                                                 className={cn(
-                                                    "relative z-10 flex flex-col items-center transition-all duration-700 ease-out",
-                                                    isExpanded ? "scale-120 -translate-x-12" : "scale-100 translate-x-0"
+                                                    "relative z-10 flex flex-col items-center transition-transform duration-400 ease-out",
+                                                    isExpanded ? "scale-115 -translate-x-12" : "scale-100 translate-x-0"
                                                 )}
                                             >
                                                 <div className="mb-4 flex h-24 w-24 items-center justify-center rounded-3xl border border-blue-200/80 bg-white/95 text-[#0E6CAC] shadow-md transition-all duration-500">
@@ -851,19 +851,19 @@ export default function About() {
                                         onMouseLeave={() => setHoveredBidangId(null)}
                                         onClick={() => setHoveredBidangId(isExpanded ? null : bidang.id)}
                                         className={cn(
-                                            "group relative h-[470px] cursor-pointer overflow-hidden rounded-[28px] border snap-center transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0",
+                                            "group relative h-[470px] cursor-pointer overflow-hidden rounded-[28px] border snap-center transition-[width,transform,opacity,box-shadow] duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu will-change-[width,transform] shrink-0",
                                             isExpanded
-                                                ? "w-[340px] scale-[1.05] z-30 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.18)] bg-white border-[#0E6CAC]/40 grayscale-0 contrast-100"
+                                                ? "w-[340px] scale-[1.03] z-30 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.18)] bg-white border-[#0E6CAC]/40 grayscale-0"
                                                 : isContracted
-                                                  ? "w-[145px] scale-[0.98] z-10 opacity-70 grayscale contrast-[1.05] bg-slate-100 border-slate-200/90"
-                                                  : "w-[170px] scale-100 z-10 grayscale contrast-[1.05] bg-[#EEF2F6] border-slate-200/90 shadow-xs hover:border-[#0E6CAC]/30"
+                                                    ? "w-[145px] scale-[0.98] z-10 opacity-70 grayscale bg-slate-100 border-slate-200/90"
+                                                    : "w-[170px] scale-100 z-10 grayscale bg-[#EEF2F6] border-slate-200/90 shadow-xs hover:border-[#0E6CAC]/30"
                                         )}
                                     >
                                         {/* Background Watermark Curve */}
                                         <svg
                                             className={cn(
-                                                "pointer-events-none absolute -right-8 -top-8 h-56 w-56 text-slate-300/40 transition-all duration-700 ease-out",
-                                                isExpanded ? "scale-120 text-blue-200/60 rotate-12" : "scale-100"
+                                                "pointer-events-none absolute -right-8 -top-8 h-56 w-56 text-slate-300/40 transition-transform duration-400 ease-out",
+                                                isExpanded ? "scale-115 text-blue-200/60 rotate-12" : "scale-100"
                                             )}
                                             viewBox="0 0 200 200"
                                             fill="none"
@@ -881,17 +881,18 @@ export default function About() {
                                                         src={bidang.photo}
                                                         alt={bidang.name}
                                                         loading="lazy"
+                                                        decoding="async"
                                                         className={cn(
-                                                            "absolute inset-0 h-full w-full object-cover object-top transition-all duration-700 ease-out",
+                                                            "absolute inset-0 h-full w-full object-cover object-top transition-transform duration-400 ease-out",
                                                             isExpanded
-                                                                ? "scale-115 -translate-x-14 grayscale-0 contrast-100"
-                                                                : "scale-100 translate-x-0 grayscale contrast-105"
+                                                                ? "scale-115 -translate-x-14 grayscale-0"
+                                                                : "scale-100 translate-x-0 grayscale"
                                                         )}
                                                     />
                                                     {/* Soft white gradient on right half when expanded */}
                                                     <div
                                                         className={cn(
-                                                            "pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/85 to-white transition-opacity duration-500",
+                                                            "pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/85 to-white transition-opacity duration-400",
                                                             isExpanded ? "opacity-100" : "opacity-0"
                                                         )}
                                                     />
@@ -1068,20 +1069,20 @@ export default function About() {
                                         onMouseLeave={() => setHoveredDutaId(null)}
                                         onClick={() => setHoveredDutaId(isExpanded ? null : duta.id)}
                                         className={cn(
-                                            "group relative h-[500px] cursor-pointer overflow-hidden rounded-[30px] border snap-center transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0",
+                                            "group relative h-[500px] cursor-pointer overflow-hidden rounded-[30px] border snap-center transition-[width,transform,opacity,box-shadow] duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu will-change-[width,transform] shrink-0",
                                             // Dynamic width expansion matching Youth Innovation (215px -> 360px)
                                             isExpanded
-                                                ? "w-[360px] scale-[1.06] z-30 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.18)] bg-white border-[#0E6CAC]/40 grayscale-0 contrast-100"
+                                                ? "w-[360px] scale-[1.03] z-30 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.18)] bg-white border-[#0E6CAC]/40 grayscale-0"
                                                 : isContracted
-                                                  ? "w-[185px] scale-[0.98] z-10 opacity-70 grayscale contrast-[1.05] bg-slate-100 border-slate-200/90"
-                                                  : "w-[215px] scale-100 z-10 grayscale contrast-[1.05] bg-[#EEF2F6] border-slate-200/90 shadow-xs hover:border-[#0E6CAC]/30"
+                                                    ? "w-[185px] scale-[0.98] z-10 opacity-70 grayscale bg-slate-100 border-slate-200/90"
+                                                    : "w-[215px] scale-100 z-10 grayscale bg-[#EEF2F6] border-slate-200/90 shadow-xs hover:border-[#0E6CAC]/30"
                                         )}
                                     >
                                         {/* Background Watermark Curve (Matches Youth Innovation style) */}
                                         <svg
                                             className={cn(
-                                                "pointer-events-none absolute -right-10 -top-10 h-64 w-64 text-slate-300/40 transition-all duration-700 ease-out",
-                                                isExpanded ? "scale-120 text-blue-200/60 rotate-12" : "scale-100"
+                                                "pointer-events-none absolute -right-10 -top-10 h-64 w-64 text-slate-300/40 transition-transform duration-400 ease-out",
+                                                isExpanded ? "scale-115 text-blue-200/60 rotate-12" : "scale-100"
                                             )}
                                             viewBox="0 0 200 200"
                                             fill="none"
@@ -1097,18 +1098,20 @@ export default function About() {
                                                 <img
                                                     src={duta.photo}
                                                     alt={duta.title}
+                                                    loading="lazy"
+                                                    decoding="async"
                                                     className={cn(
-                                                        "h-full w-full object-cover object-[center_top] transition-all duration-700 ease-out",
+                                                        "h-full w-full object-cover object-[center_top] transition-transform duration-400 ease-out",
                                                         // Photo Zooms In & shifts to the left when expanded!
                                                         isExpanded
-                                                            ? "scale-120 -translate-x-12 grayscale-0 contrast-100"
-                                                            : "scale-100 translate-x-0 grayscale contrast-[1.05]"
+                                                            ? "scale-115 -translate-x-12 grayscale-0"
+                                                            : "scale-100 translate-x-0 grayscale"
                                                     )}
                                                 />
                                                 {/* Soft white gradient on right half when expanded for crystal-clear text readability */}
                                                 <div
                                                     className={cn(
-                                                        "pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/85 to-white transition-opacity duration-500",
+                                                        "pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/85 to-white transition-opacity duration-400",
                                                         isExpanded ? "opacity-100" : "opacity-0"
                                                     )}
                                                 />
