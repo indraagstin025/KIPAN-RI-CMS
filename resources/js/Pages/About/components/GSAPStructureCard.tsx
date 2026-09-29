@@ -1,4 +1,4 @@
-import { ArrowRightIcon, PersonIcon, TargetIcon } from '@radix-ui/react-icons';
+import { ArrowRightIcon, PersonIcon, TargetIcon, StarFilledIcon } from '@radix-ui/react-icons';
 import { cn } from '@/lib/utils';
 import { BIDANG_ICONS, BidangItem } from '../data/about-data';
 
@@ -79,7 +79,7 @@ export function GSAPLeaderCard({
                     className="relative z-10 flex flex-col items-center"
                 >
                     {photo ? (
-                        <div className="mb-4 h-28 w-28 overflow-hidden rounded-3xl border-2 border-blue-200/80 shadow-md">
+                        <div className="h-28 w-28 overflow-hidden rounded-3xl border-2 border-blue-200/80 shadow-md">
                             <img
                                 src={photo}
                                 alt={name}
@@ -89,13 +89,10 @@ export function GSAPLeaderCard({
                             />
                         </div>
                     ) : (
-                        <div className="mb-4 flex h-28 w-28 items-center justify-center rounded-3xl border border-blue-200/80 bg-white/95 text-[#0E6CAC] shadow-md transition-all duration-500">
+                        <div className="flex h-28 w-28 items-center justify-center rounded-3xl border border-blue-200/80 bg-white/95 text-[#0E6CAC] shadow-md transition-all duration-500">
                             <PersonIcon className="h-14 w-14 text-[#0E6CAC]" />
                         </div>
                     )}
-                    <span className="rounded-full border border-blue-200/60 bg-white px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-[#0D3F70] shadow-2xs">
-                        {badge}
-                    </span>
                 </div>
                 {/* Soft white gradient on right half when expanded */}
                 <div
@@ -104,8 +101,8 @@ export function GSAPLeaderCard({
                 />
             </div>
 
-            {/* Top Header Tag */}
-            <div className="relative z-10 p-5 flex items-center justify-between">
+            {/* Top Header Tag - Left Aligned Only (No duplicate right tag that collides with drawer) */}
+            <div className="relative z-10 p-5 flex items-center justify-between pointer-events-none">
                 <span
                     className={cn(
                         "rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-wider transition-colors duration-300 shadow-2xs backdrop-blur-sm",
@@ -116,11 +113,6 @@ export function GSAPLeaderCard({
                 >
                     {badge}
                 </span>
-                {isExpanded && (
-                    <span className="text-[10px] font-black uppercase tracking-wider text-[#0E6CAC] animate-in fade-in duration-300">
-                        {category}
-                    </span>
-                )}
             </div>
 
             {/* Idle State Bottom Name */}
@@ -143,16 +135,19 @@ export function GSAPLeaderCard({
                 className="absolute inset-y-0 right-0 z-20 p-5 flex flex-col justify-between opacity-0 pointer-events-none"
             >
                 <div>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-[#0E6CAC]">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-[#0E6CAC] block">
+                        {category}
+                    </span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mt-0.5">
                         {institution}
                     </span>
-                    <h4 className="mt-1 text-lg font-black leading-snug text-[#0D3F70]">
+                    <h4 className="mt-1.5 text-base font-black leading-snug text-[#0D3F70]">
                         {name}
                     </h4>
-                    <div className="mt-1 inline-block rounded-md bg-blue-50 px-2 py-0.5 text-[11px] font-bold text-[#0E6CAC]">
+                    <div className="mt-1 inline-block rounded-md bg-blue-50 px-2 py-0.5 text-[10px] font-bold text-[#0E6CAC]">
                         {role}
                     </div>
-                    <p className="mt-3 text-xs leading-relaxed text-slate-600 line-clamp-6">
+                    <p className="mt-2.5 text-xs leading-relaxed text-slate-600 line-clamp-5">
                         {description}
                     </p>
                 </div>
@@ -224,7 +219,7 @@ export function GSAPBidangCard({
                 <path d="M50 150 C80 90, 120 90, 150 50" stroke="currentColor" strokeWidth="20" strokeLinecap="round" />
             </svg>
 
-            {/* Centerpiece Photo or Emblem */}
+            {/* Centerpiece Photo or Emblem that Zooms */}
             <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center overflow-hidden">
                 {bidang.photo ? (
                     <>
@@ -256,12 +251,9 @@ export function GSAPBidangCard({
                             data-gsap-emblem=""
                             className="relative z-10 flex flex-col items-center"
                         >
-                            <div className="mb-3.5 flex h-20 w-20 items-center justify-center rounded-2xl border border-blue-200/80 bg-white/95 text-[#0E6CAC] shadow-md transition-all duration-500">
+                            <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-blue-200/80 bg-white/95 text-[#0E6CAC] shadow-md transition-all duration-500">
                                 <IconComponent className="h-10 w-10 text-[#0E6CAC]" />
                             </div>
-                            <span className="rounded-full border border-blue-200/60 bg-white px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#0D3F70] shadow-2xs">
-                                Divisi {bidang.no}
-                            </span>
                         </div>
                         <div
                             data-gsap-gradient=""
@@ -271,8 +263,8 @@ export function GSAPBidangCard({
                 )}
             </div>
 
-            {/* Top Header Tag */}
-            <div className="relative z-10 p-4 flex items-center justify-between">
+            {/* Top Header Tag - Left Aligned Only */}
+            <div className="relative z-10 p-4 flex items-center justify-between pointer-events-none">
                 <span
                     className={cn(
                         "rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider transition-colors duration-300 shadow-2xs backdrop-blur-sm",
@@ -285,11 +277,6 @@ export function GSAPBidangCard({
                 >
                     Divisi {bidang.no}
                 </span>
-                {isExpanded && (
-                    <span className="text-[10px] font-black uppercase tracking-wider text-[#0E6CAC] animate-in fade-in duration-300">
-                        TIM TEKNIS
-                    </span>
-                )}
             </div>
 
             {/* Idle State Bottom Name */}
@@ -318,10 +305,18 @@ export function GSAPBidangCard({
             {/* Expanded Full Drawer */}
             <div
                 data-gsap-drawer=""
-                className="absolute inset-y-0 right-0 z-20 w-[185px] p-4 flex flex-col justify-between opacity-0 pointer-events-none"
+                className="absolute inset-y-0 right-0 z-20 w-[190px] p-4 flex flex-col justify-between opacity-0 pointer-events-none"
             >
                 <div>
-                    <span className="text-[9px] font-black uppercase tracking-widest text-[#0E6CAC]">
+                    <div className="flex items-center justify-between gap-1">
+                        <span className="text-[9px] font-black uppercase tracking-widest text-[#0E6CAC]">
+                            TIM TEKNIS
+                        </span>
+                        <span className="text-[9px] font-bold text-slate-400">
+                            DIV {bidang.no}
+                        </span>
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mt-0.5">
                         {bidang.scope}
                     </span>
                     <h4 className="mt-1 text-sm font-black leading-snug text-[#0D3F70]">
@@ -330,7 +325,7 @@ export function GSAPBidangCard({
                     <div className="mt-1 inline-block rounded-md bg-blue-50 px-2 py-0.5 text-[9px] font-bold text-[#0E6CAC]">
                         {bidang.coordinator || 'Koordinator Bidang'}
                     </div>
-                    <p className="mt-2 text-[11px] leading-relaxed text-slate-600 line-clamp-6">
+                    <p className="mt-2 text-[11px] leading-relaxed text-slate-600 line-clamp-5">
                         {bidang.focus}
                     </p>
                 </div>
@@ -369,6 +364,7 @@ export function GSAPDutaCard({
     mission,
     photo,
     hashtags,
+    target,
 }: {
     id: string;
     isExpanded: boolean;
@@ -382,6 +378,7 @@ export function GSAPDutaCard({
     mission: string;
     photo?: string;
     hashtags?: string[];
+    target?: string;
 }) {
     return (
         <div
@@ -440,12 +437,9 @@ export function GSAPDutaCard({
                             data-gsap-emblem=""
                             className="relative z-10 flex flex-col items-center"
                         >
-                            <div className="mb-4 flex h-24 w-24 items-center justify-center rounded-3xl border border-blue-200/80 bg-white/95 text-[#0E6CAC] shadow-md transition-all duration-500">
-                                <PersonIcon className="h-12 w-12 text-[#0E6CAC]" />
+                            <div className="flex h-24 w-24 items-center justify-center rounded-3xl border border-blue-200/80 bg-white/95 text-[#0E6CAC] shadow-md transition-all duration-500">
+                                <StarFilledIcon className="h-12 w-12 text-amber-500" />
                             </div>
-                            <span className="rounded-full border border-blue-200/60 bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#0D3F70] shadow-2xs">
-                                {tag}
-                            </span>
                         </div>
                         <div
                             data-gsap-gradient=""
@@ -455,8 +449,8 @@ export function GSAPDutaCard({
                 )}
             </div>
 
-            {/* Top Header Tag */}
-            <div className="relative z-10 p-5 flex items-center justify-between">
+            {/* Top Header Tag - Left Aligned Only (No duplicate right tag) */}
+            <div className="relative z-10 p-5 flex items-center justify-between pointer-events-none">
                 <span
                     className={cn(
                         "rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-wider transition-colors duration-300 shadow-2xs backdrop-blur-sm",
@@ -469,11 +463,6 @@ export function GSAPDutaCard({
                 >
                     {tag}
                 </span>
-                {isExpanded && (
-                    <span className="text-[10px] font-black uppercase tracking-wider text-[#0E6CAC] animate-in fade-in duration-300">
-                        DUTA SEBAYA
-                    </span>
-                )}
             </div>
 
             {/* Idle State Bottom Name */}
@@ -502,24 +491,27 @@ export function GSAPDutaCard({
             {/* Expanded Full Drawer */}
             <div
                 data-gsap-drawer=""
-                className="absolute inset-y-0 right-0 z-20 w-[205px] p-5 flex flex-col justify-between opacity-0 pointer-events-none"
+                className="absolute inset-y-0 right-0 z-20 w-[220px] p-5 flex flex-col justify-between opacity-0 pointer-events-none"
             >
                 <div>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-[#0E6CAC]">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-[#0E6CAC] block">
+                        DUTA SEBAYA
+                    </span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mt-0.5">
                         {scope}
                     </span>
-                    <h4 className="mt-1 text-base font-black leading-snug text-[#0D3F70]">
+                    <h4 className="mt-1.5 text-base font-black leading-snug text-[#0D3F70]">
                         {title}
                     </h4>
                     <div className="mt-1 inline-block rounded-md bg-blue-50 px-2 py-0.5 text-[10px] font-bold text-[#0E6CAC]">
                         {role}
                     </div>
-                    <p className="mt-2.5 text-xs leading-relaxed text-slate-600 line-clamp-3">
+                    <p className="mt-2 text-xs leading-relaxed text-slate-600 line-clamp-3">
                         {mission}
                     </p>
 
                     {hashtags && hashtags.length > 0 && (
-                        <div className="mt-3 flex flex-wrap gap-1">
+                        <div className="mt-2.5 flex flex-wrap gap-1">
                             {hashtags.map((hTag) => (
                                 <span
                                     key={hTag}
@@ -532,9 +524,16 @@ export function GSAPDutaCard({
                     )}
                 </div>
 
-                <div className="pt-3 border-t border-slate-200/80 flex items-center justify-between text-[11px] font-bold text-[#0D3F70]">
-                    <span>Profil Duta</span>
-                    <ArrowRightIcon className="h-4 w-4 text-[#0E6CAC]" />
+                <div className="pt-2.5 border-t border-slate-200/80">
+                    {target && (
+                        <p className="text-[9px] font-bold uppercase tracking-wider text-slate-400 mb-1 truncate">
+                            Sasaran: {target.split(',')[0]}
+                        </p>
+                    )}
+                    <div className="flex items-center justify-between text-[11px] font-bold text-[#0D3F70]">
+                        <span>Profil Duta</span>
+                        <ArrowRightIcon className="h-4 w-4 text-[#0E6CAC]" />
+                    </div>
                 </div>
             </div>
 

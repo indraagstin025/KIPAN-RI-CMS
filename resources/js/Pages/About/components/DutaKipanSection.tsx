@@ -13,9 +13,9 @@ export default function DutaKipanSection() {
 
     const dutaContainerRef = useGsapAccordion(hoveredDutaId, {
         defaultWidth: 215,
-        expandedWidth: 360,
-        contractedWidth: 185,
-        emblemShift: -48,
+        expandedWidth: 380,
+        contractedWidth: 175,
+        emblemShift: -64,
     });
 
     return (
@@ -89,6 +89,7 @@ export default function DutaKipanSection() {
                                 mission={duta.mission}
                                 photo={duta.photo}
                                 hashtags={duta.hashtags}
+                                target={duta.target}
                             />
                         ))}
                     </div>

@@ -46,7 +46,7 @@ export default function ScrollReveal({
                     observer.unobserve(el);
                 }
             },
-            { rootMargin: '-40px' }
+            { rootMargin: '-40px' },
         );
 
         observer.observe(el);

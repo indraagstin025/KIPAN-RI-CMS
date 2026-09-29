@@ -19,29 +19,29 @@ export default function StrukturOrganisasiSection() {
     const pembinaContainerRef = useGsapAccordion(hoveredPembinaId, {
         defaultWidth: 270,
         expandedWidth: 440,
-        contractedWidth: 210,
-        emblemShift: -64,
+        contractedWidth: 200,
+        emblemShift: -72,
     });
 
     const pengarahContainerRef = useGsapAccordion(hoveredPengarahId, {
         defaultWidth: 270,
         expandedWidth: 440,
-        contractedWidth: 210,
-        emblemShift: -64,
+        contractedWidth: 200,
+        emblemShift: -72,
     });
 
     const pusatContainerRef = useGsapAccordion(hoveredPusatId, {
         defaultWidth: 215,
-        expandedWidth: 360,
-        contractedWidth: 185,
-        emblemShift: -48,
+        expandedWidth: 380,
+        contractedWidth: 175,
+        emblemShift: -64,
     });
 
     const bidangContainerRef = useGsapAccordion(hoveredBidangId, {
         defaultWidth: 170,
-        expandedWidth: 340,
-        contractedWidth: 145,
-        emblemShift: -56,
+        expandedWidth: 350,
+        contractedWidth: 140,
+        emblemShift: -60,
     });
 
     return (
@@ -233,7 +233,7 @@ export default function StrukturOrganisasiSection() {
                                 description={leader.description}
                                 defaultWidth={215}
                                 height={500}
-                                drawerWidth={200}
+                                drawerWidth={215}
                                 footerLabel="Mandat Eksekutif"
                                 watermarkLabel="KIPAN • EKSEKUTIF"
                                 photo={leader.photo}
