@@ -5,6 +5,7 @@ import {
     DUTA_KIPAN_CATEGORIES,
     DUTA_KIPAN_PILLARS,
 } from '../data/about-data';
+import { MobileDutaCard } from './MobileStructureCard';
 
 export default function DutaKipanSection() {
     const [hoveredDutaId, setHoveredDutaId] = useState<string | null>(null);
@@ -42,7 +43,26 @@ export default function DutaKipanSection() {
                         <div className="h-px grow bg-slate-200" />
                     </div>
 
-                    <div className="flex w-full items-center justify-start lg:justify-center gap-4 lg:gap-5 overflow-x-auto lg:overflow-visible pb-8 pt-2 px-2 snap-x">
+                    {/* Mobile View: Clean Swipeable Cards (No Text Collision) */}
+                    <div className="flex lg:hidden w-full items-stretch gap-4 overflow-x-auto pb-4 pt-2 px-2 snap-x snap-mandatory">
+                        {DUTA_KIPAN_CATEGORIES.map((duta) => (
+                            <MobileDutaCard
+                                key={duta.id}
+                                tag={duta.tag}
+                                scope={duta.scope}
+                                title={duta.title}
+                                role={duta.role}
+                                mission={duta.mission}
+                                photo={duta.photo}
+                            />
+                        ))}
+                    </div>
+                    <p className="mt-1 mb-4 text-center text-xs font-medium text-slate-400 lg:hidden">
+                        ← Geser kartu untuk melihat duta pemuda lainnya →
+                    </p>
+
+                    {/* Desktop View: Interactive Accordion */}
+                    <div className="hidden lg:flex w-full items-center justify-center gap-4 lg:gap-5 overflow-visible pb-8 pt-2 px-2">
                         {DUTA_KIPAN_CATEGORIES.map((duta) => {
                             const isExpanded = hoveredDutaId === duta.id;
                             const isContracted = hoveredDutaId !== null && !isExpanded;

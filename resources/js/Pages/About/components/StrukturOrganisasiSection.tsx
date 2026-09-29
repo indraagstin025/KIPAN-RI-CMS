@@ -8,6 +8,7 @@ import {
     BIDANG_KERJA,
     BIDANG_ICONS,
 } from '../data/about-data';
+import { MobileLeaderCard, MobileBidangCard } from './MobileStructureCard';
 
 export default function StrukturOrganisasiSection() {
     const [hoveredPembinaId, setHoveredPembinaId] = useState<number | null>(null);
@@ -46,7 +47,27 @@ export default function StrukturOrganisasiSection() {
                         <div className="h-px grow bg-slate-200" />
                     </div>
 
-                    <div className="flex w-full items-center justify-center gap-5 overflow-x-auto lg:overflow-visible pb-8 pt-2 px-2 snap-x">
+                    {/* Mobile View: Clean Swipeable Cards (No Text Collision) */}
+                    <div className="flex lg:hidden w-full items-stretch gap-4 overflow-x-auto pb-4 pt-2 px-2 snap-x snap-mandatory">
+                        {DEWAN_PEMBINA.map((leader, idx) => (
+                            <MobileLeaderCard
+                                key={idx}
+                                badge={leader.badge}
+                                category="DEWAN PEMBINA"
+                                institution={leader.institution}
+                                name={leader.name}
+                                role={leader.role}
+                                description={leader.description}
+                                footerLabel="Mandat Pembinaan"
+                            />
+                        ))}
+                    </div>
+                    <p className="mt-1 mb-4 text-center text-xs font-medium text-slate-400 lg:hidden">
+                        ← Geser kartu untuk melihat pembina lainnya →
+                    </p>
+
+                    {/* Desktop View: Interactive Accordion */}
+                    <div className="hidden lg:flex w-full items-center justify-center gap-5 overflow-visible pb-8 pt-2 px-2">
                         {DEWAN_PEMBINA.map((leader, idx) => {
                             const isExpanded = hoveredPembinaId === idx;
                             const isContracted = hoveredPembinaId !== null && !isExpanded;
@@ -195,7 +216,27 @@ export default function StrukturOrganisasiSection() {
                         <div className="h-px grow bg-slate-200" />
                     </div>
 
-                    <div className="flex w-full items-center justify-center gap-5 overflow-x-auto lg:overflow-visible pb-8 pt-2 px-2 snap-x">
+                    {/* Mobile View: Clean Swipeable Cards (No Text Collision) */}
+                    <div className="flex lg:hidden w-full items-stretch gap-4 overflow-x-auto pb-4 pt-2 px-2 snap-x snap-mandatory">
+                        {DEWAN_PENGARAH.map((leader, idx) => (
+                            <MobileLeaderCard
+                                key={idx}
+                                badge={leader.badge}
+                                category="DEWAN PENGARAH"
+                                institution={leader.institution}
+                                name={leader.name}
+                                role={leader.role}
+                                description={leader.description}
+                                footerLabel="Mandat Pengarah"
+                            />
+                        ))}
+                    </div>
+                    <p className="mt-1 mb-4 text-center text-xs font-medium text-slate-400 lg:hidden">
+                        ← Geser kartu untuk melihat pengarah lainnya →
+                    </p>
+
+                    {/* Desktop View: Interactive Accordion */}
+                    <div className="hidden lg:flex w-full items-center justify-center gap-5 overflow-visible pb-8 pt-2 px-2">
                         {DEWAN_PENGARAH.map((leader, idx) => {
                             const isExpanded = hoveredPengarahId === idx;
                             const isContracted = hoveredPengarahId !== null && !isExpanded;
@@ -344,7 +385,27 @@ export default function StrukturOrganisasiSection() {
                         <div className="h-px grow bg-slate-200" />
                     </div>
 
-                    <div className="flex w-full items-center justify-start lg:justify-center gap-4 lg:gap-5 overflow-x-auto lg:overflow-visible pb-8 pt-2 px-2 snap-x">
+                    {/* Mobile View: Clean Swipeable Cards (No Text Collision) */}
+                    <div className="flex lg:hidden w-full items-stretch gap-4 overflow-x-auto pb-4 pt-2 px-2 snap-x snap-mandatory">
+                        {PENGURUS_PUSAT.map((leader, idx) => (
+                            <MobileLeaderCard
+                                key={idx}
+                                badge={leader.badge}
+                                category="PENGURUS HARIAN"
+                                institution={leader.institution}
+                                name={leader.name}
+                                role={leader.role}
+                                description={leader.description}
+                                footerLabel="Mandat Eksekutif"
+                            />
+                        ))}
+                    </div>
+                    <p className="mt-1 mb-4 text-center text-xs font-medium text-slate-400 lg:hidden">
+                        ← Geser kartu untuk melihat pengurus harian lainnya →
+                    </p>
+
+                    {/* Desktop View: Interactive Accordion */}
+                    <div className="hidden lg:flex w-full items-center justify-center gap-4 lg:gap-5 overflow-visible pb-8 pt-2 px-2">
                         {PENGURUS_PUSAT.map((leader, idx) => {
                             const isExpanded = hoveredPusatId === idx;
                             const isContracted = hoveredPusatId !== null && !isExpanded;
@@ -493,7 +554,18 @@ export default function StrukturOrganisasiSection() {
                         <div className="h-px grow bg-slate-200" />
                     </div>
 
-                    <div className="flex w-full items-center justify-start lg:justify-center gap-3.5 lg:gap-4 overflow-x-auto lg:overflow-visible pb-8 pt-2 px-2 snap-x">
+                    {/* Mobile View: Clean Swipeable Cards (No Text Collision) */}
+                    <div className="flex lg:hidden w-full items-stretch gap-4 overflow-x-auto pb-4 pt-2 px-2 snap-x snap-mandatory">
+                        {BIDANG_KERJA.map((bidang) => (
+                            <MobileBidangCard key={bidang.id} bidang={bidang} />
+                        ))}
+                    </div>
+                    <p className="mt-1 mb-4 text-center text-xs font-medium text-slate-400 lg:hidden">
+                        ← Geser kartu untuk melihat 9 divisi bidang kerja →
+                    </p>
+
+                    {/* Desktop View: Interactive Accordion */}
+                    <div className="hidden lg:flex w-full items-center justify-center gap-3.5 lg:gap-4 overflow-visible pb-8 pt-2 px-2">
                         {BIDANG_KERJA.map((bidang) => {
                             const isExpanded = hoveredBidangId === bidang.id;
                             const isContracted = hoveredBidangId !== null && !isExpanded;
