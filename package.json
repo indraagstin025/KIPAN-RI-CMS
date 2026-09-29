@@ -4,6 +4,8 @@
     "type": "module",
     "scripts": {
         "build": "tsc && vite build",
+        "build:static": "tsc && vite build && node scripts/export-static.js",
+        "export": "node scripts/export-static.js",
         "dev": "vite",
         "lint": "eslint resources/js --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix"
     },
