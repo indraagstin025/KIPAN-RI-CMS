@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
+import { useRef, useEffect, ReactNode } from 'react';
+import gsap from 'gsap';
 
 interface ScrollRevealProps {
     children: ReactNode;
@@ -14,36 +14,48 @@ export default function ScrollReveal({
     className = '',
     delay = 0,
     direction = 'up',
-    duration = 0.55,
+    duration = 0.65,
 }: ScrollRevealProps) {
-    const getInitial = () => {
-        switch (direction) {
-            case 'up':
-                return { opacity: 0, y: 24 };
-            case 'down':
-                return { opacity: 0, y: -24 };
-            case 'left':
-                return { opacity: 0, x: 24 };
-            case 'right':
-                return { opacity: 0, x: -24 };
-            default:
-                return { opacity: 0 };
-        }
-    };
+    const elRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const el = elRef.current;
+        if (!el) return;
+
+        let x = 0;
+        let y = 0;
+        if (direction === 'up') y = 24;
+        if (direction === 'down') y = -24;
+        if (direction === 'left') x = 24;
+        if (direction === 'right') x = -24;
+
+        gsap.set(el, { opacity: 0, x, y });
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry && entry.isIntersecting) {
+                    gsap.to(el, {
+                        opacity: 1,
+                        x: 0,
+                        y: 0,
+                        duration,
+                        delay,
+                        ease: 'power3.out',
+                        overwrite: 'auto',
+                    });
+                    observer.unobserve(el);
+                }
+            },
+            { rootMargin: '-40px' }
+        );
+
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, [delay, direction, duration]);
 
     return (
-        <motion.div
-            initial={getInitial()}
-            whileInView={{ opacity: 1, x: 0, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{
-                duration,
-                delay,
-                ease: [0.22, 1, 0.36, 1],
-            }}
-            className={className}
-        >
+        <div ref={elRef} className={className}>
             {children}
-        </motion.div>
+        </div>
     );
 }

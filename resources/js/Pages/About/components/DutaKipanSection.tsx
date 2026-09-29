@@ -1,14 +1,22 @@
 import { useState } from 'react';
-import { cn } from '@/lib/utils';
-import { ArrowRightIcon, CheckCircledIcon, StarFilledIcon } from '@radix-ui/react-icons';
+import { CheckCircledIcon, StarFilledIcon } from '@radix-ui/react-icons';
 import {
     DUTA_KIPAN_CATEGORIES,
     DUTA_KIPAN_PILLARS,
 } from '../data/about-data';
 import { MobileDutaCard } from './MobileStructureCard';
+import { GSAPDutaCard } from './GSAPStructureCard';
+import { useGsapAccordion } from '@/hooks/useGsapAccordion';
 
 export default function DutaKipanSection() {
     const [hoveredDutaId, setHoveredDutaId] = useState<string | null>(null);
+
+    const dutaContainerRef = useGsapAccordion(hoveredDutaId, {
+        defaultWidth: 215,
+        expandedWidth: 360,
+        contractedWidth: 185,
+        emblemShift: -48,
+    });
 
     return (
         <section
@@ -43,7 +51,7 @@ export default function DutaKipanSection() {
                         <div className="h-px grow bg-slate-200" />
                     </div>
 
-                    {/* Mobile View: Clean Swipeable Cards (No Text Collision) */}
+                    {/* Mobile View: Clean Swipeable Cards (Zero Text Collision) */}
                     <div className="flex lg:hidden w-full items-stretch gap-4 overflow-x-auto pb-4 pt-2 px-2 snap-x snap-mandatory">
                         {DUTA_KIPAN_CATEGORIES.map((duta) => (
                             <MobileDutaCard
@@ -61,193 +69,28 @@ export default function DutaKipanSection() {
                         ← Geser kartu untuk melihat duta pemuda lainnya →
                     </p>
 
-                    {/* Desktop View: Interactive Accordion */}
-                    <div className="hidden lg:flex w-full items-center justify-center gap-4 lg:gap-5 overflow-visible pb-8 pt-2 px-2">
-                        {DUTA_KIPAN_CATEGORIES.map((duta) => {
-                            const isExpanded = hoveredDutaId === duta.id;
-                            const isContracted = hoveredDutaId !== null && !isExpanded;
-
-                            return (
-                                <div
-                                    key={duta.id}
-                                    onMouseEnter={() => setHoveredDutaId(duta.id)}
-                                    onMouseLeave={() => setHoveredDutaId(null)}
-                                    onClick={() => setHoveredDutaId(isExpanded ? null : duta.id)}
-                                    className={cn(
-                                        "group relative h-[500px] cursor-pointer overflow-hidden rounded-[30px] border snap-center transition-[width,transform,opacity,box-shadow] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu will-change-[width,transform] shrink-0",
-                                        isExpanded
-                                            ? "w-[360px] scale-[1.03] z-30 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.18)] bg-white border-[#0E6CAC]/40 grayscale-0"
-                                            : isContracted
-                                                ? "w-[185px] scale-[0.98] z-10 opacity-70 grayscale bg-slate-100 border-slate-200/90"
-                                                : "w-[215px] scale-100 z-10 grayscale bg-[#EEF2F6] border-slate-200/90 shadow-xs hover:border-[#0E6CAC]/30"
-                                    )}
-                                >
-                                    {/* Background Watermark Curve (Matches Youth Innovation style) */}
-                                    <svg
-                                        className={cn(
-                                            "pointer-events-none absolute -right-10 -top-10 h-64 w-64 text-slate-300/40 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
-                                            isExpanded ? "scale-115 text-blue-200/60 rotate-12" : "scale-100"
-                                        )}
-                                        viewBox="0 0 200 200"
-                                        fill="none"
-                                        aria-hidden="true"
-                                    >
-                                        <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="24" strokeLinecap="round" strokeDasharray="320 120" />
-                                        <path d="M50 150 C80 90, 120 90, 150 50" stroke="currentColor" strokeWidth="20" strokeLinecap="round" />
-                                    </svg>
-
-                                    {/* Visual: Studio Portrait with Zoom or Artistic Placeholder */}
-                                    {duta.photo ? (
-                                        <div className="absolute inset-0 h-full w-full overflow-hidden">
-                                            <img
-                                                src={duta.photo}
-                                                alt={duta.title}
-                                                loading="lazy"
-                                                decoding="async"
-                                                className={cn(
-                                                    "h-full w-full object-cover object-[center_top] transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
-                                                    isExpanded
-                                                        ? "scale-115 -translate-x-12 grayscale-0"
-                                                        : "scale-100 translate-x-0 grayscale"
-                                                )}
-                                            />
-                                            {/* Soft white gradient on right half when expanded for crystal-clear text readability */}
-                                            <div
-                                                className={cn(
-                                                    "pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/85 to-white transition-opacity duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
-                                                    isExpanded ? "opacity-100" : "opacity-0"
-                                                )}
-                                            />
-                                        </div>
-                                    ) : (
-                                        <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center overflow-hidden">
-                                            <div
-                                                className={cn(
-                                                    "relative z-10 flex flex-col items-center transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
-                                                    isExpanded ? "scale-115 -translate-x-12" : "scale-100 translate-x-0"
-                                                )}
-                                            >
-                                                <div className="mb-4 flex h-24 w-24 items-center justify-center rounded-3xl border border-blue-200/80 bg-white/95 text-[#0E6CAC] shadow-md transition-all duration-500">
-                                                    <StarFilledIcon className="h-12 w-12 text-amber-500" />
-                                                </div>
-                                                <span className="rounded-full border border-blue-200/60 bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#0D3F70] shadow-2xs">
-                                                    {duta.tag}
-                                                </span>
-                                            </div>
-                                            <div
-                                                className={cn(
-                                                    "pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/90 to-white transition-opacity duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
-                                                    isExpanded ? "opacity-100" : "opacity-0"
-                                                )}
-                                            />
-                                        </div>
-                                    )}
-
-                                    {/* Top Header Tag */}
-                                    <div className="relative z-10 p-5 flex items-center justify-between">
-                                        <span
-                                            className={cn(
-                                                "rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-wider transition-colors duration-300 shadow-2xs backdrop-blur-sm",
-                                                isExpanded
-                                                    ? "border-blue-300 bg-[#0D3F70] text-white"
-                                                    : duta.photo
-                                                      ? "border-white/40 bg-slate-900/80 text-white"
-                                                      : "border-slate-200/80 bg-white/95 text-[#0D3F70]"
-                                            )}
-                                        >
-                                            {duta.tag}
-                                        </span>
-                                        {isExpanded && (
-                                            <span className="text-[10px] font-black uppercase tracking-wider text-[#0E6CAC] animate-in fade-in duration-300">
-                                                DUTA SEBAYA
-                                            </span>
-                                        )}
-                                    </div>
-
-                                    {/* Idle State Bottom Name */}
-                                    <div
-                                        className={cn(
-                                            "absolute bottom-5 left-5 right-5 z-10 transition-all duration-300",
-                                            isExpanded ? "opacity-0 translate-y-3 pointer-events-none" : "opacity-100 translate-y-0"
-                                        )}
-                                    >
-                                        <h4
-                                            className={cn(
-                                                "text-sm font-black leading-tight",
-                                                duta.photo ? "text-white drop-shadow-md" : "text-slate-800"
-                                            )}
-                                        >
-                                            {duta.title}
-                                        </h4>
-                                        <p
-                                            className={cn(
-                                                "text-[11px] font-semibold mt-0.5 truncate",
-                                                duta.photo ? "text-blue-100 drop-shadow-sm" : "text-[#0E6CAC]"
-                                            )}
-                                        >
-                                            {duta.role}
-                                        </p>
-                                    </div>
-
-                                    {/* Expanded Full Drawer (Detailed Information) */}
-                                    <div
-                                        className={cn(
-                                            "absolute inset-y-0 right-0 z-20 w-[205px] p-5 flex flex-col justify-between transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] delay-75",
-                                            isExpanded
-                                                ? "opacity-100 translate-x-0"
-                                                : "opacity-0 translate-x-6 pointer-events-none"
-                                        )}
-                                    >
-                                        <div>
-                                            <span className="text-[10px] font-black uppercase tracking-widest text-[#0E6CAC]">
-                                                {duta.scope}
-                                            </span>
-                                            <h4 className="mt-1 text-base font-black leading-snug text-[#0D3F70]">
-                                                {duta.title}
-                                            </h4>
-                                            <div className="mt-1 inline-block rounded-md bg-blue-50 px-2 py-0.5 text-[10px] font-bold text-[#0E6CAC]">
-                                                {duta.role}
-                                            </div>
-                                            <p className="mt-2.5 text-[11px] leading-relaxed text-slate-600 line-clamp-3">
-                                                {duta.mission}
-                                            </p>
-
-                                            {duta.hashtags && (
-                                                <div className="mt-3 flex flex-wrap gap-1">
-                                                    {duta.hashtags.map((tag) => (
-                                                        <span
-                                                            key={tag}
-                                                            className="rounded-md border border-slate-200/80 bg-slate-100/90 px-2 py-0.5 text-[9px] font-semibold text-slate-700"
-                                                        >
-                                                            {tag}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            )}
-
-                                            <div className="mt-4 flex items-center justify-between border-t border-slate-150 pt-2 text-[10px] font-bold text-slate-400">
-                                                <span className="text-[10px] uppercase tracking-wider text-slate-500">
-                                                    Sasaran: {duta.target.split(',')[0]}
-                                                </span>
-                                                <ArrowRightIcon className="h-3.5 w-3.5 text-[#0E6CAC] transition-transform duration-300 group-hover:translate-x-1" />
-                                            </div>
-                                        </div>
-
-                                        {/* Bottom Right Logo Watermark */}
-                                        <div
-                                            className={cn(
-                                                "pointer-events-none absolute bottom-4 right-4 z-10 transition-opacity duration-300",
-                                                isExpanded ? "opacity-75" : "opacity-0"
-                                            )}
-                                        >
-                                            <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">
-                                                KIPAN • KEMENPORA
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
+                    {/* Desktop View: Interactive GSAP Accordion */}
+                    <div
+                        ref={dutaContainerRef}
+                        className="hidden lg:flex w-full items-center justify-center gap-4 lg:gap-5 overflow-visible pb-8 pt-2 px-2"
+                    >
+                        {DUTA_KIPAN_CATEGORIES.map((duta) => (
+                            <GSAPDutaCard
+                                key={duta.id}
+                                id={duta.id}
+                                isExpanded={hoveredDutaId === duta.id}
+                                isContracted={hoveredDutaId !== null && hoveredDutaId !== duta.id}
+                                onHover={() => setHoveredDutaId(duta.id)}
+                                onLeave={() => setHoveredDutaId(null)}
+                                tag={duta.tag}
+                                scope={duta.scope}
+                                title={duta.title}
+                                role={duta.role}
+                                mission={duta.mission}
+                                photo={duta.photo}
+                                hashtags={duta.hashtags}
+                            />
+                        ))}
                     </div>
                 </div>
 
