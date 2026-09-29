@@ -58,7 +58,7 @@ export default function StrukturOrganisasiSection() {
                                     onMouseLeave={() => setHoveredPembinaId(null)}
                                     onClick={() => setHoveredPembinaId(isExpanded ? null : idx)}
                                     className={cn(
-                                        "group relative h-[490px] cursor-pointer overflow-hidden rounded-[30px] border snap-center transition-[width,transform,opacity,box-shadow] duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu will-change-[width,transform] shrink-0",
+                                        "group relative h-[490px] cursor-pointer overflow-hidden rounded-[30px] border snap-center transition-[width,transform,opacity,box-shadow] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu will-change-[width,transform] shrink-0",
                                         isExpanded
                                             ? "w-[440px] scale-[1.02] z-30 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.18)] bg-white border-[#0E6CAC]/40 grayscale-0"
                                             : isContracted
@@ -69,7 +69,7 @@ export default function StrukturOrganisasiSection() {
                                     {/* Background Watermark Curve */}
                                     <svg
                                         className={cn(
-                                            "pointer-events-none absolute -right-10 -top-10 h-64 w-64 text-slate-300/40 transition-transform duration-400 ease-out",
+                                            "pointer-events-none absolute -right-10 -top-10 h-64 w-64 text-slate-300/40 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
                                             isExpanded ? "scale-115 text-blue-200/60 rotate-12" : "scale-100"
                                         )}
                                         viewBox="0 0 200 200"
@@ -84,7 +84,7 @@ export default function StrukturOrganisasiSection() {
                                     <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center overflow-hidden">
                                         <div
                                             className={cn(
-                                                "relative z-10 flex flex-col items-center transition-transform duration-400 ease-out",
+                                                "relative z-10 flex flex-col items-center transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
                                                 isExpanded ? "scale-115 -translate-x-16" : "scale-100 translate-x-0"
                                             )}
                                         >
@@ -98,7 +98,7 @@ export default function StrukturOrganisasiSection() {
                                         {/* Soft white gradient on right half when expanded */}
                                         <div
                                             className={cn(
-                                                "pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/90 to-white transition-opacity duration-400",
+                                                "pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/90 to-white transition-opacity duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
                                                 isExpanded ? "opacity-100" : "opacity-0"
                                             )}
                                         />
@@ -141,7 +141,7 @@ export default function StrukturOrganisasiSection() {
                                     {/* Expanded Full Drawer */}
                                     <div
                                         className={cn(
-                                            "absolute inset-y-0 right-0 z-20 w-[240px] p-5 flex flex-col justify-between transition-all duration-400 ease-out",
+                                            "absolute inset-y-0 right-0 z-20 w-[240px] p-5 flex flex-col justify-between transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] delay-75",
                                             isExpanded
                                                 ? "opacity-100 translate-x-0"
                                                 : "opacity-0 translate-x-6 pointer-events-none"
@@ -207,7 +207,7 @@ export default function StrukturOrganisasiSection() {
                                     onMouseLeave={() => setHoveredPengarahId(null)}
                                     onClick={() => setHoveredPengarahId(isExpanded ? null : idx)}
                                     className={cn(
-                                        "group relative h-[490px] cursor-pointer overflow-hidden rounded-[30px] border snap-center transition-[width,transform,opacity,box-shadow] duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu will-change-[width,transform] shrink-0",
+                                        "group relative h-[490px] cursor-pointer overflow-hidden rounded-[30px] border snap-center transition-[width,transform,opacity,box-shadow] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu will-change-[width,transform] shrink-0",
                                         isExpanded
                                             ? "w-[440px] scale-[1.02] z-30 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.18)] bg-white border-[#0E6CAC]/40 grayscale-0"
                                             : isContracted
@@ -218,7 +218,7 @@ export default function StrukturOrganisasiSection() {
                                     {/* Background Watermark Curve */}
                                     <svg
                                         className={cn(
-                                            "pointer-events-none absolute -right-10 -top-10 h-64 w-64 text-slate-300/40 transition-transform duration-400 ease-out",
+                                            "pointer-events-none absolute -right-10 -top-10 h-64 w-64 text-slate-300/40 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
                                             isExpanded ? "scale-115 text-blue-200/60 rotate-12" : "scale-100"
                                         )}
                                         viewBox="0 0 200 200"
@@ -233,7 +233,7 @@ export default function StrukturOrganisasiSection() {
                                     <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center overflow-hidden">
                                         <div
                                             className={cn(
-                                                "relative z-10 flex flex-col items-center transition-transform duration-400 ease-out",
+                                                "relative z-10 flex flex-col items-center transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
                                                 isExpanded ? "scale-115 -translate-x-16" : "scale-100 translate-x-0"
                                             )}
                                         >
@@ -247,7 +247,7 @@ export default function StrukturOrganisasiSection() {
                                         {/* Soft white gradient on right half when expanded */}
                                         <div
                                             className={cn(
-                                                "pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/90 to-white transition-opacity duration-400",
+                                                "pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/90 to-white transition-opacity duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
                                                 isExpanded ? "opacity-100" : "opacity-0"
                                             )}
                                         />
@@ -290,7 +290,7 @@ export default function StrukturOrganisasiSection() {
                                     {/* Expanded Full Drawer */}
                                     <div
                                         className={cn(
-                                            "absolute inset-y-0 right-0 z-20 w-[240px] p-5 flex flex-col justify-between transition-all duration-400 ease-out",
+                                            "absolute inset-y-0 right-0 z-20 w-[240px] p-5 flex flex-col justify-between transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] delay-75",
                                             isExpanded
                                                 ? "opacity-100 translate-x-0"
                                                 : "opacity-0 translate-x-6 pointer-events-none"
@@ -356,7 +356,7 @@ export default function StrukturOrganisasiSection() {
                                     onMouseLeave={() => setHoveredPusatId(null)}
                                     onClick={() => setHoveredPusatId(isExpanded ? null : idx)}
                                     className={cn(
-                                        "group relative h-[500px] cursor-pointer overflow-hidden rounded-[30px] border snap-center transition-[width,transform,opacity,box-shadow] duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu will-change-[width,transform] shrink-0",
+                                        "group relative h-[500px] cursor-pointer overflow-hidden rounded-[30px] border snap-center transition-[width,transform,opacity,box-shadow] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu will-change-[width,transform] shrink-0",
                                         isExpanded
                                             ? "w-[360px] scale-[1.03] z-30 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.18)] bg-white border-[#0E6CAC]/40 grayscale-0"
                                             : isContracted
@@ -367,7 +367,7 @@ export default function StrukturOrganisasiSection() {
                                     {/* Background Watermark Curve */}
                                     <svg
                                         className={cn(
-                                            "pointer-events-none absolute -right-10 -top-10 h-64 w-64 text-slate-300/40 transition-transform duration-400 ease-out",
+                                            "pointer-events-none absolute -right-10 -top-10 h-64 w-64 text-slate-300/40 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
                                             isExpanded ? "scale-115 text-blue-200/60 rotate-12" : "scale-100"
                                         )}
                                         viewBox="0 0 200 200"
@@ -382,7 +382,7 @@ export default function StrukturOrganisasiSection() {
                                     <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center overflow-hidden">
                                         <div
                                             className={cn(
-                                                "relative z-10 flex flex-col items-center transition-transform duration-400 ease-out",
+                                                "relative z-10 flex flex-col items-center transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
                                                 isExpanded ? "scale-115 -translate-x-12" : "scale-100 translate-x-0"
                                             )}
                                         >
@@ -396,7 +396,7 @@ export default function StrukturOrganisasiSection() {
                                         {/* Soft white gradient on right half when expanded */}
                                         <div
                                             className={cn(
-                                                "pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/90 to-white transition-opacity duration-400",
+                                                "pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/90 to-white transition-opacity duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
                                                 isExpanded ? "opacity-100" : "opacity-0"
                                             )}
                                         />
@@ -439,7 +439,7 @@ export default function StrukturOrganisasiSection() {
                                     {/* Expanded Full Drawer */}
                                     <div
                                         className={cn(
-                                            "absolute inset-y-0 right-0 z-20 w-[200px] p-5 flex flex-col justify-between transition-all duration-400 ease-out",
+                                            "absolute inset-y-0 right-0 z-20 w-[200px] p-5 flex flex-col justify-between transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] delay-75",
                                             isExpanded
                                                 ? "opacity-100 translate-x-0"
                                                 : "opacity-0 translate-x-6 pointer-events-none"
@@ -506,7 +506,7 @@ export default function StrukturOrganisasiSection() {
                                     onMouseLeave={() => setHoveredBidangId(null)}
                                     onClick={() => setHoveredBidangId(isExpanded ? null : bidang.id)}
                                     className={cn(
-                                        "group relative h-[470px] cursor-pointer overflow-hidden rounded-[28px] border snap-center transition-[width,transform,opacity,box-shadow] duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu will-change-[width,transform] shrink-0",
+                                        "group relative h-[470px] cursor-pointer overflow-hidden rounded-[28px] border snap-center transition-[width,transform,opacity,box-shadow] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu will-change-[width,transform] shrink-0",
                                         isExpanded
                                             ? "w-[340px] scale-[1.03] z-30 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.18)] bg-white border-[#0E6CAC]/40 grayscale-0"
                                             : isContracted
@@ -517,7 +517,7 @@ export default function StrukturOrganisasiSection() {
                                     {/* Background Watermark Curve */}
                                     <svg
                                         className={cn(
-                                            "pointer-events-none absolute -right-8 -top-8 h-56 w-56 text-slate-300/40 transition-transform duration-400 ease-out",
+                                            "pointer-events-none absolute -right-8 -top-8 h-56 w-56 text-slate-300/40 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
                                             isExpanded ? "scale-115 text-blue-200/60 rotate-12" : "scale-100"
                                         )}
                                         viewBox="0 0 200 200"
@@ -538,7 +538,7 @@ export default function StrukturOrganisasiSection() {
                                                     loading="lazy"
                                                     decoding="async"
                                                     className={cn(
-                                                        "absolute inset-0 h-full w-full object-cover object-top transition-transform duration-400 ease-out",
+                                                        "absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
                                                         isExpanded
                                                             ? "scale-115 -translate-x-14 grayscale-0"
                                                             : "scale-100 translate-x-0 grayscale"
@@ -547,7 +547,7 @@ export default function StrukturOrganisasiSection() {
                                                 {/* Soft white gradient on right half when expanded */}
                                                 <div
                                                     className={cn(
-                                                        "pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/85 to-white transition-opacity duration-400",
+                                                        "pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/85 to-white transition-opacity duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
                                                         isExpanded ? "opacity-100" : "opacity-0"
                                                     )}
                                                 />
@@ -563,7 +563,7 @@ export default function StrukturOrganisasiSection() {
                                             <>
                                                 <div
                                                     className={cn(
-                                                        "relative z-10 flex flex-col items-center transition-transform duration-400 ease-out",
+                                                        "relative z-10 flex flex-col items-center transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
                                                         isExpanded ? "scale-115 -translate-x-12" : "scale-100 translate-x-0"
                                                     )}
                                                 >
@@ -576,7 +576,7 @@ export default function StrukturOrganisasiSection() {
                                                 </div>
                                                 <div
                                                     className={cn(
-                                                        "pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/90 to-white transition-opacity duration-400",
+                                                        "pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/90 to-white transition-opacity duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
                                                         isExpanded ? "opacity-100" : "opacity-0"
                                                     )}
                                                 />
@@ -633,7 +633,7 @@ export default function StrukturOrganisasiSection() {
                                     {/* Expanded Full Drawer */}
                                     <div
                                         className={cn(
-                                            "absolute inset-y-0 right-0 z-20 w-[185px] p-4 flex flex-col justify-between transition-all duration-400 ease-out",
+                                            "absolute inset-y-0 right-0 z-20 w-[185px] p-4 flex flex-col justify-between transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] delay-75",
                                             isExpanded
                                                 ? "opacity-100 translate-x-0"
                                                 : "opacity-0 translate-x-6 pointer-events-none"
