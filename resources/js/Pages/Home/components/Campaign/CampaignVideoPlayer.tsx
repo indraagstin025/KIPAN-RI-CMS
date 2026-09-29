@@ -11,6 +11,7 @@ import { useState } from 'react';
 export default function CampaignVideoPlayer() {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
+    const videoId = 'l2O2Rf6Qfoo';
 
     return (
         <div className="group relative aspect-[4/3] w-full max-w-xl overflow-hidden rounded-2xl border-2 border-white/25 bg-slate-900 shadow-2xl transition-all duration-300 hover:border-white/40 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] sm:aspect-video lg:max-w-none">
@@ -19,8 +20,8 @@ export default function CampaignVideoPlayer() {
                 <div className="relative h-full w-full">
                     <iframe
                         className="h-full w-full"
-                        src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0&modestbranding=1"
-                        title="Video Profil KIPAN RI"
+                        src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`}
+                        title="Video Gerakan KIPAN Republik Indonesia"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     />
@@ -35,8 +36,19 @@ export default function CampaignVideoPlayer() {
                 </div>
             ) : (
                 /* Video Frame Mockup */
-                <div className="relative flex h-full w-full flex-col justify-between bg-gradient-to-t from-black/80 via-black/40 to-black/70 p-4 text-white sm:p-5 lg:p-6">
-                    {/* Background Visual Graphic */}
+                <div 
+                    onClick={() => setIsPlaying(true)}
+                    className="relative flex h-full w-full cursor-pointer flex-col justify-between overflow-hidden bg-slate-950 p-4 text-white sm:p-5 lg:p-6"
+                >
+                    {/* Video Thumbnail Background */}
+                    <img
+                        src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+                        alt="Preview Video Gerakan KIPAN RI"
+                        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-65 transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+
+                    {/* Gradient Overlay for Legibility */}
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/70" />
                     <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] opacity-10 [background-size:20px_20px]" />
 
                     {/* Top Header Bar inside Video */}
@@ -51,10 +63,10 @@ export default function CampaignVideoPlayer() {
                             </div>
                             <div className="flex flex-col leading-tight">
                                 <span className="max-w-[200px] truncate text-xs font-bold text-white drop-shadow-sm sm:max-w-[280px] lg:max-w-sm sm:text-sm">
-                                    Video Profil Resmi KIPAN Republik Indonesia
+                                    Aksi Nyata Pemuda KIPAN Republik Indonesia
                                 </span>
                                 <span className="text-[10px] text-blue-200/90 drop-shadow-sm sm:text-xs">
-                                    Kemenpora RI &amp; BNN RI • 2.5K Tayangan
+                                    Kemenpora RI &amp; BNN RI • Video Dokumentasi
                                 </span>
                             </div>
                         </div>
@@ -86,7 +98,10 @@ export default function CampaignVideoPlayer() {
                             whileHover={{ scale: 1.08 }}
                             whileTap={{ scale: 0.95 }}
                             type="button"
-                            onClick={() => setIsPlaying(true)}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setIsPlaying(true);
+                            }}
                             aria-label="Putar video profil KIPAN"
                             className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 text-kipan-navy shadow-2xl transition-colors hover:bg-white hover:text-kipan-blue group-hover:ring-4 group-hover:ring-kipan-yellow/50 sm:h-16 sm:w-16 lg:h-20 lg:w-20"
                         >
@@ -103,10 +118,10 @@ export default function CampaignVideoPlayer() {
                         <div className="flex items-center justify-between text-[11px] text-white/90 sm:text-xs">
                             <div className="flex items-center gap-2 sm:gap-2.5">
                                 <span className="rounded bg-black/40 px-2 py-0.5 font-mono text-[10px] sm:text-xs">
-                                    2:15 / 2:45
+                                    YouTube Video
                                 </span>
                                 <span className="hidden text-white/75 sm:inline">
-                                    Resolusi 1080p HD
+                                    Resolusi HD
                                 </span>
                             </div>
 
