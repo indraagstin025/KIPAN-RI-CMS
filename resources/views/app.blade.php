@@ -15,7 +15,13 @@
         <!-- Scripts -->
         @routes
         @viteReactRefresh
-        @vite(['resources/js/app.tsx', "resources/js/Pages/{$page['component']}.tsx"])
+        @php
+            $pageComponent = $page['component'];
+            $pagePath = file_exists(resource_path("js/Pages/{$pageComponent}/Index.tsx"))
+                ? "resources/js/Pages/{$pageComponent}/Index.tsx"
+                : "resources/js/Pages/{$pageComponent}.tsx";
+        @endphp
+        @vite(['resources/js/app.tsx', $pagePath])
         @inertiaHead
     </head>
     <body class="font-sans antialiased">

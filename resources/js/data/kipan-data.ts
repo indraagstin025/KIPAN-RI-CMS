@@ -449,7 +449,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
         id: 1,
         title: 'Upacara Hari Anti Narkoba Internasional',
         category: 'Kampanye',
-        image: 'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=900&q=80',
+        image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80',
         location: 'Jakarta',
     },
     {
@@ -528,6 +528,74 @@ export const GALLERY_ITEMS: GalleryItem[] = [
         category: 'Kampanye',
         image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80',
         location: 'Yogyakarta',
+    },
+];
+
+export interface GalleryVideo {
+    id: string;
+    embedId: string;
+    title: string;
+    category: string;
+    tag: string;
+    duration: string;
+    date: string;
+    thumbnail: string;
+    description: string;
+    isFeatured?: boolean;
+}
+
+export const GALLERY_VIDEOS: GalleryVideo[] = [
+    {
+        id: 'vid-1',
+        embedId: 'o9TcRtE-uzI',
+        title: 'Dit Res Narkoba Polda Jabar Menghadiri Pelantikan dan Pengukuhan Pengurus KIPAN Periode 2022 - 2024',
+        category: 'Kegiatan',
+        tag: 'Pelantikan & Pengukuhan',
+        duration: '03:15',
+        date: '15 Agu 2022',
+        thumbnail: 'https://img.youtube.com/vi/o9TcRtE-uzI/hqdefault.jpg',
+        description:
+            'Dokumentasi resmi kehadiran Dit Res Narkoba Polda Jabar pada pelantikan dan pengukuhan jajaran pengurus KIPAN periode 2022 - 2024.',
+        isFeatured: true,
+    },
+    {
+        id: 'vid-2',
+        embedId: 'IHTqoALFIiE',
+        title: '150 Pemuda Polman Dibekali Pelatihan Kader Anti Narkoba',
+        category: 'Pelatihan',
+        tag: 'Pelatihan Kader',
+        duration: '03:42',
+        date: '08 Feb 2025',
+        thumbnail:
+            'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80',
+        description:
+            'Pembekalan intensif modul P4GN, advokasi sebaya, dan pembinaan karakter pemuda tangguh.',
+    },
+    {
+        id: 'vid-3',
+        embedId: '5mPBIlzla-M',
+        title: 'KIPAN Mamuju: Sosialisasi P4GN Kader Inti Pemuda Anti Narkoba',
+        category: 'Sosialisasi',
+        tag: 'Sosialisasi',
+        duration: '05:10',
+        date: '19 Feb 2025',
+        thumbnail:
+            'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=900&q=80',
+        description:
+            'Aksi edukasi lapangan dan dialog interaktif bersama pelajar dan organisasi kepemudaan daerah.',
+    },
+    {
+        id: 'vid-4',
+        embedId: 'mM_GoJ5Pi1I',
+        title: 'Kampanye Edukatif Pemuda: Generasi Emas Bebas Narkoba',
+        category: 'Kampanye',
+        tag: 'Kampanye Publik',
+        duration: '02:50',
+        date: '03 Mar 2025',
+        thumbnail:
+            'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80',
+        description:
+            'Gerakan kampanye publik melalui aksi kreatif, orasi kepemudaan, dan ikrar bersama kader anti narkoba.',
     },
 ];
 

@@ -240,10 +240,18 @@ export const PROGRAM_ITEMS: ProgramItem[] = [
 export const NETWORK_REGIONS = [
     { name: 'Sumatera', count: '10 Provinsi', status: 'Aktif Terkoordinasi' },
     { name: 'Jawa & Bali', count: '7 Provinsi', status: 'Aktif Terkoordinasi' },
-    { name: 'Nusa Tenggara', count: '2 Provinsi', status: 'Aktif Terkoordinasi' },
+    {
+        name: 'Nusa Tenggara',
+        count: '2 Provinsi',
+        status: 'Aktif Terkoordinasi',
+    },
     { name: 'Kalimantan', count: '5 Provinsi', status: 'Aktif Terkoordinasi' },
     { name: 'Sulawesi', count: '6 Provinsi', status: 'Aktif Terkoordinasi' },
-    { name: 'Maluku & Papua', count: '8 Provinsi', status: 'Aktif Terkoordinasi' },
+    {
+        name: 'Maluku & Papua',
+        count: '8 Provinsi',
+        status: 'Aktif Terkoordinasi',
+    },
 ];
 
 export const NEWS_ITEMS: NewsItem[] = [
@@ -402,15 +410,26 @@ export const GALLERY_ITEMS: GalleryItem[] = [
 export const PARTNERS_ITEMS: PartnerItem[] = [
     { name: 'Kemenpora RI', role: 'Kementerian Pemuda dan Olahraga' },
     { name: 'BNN RI', role: 'Badan Narkotika Nasional' },
-    { name: 'Dispora Seluruh Indonesia', role: 'Dinas Pemuda dan Olahraga Provinsi/Kabupaten' },
-    { name: 'Komite Nasional Pemuda Indonesia', role: 'Wadah Berhimpun Organisasi Kepemudaan' },
-    { name: 'Satuan Pendidikan & Kampus', role: 'Mitra Edukasi & Sosialisasi Sebaya' },
+    {
+        name: 'Dispora Seluruh Indonesia',
+        role: 'Dinas Pemuda dan Olahraga Provinsi/Kabupaten',
+    },
+    {
+        name: 'Komite Nasional Pemuda Indonesia',
+        role: 'Wadah Berhimpun Organisasi Kepemudaan',
+    },
+    {
+        name: 'Satuan Pendidikan & Kampus',
+        role: 'Mitra Edukasi & Sosialisasi Sebaya',
+    },
 ];
 
 export const CONTACT_INFO = {
-    organization: 'Kader Inti Pemuda Anti Narkoba Republik Indonesia (KIPAN RI)',
+    organization:
+        'Kader Inti Pemuda Anti Narkoba Republik Indonesia (KIPAN RI)',
     supervisor: 'Binaan Kementerian Pemuda dan Olahraga RI & BNN RI',
-    address: 'Gedung Wisma Menpora, Jl. Gerbang Pemuda No. 3, Gelora, Tanah Abang, Jakarta Pusat 10270',
+    address:
+        'Gedung Wisma Menpora, Jl. Gerbang Pemuda No. 3, Gelora, Tanah Abang, Jakarta Pusat 10270',
     email: 'sekretariat@kipan.or.id',
     phone: '+62 812-3456-7890',
     hotlineBnn: '184',
