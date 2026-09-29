@@ -1,17 +1,21 @@
+import { useGsapAccordion } from '@/hooks/useGsapAccordion';
 import { useState } from 'react';
 import {
+    BIDANG_KERJA,
     DEWAN_PEMBINA,
     DEWAN_PENGARAH,
     PENGURUS_PUSAT,
-    BIDANG_KERJA,
 } from '../data/about-data';
-import { MobileLeaderCard, MobileBidangCard } from './MobileStructureCard';
-import { GSAPLeaderCard, GSAPBidangCard } from './GSAPStructureCard';
-import { useGsapAccordion } from '@/hooks/useGsapAccordion';
+import { GSAPBidangCard, GSAPLeaderCard } from './GSAPStructureCard';
+import { MobileBidangCard, MobileLeaderCard } from './MobileStructureCard';
 
 export default function StrukturOrganisasiSection() {
-    const [hoveredPembinaId, setHoveredPembinaId] = useState<number | null>(null);
-    const [hoveredPengarahId, setHoveredPengarahId] = useState<number | null>(null);
+    const [hoveredPembinaId, setHoveredPembinaId] = useState<number | null>(
+        null,
+    );
+    const [hoveredPengarahId, setHoveredPengarahId] = useState<number | null>(
+        null,
+    );
     const [hoveredPusatId, setHoveredPusatId] = useState<number | null>(null);
     const [hoveredBidangId, setHoveredBidangId] = useState<string | null>(null);
 
@@ -60,8 +64,9 @@ export default function StrukturOrganisasiSection() {
                     </h2>
                     <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-[#0E6CAC]" />
                     <p className="mx-auto mt-4 max-w-2xl text-xs leading-relaxed text-slate-600 sm:text-sm">
-                        Bagan struktur kepengurusan nasional yang memadukan pembinaan strategis pemerintah pusat
-                        dengan kepemimpinan eksekutif pemuda di 38 provinsi di seluruh Nusantara.
+                        Bagan struktur kepengurusan nasional yang memadukan
+                        pembinaan strategis pemerintah pusat dengan kepemimpinan
+                        eksekutif pemuda di 38 provinsi di seluruh Nusantara.
                     </p>
                 </div>
 
@@ -76,10 +81,10 @@ export default function StrukturOrganisasiSection() {
                     </div>
 
                     {/* Mobile View: Clean Swipeable Cards (Zero Text Collision) */}
-                    <div className="flex lg:hidden w-full items-stretch gap-4 overflow-x-auto pb-4 pt-2 px-2 snap-x snap-mandatory">
-                        {DEWAN_PEMBINA.map((leader, idx) => (
+                    <div className="flex w-full snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-2 pb-4 pt-2 lg:hidden">
+                        {DEWAN_PEMBINA.map((leader) => (
                             <MobileLeaderCard
-                                key={idx}
+                                key={leader.name}
                                 badge={leader.badge}
                                 category="DEWAN PEMBINA"
                                 institution={leader.institution}
@@ -90,21 +95,24 @@ export default function StrukturOrganisasiSection() {
                             />
                         ))}
                     </div>
-                    <p className="mt-1 mb-4 text-center text-xs font-medium text-slate-400 lg:hidden">
+                    <p className="mb-4 mt-1 text-center text-xs font-medium text-slate-400 lg:hidden">
                         ← Geser kartu untuk melihat pembina lainnya →
                     </p>
 
                     {/* Desktop View: Interactive GSAP Accordion */}
                     <div
                         ref={pembinaContainerRef}
-                        className="hidden lg:flex w-full items-center justify-center gap-5 overflow-visible pb-8 pt-2 px-2"
+                        className="hidden w-full items-center justify-center gap-5 overflow-visible px-2 pb-8 pt-2 lg:flex"
                     >
                         {DEWAN_PEMBINA.map((leader, idx) => (
                             <GSAPLeaderCard
-                                key={idx}
+                                key={leader.name}
                                 id={idx}
                                 isExpanded={hoveredPembinaId === idx}
-                                isContracted={hoveredPembinaId !== null && hoveredPembinaId !== idx}
+                                isContracted={
+                                    hoveredPembinaId !== null &&
+                                    hoveredPembinaId !== idx
+                                }
                                 onHover={() => setHoveredPembinaId(idx)}
                                 onLeave={() => setHoveredPembinaId(null)}
                                 badge={leader.badge}
@@ -135,10 +143,10 @@ export default function StrukturOrganisasiSection() {
                     </div>
 
                     {/* Mobile View: Clean Swipeable Cards (Zero Text Collision) */}
-                    <div className="flex lg:hidden w-full items-stretch gap-4 overflow-x-auto pb-4 pt-2 px-2 snap-x snap-mandatory">
-                        {DEWAN_PENGARAH.map((leader, idx) => (
+                    <div className="flex w-full snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-2 pb-4 pt-2 lg:hidden">
+                        {DEWAN_PENGARAH.map((leader) => (
                             <MobileLeaderCard
-                                key={idx}
+                                key={leader.name}
                                 badge={leader.badge}
                                 category="DEWAN PENGARAH"
                                 institution={leader.institution}
@@ -149,21 +157,24 @@ export default function StrukturOrganisasiSection() {
                             />
                         ))}
                     </div>
-                    <p className="mt-1 mb-4 text-center text-xs font-medium text-slate-400 lg:hidden">
+                    <p className="mb-4 mt-1 text-center text-xs font-medium text-slate-400 lg:hidden">
                         ← Geser kartu untuk melihat pengarah lainnya →
                     </p>
 
                     {/* Desktop View: Interactive GSAP Accordion */}
                     <div
                         ref={pengarahContainerRef}
-                        className="hidden lg:flex w-full items-center justify-center gap-5 overflow-visible pb-8 pt-2 px-2"
+                        className="hidden w-full items-center justify-center gap-5 overflow-visible px-2 pb-8 pt-2 lg:flex"
                     >
                         {DEWAN_PENGARAH.map((leader, idx) => (
                             <GSAPLeaderCard
-                                key={idx}
+                                key={leader.name}
                                 id={idx}
                                 isExpanded={hoveredPengarahId === idx}
-                                isContracted={hoveredPengarahId !== null && hoveredPengarahId !== idx}
+                                isContracted={
+                                    hoveredPengarahId !== null &&
+                                    hoveredPengarahId !== idx
+                                }
                                 onHover={() => setHoveredPengarahId(idx)}
                                 onLeave={() => setHoveredPengarahId(null)}
                                 badge={leader.badge}
@@ -194,10 +205,10 @@ export default function StrukturOrganisasiSection() {
                     </div>
 
                     {/* Mobile View: Clean Swipeable Cards (Zero Text Collision) */}
-                    <div className="flex lg:hidden w-full items-stretch gap-4 overflow-x-auto pb-4 pt-2 px-2 snap-x snap-mandatory">
-                        {PENGURUS_PUSAT.map((leader, idx) => (
+                    <div className="flex w-full snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-2 pb-4 pt-2 lg:hidden">
+                        {PENGURUS_PUSAT.map((leader) => (
                             <MobileLeaderCard
-                                key={idx}
+                                key={leader.name}
                                 badge={leader.badge}
                                 category="PENGURUS HARIAN"
                                 institution={leader.institution}
@@ -208,21 +219,24 @@ export default function StrukturOrganisasiSection() {
                             />
                         ))}
                     </div>
-                    <p className="mt-1 mb-4 text-center text-xs font-medium text-slate-400 lg:hidden">
+                    <p className="mb-4 mt-1 text-center text-xs font-medium text-slate-400 lg:hidden">
                         ← Geser kartu untuk melihat pengurus harian lainnya →
                     </p>
 
                     {/* Desktop View: Interactive GSAP Accordion */}
                     <div
                         ref={pusatContainerRef}
-                        className="hidden lg:flex w-full items-center justify-center gap-4 lg:gap-5 overflow-visible pb-8 pt-2 px-2"
+                        className="hidden w-full items-center justify-center gap-4 overflow-visible px-2 pb-8 pt-2 lg:flex lg:gap-5"
                     >
                         {PENGURUS_PUSAT.map((leader, idx) => (
                             <GSAPLeaderCard
-                                key={idx}
+                                key={leader.name}
                                 id={idx}
                                 isExpanded={hoveredPusatId === idx}
-                                isContracted={hoveredPusatId !== null && hoveredPusatId !== idx}
+                                isContracted={
+                                    hoveredPusatId !== null &&
+                                    hoveredPusatId !== idx
+                                }
                                 onHover={() => setHoveredPusatId(idx)}
                                 onLeave={() => setHoveredPusatId(null)}
                                 badge={leader.badge}
@@ -253,26 +267,29 @@ export default function StrukturOrganisasiSection() {
                     </div>
 
                     {/* Mobile View: Clean Swipeable Cards (Zero Text Collision) */}
-                    <div className="flex lg:hidden w-full items-stretch gap-4 overflow-x-auto pb-4 pt-2 px-2 snap-x snap-mandatory">
+                    <div className="flex w-full snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-2 pb-4 pt-2 lg:hidden">
                         {BIDANG_KERJA.map((bidang) => (
                             <MobileBidangCard key={bidang.id} bidang={bidang} />
                         ))}
                     </div>
-                    <p className="mt-1 mb-4 text-center text-xs font-medium text-slate-400 lg:hidden">
+                    <p className="mb-4 mt-1 text-center text-xs font-medium text-slate-400 lg:hidden">
                         ← Geser kartu untuk melihat 9 divisi bidang kerja →
                     </p>
 
                     {/* Desktop View: Interactive GSAP Accordion */}
                     <div
                         ref={bidangContainerRef}
-                        className="hidden lg:flex w-full items-center justify-center gap-3.5 lg:gap-4 overflow-visible pb-8 pt-2 px-2"
+                        className="hidden w-full items-center justify-center gap-3.5 overflow-visible px-2 pb-8 pt-2 lg:flex lg:gap-4"
                     >
                         {BIDANG_KERJA.map((bidang) => (
                             <GSAPBidangCard
                                 key={bidang.id}
                                 bidang={bidang}
                                 isExpanded={hoveredBidangId === bidang.id}
-                                isContracted={hoveredBidangId !== null && hoveredBidangId !== bidang.id}
+                                isContracted={
+                                    hoveredBidangId !== null &&
+                                    hoveredBidangId !== bidang.id
+                                }
                                 onHover={() => setHoveredBidangId(bidang.id)}
                                 onLeave={() => setHoveredBidangId(null)}
                             />

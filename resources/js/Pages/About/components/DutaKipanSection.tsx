@@ -1,12 +1,9 @@
-import { useState } from 'react';
-import { CheckCircledIcon, StarFilledIcon } from '@radix-ui/react-icons';
-import {
-    DUTA_KIPAN_CATEGORIES,
-    DUTA_KIPAN_PILLARS,
-} from '../data/about-data';
-import { MobileDutaCard } from './MobileStructureCard';
-import { GSAPDutaCard } from './GSAPStructureCard';
 import { useGsapAccordion } from '@/hooks/useGsapAccordion';
+import { CheckCircledIcon, StarFilledIcon } from '@radix-ui/react-icons';
+import { useState } from 'react';
+import { DUTA_KIPAN_CATEGORIES, DUTA_KIPAN_PILLARS } from '../data/about-data';
+import { GSAPDutaCard } from './GSAPStructureCard';
+import { MobileDutaCard } from './MobileStructureCard';
 
 export default function DutaKipanSection() {
     const [hoveredDutaId, setHoveredDutaId] = useState<string | null>(null);
@@ -35,9 +32,11 @@ export default function DutaKipanSection() {
                     </h2>
                     <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-[#0E6CAC]" />
                     <p className="mx-auto mt-4 max-w-2xl text-xs leading-relaxed text-slate-600 sm:text-sm">
-                        Representasi pemuda inspiratif terpilih dari berbagai latar belakang strategis
-                        sebagai garda komunikasi sebaya, pelopor gaya hidup sehat, dan katalisator
-                        gerakan pencegahan narkotika di kalangan generasi muda Indonesia.
+                        Representasi pemuda inspiratif terpilih dari berbagai
+                        latar belakang strategis sebagai garda komunikasi
+                        sebaya, pelopor gaya hidup sehat, dan katalisator
+                        gerakan pencegahan narkotika di kalangan generasi muda
+                        Indonesia.
                     </p>
                 </div>
 
@@ -52,7 +51,7 @@ export default function DutaKipanSection() {
                     </div>
 
                     {/* Mobile View: Clean Swipeable Cards (Zero Text Collision) */}
-                    <div className="flex lg:hidden w-full items-stretch gap-4 overflow-x-auto pb-4 pt-2 px-2 snap-x snap-mandatory">
+                    <div className="flex w-full snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-2 pb-4 pt-2 lg:hidden">
                         {DUTA_KIPAN_CATEGORIES.map((duta) => (
                             <MobileDutaCard
                                 key={duta.id}
@@ -65,21 +64,24 @@ export default function DutaKipanSection() {
                             />
                         ))}
                     </div>
-                    <p className="mt-1 mb-4 text-center text-xs font-medium text-slate-400 lg:hidden">
+                    <p className="mb-4 mt-1 text-center text-xs font-medium text-slate-400 lg:hidden">
                         ← Geser kartu untuk melihat duta pemuda lainnya →
                     </p>
 
                     {/* Desktop View: Interactive GSAP Accordion */}
                     <div
                         ref={dutaContainerRef}
-                        className="hidden lg:flex w-full items-center justify-center gap-4 lg:gap-5 overflow-visible pb-8 pt-2 px-2"
+                        className="hidden w-full items-center justify-center gap-4 overflow-visible px-2 pb-8 pt-2 lg:flex lg:gap-5"
                     >
                         {DUTA_KIPAN_CATEGORIES.map((duta) => (
                             <GSAPDutaCard
                                 key={duta.id}
                                 id={duta.id}
                                 isExpanded={hoveredDutaId === duta.id}
-                                isContracted={hoveredDutaId !== null && hoveredDutaId !== duta.id}
+                                isContracted={
+                                    hoveredDutaId !== null &&
+                                    hoveredDutaId !== duta.id
+                                }
                                 onHover={() => setHoveredDutaId(duta.id)}
                                 onLeave={() => setHoveredDutaId(null)}
                                 tag={duta.tag}
@@ -110,7 +112,7 @@ export default function DutaKipanSection() {
                         {DUTA_KIPAN_PILLARS.map((pillar) => (
                             <div
                                 key={pillar.no}
-                                className="rounded-xl border border-slate-200 bg-white p-5 shadow-2xs transition-all hover:border-[#0E6CAC]/40 hover:shadow-md"
+                                className="shadow-2xs rounded-xl border border-slate-200 bg-white p-5 transition-all hover:border-[#0E6CAC]/40 hover:shadow-md"
                             >
                                 <div className="mb-3 flex items-center justify-between">
                                     <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-xs font-black text-[#0E6CAC]">

@@ -1,5 +1,5 @@
-import { useRef, useEffect, ReactNode } from 'react';
 import gsap from 'gsap';
+import { ReactNode, useEffect, useRef } from 'react';
 
 interface ScrollRevealProps {
     children: ReactNode;
@@ -15,7 +15,7 @@ export default function ScrollReveal({
     delay = 0,
     direction = 'up',
     duration = 0.65,
-}: ScrollRevealProps) {
+}: Readonly<ScrollRevealProps>) {
     const elRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -33,7 +33,7 @@ export default function ScrollReveal({
 
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry && entry.isIntersecting) {
+                if (entry?.isIntersecting) {
                     gsap.to(el, {
                         opacity: 1,
                         x: 0,

@@ -1,4 +1,9 @@
-import { ArrowRightIcon, PersonIcon, TargetIcon, StarFilledIcon } from '@radix-ui/react-icons';
+import {
+    ArrowRightIcon,
+    PersonIcon,
+    StarFilledIcon,
+    TargetIcon,
+} from '@radix-ui/react-icons';
 import { BIDANG_ICONS, BidangItem } from '../data/about-data';
 
 export interface MobileLeaderCardProps {
@@ -21,7 +26,7 @@ export function MobileLeaderCard({
     description,
     footerLabel = 'Mandat Kepengurusan',
     photo,
-}: MobileLeaderCardProps) {
+}: Readonly<MobileLeaderCardProps>) {
     return (
         <div className="relative flex w-[86vw] max-w-[320px] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-[26px] border border-slate-200/90 bg-white p-5 shadow-sm transition-all hover:border-[#0E6CAC]/40">
             {/* Background Watermark Curve */}
@@ -31,8 +36,21 @@ export function MobileLeaderCard({
                 fill="none"
                 aria-hidden="true"
             >
-                <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="24" strokeLinecap="round" strokeDasharray="320 120" />
-                <path d="M50 150 C80 90, 120 90, 150 50" stroke="currentColor" strokeWidth="20" strokeLinecap="round" />
+                <circle
+                    cx="100"
+                    cy="100"
+                    r="80"
+                    stroke="currentColor"
+                    strokeWidth="24"
+                    strokeLinecap="round"
+                    strokeDasharray="320 120"
+                />
+                <path
+                    d="M50 150 C80 90, 120 90, 150 50"
+                    stroke="currentColor"
+                    strokeWidth="20"
+                    strokeLinecap="round"
+                />
             </svg>
 
             <div>
@@ -76,7 +94,7 @@ export function MobileLeaderCard({
                     <div className="mt-1.5 inline-block rounded-md bg-blue-50 px-2.5 py-0.5 text-[11px] font-bold text-[#0E6CAC]">
                         {role}
                     </div>
-                    <p className="mt-3 text-left text-xs leading-relaxed text-slate-600 line-clamp-5">
+                    <p className="mt-3 line-clamp-5 text-left text-xs leading-relaxed text-slate-600">
                         {description}
                     </p>
                 </div>
@@ -86,7 +104,9 @@ export function MobileLeaderCard({
             <div className="relative z-10 mt-4 flex items-center justify-between border-t border-slate-100 pt-3 text-[11px] font-bold text-[#0D3F70]">
                 <span>{footerLabel}</span>
                 <div className="flex items-center gap-1 text-[#0E6CAC]">
-                    <span className="text-[10px] font-black uppercase tracking-wider">KIPAN</span>
+                    <span className="text-[10px] font-black uppercase tracking-wider">
+                        KIPAN
+                    </span>
                     <ArrowRightIcon className="h-3.5 w-3.5" />
                 </div>
             </div>
@@ -94,7 +114,7 @@ export function MobileLeaderCard({
     );
 }
 
-export function MobileBidangCard({ bidang }: { bidang: BidangItem }) {
+export function MobileBidangCard({ bidang }: Readonly<{ bidang: BidangItem }>) {
     const IconComponent = BIDANG_ICONS[bidang.id] || TargetIcon;
 
     return (
@@ -106,8 +126,21 @@ export function MobileBidangCard({ bidang }: { bidang: BidangItem }) {
                 fill="none"
                 aria-hidden="true"
             >
-                <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="24" strokeLinecap="round" strokeDasharray="320 120" />
-                <path d="M50 150 C80 90, 120 90, 150 50" stroke="currentColor" strokeWidth="20" strokeLinecap="round" />
+                <circle
+                    cx="100"
+                    cy="100"
+                    r="80"
+                    stroke="currentColor"
+                    strokeWidth="24"
+                    strokeLinecap="round"
+                    strokeDasharray="320 120"
+                />
+                <path
+                    d="M50 150 C80 90, 120 90, 150 50"
+                    stroke="currentColor"
+                    strokeWidth="20"
+                    strokeLinecap="round"
+                />
             </svg>
 
             <div>
@@ -151,7 +184,7 @@ export function MobileBidangCard({ bidang }: { bidang: BidangItem }) {
                     <div className="mt-1.5 inline-block rounded-md bg-blue-50 px-2.5 py-0.5 text-[10px] font-bold text-[#0E6CAC]">
                         {bidang.coordinator || 'Koordinator Bidang'}
                     </div>
-                    <p className="mt-3 text-left text-xs leading-relaxed text-slate-600 line-clamp-5">
+                    <p className="mt-3 line-clamp-5 text-left text-xs leading-relaxed text-slate-600">
                         {bidang.focus}
                     </p>
                 </div>
@@ -161,7 +194,9 @@ export function MobileBidangCard({ bidang }: { bidang: BidangItem }) {
             <div className="relative z-10 mt-4 flex items-center justify-between border-t border-slate-100 pt-3 text-[11px] font-bold text-[#0D3F70]">
                 <span>Fokus Kerja</span>
                 <div className="flex items-center gap-1 text-[#0E6CAC]">
-                    <span className="text-[10px] font-black uppercase tracking-wider">DIVISI {bidang.no}</span>
+                    <span className="text-[10px] font-black uppercase tracking-wider">
+                        DIVISI {bidang.no}
+                    </span>
                     <ArrowRightIcon className="h-3.5 w-3.5" />
                 </div>
             </div>
@@ -187,7 +222,7 @@ export function MobileDutaCard({
     mission,
     description,
     photo,
-}: MobileDutaCardProps) {
+}: Readonly<MobileDutaCardProps>) {
     return (
         <div className="relative flex w-[86vw] max-w-[320px] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-[26px] border border-slate-200/90 bg-white p-5 shadow-sm transition-all hover:border-[#0E6CAC]/40">
             {/* Background Watermark Curve */}
@@ -197,8 +232,21 @@ export function MobileDutaCard({
                 fill="none"
                 aria-hidden="true"
             >
-                <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="24" strokeLinecap="round" strokeDasharray="320 120" />
-                <path d="M50 150 C80 90, 120 90, 150 50" stroke="currentColor" strokeWidth="20" strokeLinecap="round" />
+                <circle
+                    cx="100"
+                    cy="100"
+                    r="80"
+                    stroke="currentColor"
+                    strokeWidth="24"
+                    strokeLinecap="round"
+                    strokeDasharray="320 120"
+                />
+                <path
+                    d="M50 150 C80 90, 120 90, 150 50"
+                    stroke="currentColor"
+                    strokeWidth="20"
+                    strokeLinecap="round"
+                />
             </svg>
 
             <div>
@@ -242,7 +290,7 @@ export function MobileDutaCard({
                     <div className="mt-1.5 inline-block rounded-md bg-blue-50 px-2.5 py-0.5 text-[10px] font-bold text-[#0E6CAC]">
                         {role}
                     </div>
-                    <p className="mt-3 text-left text-xs leading-relaxed text-slate-600 line-clamp-5">
+                    <p className="mt-3 line-clamp-5 text-left text-xs leading-relaxed text-slate-600">
                         {mission || description}
                     </p>
                 </div>
@@ -252,7 +300,9 @@ export function MobileDutaCard({
             <div className="relative z-10 mt-4 flex items-center justify-between border-t border-slate-100 pt-3 text-[11px] font-bold text-[#0D3F70]">
                 <span>Peran Duta</span>
                 <div className="flex items-center gap-1 text-[#0E6CAC]">
-                    <span className="text-[10px] font-black uppercase tracking-wider">SEBAYA</span>
+                    <span className="text-[10px] font-black uppercase tracking-wider">
+                        SEBAYA
+                    </span>
                     <ArrowRightIcon className="h-3.5 w-3.5" />
                 </div>
             </div>
