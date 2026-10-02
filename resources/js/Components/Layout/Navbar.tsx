@@ -10,29 +10,25 @@ import FloatingEmergencyButton from '@/Components/Emergency/FloatingEmergencyBut
 interface SubNavItem {
     label: string;
     href: string;
-    desc: string;
+    desc?: string;
 }
 
 const TENTANG_DROPDOWN_ITEMS: SubNavItem[] = [
     {
         label: 'Tentang KIPAN RI',
         href: '/tentang',
-        desc: 'Profil, visi misi, legalitas & duta pemuda',
     },
     {
         label: 'Program & Aksi',
         href: '/program',
-        desc: 'Gerakan pencegahan & edukasi anti narkoba',
     },
     {
         label: 'Agenda Kegiatan',
         href: '/agenda',
-        desc: 'Jadwal aksi, pelatihan & sosialisasi pemuda',
     },
     {
         label: 'Galeri Dokumentasi',
         href: '/galeri',
-        desc: 'Foto & dokumentasi kegiatan kader nasional',
     },
 ];
 
@@ -194,9 +190,11 @@ export default function Navbar() {
                                                         <path d="M5 12h14M12 5l7 7-7 7" />
                                                     </svg>
                                                 </div>
-                                                <p className="mt-0.5 text-[11px] leading-tight text-blue-200/70">
-                                                    {sub.desc}
-                                                </p>
+                                                {sub.desc && (
+                                                    <p className="mt-0.5 text-[11px] leading-tight text-blue-200/70">
+                                                        {sub.desc}
+                                                    </p>
+                                                )}
                                             </a>
                                         ))}
                                     </div>
@@ -210,7 +208,7 @@ export default function Navbar() {
                                 href="/berita"
                                 className="rounded-lg px-3 py-2 text-xs font-semibold text-white/90 transition-colors hover:bg-white/10 hover:text-kipan-yellow focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-yellow xl:text-[13px]"
                             >
-                                Berita
+                                News & Artikel
                             </a>
                         </li>
 
@@ -338,7 +336,7 @@ export default function Navbar() {
                             onClick={() => setMobileOpen(false)}
                             className="block rounded-lg px-3 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10 hover:text-kipan-yellow"
                         >
-                            Berita
+                            News & Artikel
                         </a>
 
                         {/* Monitoring Navigasi (Tanpa Dropdown) */}
