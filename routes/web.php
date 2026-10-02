@@ -44,6 +44,22 @@ Route::get('/kontak', function () {
     ]);
 })->name('contact');
 
+Route::get('/monitoring', function () {
+    return Inertia::render('PlaceholderPage', [
+        'title' => 'Monitoring Navigasi & Sebaran Wilayah KIPAN RI',
+        'subtitle' => 'Dashboard pemantauan pergerakan kader, peta sebaran wilayah binaan, dan capaian aksi anti narkoba nasional.',
+        'category' => 'Monitoring Navigasi',
+    ]);
+})->name('monitoring');
+
+Route::get('/materi', function () {
+    return Inertia::render('PlaceholderPage', [
+        'title' => 'Pusat Materi & Modul Edukasi Anti Narkoba',
+        'subtitle' => 'Kumpulan modul pelatihan, materi penyuluhan bahaya narkotika, regulasi hukum, dan panduan kader pemuda.',
+        'category' => 'Materi',
+    ]);
+})->name('materi');
+
 // Redirect Ramah Kompatibilitas Tautan Sub-Menu Lama
 Route::redirect('/tentang/fokus', '/tentang');
 Route::redirect('/tentang/tokoh', '/tentang#tokoh');
