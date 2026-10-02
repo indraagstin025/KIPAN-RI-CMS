@@ -17,7 +17,7 @@ const NAV_ITEMS: NavItem[] = [
     { label: 'Agenda', href: '/agenda' },
     { label: 'Berita', href: '/berita' },
     { label: 'Galeri', href: '/galeri' },
-    { label: 'Kontak', href: '/kontak' },
+    { label: 'Pelaporan', href:'/kontak'},
 ];
 
 export default function Navbar() {

@@ -1,70 +1,65 @@
 import ScrollReveal from '@/Components/Layout/ScrollReveal';
 import LandingLayout from '@/Layouts/LandingLayout';
-import {
-    GALLERY_CATEGORIES,
-    GALLERY_ITEMS,
-    GALLERY_VIDEOS,
-    GalleryItem,
-} from '@/data/kipan-data';
-import { useCallback, useMemo, useState } from 'react';
+import { GALLERY_VIDEOS } from '@/data/kipan-data';
+import { useCallback, useState } from 'react';
 import GaleriHero from './components/GaleriHero';
 import GaleriLightbox from './components/GaleriLightbox';
 import GaleriPhotoCard from './components/GaleriPhotoCard';
 import GaleriVideoSection from './components/GaleriVideoSection';
 
+interface DbGalleryItem {
+    id: number;
+    title: string;
+    caption: string | null;
+    image: string;
+    location: string | null;
+    category: string | null;
+}
+
+interface PaginatedGallery {
+    data: DbGalleryItem[];
+    total: number;
+}
+
 interface GaleriPageProps {
     readonly title: string;
     readonly subtitle: string;
     readonly category: string;
+    readonly galleries: PaginatedGallery;
 }
 
 export default function GaleriIndex({
     title,
     subtitle,
     category,
+    galleries,
 }: Readonly<GaleriPageProps>) {
-    const [activeCategory, setActiveCategory] = useState<string>('Semua');
-    const [selectedPhoto, setSelectedPhoto] = useState<GalleryItem | null>(
-        null,
-    );
+    const [selectedPhoto, setSelectedPhoto] = useState<{ id: number; src: string; alt: string; caption?: string } | null>(null);
 
-    const filtered = useMemo(
-        () =>
-            activeCategory === 'Semua'
-                ? GALLERY_ITEMS
-                : GALLERY_ITEMS.filter((g) => g.category === activeCategory),
-        [activeCategory],
-    );
+    // Map DB items to lightbox-compatible format
+    const photoList = galleries.data.map((g) => ({
+        id: g.id,
+        src: g.image,
+        alt: g.title,
+        caption: g.caption ?? g.title,
+        category: g.category ?? '',
+        location: g.location ?? '',
+    }));
 
-    const modalList = useMemo(() => {
-        if (!selectedPhoto) return [];
-        if (filtered.some((i) => i.id === selectedPhoto.id)) return filtered;
-        return GALLERY_ITEMS;
-    }, [selectedPhoto, filtered]);
+    const handlePrev = useCallback(() => {
+        if (!selectedPhoto) return;
+        const idx = photoList.findIndex((p) => p.id === selectedPhoto.id);
+        setSelectedPhoto(photoList[(idx - 1 + photoList.length) % photoList.length]);
+    }, [selectedPhoto, photoList]);
 
-    const handlePrevPhoto = useCallback(() => {
-        if (!selectedPhoto || modalList.length <= 1) return;
-        const currentIndex = modalList.findIndex(
-            (item) => item.id === selectedPhoto.id,
-        );
-        if (currentIndex === -1) return;
-        const prevIndex =
-            (currentIndex - 1 + modalList.length) % modalList.length;
-        setSelectedPhoto(modalList[prevIndex]);
-    }, [selectedPhoto, modalList]);
+    const handleNext = useCallback(() => {
+        if (!selectedPhoto) return;
+        const idx = photoList.findIndex((p) => p.id === selectedPhoto.id);
+        setSelectedPhoto(photoList[(idx + 1) % photoList.length]);
+    }, [selectedPhoto, photoList]);
 
-    const handleNextPhoto = useCallback(() => {
-        if (!selectedPhoto || modalList.length <= 1) return;
-        const currentIndex = modalList.findIndex(
-            (item) => item.id === selectedPhoto.id,
-        );
-        if (currentIndex === -1) return;
-        const nextIndex = (currentIndex + 1) % modalList.length;
-        setSelectedPhoto(modalList[nextIndex]);
-    }, [selectedPhoto, modalList]);
-
-    const currentPhotoIndex = selectedPhoto
-        ? modalList.findIndex((item) => item.id === selectedPhoto.id) + 1
+    const currentIndex = selectedPhoto
+        ? photoList.findIndex((p) => p.id === selectedPhoto.id) + 1
         : 0;
 
     return (
@@ -92,62 +87,59 @@ export default function GaleriIndex({
                         </p>
                     </ScrollReveal>
 
-                    <ScrollReveal delay={0.08}>
-                        <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
-                            <div className="flex flex-wrap gap-2">
-                                {GALLERY_CATEGORIES.map((cat) => (
-                                    <button
-                                        key={cat}
-                                        type="button"
-                                        onClick={() => setActiveCategory(cat)}
-                                        className={`rounded-full px-4 py-2 text-xs font-bold transition-all ${
-                                            activeCategory === cat
-                                                ? 'bg-kipan-navy text-white shadow-sm'
-                                                : 'border border-slate-200 bg-white text-slate-600 hover:border-kipan-blue hover:text-kipan-navy'
-                                        }`}
+
+                    {/* DB Gallery */}
+                    {galleries.data.length > 0 ? (
+                        <div className="columns-1 gap-5 [column-fill:_balance] sm:columns-2 lg:columns-3">
+                            {photoList.map((item, idx) => (
+                                <ScrollReveal key={item.id} delay={0.03 * (idx % 3)}>
+                                    <div
+                                        className="group mb-5 cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md"
+                                        onClick={() => setSelectedPhoto(item)}
                                     >
-                                        {cat}
-                                    </button>
-                                ))}
-                            </div>
-                            <span className="hidden text-xs font-medium text-slate-400 sm:inline-block">
-                                Menampilkan {filtered.length} foto
-                            </span>
+                                        <img
+                                            src={item.src}
+                                            alt={item.alt}
+                                            loading="lazy"
+                                            className="w-full transition-transform duration-500 group-hover:scale-105"
+                                        />
+                                        {item.caption && (
+                                            <div className="p-3">
+                                                <p className="text-xs text-slate-500">{item.caption}</p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </ScrollReveal>
+                            ))}
                         </div>
-                    </ScrollReveal>
-
-                    {/* Unsplash-style Masonry Columns */}
-                    <div className="columns-1 gap-5 [column-fill:_balance] sm:columns-2 lg:columns-3">
-                        {filtered.map((item, idx) => (
-                            <GaleriPhotoCard
-                                key={item.id}
-                                item={item}
-                                onClick={setSelectedPhoto}
-                                delay={0.03 * (idx % 3)}
-                            />
-                        ))}
-                    </div>
-
-                    {filtered.length === 0 && (
+                    ) : (
                         <p className="py-12 text-center text-slate-500">
-                            Belum ada foto pada kategori ini.
+                            Belum ada foto di galeri.
                         </p>
                     )}
                 </div>
             </section>
 
-            {/* ===== Preview Video ===== */}
             <GaleriVideoSection videos={GALLERY_VIDEOS} />
 
-            {/* ===== Lightbox Modal ===== */}
-            <GaleriLightbox
-                photo={selectedPhoto}
-                onClose={() => setSelectedPhoto(null)}
-                onPrev={handlePrevPhoto}
-                onNext={handleNextPhoto}
-                currentIndex={currentPhotoIndex}
-                totalPhotos={modalList.length}
-            />
+            {/* Lightbox */}
+            {selectedPhoto && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4" onClick={() => setSelectedPhoto(null)}>
+                    <div className="relative max-h-[90vh] max-w-4xl" onClick={(e) => e.stopPropagation()}>
+                        <img src={selectedPhoto.src} alt={selectedPhoto.alt} className="max-h-[80vh] rounded-2xl object-contain" />
+                        {selectedPhoto.caption && (
+                            <p className="mt-2 text-center text-sm text-white/80">{selectedPhoto.caption}</p>
+                        )}
+                        <button onClick={() => setSelectedPhoto(null)} className="absolute -right-3 -top-3 rounded-full bg-white p-2 shadow-lg hover:bg-red-50">✕</button>
+                        {photoList.length > 1 && (
+                            <>
+                                <button onClick={handlePrev} className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow hover:bg-white">‹</button>
+                                <button onClick={handleNext} className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow hover:bg-white">›</button>
+                            </>
+                        )}
+                    </div>
+                </div>
+            )}
         </LandingLayout>
     );
 }

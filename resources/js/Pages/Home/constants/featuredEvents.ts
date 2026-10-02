@@ -10,6 +10,7 @@ export interface FeaturedEvent {
     readonly snippet: string;
     readonly image: string;
     readonly href: string;
+    readonly images?: readonly string[];
 }
 
 export const FEATURED_EVENTS: readonly FeaturedEvent[] = [
@@ -24,7 +25,8 @@ export const FEATURED_EVENTS: readonly FeaturedEvent[] = [
         location: 'Jakarta Pusat',
         snippet:
             'Pembekalan terpadu wawasan bahaya narkotika, advokasi regulasi P4GN, dan strategi aksi pencegahan terpadu di lingkungan sekolah dan kampus.',
-        image: '/logo-kipan.jpg',
+        image: '/event-1.png',
+        images: ['/event-1.png', '/event-2.png', '/event-3.png'],
         href: '/agenda',
     },
     {
@@ -38,7 +40,8 @@ export const FEATURED_EVENTS: readonly FeaturedEvent[] = [
         location: 'Bandung, Jawa Barat',
         snippet:
             'Konsolidasi akbar kader pelopor P4GN, festival inovasi karya kreatif anak muda, olahraga sehat, dan deklarasi pemuda bersih narkoba.',
-        image: '/logo-kipan.jpg',
+        image: '/event-2.png',
+        images: ['/event-2.png', '/event-3.png', '/event-1.png'],
         href: '/agenda',
     },
     {
@@ -52,7 +55,8 @@ export const FEATURED_EVENTS: readonly FeaturedEvent[] = [
         location: '514 Kabupaten & Kota',
         snippet:
             'Aksi sosialisasi tatap muka peer-to-peer dan pembentukan gugus tugas relawan anti narkoba di lingkungan SMA/SMK dan perguruan tinggi.',
-        image: '/logo-kipan.jpg',
+        image: '/event-3.png',
+        images: ['/event-3.png', '/event-1.png', '/event-2.png'],
         href: '/agenda',
     },
 ];
