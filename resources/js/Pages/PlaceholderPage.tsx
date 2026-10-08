@@ -1,5 +1,6 @@
 import LandingLayout from '@/Layouts/LandingLayout';
-import { ArrowLeftIcon, InfoCircledIcon } from '@radix-ui/react-icons';
+import { ArrowLeftIcon } from '@radix-ui/react-icons';
+import ScrollReveal from '@/Components/Layout/ScrollReveal';
 
 interface PlaceholderPageProps {
     readonly title: string;
@@ -17,55 +18,67 @@ export default function PlaceholderPage({
             title={`${title} — KIPAN Republik Indonesia`}
             className="bg-slate-50"
         >
-            <div className="container mx-auto max-w-4xl px-4 pb-20 pt-36 sm:px-6 lg:px-8">
-                {/* Breadcrumb / Category */}
-                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-100/70 px-3 py-1 text-xs font-bold uppercase tracking-wider text-kipan-navy">
-                    <span className="h-2 w-2 rounded-full bg-kipan-blue" />
-                    <span>{category}</span>
-                </div>
+            {/* Hero Section matching BeritaHero */}
+            <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gradient-to-b from-[#061C33] via-[#0D3F70] to-[#0A3055] pb-14 pt-24 text-white sm:pb-20 sm:pt-28 lg:pt-32">
+                {/* Subtle Youth Network Graphic Grid Background */}
+                <div
+                    className="pointer-events-none absolute inset-0 opacity-15"
+                    style={{
+                        backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.4) 1px, transparent 0)`,
+                        backgroundSize: '32px 32px',
+                    }}
+                />
 
-                {/* Title Header */}
-                <h1 className="mb-4 text-3xl font-black leading-tight tracking-tight text-kipan-navy sm:text-4xl lg:text-5xl">
-                    {title}
-                </h1>
+                {/* Subtle Diagonal Glow */}
+                <div className="pointer-events-none absolute right-0 top-0 -mr-20 -mt-20 h-96 w-96 rounded-full bg-blue-500/10 blur-3xl" />
+                <div className="pointer-events-none absolute bottom-0 left-0 -mb-20 -ml-20 h-96 w-96 rounded-full bg-kipan-yellow/10 blur-3xl" />
 
-                <p className="mb-8 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-                    {subtitle}
-                </p>
-
-                {/* Notice Card */}
-                <div className="mb-8 flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-blue-100 bg-blue-50 text-kipan-blue">
-                        <InfoCircledIcon className="h-5 w-5" />
+                <div className="container relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+                    {/* Breadcrumb / Category */}
+                    <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-blue-100">
+                        <span className="h-2 w-2 rounded-full bg-kipan-yellow" />
+                        {category}
                     </div>
-                    <div className="space-y-2 text-sm text-slate-600">
-                        <h2 className="text-base font-bold text-slate-800">
-                            Struktur Halaman Khusus Mandiri
-                        </h2>
-                        <p className="leading-relaxed">
-                            Sesuai rancangan arsitektur terbaru KIPAN RI, menu
-                            navigasi Navbar diarahkan langsung ke halaman khusus
-                            masing-masing agar halaman beranda tetap ringkas dan
-                            fokus sebagai etalase pengenalan gerakan.
+
+                    {/* Title Header */}
+                    <h1 className="text-3xl font-black leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl">
+                        {title}
+                    </h1>
+                    
+                    <div className="mb-6 mt-4 h-1.5 w-24 rounded-full bg-kipan-yellow" />
+
+                    <div className="border-l-4 border-kipan-yellow pl-4">
+                        <p className="text-base font-normal leading-relaxed text-blue-100/90 sm:text-lg">
+                            {subtitle}
                         </p>
-                        <div className="flex items-center gap-3 pt-2">
-                            <span className="rounded bg-blue-50 px-2.5 py-1 text-xs font-semibold text-kipan-blue">
-                                Status: Siap Diisi Konten Lengkap
-                            </span>
+                    </div>
+                </div>
+            </div>
+
+            <div className="flex min-h-screen items-center bg-slate-50">
+                <div className="container mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8 w-full">
+                <ScrollReveal>
+                    <div className="relative overflow-hidden rounded-3xl bg-kipan-navy px-6 py-12 text-center sm:p-14">
+                        <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-kipan-blue/30 blur-3xl" />
+                        <div className="absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-kipan-yellow/20 blur-3xl" />
+                        <div className="relative">
+                            <h2 className="mb-3 text-2xl font-black tracking-tight text-white sm:text-3xl">
+                                Halaman Segera Tersedia
+                            </h2>
+                            <p className="mx-auto mb-8 max-w-xl text-sm text-blue-100/90 sm:text-base">
+                                Kami sedang menyusun konten dan data komprehensif untuk halaman ini. Silakan kembali ke beranda untuk menjelajahi informasi KIPAN lainnya.
+                            </p>
+                            <a
+                                href="/"
+                                className="inline-flex items-center gap-2 rounded-full bg-kipan-yellow px-7 py-3.5 text-sm font-black text-kipan-navy shadow-lg transition-colors hover:bg-yellow-300"
+                            >
+                                <ArrowLeftIcon className="h-5 w-5" />
+                                Kembali ke Beranda
+                            </a>
                         </div>
                     </div>
-                </div>
-
-                {/* Back to Home Button */}
-                <div>
-                    <a
-                        href="/"
-                        className="shadow-xs inline-flex items-center gap-2 rounded-full bg-kipan-navy px-5 py-2.5 text-xs font-bold text-white transition-colors hover:bg-kipan-blue"
-                    >
-                        <ArrowLeftIcon className="h-4 w-4" />
-                        <span>Kembali ke Halaman Beranda</span>
-                    </a>
-                </div>
+                </ScrollReveal>
+            </div>
             </div>
         </LandingLayout>
     );

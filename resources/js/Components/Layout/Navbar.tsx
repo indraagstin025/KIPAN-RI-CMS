@@ -77,6 +77,7 @@ export default function Navbar() {
     }, []);
 
     return (
+        <>
         <header
             className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled
                     ? 'border-b border-white/15 bg-[#0D3F70]/95 py-3 shadow-lg backdrop-blur-md'
@@ -167,9 +168,10 @@ export default function Navbar() {
 
                             {/* Panel Dropdown Melayang */}
                             {tentangDropdownOpen && (
-                                <div className="absolute left-0 top-full z-50 mt-1.5 w-64 origin-top-left rounded-2xl border border-white/20 bg-[#072442]/95 p-2 shadow-2xl backdrop-blur-xl ring-1 ring-black/20 animate-in fade-in slide-in-from-top-2 duration-150">
-                                    <div className="space-y-1">
-                                        {TENTANG_DROPDOWN_ITEMS.map((sub) => (
+                                <div className="absolute left-0 top-full z-50 w-64 pt-1.5">
+                                    <div className="origin-top-left rounded-2xl border border-white/20 bg-[#072442]/95 p-2 shadow-2xl backdrop-blur-xl ring-1 ring-black/20 animate-in fade-in slide-in-from-top-2 duration-150">
+                                        <div className="space-y-1">
+                                            {TENTANG_DROPDOWN_ITEMS.map((sub) => (
                                             <a
                                                 key={sub.label}
                                                 href={sub.href}
@@ -197,6 +199,7 @@ export default function Navbar() {
                                                 )}
                                             </a>
                                         ))}
+                                        </div>
                                     </div>
                                 </div>
                             )}
@@ -399,14 +402,15 @@ export default function Navbar() {
                     </div>
                 </div>
             )}
-
-            {/* PopUp Melayang & Tombol Emergency Call Fleksibel */}
-            <FloatingEmergencyButton onClick={() => setReportModalOpen(true)} />
-            <EmergencyReportModal
-                isOpen={reportModalOpen}
-                onClose={() => setReportModalOpen(false)}
-            />
         </header>
+
+        {/* PopUp Melayang & Tombol Emergency Call Fleksibel - Ditempatkan di luar header agar posisinya benar-benar di viewport */}
+        <FloatingEmergencyButton onClick={() => setReportModalOpen(true)} />
+        <EmergencyReportModal
+            isOpen={reportModalOpen}
+            onClose={() => setReportModalOpen(false)}
+        />
+        </>
     );
 }
 

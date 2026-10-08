@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\ProgramPublicController;
+use App\Http\Controllers\SkriningController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -45,12 +46,17 @@ Route::get('/kontak', function () {
 })->name('contact');
 
 Route::get('/monitoring', function () {
-    return Inertia::render('PlaceholderPage', [
-        'title' => 'Monitoring Navigasi & Sebaran Wilayah KIPAN RI',
-        'subtitle' => 'Dashboard pemantauan pergerakan kader, peta sebaran wilayah binaan, dan capaian aksi anti narkoba nasional.',
-        'category' => 'Monitoring Navigasi',
-    ]);
+    return Inertia::render('Monitoring/Index');
 })->name('monitoring');
+
+Route::get('/navigasi', function () {
+    return Inertia::render('Navigasi/Index');
+})->name('navigasi');
+Route::get('/monitoring/cek-risiko', [SkriningController::class, 'create'])->name('monitoring.skrining.create');
+Route::post('/monitoring/cek-risiko/submit', [SkriningController::class, 'store'])->name('monitoring.skrining.store');
+Route::get('/monitoring/cek-risiko/dokumentasi', function () {
+    return Inertia::render('Monitoring/Skrining/Dokumentasi');
+})->name('monitoring.skrining.dokumentasi');
 
 Route::get('/materi', function () {
     return Inertia::render('PlaceholderPage', [
