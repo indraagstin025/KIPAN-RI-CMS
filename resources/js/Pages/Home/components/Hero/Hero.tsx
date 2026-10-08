@@ -1,25 +1,198 @@
 import { HERO_CONTENT } from '@/data/landing-content';
-import { ArrowRightIcon } from '@radix-ui/react-icons';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { FEATURED_EVENTS } from '../../constants/featuredEvents';
+import {
+    ArrowRightIcon,
+    CalendarIcon,
+    ChevronLeftIcon,
+    ChevronRightIcon,
+    PersonIcon,
+} from '@radix-ui/react-icons';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useCallback, useEffect, useState } from 'react';
+import { FEATURED_EVENTS, FeaturedEvent } from '../../constants/featuredEvents';
 import AnimatedCounter from './AnimatedCounter';
-import HeroEventCard from './HeroEventCard';
+
+interface HeroEventCardProps {
+    readonly activeEvent: FeaturedEvent;
+    readonly currentSlide: number;
+    readonly totalSlides: number;
+    readonly onPrev: () => void;
+    readonly onNext: () => void;
+    readonly onSelectSlide: (index: number) => void;
+}
+
+function HeroEventCard({
+    activeEvent,
+    currentSlide,
+    totalSlides,
+    onPrev,
+    onNext,
+    onSelectSlide,
+}: Readonly<HeroEventCardProps>) {
+    const displayImage =
+        activeEvent.images && activeEvent.images.length > 0
+            ? activeEvent.images[0]
+            : activeEvent.image;
+
+    return (
+        <div className="relative mx-auto w-full max-w-lg overflow-hidden rounded-3xl border border-white/20 bg-white shadow-2xl">
+            {/* Header Banner dengan Gambar Event & Gradient Overlay */}
+            <div className="relative h-48 w-full overflow-hidden bg-slate-900 sm:h-52">
+                <AnimatePresence mode="wait">
+                    <motion.img
+                        key={activeEvent.id}
+                        src={displayImage}
+                        alt={activeEvent.title}
+                        initial={{ opacity: 0, scale: 1.05 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5, ease: 'easeInOut' }}
+                        className="absolute inset-0 h-full w-full object-cover"
+                    />
+                </AnimatePresence>
+
+                {/* Overlay Gradient agar teks dan badge tetap terbaca jelas */}
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/95 via-blue-950/50 to-black/30" />
+
+                {/* Overlay Konten Header */}
+                <div className="relative z-10 flex h-full flex-col justify-between p-5">
+                    {/* Top Badges */}
+                    <div className="flex items-center justify-between">
+                        <span className="rounded-md bg-blue-900/80 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-blue-200 backdrop-blur-md">
+                            {activeEvent.category}
+                        </span>
+                        <span
+                            className={`shadow-xs rounded-full px-3 py-1 text-[10px] font-bold tracking-wide backdrop-blur-md ${activeEvent.statusColor}`}
+                        >
+                            {activeEvent.status}
+                        </span>
+                    </div>
+
+                    {/* Info Header */}
+                    <div>
+                        <div className="text-[11px] font-semibold text-blue-100 drop-shadow">
+                            Agenda Unggulan Nasional
+                        </div>
+                        <div className="text-xs font-bold text-kipan-yellow drop-shadow">
+                            KIPAN Republik Indonesia
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Card Body dengan Transisi Animasi Antar Event */}
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={activeEvent.id}
+                    initial={{ opacity: 0, x: 12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -12 }}
+                    transition={{
+                        duration: 0.3,
+                        ease: 'easeOut',
+                    }}
+                    className="p-5 sm:p-6"
+                >
+                    {/* Title */}
+                    <h3 className="mb-3 line-clamp-2 text-base font-bold leading-snug text-kipan-navy sm:text-lg">
+                        {activeEvent.title}
+                    </h3>
+
+                    {/* Chips: Date & Location/Target */}
+                    <div className="mb-4 flex flex-wrap items-center gap-2 text-xs">
+                        <div className="inline-flex items-center gap-1.5 rounded-md border border-blue-100 bg-blue-50 px-2.5 py-1 font-semibold text-kipan-blue">
+                            <CalendarIcon className="h-3.5 w-3.5" />
+                            <span>{activeEvent.date}</span>
+                        </div>
+                        <div className="inline-flex items-center gap-1.5 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 font-medium text-slate-700">
+                            <PersonIcon className="h-3.5 w-3.5" />
+                            <span>{activeEvent.participants}</span>
+                        </div>
+                    </div>
+
+                    {/* Snippet */}
+                    <p className="mb-6 line-clamp-3 text-xs leading-relaxed text-slate-600">
+                        {activeEvent.snippet}
+                    </p>
+
+                    {/* Footer Controls: Arrows, Dots, and CTA */}
+                    <div className="flex items-center justify-between border-t border-slate-100 pt-4">
+                        {/* Slider Arrow Controls */}
+                        <div className="flex items-center gap-1.5">
+                            <button
+                                type="button"
+                                onClick={onPrev}
+                                aria-label="Agenda sebelumnya"
+                                className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition-all hover:scale-105 hover:border-kipan-blue hover:text-kipan-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-blue active:scale-95"
+                            >
+                                <ChevronLeftIcon className="h-4 w-4" />
+                            </button>
+                            <button
+                                type="button"
+                                onClick={onNext}
+                                aria-label="Agenda berikutnya"
+                                className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition-all hover:scale-105 hover:border-kipan-blue hover:text-kipan-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-blue active:scale-95"
+                            >
+                                <ChevronRightIcon className="h-4 w-4" />
+                            </button>
+                        </div>
+
+                        {/* Pagination Dots */}
+                        <div className="flex items-center gap-1.5">
+                            {Array.from({ length: totalSlides }).map((_, idx) => (
+                                <button
+                                    key={`dot-${idx}`}
+                                    type="button"
+                                    onClick={() => onSelectSlide(idx)}
+                                    aria-label={`Slide ${idx + 1}`}
+                                    className={`h-2 rounded-full transition-all duration-300 ${currentSlide === idx
+                                        ? 'w-6 bg-kipan-blue'
+                                        : 'w-2 bg-slate-300 hover:bg-slate-400'
+                                        }`}
+                                />
+                            ))}
+                        </div>
+
+                        {/* Card CTA Button */}
+                        <a
+                            href={activeEvent.href}
+                            className="group inline-flex items-center gap-1 text-xs font-bold text-kipan-navy transition-colors hover:text-kipan-blue"
+                        >
+                            <span>Detail</span>
+                            <ArrowRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                        </a>
+                    </div>
+                </motion.div>
+            </AnimatePresence>
+        </div>
+    );
+}
 
 export default function Hero() {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
 
-    const prevSlide = () => {
+    const prevSlide = useCallback(() => {
         setCurrentSlide((prev) =>
             prev === 0 ? FEATURED_EVENTS.length - 1 : prev - 1,
         );
-    };
+    }, []);
 
-    const nextSlide = () => {
+    const nextSlide = useCallback(() => {
         setCurrentSlide((prev) =>
             prev === FEATURED_EVENTS.length - 1 ? 0 : prev + 1,
         );
-    };
+    }, []);
+
+    // Autoplay: berpindah slide otomatis setiap 5 detik (pause saat kursor berada di atas card)
+    useEffect(() => {
+        if (isPaused || FEATURED_EVENTS.length <= 1) return;
+
+        const interval = setInterval(() => {
+            nextSlide();
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [isPaused, nextSlide]);
 
     const activeEvent = FEATURED_EVENTS[currentSlide];
 
@@ -94,7 +267,7 @@ export default function Hero() {
                             </a>
                         </motion.div>
 
-                        {/* National Scale Metrics Unified Card (Reference Style) */}
+                        {/* National Scale Metrics Unified Card */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -144,8 +317,12 @@ export default function Hero() {
                         </motion.div>
                     </div>
 
-                    {/* Right Column: Carousel Slide Card */}
-                    <div className="flex justify-center lg:col-span-5">
+                    {/* Right Column: Carousel Slide Card with pause on hover */}
+                    <div
+                        className="flex justify-center lg:col-span-5"
+                        onMouseEnter={() => setIsPaused(true)}
+                        onMouseLeave={() => setIsPaused(false)}
+                    >
                         <HeroEventCard
                             activeEvent={activeEvent}
                             currentSlide={currentSlide}

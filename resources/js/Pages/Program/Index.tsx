@@ -28,11 +28,26 @@ import {
 } from 'lucide-react';
 import ProgramHero from './components/ProgramHero';
 
+interface DbProgram {
+    id: number;
+    title: string;
+    slug: string;
+    description: string | null;
+    image: string | null;
+}
+
+interface PaginatedPrograms {
+    data: DbProgram[];
+    total: number;
+}
+
 interface ProgramPageProps {
     readonly title: string;
     readonly subtitle: string;
     readonly category: string;
+    readonly programs: PaginatedPrograms;
 }
+
 
 const iconMap: Record<string, LucideIcon> = {
     Award,
@@ -71,6 +86,7 @@ export default function ProgramIndex({
     title,
     subtitle,
     category,
+    programs,
 }: Readonly<ProgramPageProps>) {
     return (
         <LandingLayout
@@ -84,7 +100,53 @@ export default function ProgramIndex({
                 subtitle={subtitle}
             />
 
-            {/* ===== Daftar Program ===== */}
+            {/* ===== Program dari CMS ===== */}
+            {programs.data.length > 0 && (
+                <section id="program-cms" className="scroll-mt-24 py-16 lg:py-20">
+                    <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                        <ScrollReveal>
+                            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-kipan-blue">
+                                Program Aktif
+                            </p>
+                            <h2 className="mb-3 text-2xl font-black tracking-tight text-kipan-navy sm:text-3xl">
+                                Program KIPAN
+                            </h2>
+                        </ScrollReveal>
+                        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                            {programs.data.map((prog, idx) => (
+                                <ScrollReveal key={prog.id} delay={0.06 * (idx % 3)}>
+                                    <Link href={`/program/${prog.slug}`}>
+                                        <article className="group h-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:border-kipan-blue/40 hover:shadow-md">
+                                            <div className="h-40 overflow-hidden bg-slate-100">
+                                                {prog.image ? (
+                                                    <img
+                                                        src={prog.image}
+                                                        alt={prog.title}
+                                                        loading="lazy"
+                                                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                                    />
+                                                ) : (
+                                                    <div className="flex h-full items-center justify-center bg-gradient-to-br from-kipan-navy/10 to-kipan-blue/10">
+                                                        <LayoutGrid className="h-10 w-10 text-kipan-blue/40" />
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div className="p-5">
+                                                <h3 className="font-bold text-kipan-navy group-hover:text-kipan-blue">{prog.title}</h3>
+                                                {prog.description && (
+                                                    <p className="mt-1 text-sm text-slate-500 line-clamp-2">{prog.description}</p>
+                                                )}
+                                            </div>
+                                        </article>
+                                    </Link>
+                                </ScrollReveal>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            {/* ===== Program Unggulan (hardcoded fallback) ===== */}
             <section id="program-list" className="scroll-mt-24 py-16 lg:py-20">
                 <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                     <ScrollReveal>
