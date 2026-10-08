@@ -83,8 +83,8 @@ export default function Navbar() {
     return (
         <header
             className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled
-                    ? 'border-b border-white/15 bg-[#0D3F70]/95 py-3 shadow-lg backdrop-blur-md'
-                    : 'border-b border-white/10 bg-transparent py-4 lg:py-5'
+                ? 'border-b border-white/15 bg-[#0D3F70]/95 py-3 shadow-lg backdrop-blur-md'
+                : 'border-b border-white/10 bg-transparent py-4 lg:py-5'
                 }`}
         >
             {/* Scroll Reading Progress Bar Indicator */}
@@ -148,15 +148,15 @@ export default function Navbar() {
                                 }
                                 aria-expanded={tentangDropdownOpen}
                                 className={`group inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-yellow xl:text-[13px] ${tentangDropdownOpen
-                                        ? 'bg-white/15 text-kipan-yellow'
-                                        : 'text-white/90 hover:bg-white/10 hover:text-kipan-yellow'
+                                    ? 'bg-white/15 text-kipan-yellow'
+                                    : 'text-white/90 hover:bg-white/10 hover:text-kipan-yellow'
                                     }`}
                             >
                                 <span>Tentang Kami</span>
                                 <svg
                                     className={`h-3.5 w-3.5 transition-transform duration-200 ${tentangDropdownOpen
-                                            ? 'rotate-180 text-kipan-yellow'
-                                            : 'text-white/70 group-hover:text-kipan-yellow'
+                                        ? 'rotate-180 text-kipan-yellow'
+                                        : 'text-white/70 group-hover:text-kipan-yellow'
                                         }`}
                                     viewBox="0 0 24 24"
                                     fill="none"
@@ -302,8 +302,8 @@ export default function Navbar() {
                                 <span>Tentang Kami</span>
                                 <svg
                                     className={`h-4 w-4 transition-transform duration-200 ${mobileTentangOpen
-                                            ? 'rotate-180 text-kipan-yellow'
-                                            : 'text-white/70'
+                                        ? 'rotate-180 text-kipan-yellow'
+                                        : 'text-white/70'
                                         }`}
                                     viewBox="0 0 24 24"
                                     fill="none"
