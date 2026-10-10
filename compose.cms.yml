@@ -1,0 +1,24 @@
+# compose.cms.yml — kipan-cms staging (11 Okt 2026). Dijalankan dari ~/kipan
+# di VM (proyek compose SAMA dengan backend) agar satu jaringan kipan_default
+# dan Caddy bisa reverse_proxy ke cms:80. Build context: ./cms-src/.
+# DB SQLite file (volume cms_sqlite); TANPA data asli (K6).
+services:
+  cms:
+    build:
+      context: ./cms-src
+      dockerfile: Dockerfile.cms
+    env_file: .env.cms
+    volumes:
+      - cms_sqlite:/var/www/html/database
+      - cms_storage:/var/www/html/storage/app
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1/ > /dev/null || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+      start_period: 60s
+    restart: unless-stopped
+
+volumes:
+  cms_sqlite:
+  cms_storage:

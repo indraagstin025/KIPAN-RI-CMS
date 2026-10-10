@@ -1,0 +1,35 @@
+# Dockerfile.cms — kipan-cms Laravel staging (11 Okt 2026).
+# Single-container apache+mod_php (tanpa supervisor): cukup untuk staging.
+# Aset Vite di-build LOKAL lalu ikut disalin (tanpa npm di image).
+# DB SQLite file (volume), session/cache database driver (default CMS).
+# PHP 8.4: composer.lock mengunci symfony 8.x (syarat >=8.4.1); selaras dev.
+FROM php:8.4-apache
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libsqlite3-dev unzip \
+ && docker-php-ext-install pdo_sqlite bcmath \
+ && a2enmod rewrite \
+ && rm -rf /var/lib/apt/lists/*
+
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+RUN sed -ri 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf \
+ && sed -ri 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+WORKDIR /var/www/html
+
+COPY composer.json composer.lock ./
+RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist
+
+COPY . ./
+RUN composer dump-autoload --optimize \
+ && mkdir -p database storage/app storage/logs bootstrap/cache \
+ && touch database/database.sqlite \
+ && chown -R www-data:www-data storage bootstrap/cache database \
+ && php artisan storage:link || true
+
+COPY deploy/staging-entrypoint.sh /usr/local/bin/staging-entrypoint.sh
+RUN chmod +x /usr/local/bin/staging-entrypoint.sh
+
+EXPOSE 80
+ENTRYPOINT ["staging-entrypoint.sh"]
