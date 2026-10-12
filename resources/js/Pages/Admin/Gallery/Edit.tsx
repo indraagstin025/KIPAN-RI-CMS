@@ -25,6 +25,9 @@ interface GalleryData {
     category_id: number | null;
     location: string | null;
     status: string;
+    source: string | null;
+    external_url: string | null;
+    provider: string | null;
     image_url: string | null;
 }
 
@@ -43,6 +46,8 @@ export default function GalleryEdit({ gallery, categories }: Props) {
         category_id: string;
         location: string;
         status: string;
+        source: string;
+        external_url: string;
         image: File | null;
     }>({
         _method: 'PUT',
@@ -51,6 +56,8 @@ export default function GalleryEdit({ gallery, categories }: Props) {
         category_id: gallery.category_id?.toString() ?? '',
         location: gallery.location ?? '',
         status: gallery.status,
+        source: gallery.source ?? 'upload',
+        external_url: gallery.external_url ?? '',
         image: null,
     });
 
@@ -72,7 +79,22 @@ export default function GalleryEdit({ gallery, categories }: Props) {
                 <form onSubmit={submit}>
                     <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
                         <div className="lg:col-span-2">
-                            <ImageUploader label="Ganti Foto (Opsional)" currentUrl={gallery.image_url} onChange={(file) => setData('image', file)} error={errors.image} hint="Kosongkan jika tidak ingin mengganti foto." />
+                            <FormCard title="Sumber Konten">
+                                <FormField label="Jenis Sumber" htmlFor="source" error={errors.source} required>
+                                    <select id="source" value={data.source} onChange={(e) => setData('source', e.target.value)} className={selectClass}>
+                                        <option value="link">Tautan (Instagram / YouTube / Drive) — disarankan</option>
+                                        <option value="upload">Upload Foto</option>
+                                    </select>
+                                </FormField>
+                                {data.source === 'link' ? (
+                                    <FormField label="URL Tautan" htmlFor="external_url" error={errors.external_url} required>
+                                        <input id="external_url" type="url" value={data.external_url} onChange={(e) => setData('external_url', e.target.value)} className={inputClass} placeholder="https://instagram.com/p/... atau https://youtu.be/... atau https://drive.google.com/..." />
+                                        <p className="mt-1 text-xs text-slate-500">Hanya Instagram, YouTube, Google Drive (https). Berkas lama (bila ada) dihapus saat disimpan.</p>
+                                    </FormField>
+                                ) : (
+                                    <ImageUploader label="Ganti Foto (Opsional)" currentUrl={gallery.image_url} onChange={(file) => setData('image', file)} error={errors.image} hint="Kosongkan jika tidak ingin mengganti foto." />
+                                )}
+                            </FormCard>
                         </div>
                         <div className="space-y-6">
                             <FormCard title="Info Foto">

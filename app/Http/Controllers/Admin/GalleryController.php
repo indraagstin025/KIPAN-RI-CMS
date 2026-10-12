@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Gallery;
+use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -13,6 +14,27 @@ use Inertia\Response;
 
 class GalleryController extends Controller
 {
+    // Host yang diizinkan untuk galeri tautan (IG/YouTube/Drive). Di luar
+    // ini (termasuk javascript:) ditolak — validasi oleh host, bukan pola.
+    private const LINK_HOSTS = [
+        'instagram.com' => 'instagram',
+        'www.instagram.com' => 'instagram',
+        'youtube.com' => 'youtube',
+        'www.youtube.com' => 'youtube',
+        'youtu.be' => 'youtube',
+        'www.youtu.be' => 'youtube',
+        'drive.google.com' => 'drive',
+    ];
+
+    // providerForUrl menurunkan provider dari host secara otoritatif
+    // (input client TIDAK dipercaya).
+    private function providerForUrl(string $url): ?string
+    {
+        $host = strtolower((string) parse_url(trim($url), PHP_URL_HOST));
+
+        return self::LINK_HOSTS[$host] ?? null;
+    }
+
     public function index(): Response
     {
         $galleries = Gallery::with(['creator', 'category'])
@@ -23,6 +45,9 @@ class GalleryController extends Controller
                 'title' => $item->title,
                 'image' => $item->image,
                 'image_url' => $item->image ? asset('storage/'.$item->image) : null,
+                'source' => $item->source,
+                'external_url' => $item->external_url,
+                'provider' => $item->provider,
                 'category' => $item->category?->name,
                 'location' => $item->location,
                 'status' => $item->status,
@@ -51,16 +76,29 @@ class GalleryController extends Controller
             'category_id' => ['nullable', 'exists:categories,id'],
             'location' => ['nullable', 'string', 'max:255'],
             'status' => ['required', 'in:draft,published'],
-            'image' => ['required', 'image', 'mimes:jpeg,png,webp', 'max:4096'],
+            'source' => ['required', 'in:upload,link'],
+            'image' => ['prohibited_if:source,link', 'required_if:source,upload', 'image', 'mimes:jpeg,png,webp', 'max:4096'],
+            'external_url' => ['prohibited_if:source,upload', 'required_if:source,link', 'string', 'max:500', 'url:https', function (string $attribute, mixed $value, Closure $fail): void {
+                if ($this->providerForUrl((string) $value) === null) {
+                    $fail('Tautan harus dari Instagram, YouTube, atau Google Drive (https).');
+                }
+            }],
         ]);
 
-        $validated['image'] = $request->file('image')->store('gallery', 'public');
+        if ($validated['source'] === 'link') {
+            $validated['provider'] = $this->providerForUrl($validated['external_url']);
+            $validated['image'] = null;
+        } else {
+            $validated['image'] = $request->file('image')->store('gallery', 'public');
+            $validated['external_url'] = null;
+            $validated['provider'] = null;
+        }
         $validated['created_by'] = $request->user()->id;
 
         Gallery::create($validated);
 
         return redirect()->route('admin.gallery.index')
-            ->with('success', 'Foto berhasil diupload.');
+            ->with('success', $validated['source'] === 'link' ? 'Tautan galeri berhasil ditambahkan.' : 'Foto berhasil diupload.');
     }
 
     public function edit(Gallery $gallery): Response
@@ -75,6 +113,9 @@ class GalleryController extends Controller
                 'category_id' => $gallery->category_id,
                 'location' => $gallery->location,
                 'status' => $gallery->status,
+                'source' => $gallery->source ?? 'upload',
+                'external_url' => $gallery->external_url,
+                'provider' => $gallery->provider,
                 'image_url' => $gallery->image ? asset('storage/'.$gallery->image) : null,
             ],
             'categories' => $categories,
@@ -89,22 +130,39 @@ class GalleryController extends Controller
             'category_id' => ['nullable', 'exists:categories,id'],
             'location' => ['nullable', 'string', 'max:255'],
             'status' => ['required', 'in:draft,published'],
-            'image' => ['nullable', 'image', 'mimes:jpeg,png,webp', 'max:4096'],
+            'source' => ['required', 'in:upload,link'],
+            'image' => ['prohibited_if:source,link', 'image', 'mimes:jpeg,png,webp', 'max:4096'],
+            'external_url' => ['prohibited_if:source,upload', 'required_if:source,link', 'string', 'max:500', 'url:https', function (string $attribute, mixed $value, Closure $fail): void {
+                if ($this->providerForUrl((string) $value) === null) {
+                    $fail('Tautan harus dari Instagram, YouTube, atau Google Drive (https).');
+                }
+            }],
         ]);
 
-        if ($request->hasFile('image')) {
+        if ($validated['source'] === 'link') {
+            // Berkas lama dibuang (tanpa yatim) karena sumber berganti.
             if ($gallery->image) {
                 Storage::disk('public')->delete($gallery->image);
             }
-            $validated['image'] = $request->file('image')->store('gallery', 'public');
+            $validated['provider'] = $this->providerForUrl($validated['external_url']);
+            $validated['image'] = null;
         } else {
-            unset($validated['image']);
+            if ($request->hasFile('image')) {
+                if ($gallery->image) {
+                    Storage::disk('public')->delete($gallery->image);
+                }
+                $validated['image'] = $request->file('image')->store('gallery', 'public');
+            } else {
+                unset($validated['image']);
+            }
+            $validated['external_url'] = null;
+            $validated['provider'] = null;
         }
 
         $gallery->update($validated);
 
         return redirect()->route('admin.gallery.index')
-            ->with('success', 'Foto berhasil diperbarui.');
+            ->with('success', 'Galeri berhasil diperbarui.');
     }
 
     public function destroy(Gallery $gallery): RedirectResponse

@@ -18,7 +18,10 @@ class GaleriController extends Controller
                 'id' => $item->id,
                 'title' => $item->title,
                 'caption' => $item->caption,
-                'image' => asset('storage/'.$item->image),
+                'image' => $item->image ? asset('storage/'.$item->image) : null,
+                'source' => $item->source ?? 'upload',
+                'external_url' => $item->external_url,
+                'provider' => $item->provider,
                 'location' => $item->location,
                 'category' => $item->category?->name,
             ]);

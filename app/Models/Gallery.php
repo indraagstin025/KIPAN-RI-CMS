@@ -14,6 +14,9 @@ class Gallery extends Model
     protected $fillable = [
         'title',
         'image',
+        'source',
+        'external_url',
+        'provider',
         'caption',
         'category_id',
         'location',

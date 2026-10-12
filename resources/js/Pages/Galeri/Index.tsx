@@ -11,10 +11,19 @@ interface DbGalleryItem {
     id: number;
     title: string;
     caption: string | null;
-    image: string;
+    image: string | null;
+    source: string | null;
+    external_url: string | null;
+    provider: string | null;
     location: string | null;
     category: string | null;
 }
+
+const PROVIDER_LABEL: Record<string, string> = {
+    instagram: 'Instagram',
+    youtube: 'YouTube',
+    drive: 'Google Drive',
+};
 
 interface PaginatedGallery {
     data: DbGalleryItem[];
@@ -36,15 +45,21 @@ export default function GaleriIndex({
 }: Readonly<GaleriPageProps>) {
     const [selectedPhoto, setSelectedPhoto] = useState<{ id: number; src: string; alt: string; caption?: string } | null>(null);
 
-    // Map DB items to lightbox-compatible format
-    const photoList = galleries.data.map((g) => ({
-        id: g.id,
-        src: g.image,
-        alt: g.title,
-        caption: g.caption ?? g.title,
-        category: g.category ?? '',
-        location: g.location ?? '',
-    }));
+    // Map DB items to lightbox-compatible format (hanya upload berfoto;
+    // item tautan tampil sebagai kartu link eksternal di bawah).
+    const photoList = galleries.data
+        .filter((g) => (g.source ?? 'upload') === 'upload' && g.image)
+        .map((g) => ({
+            id: g.id,
+            src: g.image as string,
+            alt: g.title,
+            caption: g.caption ?? g.title,
+            category: g.category ?? '',
+            location: g.location ?? '',
+        }));
+    const linkList = galleries.data.filter(
+        (g) => g.source === 'link' && g.external_url,
+    );
 
     const handlePrev = useCallback(() => {
         if (!selectedPhoto) return;
@@ -121,6 +136,48 @@ export default function GaleriIndex({
             </section>
 
             <GaleriVideoSection videos={GALLERY_VIDEOS} />
+
+                    {/* Tautan eksternal (Instagram/YouTube/Drive): kartu link,
+                tanpa iframe — tanpa permukaan XSS, tanpa wajah di server. */}
+                    {linkList.length > 0 && (
+                        <section id="galeri-tautan" className="scroll-mt-24 py-16 lg:py-20">
+                            <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                                <ScrollReveal>
+                                    <p className="mb-2 text-xs font-bold uppercase tracking-widest text-kipan-blue">
+                                        Tautan Eksternal
+                                    </p>
+                                    <h2 className="mb-3 text-2xl font-black tracking-tight text-kipan-navy sm:text-3xl">
+                                        Dokumentasi di Platform Lain
+                                    </h2>
+                                    <p className="mb-8 max-w-2xl text-slate-600">
+                                        Foto dan video yang tersimpan di Instagram, YouTube,
+                                        atau Google Drive — dibuka di tab baru.
+                                    </p>
+                                </ScrollReveal>
+                                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                                    {linkList.map((item, idx) => (
+                                        <ScrollReveal key={item.id} delay={0.03 * (idx % 3)}>
+                                            <a
+                                                href={item.external_url as string}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="group block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md"
+                                            >
+                                                <p className="text-[11px] font-bold uppercase tracking-widest text-kipan-blue">
+                                                    {PROVIDER_LABEL[item.provider ?? ''] ?? 'Tautan'}
+                                                </p>
+                                                <p className="mt-1 font-bold text-kipan-navy group-hover:underline">{item.title}</p>
+                                                {item.caption && (
+                                                    <p className="mt-1 text-xs text-slate-500">{item.caption}</p>
+                                                )}
+                                                <p className="mt-3 text-xs font-semibold text-kipan-blue">Buka ↗</p>
+                                            </a>
+                                        </ScrollReveal>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    )}
 
             {/* Lightbox */}
             {selectedPhoto && (
