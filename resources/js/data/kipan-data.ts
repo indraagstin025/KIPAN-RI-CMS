@@ -29,12 +29,14 @@ export const STATS = [
     { value: '1.000+', label: 'Pengurus' },
 ];
 
-// URL aplikasi pendaftaran kader (Go). Diambil dari env bila ada —
+// URL aplikasi SIM-KIPAN (Go). Diambil dari env bila ada —
 // TODO: APP_FE_URL — set VITE_APP_FE_URL di env staging/produksi.
 const APP_FE_BASE: string =
     (import.meta.env.VITE_APP_FE_URL as string | undefined)?.replace(/\/+$/, '') ??
     'https://app.nextwave.web.id';
 export const APP_DAFTAR_URL = `${APP_FE_BASE}/daftar`;
+export const APP_LACAK_URL = `${APP_FE_BASE}/lacak`;
+export const APP_LOGIN_URL = `${APP_FE_BASE}/login`;
 
 export const NAV_LINKS = [
     { label: 'Beranda', href: '/' },

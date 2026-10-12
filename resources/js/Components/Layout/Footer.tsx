@@ -1,4 +1,5 @@
 import { CONTACT_INFO, NAV_LINKS } from '@/data/landing-content';
+import { APP_DAFTAR_URL, APP_LACAK_URL, APP_LOGIN_URL } from '@/data/kipan-data';
 import {
     ChatBubbleIcon,
     EnvelopeClosedIcon,
@@ -73,6 +74,14 @@ export default function Footer() {
                                     </a>
                                 </li>
                             ))}
+                        </ul>
+                        <h4 className="mb-4 mt-6 text-xs font-bold uppercase tracking-widest text-kipan-yellow">
+                            Aplikasi SIM-KIPAN
+                        </h4>
+                        <ul className="space-y-2 text-xs">
+                            <li><a href={APP_DAFTAR_URL} target="_blank" rel="noopener noreferrer" className="text-blue-100/80 transition-colors hover:text-white">Daftar sebagai Kader</a></li>
+                            <li><a href={APP_LACAK_URL} target="_blank" rel="noopener noreferrer" className="text-blue-100/80 transition-colors hover:text-white">Lacak Pendaftaran</a></li>
+                            <li><a href={APP_LOGIN_URL} target="_blank" rel="noopener noreferrer" className="text-blue-100/80 transition-colors hover:text-white">Masuk Aplikasi</a></li>
                         </ul>
                     </div>
 

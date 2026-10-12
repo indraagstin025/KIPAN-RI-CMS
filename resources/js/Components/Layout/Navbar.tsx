@@ -4,7 +4,7 @@ import {
     PersonIcon,
 } from '@radix-ui/react-icons';
 import { useEffect, useRef, useState } from 'react';
-import { APP_DAFTAR_URL } from '@/data/kipan-data';
+import { APP_DAFTAR_URL, APP_LACAK_URL, APP_LOGIN_URL } from '@/data/kipan-data';
 import EmergencyReportModal from '@/Components/Emergency/EmergencyReportModal';
 import FloatingEmergencyButton from '@/Components/Emergency/FloatingEmergencyButton';
 
@@ -250,6 +250,22 @@ export default function Navbar() {
 
                     {/* Right CTA Actions */}
                     <div className="hidden items-center gap-3 lg:flex">
+                        <a
+                            href={APP_LOGIN_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="rounded-lg px-3 py-2 text-xs font-semibold text-white/90 transition-colors hover:bg-white/10 hover:text-kipan-yellow focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-yellow"
+                        >
+                            Masuk
+                        </a>
+                        <a
+                            href={APP_LACAK_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="rounded-full border border-white/30 px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-yellow"
+                        >
+                            Lacak Pendaftaran
+                        </a>
                         {/* Gold Pill CTA */}
                         <a
                             href={APP_DAFTAR_URL}
@@ -390,6 +406,29 @@ export default function Navbar() {
                                 Emergency
                             </span>
                         </button>
+
+                        {/* Aplikasi SIM-KIPAN (deep-link ke app Go) */}
+                        <p className="px-3 pt-2 text-[10px] font-bold uppercase tracking-widest text-blue-200/60">
+                            Aplikasi SIM-KIPAN
+                        </p>
+                        <a
+                            href={APP_LACAK_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => setMobileOpen(false)}
+                            className="block rounded-lg px-3 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10 hover:text-kipan-yellow"
+                        >
+                            Lacak Pendaftaran
+                        </a>
+                        <a
+                            href={APP_LOGIN_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => setMobileOpen(false)}
+                            className="block rounded-lg px-3 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10 hover:text-kipan-yellow"
+                        >
+                            Masuk
+                        </a>
                     </div>
 
                     {/* Mobile Action Buttons */}
