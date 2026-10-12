@@ -10,9 +10,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  && docker-php-ext-install pdo_sqlite bcmath \
  && a2enmod rewrite \
  && rm -rf /var/lib/apt/lists/* \
- && printf 'ServerTokens Prod\nServerSignature Off\n' > /etc/apache2/conf-available/security-prod.conf \
- && a2enconf security-prod \
- && printf 'expose_php=Off\n' > /usr/local/etc/php/conf.d/prod.ini
+ && printf 'expose_php=Off\n' > /usr/local/etc/php/conf.d/prod.ini \
+ && sed -ri 's/^\s*ServerTokens\s+.*/ServerTokens Prod/; s/^\s*ServerSignature\s+.*/ServerSignature Off/' /etc/apache2/conf-available/security.conf \
+ && grep -q '^ServerTokens Prod' /etc/apache2/conf-available/security.conf
 
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -ri 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf \
