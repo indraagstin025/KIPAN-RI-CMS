@@ -28,6 +28,14 @@ export const STATS = [
     { value: '514', label: 'Kabupaten/Kota' },
     { value: '1.000+', label: 'Pengurus' },
 ];
+
+// URL aplikasi pendaftaran kader (Go). Diambil dari env bila ada —
+// TODO: APP_FE_URL — set VITE_APP_FE_URL di env staging/produksi.
+const APP_FE_BASE: string =
+    (import.meta.env.VITE_APP_FE_URL as string | undefined)?.replace(/\/+$/, '') ??
+    'https://app.nextwave.web.id';
+export const APP_DAFTAR_URL = `${APP_FE_BASE}/daftar`;
+
 export const NAV_LINKS = [
     { label: 'Beranda', href: '/' },
     { label: 'Tentang', href: '/#tentang' },
@@ -36,7 +44,7 @@ export const NAV_LINKS = [
     { label: 'Berita', href: '/berita' },
     { label: 'Galeri', href: '/galeri' },
     { label: 'Pengurus', href: '/#pengurus' },
-    { label: 'Daftar', href: '/pendaftaran' },
+    { label: 'Daftar', href: APP_DAFTAR_URL },
     { label: 'Lacak', href: '/lacak-pendaftaran' },
     { label: 'Cek Anggota', href: '/cek-anggota' },
     { label: 'Kontak', href: '/kontak' },

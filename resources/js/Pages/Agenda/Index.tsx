@@ -1,6 +1,6 @@
 import ScrollReveal from '@/Components/Layout/ScrollReveal';
 import LandingLayout from '@/Layouts/LandingLayout';
-import { Link } from '@inertiajs/react';
+import { APP_DAFTAR_URL } from '@/data/kipan-data';
 import {
     ArrowRightIcon,
     CalendarIcon,
@@ -132,13 +132,15 @@ export default function AgendaIndex({ title, subtitle, category, events }: Reado
                                 <p className="mx-auto mb-8 max-w-xl text-sm text-blue-100/90 sm:text-base">
                                     Daftarkan dirimu sekarang agar mendapat undangan resmi setiap kegiatan nasional KIPAN.
                                 </p>
-                                <Link
-                                    href="/kontak"
+                                <a
+                                    href={APP_DAFTAR_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="inline-flex items-center gap-2 rounded-full bg-kipan-yellow px-7 py-3.5 text-sm font-black text-kipan-navy shadow-lg transition-colors hover:bg-yellow-300"
                                 >
                                     Daftar Ikut Kegiatan
                                     <ArrowRightIcon className="h-4 w-4" />
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     </ScrollReveal>

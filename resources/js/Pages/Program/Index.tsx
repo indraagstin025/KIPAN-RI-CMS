@@ -1,6 +1,6 @@
 import ScrollReveal from '@/Components/Layout/ScrollReveal';
 import LandingLayout from '@/Layouts/LandingLayout';
-import { PROGRAMS } from '@/data/kipan-data';
+import { PROGRAMS, APP_DAFTAR_URL } from '@/data/kipan-data';
 import { Link } from '@inertiajs/react';
 import { ArrowRightIcon, CheckCircledIcon } from '@radix-ui/react-icons';
 import {
@@ -236,13 +236,15 @@ export default function ProgramIndex({
                                     ikuti pembekalan gelombang berikutnya di
                                     wilayahmu.
                                 </p>
-                                <Link
-                                    href="/pendaftaran"
+                                <a
+                                    href={APP_DAFTAR_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="inline-flex items-center gap-2 rounded-full bg-kipan-yellow px-7 py-3.5 text-sm font-black text-kipan-navy shadow-lg transition-colors hover:bg-yellow-300"
                                 >
                                     Daftar Sebagai Kader
                                     <ArrowRightIcon className="h-4 w-4" />
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     </ScrollReveal>

@@ -1,4 +1,4 @@
-import { AGENDA_KEGIATAN } from '@/data/kipan-data';
+import { AGENDA_KEGIATAN, APP_DAFTAR_URL } from '@/data/kipan-data';
 import {
     ArrowRightIcon,
     CalendarIcon,
@@ -108,7 +108,9 @@ export default function AgendaHero({
 
                         <div className="flex flex-wrap items-center gap-3">
                             <a
-                                href="/pendaftaran"
+                                href={APP_DAFTAR_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 rounded-full bg-kipan-yellow px-6 py-3 text-xs font-bold text-kipan-navy shadow-md transition-all hover:scale-105 hover:bg-amber-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-yellow active:scale-95"
                             >
                                 <span>Daftar Ikut Kegiatan</span>

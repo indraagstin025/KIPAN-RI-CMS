@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from '@radix-ui/react-icons';
+import { APP_DAFTAR_URL } from '@/data/kipan-data';
 import { motion } from 'framer-motion';
 import {
     Award,
@@ -163,7 +164,9 @@ export default function ProgramHero({
                     className="mt-12 flex flex-wrap items-center gap-3 lg:mt-14"
                 >
                     <a
-                        href="/pendaftaran"
+                        href={APP_DAFTAR_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 rounded-full bg-kipan-yellow px-6 py-3 text-xs font-bold text-kipan-navy shadow-md transition-all hover:scale-105 hover:bg-amber-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-yellow active:scale-95"
                     >
                         <span>Mulai Langkah 01 — Daftar</span>

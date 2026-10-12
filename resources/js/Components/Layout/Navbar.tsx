@@ -4,6 +4,7 @@ import {
     PersonIcon,
 } from '@radix-ui/react-icons';
 import { useEffect, useRef, useState } from 'react';
+import { APP_DAFTAR_URL } from '@/data/kipan-data';
 import EmergencyReportModal from '@/Components/Emergency/EmergencyReportModal';
 import FloatingEmergencyButton from '@/Components/Emergency/FloatingEmergencyButton';
 
@@ -251,7 +252,9 @@ export default function Navbar() {
                     <div className="hidden items-center gap-3 lg:flex">
                         {/* Gold Pill CTA */}
                         <a
-                            href="/kontak"
+                            href={APP_DAFTAR_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="shadow-xs inline-flex items-center gap-1.5 rounded-full bg-kipan-yellow px-4 py-2 text-xs font-bold text-kipan-navy transition-colors hover:bg-amber-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-kipan-yellow"
                         >
                             <PersonIcon className="h-3.5 w-3.5" />
@@ -392,7 +395,9 @@ export default function Navbar() {
                     {/* Mobile Action Buttons */}
                     <div className="border-t border-white/15 pt-4">
                         <a
-                            href="/kontak"
+                            href={APP_DAFTAR_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             onClick={() => setMobileOpen(false)}
                             className="shadow-xs flex w-full items-center justify-center gap-2 rounded-full bg-kipan-yellow py-2.5 text-center text-xs font-bold text-kipan-navy transition-colors hover:bg-amber-400"
                         >
