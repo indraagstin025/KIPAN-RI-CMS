@@ -8,10 +8,12 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ProgramController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\MateriController;
 use App\Http\Controllers\ProgramPublicController;
 use App\Http\Controllers\SkriningController;
 use Illuminate\Support\Facades\Route;
@@ -58,13 +60,7 @@ Route::get('/monitoring/cek-risiko/dokumentasi', function () {
     return Inertia::render('Monitoring/Skrining/Dokumentasi');
 })->name('monitoring.skrining.dokumentasi');
 
-Route::get('/materi', function () {
-    return Inertia::render('PlaceholderPage', [
-        'title' => 'Pusat Materi & Modul Edukasi Anti Narkoba',
-        'subtitle' => 'Kumpulan modul pelatihan, materi penyuluhan bahaya narkotika, regulasi hukum, dan panduan kader pemuda.',
-        'category' => 'Materi',
-    ]);
-})->name('materi');
+Route::get('/materi', [MateriController::class, 'index'])->name('materi');
 
 // Redirect Ramah Kompatibilitas Tautan Sub-Menu Lama
 Route::redirect('/tentang/fokus', '/tentang');
@@ -137,4 +133,7 @@ Route::middleware(['auth'])
         // Partners
         Route::resource('partners', PartnerController::class)->except(['show']);
         Route::patch('partners/{partner}/toggle', [PartnerController::class, 'toggle'])->name('partners.toggle');
+
+        // Users (Pengguna)
+        Route::resource('users', UserController::class)->except(['show', 'create', 'edit']);
     });

@@ -13,11 +13,23 @@ use Inertia\Response;
 
 class EventController extends Controller
 {
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        $events = Event::with('creator')
-            ->orderBy('event_date', 'desc')
-            ->paginate(20)
+        $query = Event::with('creator')->orderBy('event_date', 'desc');
+
+        if ($search = $request->input('search')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                    ->orWhere('location', 'like', "%{$search}%");
+            });
+        }
+
+        if ($status = $request->input('status')) {
+            $query->where('status', $status);
+        }
+
+        $events = $query->paginate(20)
+            ->withQueryString()
             ->through(fn (Event $item) => [
                 'id' => $item->id,
                 'title' => $item->title,
@@ -29,6 +41,7 @@ class EventController extends Controller
 
         return Inertia::render('Admin/Events/Index', [
             'events' => $events,
+            'filters' => $request->only(['search', 'status']),
         ]);
     }
 

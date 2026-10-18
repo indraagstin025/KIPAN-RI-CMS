@@ -11,12 +11,20 @@ use Inertia\Response;
 
 class PartnerController extends Controller
 {
-    public function index(): Response
+    public function index(Request $request): Response
     {
         abort_unless(auth()->user()?->can('manage-settings'), 403);
 
-        $partners = Partner::orderBy('sort_order')
-            ->get()
+        $query = Partner::orderBy('sort_order');
+
+        if ($search = $request->input('search')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                    ->orWhere('role', 'like', "%{$search}%");
+            });
+        }
+
+        $partners = $query->get()
             ->map(fn (Partner $item) => [
                 'id' => $item->id,
                 'name' => $item->name,
@@ -29,6 +37,7 @@ class PartnerController extends Controller
 
         return Inertia::render('Admin/Partners/Index', [
             'partners' => $partners,
+            'filters' => $request->only(['search']),
         ]);
     }
 

@@ -12,24 +12,45 @@ use Inertia\Response;
 
 class MediaController extends Controller
 {
-    public function index(): Response
+    public function index(Request $request): Response
     {
         abort_unless(auth()->user()?->can('manage-media'), 403);
 
-        $media = Media::latest()
-            ->paginate(24)
+        $query = Media::latest();
+
+        if ($search = $request->input('search')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('file_name', 'like', "%{$search}%")
+                    ->orWhere('alt_text', 'like', "%{$search}%");
+            });
+        }
+
+        if ($type = $request->input('type')) {
+            if ($type === 'image') {
+                $query->where('mime_type', 'like', 'image/%');
+            } elseif ($type === 'video') {
+                $query->where('mime_type', 'like', 'video/%');
+            } elseif ($type === 'document') {
+                $query->where('mime_type', 'not like', 'image/%')
+                    ->where('mime_type', 'not like', 'video/%');
+            }
+        }
+
+        $media = $query->paginate(24)
+            ->withQueryString()
             ->through(fn (Media $item) => [
                 'id' => $item->id,
                 'file_name' => $item->file_name,
-                'url' => Storage::disk($item->disk)->url($item->file_path),
+                'url' => asset('storage/'.$item->file_path),
                 'mime_type' => $item->mime_type,
                 'size' => $item->size,
                 'alt_text' => $item->alt_text,
-                'created_at' => $item->created_at->diffForHumans(),
+                'created_at' => $item->created_at->format('d M Y, H:i'),
             ]);
 
         return Inertia::render('Admin/Media/Index', [
             'media' => $media,
+            'filters' => $request->only(['search', 'type']),
         ]);
     }
 

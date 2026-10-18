@@ -13,11 +13,23 @@ use Inertia\Response;
 
 class ProgramController extends Controller
 {
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        $programs = Program::with('creator')
-            ->latest()
-            ->paginate(20)
+        $query = Program::with('creator')->latest();
+
+        if ($search = $request->input('search')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%");
+            });
+        }
+
+        if ($status = $request->input('status')) {
+            $query->where('status', $status);
+        }
+
+        $programs = $query->paginate(20)
+            ->withQueryString()
             ->through(fn (Program $item) => [
                 'id' => $item->id,
                 'title' => $item->title,
@@ -28,6 +40,7 @@ class ProgramController extends Controller
 
         return Inertia::render('Admin/Programs/Index', [
             'programs' => $programs,
+            'filters' => $request->only(['search', 'status']),
         ]);
     }
 

@@ -35,11 +35,24 @@ class GalleryController extends Controller
         return self::LINK_HOSTS[$host] ?? null;
     }
 
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        $galleries = Gallery::with(['creator', 'category'])
-            ->latest()
-            ->paginate(24)
+        $query = Gallery::with(['creator', 'category'])->latest();
+
+        if ($search = $request->input('search')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                    ->orWhere('location', 'like', "%{$search}%")
+                    ->orWhere('caption', 'like', "%{$search}%");
+            });
+        }
+
+        if ($status = $request->input('status')) {
+            $query->where('status', $status);
+        }
+
+        $galleries = $query->paginate(24)
+            ->withQueryString()
             ->through(fn (Gallery $item) => [
                 'id' => $item->id,
                 'title' => $item->title,
@@ -56,6 +69,7 @@ class GalleryController extends Controller
 
         return Inertia::render('Admin/Gallery/Index', [
             'galleries' => $galleries,
+            'filters' => $request->only(['search', 'status']),
         ]);
     }
 

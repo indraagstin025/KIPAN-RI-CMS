@@ -94,7 +94,7 @@ function StatusBadge({ status }: { status: string }) {
 export default function Dashboard({ stats, recentNews, upcomingEvents }: DashboardProps) {
     const statCards: StatCardProps[] = [
         {
-            label: 'Total Berita',
+            label: 'News & Artikel',
             value: stats.news_total,
             sub: 'dipublikasikan',
             subValue: stats.news_published,
@@ -103,16 +103,7 @@ export default function Dashboard({ stats, recentNews, upcomingEvents }: Dashboa
             href: '/admin/news',
         },
         {
-            label: 'Total Agenda',
-            value: stats.events_total,
-            sub: 'akan datang',
-            subValue: stats.events_upcoming,
-            icon: <CalendarDays className="h-6 w-6 text-white" />,
-            color: 'bg-violet-500',
-            href: '/admin/events',
-        },
-        {
-            label: 'Total Program',
+            label: 'Program & Aksi',
             value: stats.programs_total,
             sub: 'aktif',
             subValue: stats.programs_published,
@@ -121,7 +112,16 @@ export default function Dashboard({ stats, recentNews, upcomingEvents }: Dashboa
             href: '/admin/programs',
         },
         {
-            label: 'Total Galeri',
+            label: 'Agenda Kegiatan',
+            value: stats.events_total,
+            sub: 'akan datang',
+            subValue: stats.events_upcoming,
+            icon: <CalendarDays className="h-6 w-6 text-white" />,
+            color: 'bg-violet-500',
+            href: '/admin/events',
+        },
+        {
+            label: 'Galeri Dokumentasi',
             value: stats.galleries_total,
             sub: 'item media',
             subValue: stats.galleries_total,

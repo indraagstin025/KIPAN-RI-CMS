@@ -78,15 +78,15 @@ export default function NewsIndex({ news, filters }: Props) {
 
     return (
         <>
-            <Head title="Berita — KIPAN CMS" />
-            <AdminLayout title="Manajemen Berita">
+            <Head title="News & Artikel — KIPAN CMS" />
+            <AdminLayout title="Manajemen News & Artikel">
                 <FlashMessage success={flash?.success} error={flash?.error} />
 
                 <PageHeader
-                    title="Berita"
-                    description={`${news.total} total berita`}
+                    title="News & Artikel"
+                    description={`${news.total} total berita & artikel terbit`}
                     createHref="/admin/news/create"
-                    createLabel="Tulis Berita"
+                    createLabel="Tulis Berita / Artikel"
                 />
 
                 {/* Toolbar */}

@@ -78,6 +78,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'view-programs', 'create-programs', 'edit-programs', 'delete-programs', 'publish-programs',
             'view-gallery', 'create-gallery', 'edit-gallery', 'delete-gallery',
             'manage-media',
+            'manage-users',
         ]);
 
         // editor: can create/edit content and publish, no delete
